@@ -1,0 +1,114 @@
+@charset "UTF-8";
+/* 배경 꽉 차게 */
+html {
+	background: url("../image/background_01.jpg") no-repeat center center
+		fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/* 헤더 영역 */
+header {
+	position: relative;
+	width: 100%;
+}
+
+/* 반투명 */
+.glassmorphism {
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(9px);
+	-webkit-backdrop-filter: blur(9px);
+	width: 100%;
+	height: 200px;
+}
+
+/* judson 폰트 */
+.judson-regular {
+	font-family: "Judson", serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.judson-bold {
+	font-family: "Judson", serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+/* 아이콘 */
+.icons {
+	font-size: 30px;
+	right: 5%;
+	top: 70px;
+	position: absolute;
+}
+
+/* 타이틀 */
+.title {
+	font-size: 64px;
+	height: 130px;
+	line-height: 130px;
+}
+
+.title-middle {
+	font-size: 200px;
+	height: 130px;
+	line-height: 130px;
+}
+
+/* 텍스트 가로정렬 */
+.text-center {
+	text-align: center;
+}
+
+/* 색상 */
+.color-white {
+	color: white;
+}
+
+/* 수평선 */
+.hr-style {
+	width: 90%;
+	margin: 0px auto;
+	height: 1px;
+	background: #ccc;
+	border: 0;
+}
+
+/* 메뉴 */
+.menu-frame {
+	width: 50%;
+	margin: 0px auto;
+	text-align: center;
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+.menu {
+	float: left;
+	padding: 20px 0px;
+}
+
+.menu-a {
+	text-decoration: none;
+}
+
+.menu:hover {
+	border-bottom: 1px solid white;
+}
+
+a:link {
+	color: white;
+}
+
+a:visited {
+	color: white;
+}
+
+a:active {
+	color: #878787;
+}
