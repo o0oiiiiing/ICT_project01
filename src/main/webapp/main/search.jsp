@@ -24,8 +24,41 @@
 <link rel="stylesheet" href="../css/search.css">
 </head>
 <body>
-	<input type="text" class="search-field">
-	<span class="material-symbols-outlined icon">Search</span>
+	<div class="search">
+		<input type="text" class="search-field">
+		<span class="material-symbols-outlined icon search-icon">Search</span>
+	</div>
+	
+	<!-- 카테고리 -->
+	<div class="judson-bold category">category</div>
+	
+	<ul class="category-wrapper">
+		<li class="categories"><label><input type="checkbox" class="top-category"> PRODUCT</label>
+			<ul  class="subcategory">
+				<li><label><input type="checkbox"> perfume</label></li>
+				<li><label><input type="checkbox"> hand&body</label></li>
+				<li><label><input type="checkbox"> home fragrance</label></li>
+			</ul>
+		</li>
+		<li  class="categories"><label><input type="checkbox" class="top-category"> BRAND</label>
+			<ul  class="subcategory">
+				<li><label><input type="checkbox"> GRANHAND.</label></li>
+				<li><label><input type="checkbox"> LE LABO</label></li>
+				<li><label><input type="checkbox"> Maison Margiela</label></li>
+				<li><label><input type="checkbox"> SHIRO</label></li>
+				<li><label><input type="checkbox"> Aēsop</label></li>
+			</ul>
+		</li>
+		<li  class="categories"><label><input type="checkbox" class="top-category"> CAPACITY</label>
+			<ul  class="subcategory">
+				<li><label><input type="checkbox"> 15ml</label></li>
+				<li><label><input type="checkbox"> 50ml</label></li>
+				<li><label><input type="checkbox"> 100ml</label></li>
+				<li><label><input type="checkbox"> 500ml</label></li>
+			</ul>
+		</li>
+	</ul>
+	
 	<span class="material-symbols-outlined icon">close</span>
 </body>
 </html>

@@ -4,7 +4,7 @@ html {
 	background-color: #F5F5F5;
 }
 
-body{
+body {
 	width: 100%;
 	display: grid;
 	place-items: center;
@@ -21,8 +21,72 @@ body{
 }
 
 /* 검색 영역 */
-.search-field{
-	width: 80%;
-	padding: 10px;
-	margin-top: 50px;
+.search-field {
+	width: 1000px;
+	height: 50px;
+	margin: 150px auto 0px auto;
+	border: 1px solid #CECECE;
+	border-radius: 50px;
+	box-sizing: border-box;
+	position: relative;
+	font-family: 'Avenir', sans-serif;
+	font-size: 15px;
+	padding-left: 30px;
+}
+
+.search-field:hover, .search-field:focus {
+	outline: none;
+	border: 1px solid #CECECE;
+	background-color: rgb(239, 239, 239);
+}
+
+.category {
+	font-size: 30px;
+	margin: 50px auto;
+	color: #1E1E1E;
+}
+
+.search-icon {
+	position: absolute;
+	top: 160px;
+	right: 25%;
+}
+
+/* 체크박스 */
+label {
+	font-family: 'Avenir', sans-serif;
+	color: #1E1E1E;
+}
+
+.category-wrapper {
+	width: 1000px;
+}
+
+.categories {
+	margin-bottom: 80px;
+}
+
+.top-category {
+	margin-bottom: 30px;
+}
+
+.subcategory {
+	display: flex;
+	margin-left: 20px;
+}
+
+.subcategory li {
+	margin-right: 20px;
+}
+
+/* checkbox style 변경 다시하기 */
+input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	/* text-align: center;
+	appearance: none;
+	background: #fff; */
+	cursor: pointer;
+	outline: 0;
+	border: 1px solid #CECECE;
 }

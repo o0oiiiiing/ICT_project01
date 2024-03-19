@@ -133,7 +133,7 @@ main {
 
 .product-brand {
 	font-family: 'Avenir', sans-serif;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: bold;
 	text-align: center;
 	color: #1E1E1E;
@@ -141,8 +141,8 @@ main {
 }
 
 .product-information {
-	font-family: 'NanumSquare';
-	font-size: 16px;
+	font-family: "Palanquin", sans-serif;
+	font-size: 15px;
 	text-align: center;
 	color: #1E1E1E;
 }
