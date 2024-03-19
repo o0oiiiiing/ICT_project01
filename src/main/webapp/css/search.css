@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 배경 색상 */
+html {
+	background-color: #F5F5F5;
+}
+
+body{
+	width: 100%;
+	display: grid;
+	place-items: center;
+}
+
+/* 아이콘 */
+.icon {
+	font-size: 30px;
+	color: #1E1E1E;
+}
+
+.icon:hover, icon:active {
+	color: #878787;
+}
+
+/* 검색 영역 */
+.search-field{
+	width: 80%;
+	padding: 10px;
+	margin-top: 50px;
+}

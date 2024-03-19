@@ -25,25 +25,16 @@ header {
 	height: 200px;
 }
 
-/* judson 폰트 */
-.judson-regular {
-	font-family: "Judson", serif;
-	font-weight: 400;
-	font-style: normal;
-}
-
-.judson-bold {
-	font-family: "Judson", serif;
-	font-weight: 700;
-	font-style: normal;
-}
-
 /* 아이콘 */
 .icons {
 	font-size: 30px;
 	right: 5%;
 	top: 70px;
 	position: absolute;
+}
+
+.icon:hover {
+	color: #878787;
 }
 
 /* 타이틀 */
@@ -55,8 +46,6 @@ header {
 
 .title-middle {
 	font-size: 200px;
-	height: 130px;
-	line-height: 130px;
 }
 
 /* 텍스트 가로정렬 */
@@ -74,7 +63,7 @@ header {
 	width: 90%;
 	margin: 0px auto;
 	height: 1px;
-	background: #ccc;
+	background-color: white;
 	border: 0;
 }
 
@@ -89,23 +78,23 @@ header {
 }
 
 .menu {
+	font-family: 'Avenir', sans-serif;
+	font-size: 18px;
 	float: left;
-	padding: 20px 0px;
-}
-
-.menu-a {
-	text-decoration: none;
+	padding: 25px 0px;
+	border-bottom: 1px solid transparent;
 }
 
 .menu:hover {
-	border-bottom: 1px solid white;
+	border-bottom-color: white;
 }
 
-a:link {
-	color: white;
+/* a태그 */
+a {
+	text-decoration: none;
 }
 
-a:visited {
+a:link, a:visited {
 	color: white;
 }
 

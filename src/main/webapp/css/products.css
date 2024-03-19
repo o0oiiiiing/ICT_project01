@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* 배경 색상 */
+html {
+	background-color: #F5F5F5;
+}
+
+/* 헤더 영역 */
+header {
+	width: 100%;
+	height: 131px;
+	position: fixed;
+	z-index: 99;
+}
+
+.header-wrapper {
+	display: flex;
+	background-color: #F5F5F5;
+}
+
+/* 아이콘 */
+.icons {
+	font-size: 30px;
+	right: 5%;
+	top: 70px;
+	position: absolute;
+}
+
+.icon:hover {
+	color: #878787;
+}
+
+/* 타이틀 */
+.title {
+	height: 130px;
+	line-height: 150px;
+	margin-left: 5%;
+	font-size: 64px;
+}
+
+/* 수평선 */
+.hr-style {
+	width: 90%;
+	margin: 0px auto;
+	height: 1px;
+	background-color: #1E1E1E;
+	border: 0;
+}
+
+/* 메뉴 */
+.menu-frame {
+	width: 25%;
+	text-align: center;
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+	height: 130px;
+	line-height: 135px;
+	margin-left: 40px;
+}
+
+.menu {
+	font-family: 'Avenir', sans-serif;
+	font-size: 18px;
+	padding: 20px 0px;
+}
+
+.menu-a:hover {
+	color: #878787;
+}
+
+/* a태그 */
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: #1E1E1E;
+}
+
+a:active {
+	color: #878787;
+}
+
+main {
+	width: 100%;
+	padding-top: 300px;
+	display: grid;
+	place-items: center;
+}
+
+.select-box {
+	width: 60px;
+	justify-self: end;
+	margin-right: 22%;
+	margin-bottom: 20px;
+}
+
+.select {
+	font-family: 'NanumSquare';
+	font-size: 14px;
+	background: transparent;
+	border: 0px;
+	color: #1E1E1E;
+}
+
+.select:hover {
+	color: #878787;
+}
+
+.product-wrapper {
+	width: 60%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	place-items: center;
+}
+
+.product {
+	margin-bottom: 50px;
+}
+
+.product:hover {
+	filter: brightness(70%);
+	background-color: rgba(0, 0, 0, 0.1);
+	z-index: 1;
+}
+
+.product-thumbnail {
+	max-width: 300px;
+	max-height: 300px;
+	width: 100%;
+	height: auto;
+}
+
+.product-brand {
+	font-family: 'Avenir', sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	color: #1E1E1E;
+	margin: 10px 0px;
+}
+
+.product-information {
+	font-family: 'NanumSquare';
+	font-size: 16px;
+	text-align: center;
+	color: #1E1E1E;
+}
+
+p {
+	margin-bottom: 10px;
+}
