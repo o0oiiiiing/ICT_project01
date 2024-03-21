@@ -37,7 +37,7 @@
 			</ul>
 			
 			<div class="material-symbols-outlined icons">
-				<span><a href="#" class="icon">Search</a></span>
+				<span><a href="../main/search.jsp" class="icon">Search</a></span>
 				<span><a href="#" class="icon">headset_mic</a></span>
 				<span><a href="#" class="icon">Shopping_Cart</a></span>
 				<span><a href="#" class="icon">Favorite</a></span>

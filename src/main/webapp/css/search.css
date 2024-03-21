@@ -32,6 +32,7 @@ body {
 	font-family: 'Avenir', sans-serif;
 	font-size: 15px;
 	padding-left: 30px;
+	margin: 150px auto 0px auto;
 }
 
 .search-field:hover, .search-field:focus {
@@ -59,7 +60,7 @@ label {
 }
 
 .category-wrapper {
-	width: 1000px;
+	width: 900px;
 }
 
 .categories {
@@ -77,16 +78,4 @@ label {
 
 .subcategory li {
 	margin-right: 20px;
-}
-
-/* checkbox style 변경 다시하기 */
-input[type="checkbox"] {
-	width: 16px;
-	height: 16px;
-	/* text-align: center;
-	appearance: none;
-	background: #fff; */
-	cursor: pointer;
-	outline: 0;
-	border: 1px solid #CECECE;
 }

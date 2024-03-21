@@ -15,9 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap"
 	rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/br-segma" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <!-- CSS 파일 -->
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/font.css">
@@ -34,14 +32,14 @@
 	
 	<ul class="category-wrapper">
 		<li class="categories"><label><input type="checkbox" class="top-category"> PRODUCT</label>
-			<ul  class="subcategory">
+			<ul class="subcategory">
 				<li><label><input type="checkbox"> perfume</label></li>
 				<li><label><input type="checkbox"> hand&body</label></li>
 				<li><label><input type="checkbox"> home fragrance</label></li>
 			</ul>
 		</li>
-		<li  class="categories"><label><input type="checkbox" class="top-category"> BRAND</label>
-			<ul  class="subcategory">
+		<li class="categories"><label><input type="checkbox" class="top-category"> BRAND</label>
+			<ul class="subcategory">
 				<li><label><input type="checkbox"> GRANHAND.</label></li>
 				<li><label><input type="checkbox"> LE LABO</label></li>
 				<li><label><input type="checkbox"> Maison Margiela</label></li>
@@ -49,8 +47,8 @@
 				<li><label><input type="checkbox"> Aēsop</label></li>
 			</ul>
 		</li>
-		<li  class="categories"><label><input type="checkbox" class="top-category"> CAPACITY</label>
-			<ul  class="subcategory">
+		<li class="categories"><label><input type="checkbox" class="top-category"> CAPACITY</label>
+			<ul class="subcategory">
 				<li><label><input type="checkbox"> 15ml</label></li>
 				<li><label><input type="checkbox"> 50ml</label></li>
 				<li><label><input type="checkbox"> 100ml</label></li>

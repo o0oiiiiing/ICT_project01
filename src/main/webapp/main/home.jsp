@@ -22,8 +22,25 @@
 <link rel="stylesheet" href="../css/home.css">
 <link rel="stylesheet" href="../css/font.css">
 </head>
-
 <body>
+	<script type="text/javascript">
+		window.onload = function() {
+		    var images = ['background_01.jpg', 'background_02.jpg', 'background_04.jpg']; // 변경할 배경 이미지들의 파일명
+		    var index = 0;
+
+		    function changeBackgroundImage() {
+		        var url = 'url("../image/' + images[index] + '")';
+		        document.documentElement.style.backgroundImage = url;
+		        index = (index + 1) % images.length; // 다음 이미지 인덱스 계산
+		    }
+
+		    changeBackgroundImage(); // 페이지 로드 시 초기 배경 이미지 설정
+
+		    // 5초마다 배경 이미지 변경
+		    setInterval(changeBackgroundImage, 4000);
+		};
+	</script>
+
 	<header>
 		<div class="title judson-bold text-center color-white"><a href="#">forest</a></div>
 		
