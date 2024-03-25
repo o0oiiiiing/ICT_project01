@@ -1,0 +1,121 @@
+@charset "UTF-8";
+*{margin: 0px auto;}
+#page01{
+	width: 700px; height: 840px;
+	background-color: #f5f5f5;
+}
+
+h2{
+	padding: 20px 0px;
+	text-align: center;
+}
+h3{margin: 5px auto; text-align: left;}
+#p_main{
+	margin: 0px auto;
+	
+	width: 600px; height: 720px;
+	border: 1px solid black;
+	background-color: #f5f5f5;
+	display: flex;
+}
+
+#p1_s1{
+	width: 60%; height: 100%;
+	border: 1px solid green;
+	background-color: #f5f5f5;
+}
+#p1_s2{
+	width: 40%; height: 100%;
+	background-color: #f5f5f5;
+	border: 1px solid red;
+}
+
+
+#p1_s1_a1{
+	
+	width: 90%; height: 160px;
+	border: 1px solid red;
+	background-color: white;
+	margin: 5px 5px 5px 20px;
+}
+#p1_s1_a2{
+	
+	width: 90%; height: 210px;
+	border: 1px solid red;
+	background-color: white;
+	margin: 5px 5px 5px 20px;
+	display: flex; 
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#p1_s1_a3{
+	
+	width: 90%; height: 250px;
+	border: 1px solid red;
+	background-color: white;
+	margin: 5px 5px 5px 20px;
+	
+}
+#p1_s1_a3 input{margin: 5px;}
+#p1_s2_a1{
+	
+	width: 90%; height: 130px;
+	border: 1px solid red;
+	background-color: white;
+	margin: 5px 20px 5px 5px;
+	
+}
+#p1_s2_a1 a{margin-left: 30px;}
+#p1_s2_a2{
+	
+	width: 90%; height: 130px;
+	border: 1px solid red;
+	background-color: white;
+	margin: 5px 20px 5px 5px;
+
+}
+#p1_s2_a3{
+	
+	width: 90%; height: 130px;
+	border: 1px solid red;
+	background-color: white;
+	margin: 5px 20px 5px 5px;
+}
+#s1a1_d1{
+	display: flex;  align-items: center;
+	width: 90%; height: 90px;
+	border: 1px solid black;
+}
+
+#s1a1d1_img{
+	width: 80px; height: 80px; 
+	background-color: #f5f5f5;
+	margin: 5px;
+	padding: 0px;
+}
+ul li{font-size: 14px;}
+#s1a1_d2{
+	background-color: #f5f5f5;
+	width: 90%; height: 30px;
+	border: 1px solid black;
+	display: flex; align-items: center;
+}
+#s1a1_d2 a{display: block; text-align: center; font-size: 12px; font-weight: bold; }
+#s1a2d1{width: 92%; height: 100px; background-color: #f5f5f5;}
+#orderer_name{width: 40%; height: 20px; border: 1px solid black;}
+#orderer_phone{width: 40%; height: 20px; border: 1px solid black;}
+#orderer_email{width: 92%; height: 20px; border: 1px solid black;}
+#op_same_b1{margin-left: 70px; margin-right: 100px;}
+#recipient_name{width: 40%; height: 20px; border: 1px solid black;}
+#recipient_phone{width: 40%; height: 20px; border: 1px solid black;}
+#recipient_zipcode{width: 20%; height: 20px; border: 1px solid black;}
+#r_addr{width: 92%; height: 20px; border: 1px solid black;}
+#r_det_addr{width: 92%; height: 20px; border: 1px solid black;}
+#s2a3_d1{font-size: 12px;}
+#s2a3_da{width: 80%; height: 20px; border: 1px solid black;}
+#s2a3_a1{font-size: 12px;}
+#terms{text-decoration: underline; font-weight: bold; font-size: 12px;}
+#s2a3_a3{font-size: 12px;}
+#pay_b1{width: 100%; height: 40px; background-color: #1e1e1e; color: white;}
+
