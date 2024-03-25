@@ -9,18 +9,24 @@ html {
 
 /* 헤더 영역 */
 header {
-	position: relative;
+	position: fixed;
 	width: 100%;
+	z-index: 10;
 }
 
 /* 반투명 */
-.glassmorphism {
+.best-seller {
+	margin-top: 100vh;
 	background: rgba(255, 255, 255, 0.1);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(9px);
 	-webkit-backdrop-filter: blur(9px);
 	width: 100%;
-	height: 200px;
+	height: 710px;
+	overscroll-behavior-y: none;
+	position: absolute;
+	top: 0;
+	z-index: 2;
 }
 
 /* 아이콘 */
@@ -43,7 +49,11 @@ header {
 }
 
 .title-middle {
+	position: fixed;
 	font-size: 200px;
+	z-index: 1;
+	width: 100%;
+	margin-top: 45vh;
 }
 
 /* 텍스트 가로정렬 */
@@ -98,4 +108,45 @@ a:link, a:visited {
 
 a:active {
 	color: #878787;
+}
+
+/* 메뉴에 마우스 올리면 하위 카테고리 보여주기 */
+.menu-hover {
+	display: none;
+	height: 550px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 3;
+	position: fixed;
+	top: 0;
+}
+
+.show-brand {
+	width: 60%;
+	margin: 240px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.show-brand li {
+	width: 200px;
+}
+
+.brand-name {
+	font-family: 'Avenir', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	color: #1E1E1E;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.show-brand li:hover img{
+	filter: brightness(70%);
+	transition: filter 0.3s linear;
+}
+
+.show-brand li:hover .brand-name{
+	color: #878787;
+	transition: color 0.3s linear;
 }

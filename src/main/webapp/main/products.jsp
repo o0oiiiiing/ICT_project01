@@ -126,6 +126,7 @@
 		</button>
 	</div>
 	<script type="text/javascript">
+		// 누르면 한 번에 위로 올라가는 버튼
 		window.onscroll = function() { scrollFunction() };
 	
 		function scrollFunction() {
