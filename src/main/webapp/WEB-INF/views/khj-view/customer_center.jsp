@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/customer_centerC.css">
 </head>
@@ -26,46 +27,111 @@
 		<button id="sm4">기타</button>
 	</article>
 	<article id="main">
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+	<div>
 		<div class="m_div">
 			<div class="m_num">num</div>
 			<div class="m_type">type</div>
-			<div class="m_content">content</div>
+			<div class="m_content">faq질문~~~~~</div>
 		</div>
+		<div class="m_reply">
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
+		</div>
+	</div>
+		
 		<div id="sel_faq_page">
 			<button class="entity">&lt;</button>
 			<button class="page_num">1</button>
@@ -81,6 +147,19 @@
 	</article>
 </section>
 </div>	
-		
+<script type="text/javascript">
+	$(".m_div").click(
+			function() {
+				console.log($(this).next())
+				$(this).next().fadeToggle(
+						500, function() {$(this).css("display", "block")
+					})
+				})
+	$(".m_reply").click(function() {
+		$(this).fadeOut(500, function() {
+			$(this).css("display", "none")
+		})
+	})
+</script>
 </body>
 </html>
