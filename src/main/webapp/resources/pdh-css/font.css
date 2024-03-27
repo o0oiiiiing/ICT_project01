@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* 타이틀용 폰트 */
+.judson-regular {
+	font-family: "Judson", serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.judson-bold {
+	font-family: "Judson", serif;
+	font-weight: 700;
+	font-style: normal;
+}

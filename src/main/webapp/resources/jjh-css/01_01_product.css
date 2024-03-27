@@ -1,0 +1,193 @@
+@charset "UTF-8";
+/* 전체 css */
+body{
+	background-color : white;
+	margin: 0 auto;
+	
+}
+#first img{
+	width: 100%;
+	height: 100%;
+	object-fit : contain;	
+}
+/* 메뉴 */
+#head{
+	width: 1000px;
+	height: 90px;
+	position: relative;
+	background-color: #E0EeEe;
+	border-bottom: 1px solid gray;
+	border: 1px solid black;
+	margin: 0 auto;
+}
+
+/* 메인 세션 */
+#first{
+	margin: 0 auto;
+	background-color : #f5f5f5;
+	width: 1000px;
+	height : 650px;
+	display: flex;
+	justify-content: space-around;
+	
+}
+#first .first_items{
+	width: 40%;
+	height: 450px;
+	margin-top: 70px;
+}
+
+/* 메인-1 이미지 article */
+#first #m_img{
+	margin: 20px auto 20px;
+	width: 80%;
+	height: 320px;
+	background-color: white;
+}
+#first #sub_imgs{
+	width : 80%;
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-between;
+
+}
+#first .sub_img{
+	background-color: white;
+	width: 30%;
+	height: 90px;
+	margin-top: 10px;
+}
+/* 메인-2 정보 article */
+#first #info{
+	margin-top: 20px;
+}
+#first #info p:nth-of-type(1){
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+#first #info p:nth-of-type(2){
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#first #info p:nth-of-type(3){
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#first #info p:nth-of-type(3) span{
+	font-size: 20px;
+}
+
+/* 옵션 버튼 css */
+#first #p_btns{
+	width: 100%;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: space-around;
+	
+}
+#first #p_btn{
+	display: flex;
+	align-items: center;
+}
+#first #p_btn p{
+	font-size: 16px;
+}
+#first #p_btn input{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+#first #num_btn{
+	width: 40%;
+	display: flex;
+	align-items: center;
+}
+#first #num_btn p{
+	width: 80px;
+	font-size: 16px;
+	text-align: center;
+}
+#first #num_btn button{
+	background-color: transparent;
+	border: 0px solid black;
+	font-size: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* 연산 블록 css */
+#first #sum_box{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-color: #bfbfbf;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#first #sum_box p:nth-of-type(1){
+	width: 25%;
+	font-size: 15px;
+	text-align: center;
+}
+#first #sum_box p:nth-of-type(2){
+	width: 30%;
+	font-size: 15px;
+	text-align: center;
+}
+#first #sum_box p:nth-of-type(3){
+	width: 30%;
+	font-size: 15px;
+	text-align: center;
+}
+#first #sum_box p:nth-of-type(4){
+	width: 100%;
+	margin-top: 20px;
+	font-size: 20px;
+	text-align: center;
+}
+#first #sum_box p:nth-of-type(4) span{
+	font-size: 20px;
+}
+
+/* 구매버튼 css */
+#first #pick_box{
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 30px;
+}
+#first #pick_box button:nth-of-type(1) {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	font-size: 40px;
+	padding: 0px;
+	margin: 0px;
+	background-color: transparent;
+	border: none;
+}
+#first #pick_box button:nth-of-type(1) span{
+	font-size: 40px;
+}
+#first #pick_box button:nth-of-type(2) {
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	font-size: 25px;
+	padding: 0px;
+	margin: 0px 20px 0 20px;
+	background-color: transparent;
+}
+#first #pick_box button:nth-of-type(3) {
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	font-size: 25px;
+	padding: 0px;
+	margin-top: 20px;
+	background-color: black;
+	color: white;
+}
+
+

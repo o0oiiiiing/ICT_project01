@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+/* 배경이미지가 스크롤에 따라 움직이지 않고 화면에 맞게 */
+html {
+	background: url("../image/background_01.jpg") no-repeat center center
+		fixed;
+	background-size: cover;
+	transition: background 2.0s ease-in-out;
+}
+
+/* 헤더 영역 */
+header {
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+}
+
+/* a태그 */
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: white;
+}
+
+a:active {
+	color: #878787;
+}
+
+/* 타이틀 */
+.title {
+	text-align: center;
+	color: white;
+	font-size: 64px;
+	height: 130px;
+	line-height: 130px;
+}
+
+/* 아이콘 */
+.icons {
+	color: white;
+	font-size: 30px;
+	top: 70px;
+	right: 5%;
+	position: absolute;
+}
+
+.icon:hover {
+	color: #878787;
+}
+
+/* 메뉴 */
+.nav__list {
+	width: 50%;
+	margin: 0px auto;
+	text-align: center;
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav__item {
+	font-family: 'Avenir', sans-serif;
+	font-size: 18px;
+	float: left;
+	padding: 25px 0px;
+	border-bottom: 1px solid transparent;
+}
+
+.nav__item:hover {
+	border-bottom-color: white;
+}
+
+/* 수평선 */
+.line {
+	width: 90%;
+	margin: 0px auto;
+	height: 1px;
+	background-color: white;
+	border: 0;
+}
+
+/* 페이지의 가운데에 위치하는 글씨 */
+.middle-title {
+	width: 100%;
+	color: white;
+	font-size: 200px;
+	text-align: center;
+	margin-top: 45vh;
+	position: fixed;
+	z-index: 1;
+}
+
+/* 메뉴에 마우스 올리면 하위 카테고리 보여주기 */
+.nav-list__open {
+	display: none;
+	height: 550px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 3;
+	position: fixed;
+	top: 0;
+}
+
+.nav-list__category {
+	width: 60%;
+	margin: 240px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-list__category li {
+	width: 200px;
+}
+
+.nav-list__brand-name {
+	font-family: 'Avenir', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	color: #1E1E1E;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.nav-list__category li:hover img {
+	filter: brightness(70%);
+	transition: filter 0.3s linear;
+}
+
+.nav-list__category li:hover .nav-list__brand-name {
+	color: #878787;
+	transition: color 0.3s linear;
+}
+
+/* best-seller 영역 */
+.best-seller {
+	margin-top: 100vh;
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	width: 100%;
+	height: 710px;
+	overscroll-behavior-y: none;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+}
+
+.best-seller__title {
+	font-size: 30px;
+	text-align: center;
+	color: white;
+	margin: 80px 0px;
+}
+
+.best-seller__list {
+	padding-right: 6.25%;
+	overflow-x: auto;
+	grid-auto-flow: column;
+	grid-template-rows: 1fr;
+	row-gap: 0;
+	column-gap: 42px;
+	scrollbar-width: none;
+}
+
+.best-seller__item {
+	float: left;
+}
+
+.best-seller__thumbnail {
+	width: 250px;
+	height: 250px;
+}
+
+.best-seller__brand {
+	font-family: 'Avenir', sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	margin: 10px 0px;
+}
+
+.best-seller__information {
+	font-family: "Palanquin", sans-serif;
+	font-size: 13px;
+	text-align: center;
+	color: white;
+}
+
+.best-seller__information p {
+	margin-bottom: 10px;
+}
