@@ -75,7 +75,6 @@
 			<span><a href="wish" class="icon">Favorite</a></span>
 			<span class="icon">Person</span>
 			<span><a href="login" class="icon">Person</a></span>
-			<div id="login_page"><%@ include file="../kch-view/login.jsp" %></div>
 		</div>
 		
 		<hr class="line">
