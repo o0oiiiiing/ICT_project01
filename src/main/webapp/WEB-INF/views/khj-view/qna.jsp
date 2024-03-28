@@ -23,8 +23,8 @@
 				<div class="qna_num">
 					<a>num</a>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<a>아이디</a>
 				</div>
 				<div class="qna_created_date">
 					<a>작성일</a>
