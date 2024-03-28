@@ -7,3 +7,5 @@
 .springBeans
 
 .tern-project
+
+/target/m2e-wtp/web-resources/META-INF/maven/com.ict/forest/pom.properties
