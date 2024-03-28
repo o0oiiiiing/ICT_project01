@@ -29,6 +29,11 @@
 			<br>
 			<div id="login_form">
 				<div class="inputBox">
+					<input type="radio" name="sel_login" value="seller">판매자로그인
+					<input type="radio" name="sel_login" value="customer">구매자로그인
+				</div>
+				<br>
+				<div class="inputBox">
 					<input type="text" placeholder="Username">
 				</div>
 				<div class="inputBox">
