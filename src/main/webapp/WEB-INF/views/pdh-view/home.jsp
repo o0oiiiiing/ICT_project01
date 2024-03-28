@@ -75,7 +75,7 @@
 	<div class="overlay"></div>
 	<header>
 		<h1 class="title judson-bold">
-			<a href="/">forest</a>
+			<a href="">forest</a>
 		</h1>
 
 		<div class="material-symbols-outlined icons">
@@ -98,12 +98,58 @@
 		</ul>
 	</header>
 
-	<div class="nav-list__open">
-		<ul class="nav-list__category">
+	<div class="perfume-nav-list__open">
+		<ul class="perfume-nav-list__category">
 			<li><a href="products"> <img
 					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
 					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
+					<div class="nav-list__brand-name">LE LABO</div>
+			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/MaisonMargiela.png"
+					alt="Maison Margiela" />
+					<div class="nav-list__brand-name">Maison Margiela</div>
+			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
+					<div class="nav-list__brand-name">SHIRO</div>
+			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
+					<div class="nav-list__brand-name">Aesop</div>
+			</a></li>
+		</ul>
+		<input type="button" class="nav-list__all" value="all"
+			onclick="location.href='products'">
+	</div>
+	<div class="handBody-nav-list__open">
+		<ul class="handBody-nav-list__category">
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
+					<div class="nav-list__brand-name">GRANHAND.</div>
+			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
+					<div class="nav-list__brand-name">LE LABO</div>
+			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/MaisonMargiela.png"
+					alt="Maison Margiela" />
+					<div class="nav-list__brand-name">Maison Margiela</div>
+			</a></li>
+			<li><a href="products"> <img
+					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
+					<div class="nav-list__brand-name">SHIRO</div>
+			</a></li>
+		</ul>
+		<input type="button" class="nav-list__all" value="all"
+			onclick="location.href='products'">
+	</div>
+	<div class="homeFragrance-nav-list__open">
+		<ul class="homeFragrance-nav-list__category">
 			<li><a href="products"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
@@ -192,16 +238,23 @@
 	</section>
 
 	<script type="text/javascript">
-		// 메뉴에 mouseenter 하는 경우 하위 카테고리 드롭다운
+		// 메뉴를 클릭하는 경우 하위 카테고리 드롭다운
 		// 변수 선언
 		let perfume = document.querySelector('.perfume');
 		let handBody = document.querySelector('.hand-body');
 		let homeFragrance = document.querySelector('.home-fragrance');
-		let navListOpen = document.querySelector('.nav-list__open');
+
+		let perfumeNavListOpen = document
+				.querySelector('.perfume-nav-list__open');
+		let handBodyNavListOpen = document
+				.querySelector('.handBody-nav-list__open');
+		let homeFragranceNavListOpen = document
+				.querySelector('.homeFragrance-nav-list__open');
+
 		let navItem = document.querySelectorAll('.nav__item');
+		let transitonA = document.getElementsByTagName('a');
 		let middleTitle = document.querySelector('.middle-title');
 		let line = document.querySelector('.line');
-		let transitonA = document.getElementsByTagName('a');
 		let overlay = document.querySelector('.overlay');
 
 		// perfume
@@ -210,7 +263,7 @@
 			if (this.classList.contains('clicked')) {
 				// 'clicked' 클래스를 제거하여 클릭된 상태를 해제합니다.
 				this.classList.remove('clicked');
-				navListOpen.style.display = "";
+				perfumeNavListOpen.style.display = "";
 				middleTitle.style.display = "";
 				line.style.backgroundColor = "";
 				overlay.style.display = "";
@@ -223,13 +276,21 @@
 				}
 			} else {
 				// 'clicked' 클래스가 포함되어 있지 않으면, 메뉴를 표시하고 색상을 변경합니다.
-				navListOpen.style.display = "block";
+				handBody.classList.remove('clicked');
+				homeFragrance.classList.remove('clicked');
+				perfumeNavListOpen.style.display = "block";
+				handBodyNavListOpen.style.display = "";
+				homeFragranceNavListOpen.style.display = "";
 				middleTitle.style.display = "none";
 				line.style.backgroundColor = "#1E1E1E";
 				overlay.style.display = "block";
 				this.style.borderBottomColor = "#1E1E1E";
 				for (var i = 0; i < navItem.length; i++) {
-					navItem.item(i).style.color = "#1E1E1E";
+					if (i == 0) {
+						navItem.item(i).style.color = "#878787";
+					} else {
+						navItem.item(i).style.color = "#1E1E1E";
+					}
 				}
 				for (var i = 0; i < transitonA.length; i++) {
 					transitonA.item(i).style.color = "#1E1E1E";
@@ -242,7 +303,7 @@
 		// overlay 클릭
 		overlay.addEventListener('click', function() {
 			if (perfume.classList.contains('clicked')) {
-				navListOpen.style.display = "";
+				perfumeNavListOpen.style.display = "";
 				middleTitle.style.display = "";
 				line.style.backgroundColor = "";
 				this.style.display = "";
@@ -270,6 +331,162 @@
 		for (var i = 0; i < navItem.length; i++) {
 			navItem[i].addEventListener('mouseleave', function() {
 				if (perfume.classList.contains('clicked')) {
+					this.style.borderBottomColor = "transparent";
+				}
+			});
+		}
+
+		// handBody 클릭했을 때
+		handBody.addEventListener('click', function() {
+			if (this.classList.contains('clicked')) {
+				// 'clicked' 클래스를 제거하여 클릭된 상태를 해제합니다.
+				this.classList.remove('clicked');
+				handBodyNavListOpen.style.display = "";
+				middleTitle.style.display = "";
+				line.style.backgroundColor = "";
+				overlay.style.display = "";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "";
+					navItem.item(i).style.borderBottomColor = "";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "";
+				}
+			} else {
+				// 'clicked' 클래스가 포함되어 있지 않으면, 메뉴를 표시하고 색상을 변경합니다.
+				perfume.classList.remove('clicked');
+				homeFragrance.classList.remove('clicked');
+				perfumeNavListOpen.style.display = "";
+				homeFragranceNavListOpen.style.display = "";
+				handBodyNavListOpen.style.display = "block";
+				middleTitle.style.display = "none";
+				line.style.backgroundColor = "#1E1E1E";
+				overlay.style.display = "block";
+				this.style.borderBottomColor = "#1E1E1E";
+				for (var i = 0; i < navItem.length; i++) {
+					if (i == 1) {
+						navItem.item(i).style.color = "#878787";
+					} else {
+						navItem.item(i).style.color = "#1E1E1E";
+					}
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "#1E1E1E";
+				}
+				// 'clicked' 클래스를 추가하여 클릭된 상태를 표시합니다.
+				this.classList.add('clicked');
+			}
+		});
+
+		// overlay 클릭
+		overlay.addEventListener('click', function() {
+			if (handBody.classList.contains('clicked')) {
+				handBodyNavListOpen.style.display = "";
+				middleTitle.style.display = "";
+				line.style.backgroundColor = "";
+				this.style.display = "";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "";
+					navItem.item(i).style.borderBottomColor = "";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "";
+				}
+				handBody.classList.remove('clicked');
+			}
+		});
+
+		// 메뉴 클릭한 상태 - mouseenter
+		for (var i = 0; i < navItem.length; i++) {
+			navItem[i].addEventListener('mouseenter', function() {
+				if (handBody.classList.contains('clicked')) {
+					this.style.borderBottomColor = "#1E1E1E";
+				}
+			});
+		}
+
+		// 메뉴 클릭한 상태 - mouseleave
+		for (var i = 0; i < navItem.length; i++) {
+			navItem[i].addEventListener('mouseleave', function() {
+				if (handBody.classList.contains('clicked')) {
+					this.style.borderBottomColor = "transparent";
+				}
+			});
+		}
+
+		// homeFragrance 클릭했을 때
+		homeFragrance.addEventListener('click', function() {
+			if (this.classList.contains('clicked')) {
+				// 'clicked' 클래스를 제거하여 클릭된 상태를 해제합니다.
+				this.classList.remove('clicked');
+				homeFragranceNavListOpen.style.display = "";
+				middleTitle.style.display = "";
+				line.style.backgroundColor = "";
+				overlay.style.display = "";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "";
+					navItem.item(i).style.borderBottomColor = "";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "";
+				}
+			} else {
+				// 'clicked' 클래스가 포함되어 있지 않으면, 메뉴를 표시하고 색상을 변경합니다.
+				perfume.classList.remove('clicked');
+				handBody.classList.remove('clicked');
+				perfumeNavListOpen.style.display = "";
+				handBodyNavListOpen.style.display = "";
+				homeFragranceNavListOpen.style.display = "block";
+				middleTitle.style.display = "none";
+				line.style.backgroundColor = "#1E1E1E";
+				overlay.style.display = "block";
+				this.style.borderBottomColor = "#1E1E1E";
+				for (var i = 0; i < navItem.length; i++) {
+					if (i == 2) {
+						navItem.item(i).style.color = "#878787";
+					} else {
+						navItem.item(i).style.color = "#1E1E1E";
+					}
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "#1E1E1E";
+				}
+				// 'clicked' 클래스를 추가하여 클릭된 상태를 표시합니다.
+				this.classList.add('clicked');
+			}
+		});
+
+		// overlay 클릭
+		overlay.addEventListener('click', function() {
+			if (homeFragrance.classList.contains('clicked')) {
+				homeFragranceNavListOpen.style.display = "";
+				middleTitle.style.display = "";
+				line.style.backgroundColor = "";
+				this.style.display = "";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "";
+					navItem.item(i).style.borderBottomColor = "";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "";
+				}
+				homeFragrance.classList.remove('clicked');
+			}
+		});
+
+		// 메뉴 클릭한 상태 - mouseenter
+		for (var i = 0; i < navItem.length; i++) {
+			navItem[i].addEventListener('mouseenter', function() {
+				if (homeFragrance.classList.contains('clicked')) {
+					this.style.borderBottomColor = "#1E1E1E";
+				}
+			});
+		}
+
+		// 메뉴 클릭한 상태 - mouseleave
+		for (var i = 0; i < navItem.length; i++) {
+			navItem[i].addEventListener('mouseleave', function() {
+				if (homeFragrance.classList.contains('clicked')) {
 					this.style.borderBottomColor = "transparent";
 				}
 			});
