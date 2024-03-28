@@ -43,6 +43,42 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+// 비밀번호 일치 확인
+	function check_pw(){
+ 
+    var pw = document.getElementById('pw').value;
+   
+    	if(document.getElementById('pw').value !='' && document.getElementById('pwd').value!=''){
+    		if(document.getElementById('pw').value==document.getElementById('pwd').value){
+    			document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+      	        document.getElementById('check').style.color='blue';
+        	}else {
+            	  document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+            	  document.getElementById('check').style.color='red';
+            	  }
+        }
+    }
+
+	//이메일 자동완성
+	function email_change() {
+	// 도메인 직접 입력 or domain option 선택
+	const domainListEl = document.querySelector('#domain-list')
+	const domainInputEl = document.querySelector('#domain-txt')
+	// select 옵션 변경 시
+	domainListEl.addEventListener('change', (event) => {
+	  // option에 있는 도메인 선택 시
+	  if(event.target.value !== "type") {
+	    // 선택한 도메인을 input에 입력하고 disabled
+	    domainInputEl.value = event.target.value
+	    domainInputEl.disabled = true
+	  } else { // 직접 입력 시
+	    // input 내용 초기화 & 입력 가능하도록 변경
+	    domainInputEl.value = ""
+	    domainInputEl.disabled = false
+	  }
+	})
+	}
 </script>
 </head>
 <body>
@@ -56,41 +92,42 @@ function sample6_execDaumPostcode() {
 					</caption>
 					<tr>
 						<td class="menu">이름</td>
+						<td class="userin"></td>
 					</tr>
 					<tr>
 						<td class="menu">아이디</td>
-						</td>
+						<td class="userin"></td>
 					</tr>
 					<tr>
 						<td class="menu">비밀번호</td>
-						<td class="userin"><input type="password" name="pw"
-							maxlength="16"></td>
+						<td class="userin"><input type="password" id="pw"
+							onchange="check_pw()"></td>
 					</tr>
 					<tr>
 						<td class="menu">비밀번호 확인</td>
-						<td class="userin"><input type="password" name="pwd"
-							maxlength="16"></td>
+						<td class="userin"><input type="password" id="pwd"
+							onchange="check_pw()">&nbsp;<span id="check"></span></td>
 					</tr>
 					<tr>
 						<td class="menu">이메일</td>
-						<td class="userin"><input type="text" name="mail"> <span
-							class="a">@</span> <input type="text" name="email"> <select
-							name="mailsel">
-								<option value="self" selected>직접입력</option>
-								<option value="naver">naver.com</option>
-								<option value="gm">gmail.com</option>
-								<option value="da">daum.com</option>
-						</select> <input class='but2' type="button" value="이메일 중복확인" onclick="">
+						<td class="userin"><input type="text" name="mail"> 
+						<span class="a">@</span> <input type="text" id="domain-txt" name="email"> 
+							<select	name="mailsel" id="domain-list" onchange="email_change()">
+								<option value="type" selected >직접입력</option>
+								<option value="naver.com">naver.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="daum.net">daum.com</option>
+						</select> 
 						</td>
 					</tr>
 					<tr id="addr">
 						<td class="menu">주소</td>
 						<td class="userin" id="addr-in">
-							<input type="text" id="sample6_postcode" placeholder="우편번호"> 
-							<input class="but3" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="sample6_address" placeholder="주소"><br>
-							<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-							<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+							<input class="addr-box" type="text" id="sample6_postcode" placeholder="우편번호"> 
+							<input class="addr-box" class="but3" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+							<input class="addr-box" type="text" id="sample6_address" placeholder="주소"><br>
+							<input class="addr-box" type="text" id="sample6_detailAddress" placeholder="상세주소">
+							<input class="addr-box" type="text" id="sample6_extraAddress" placeholder="참고항목">
 						</td>
 					</tr>
 				</table>
@@ -98,8 +135,8 @@ function sample6_execDaumPostcode() {
 			</div>
 
 			<div class="create">
-				<input class="but4" type="submit" value="수정">
-				<input class="but5" type="button" value="취소" onclick=""> 
+				<input class="but4" type="submit" value="수정하기">
+				<input class="but5" type="button" value="취소하기" onclick="location='login.jsp'"> 
 
 			</div>
 		</div>

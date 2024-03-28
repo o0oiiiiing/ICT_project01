@@ -131,6 +131,13 @@ function sample6_execDaumPostcode() {
 							<input class="addr-box" type="text" id="sample6_extraAddress" placeholder="참고항목">
 						</td>
 					</tr>
+					<tr>
+						<td class="menu">회원자격</td>
+						<td>
+							<a class="chtext" ><input type="radio" name="choose" value="seller" >seller</a>
+							<a class="chtext" ><input type="radio" name="choose" value="seller" >customer</a>
+						</td>
+					</tr>
 				</table>
 
 			</div>

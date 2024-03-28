@@ -73,8 +73,8 @@
 			<span><a href="help" class="icon">headset_mic</a></span>
 			<span><a href="cart" class="icon">Shopping_Cart</a></span>
 			<span><a href="wish" class="icon">Favorite</a></span>
-			<span class="icon">Person</span>
 			<span><a href="login" class="icon">Person</a></span>
+			<span><a href="mypage" class="icon">Person</a></span>
 		</div>
 		
 		<hr class="line">

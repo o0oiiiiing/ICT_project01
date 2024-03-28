@@ -13,10 +13,10 @@
 <!-- 서버용 함수 -->
 <script type="text/javascript">
 	function join() {
-		location.href="join";
+		location.href="join.jsp";
 	}
 	function find() {
-		location.href="find";
+		location.href="find.jsp";
 	}
 </script>
 </head>
