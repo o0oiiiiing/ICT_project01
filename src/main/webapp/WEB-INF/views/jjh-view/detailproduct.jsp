@@ -363,7 +363,7 @@
 <!-- 빠른 구매 창 -->
 <section id="mini">
 	<article>
-		<!-- <button id="cancel">x</button> -->
+		<button id="cancel">x</button>
 		<div id="mini_img">
 			<img src="resources/jjh-image/projtest.png">
 		</div>
@@ -417,7 +417,7 @@
 				$("#mini").css("display","block");
 			});
 		});
-		$("#mini").on("click", function() {
+		$("#mini #cancel").on("click", function() {
 			$("#mini").fadeOut(600, function() {
 				$("#mini").css("display","none");
 			});

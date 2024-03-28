@@ -205,8 +205,12 @@
 	font-size: 18px;
 	font-weight: bold;
 }
-#mini #canel{
-	width: 20px;
-	height: 20px;
-	margin-left: 80%;
+#mini #cancel{
+	width: 25px;
+	height: 25px;
+	font-size: 20px;
+	margin-left: 90%;
+	background-color: white;
+	font-weight:bold;
+	border: none;
 }

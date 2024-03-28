@@ -1,7 +1,6 @@
 @charset "UTF-8";
 #wishlist{
 	width: 1300px;
-	height: 1000px;
 	background-color: #EaEaEa;
 	margin: 0 auto;
 	padding-top: 160px;
@@ -13,12 +12,10 @@
 }
 #lists{
 	width: 950px;
-	height: 700px;
 	margin: 0 auto;
 	padding: 40px;
 	display: flex;
 	flex-wrap: wrap;
-	overflow: auto;
 	justify-content: center;
 	border-radius: 20px;
 }
@@ -54,7 +51,6 @@
 }
 .wishitems > div:nth-of-type(2) {
 	width: 100%;
-	display: none;
 }
 .wishitems > div:nth-of-type(2) p {
 	width: 90%;
@@ -64,18 +60,18 @@
 	font-weight: bold;
 }
 .wishitems > div:nth-of-type(2) button:nth-of-type(1){
-	display: block;
-	width: 90%;
+	width: 25%;
+	height: 20px;
 	font-size: 15px;
-	margin: 0 auto;
+	display: inline-flex;
 	border: none;
-	background-color: white;
+	background-color: transparent;
 }
 .wishitems > div:nth-of-type(2) button:nth-of-type(2){
-	display: block;
-	width: 90%;
+	display: inline-block;
+	width: 75%;
+	height: 20px;
 	font-size: 15px;
-	margin: 0 auto;
 	border: none;
-	background-color: #949191;
+	background-color: white;
 }

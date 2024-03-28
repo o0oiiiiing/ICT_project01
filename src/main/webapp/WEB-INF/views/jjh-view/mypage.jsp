@@ -18,14 +18,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <script type="text/javascript">
+	function order() {
+		location.href="order"
+	}
+	function buy() {
+		location.href="buy"
+	}
+	function point() {
+		location.href="point"
+	}
 	function update() {
 		location.href="update"
 	}
-	function cart() {
-		location.href="cart"
+	function addrplus() {
+		location.href="addrplus"
 	}
-	function wish() {
-		location.href="wish"
+	function qna() {
+		location.href="qna"
+	}
+	function help() {
+		location.href="help"
 	}
 </script>
 </head>
@@ -33,9 +45,9 @@
 	<header></header>
 	<section id="first">
 		<article id="f_menu">
-			<button onclick="update()">회원 정보 수정</button>
-			<button onclick="cart()">장바구니</button>
-			<button onclick="wish()">위시리스트</button>
+			<button class="menu_btn" onclick="order()">주문리스트</button>
+			<button class="menu_btn" onclick="buy()">구매리스트</button>
+			<button class="menu_btn" onclick="point()">내 포인트 관리</button>
 		</article>
 		<article id="f_info">
 			<div id="info_pro">
@@ -70,6 +82,7 @@
 					</p>
 					<p>주소 : 서울특별시 마포구</p>
 				</div>
+				<button class="move_btn" onclick="update()">회원정보 수정</button>
 			</div>
 			<div id="info_addr">
 				<p>배송지 주소</p>
@@ -81,6 +94,7 @@
 					<p>배송지 주소2 :</p>
 					<p>저장된 주소가 없습니다.</p>
 				</div>
+				<button class="move_btn" onclick="addr()">배송지 추가</button>
 			</div>
 			<div id="info_qna">
 				<p>QnA 문의 결과</p>
@@ -92,42 +106,46 @@
 					<p>반품 요청</p>
 					<p>답변 대기중</p>
 				</div>
+				<button class="move_btn" onclick="qna()">내 QnA로 이동</button>
+			</div>
+			<div id="info_help">
+				<p>신고 결과</p>
+				<div>
+					<p>짝퉁 팔고 있어요</p>
+					<p>답변 완료</p>
+				</div>
+				<div>
+					<p>환불금액 미입금</p>
+					<p>답변 대기중</p>
+				</div>
+				<button class="move_btn" onclick="help()">내 신고로 이동</button>
 			</div>
 		</article>
 	</section>
 	<script type="text/javascript">
-		$("#f_menu > button:nth-of-type(1)").hover(
+		$(".menu_btn").hover(
 			    function() {
-			        $(this).css("backgroundColor", "#bfbfbf");
+			        $(this).css("fontWeight", "bold");
+			        $(this).css("borderBottom", "2px solid black");
+			        
 			    },
 			    function() {
+			        $(this).css("fontWeight", "normal");
+			        $(this).css("border", "none");
+			    }
+			);
+		$(".move_btn").hover(
+			    function() {
+			        $(this).css("fontWeight", "bold");
+			        $(this).css("backgroundColor", "lightgray");
+			        
+			    },
+			    function() {
+			        $(this).css("fontWeight", "normal");
 			        $(this).css("backgroundColor", "transparent");
 			    }
 			);
-		$("#f_menu > button:nth-of-type(2)").hover(
-			    function() {
-			        $(this).css("backgroundColor", "#bfbfbf");
-			    },
-			    function() {
-			        $(this).css("backgroundColor", "transparent");
-			    }
-			);
-		$("#f_menu > button:nth-of-type(3)").hover(
-			    function() {
-			        $(this).css("backgroundColor", "#bfbfbf");
-			    },
-			    function() {
-			        $(this).css("backgroundColor", "transparent");
-			    }
-			);
-		$("#f_menu > button:nth-of-type(4)").hover(
-			    function() {
-			        $(this).css("backgroundColor", "#bfbfbf");
-			    },
-			    function() {
-			        $(this).css("backgroundColor", "transparent");
-			    }
-			);
+		
 	</script>
 </body>
 </html>
