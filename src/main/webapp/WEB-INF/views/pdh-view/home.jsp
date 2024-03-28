@@ -122,7 +122,8 @@
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
 		</ul>
-		<input type="button" class="nav-list__all" value="all" onclick="location.href='products'">
+		<input type="button" class="nav-list__all" value="all"
+			onclick="location.href='products'">
 	</div>
 
 	<div class="middle-title judson-bold">scent</div>
@@ -202,21 +203,58 @@
 		let line = document.querySelector('.line');
 		let transitonA = document.getElementsByTagName('a');
 		let overlay = document.querySelector('.overlay');
-		
+
 		// perfume
 		// perfume 클릭했을 때
 		perfume.addEventListener('click', function() {
-			navListOpen.style.display = "block";
-			middleTitle.style.display = "none";
-			line.style.backgroundColor = "#1E1E1E";
-			overlay.style.display = "block";
-			for (var i = 0; i < navItem.length; i++) {
-				navItem.item(i).style.color = "#1E1E1E";
+			if (this.classList.contains('clicked')) {
+				// 'clicked' 클래스를 제거하여 클릭된 상태를 해제합니다.
+				this.classList.remove('clicked');
+				navListOpen.style.display = "";
+				middleTitle.style.display = "";
+				line.style.backgroundColor = "";
+				overlay.style.display = "";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "";
+					navItem.item(i).style.borderBottomColor = "";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "";
+				}
+			} else {
+				// 'clicked' 클래스가 포함되어 있지 않으면, 메뉴를 표시하고 색상을 변경합니다.
+				navListOpen.style.display = "block";
+				middleTitle.style.display = "none";
+				line.style.backgroundColor = "#1E1E1E";
+				overlay.style.display = "block";
+				this.style.borderBottomColor = "#1E1E1E";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "#1E1E1E";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "#1E1E1E";
+				}
+				// 'clicked' 클래스를 추가하여 클릭된 상태를 표시합니다.
+				this.classList.add('clicked');
 			}
-			for (var i = 0; i < transitonA.length; i++) {
-				transitonA.item(i).style.color = "#1E1E1E";
+		});
+
+		// overlay 클릭
+		overlay.addEventListener('click', function() {
+			if (perfume.classList.contains('clicked')) {
+				navListOpen.style.display = "";
+				middleTitle.style.display = "";
+				line.style.backgroundColor = "";
+				this.style.display = "";
+				for (var i = 0; i < navItem.length; i++) {
+					navItem.item(i).style.color = "";
+					navItem.item(i).style.borderBottomColor = "";
+				}
+				for (var i = 0; i < transitonA.length; i++) {
+					transitonA.item(i).style.color = "";
+				}
+				perfume.classList.remove('clicked');
 			}
-			this.classList.add('clicked');
 		});
 
 		// 메뉴 클릭한 상태 - mouseenter
