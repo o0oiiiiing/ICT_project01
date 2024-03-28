@@ -23,7 +23,7 @@
 <body>
 	<section class="login">
 		<form method="post">
-			<h2 class="material-symbols-outlined icons color-white">
+			<h2 class="material-symbols-outlined">
 				<span><a class="icon">Person</a>로그인</span>
 			</h2>
 			<br>

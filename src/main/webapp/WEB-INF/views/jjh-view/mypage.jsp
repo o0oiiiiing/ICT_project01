@@ -42,7 +42,7 @@
 </script>
 </head>
 <body>
-	<header></header>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<section id="first">
 		<article id="f_menu">
 			<button class="menu_btn" onclick="order()">주문리스트</button>

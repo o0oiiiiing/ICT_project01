@@ -31,7 +31,7 @@
 </script>
 </head>
 <body>
-<%-- 메뉴 --%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%-- 1. 상품 메인 소개 --%>
 <section id="first">
 	<c:set var="su" value="200000"/>

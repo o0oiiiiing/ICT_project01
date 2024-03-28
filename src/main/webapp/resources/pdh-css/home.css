@@ -299,3 +299,13 @@ a:active {
 .best-seller__information p {
 	margin-bottom: 10px;
 }
+
+/* 로그인 이벤트 css */
+#login_btn{
+	position: relative;
+}
+#login_page{
+	position: absolute;
+	top: 70px;
+	display: none;
+}

@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 #eighth{
-	margin: 0 auto;
+	margin: 0 auto 400px;
 	background-color : #f5f5f5;
-	width: 1000px;
+	width: 1300px;
 	height : 1400px;
 }
 #eighth #re_info{

@@ -15,7 +15,9 @@ header {
 	width: 100%;
 	height: 131px;
 	position: fixed;
+	top: 0;
 	z-index: 99;
+	
 }
 
 .header-wrapper {
@@ -214,4 +216,14 @@ a:active {
 .homeFragrance-nav-list__category li:hover .nav-list__brand-name {
 	color: #878787;
 	transition: color 0.3s linear;
+}
+
+/* 로그인 이벤트 css */
+#login_btn{
+	position: relative;
+}
+#login_page{
+	position: absolute;
+	top: 70px;
+	display: none;
 }

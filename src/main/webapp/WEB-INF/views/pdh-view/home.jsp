@@ -50,6 +50,19 @@
 		// 5초마다 배경 이미지 변경
 		setInterval(changeBackgroundImage, 4000);
 	};
+	
+	// 로그인 페이지 버튼
+		$(document).ready(function() {
+		$("#login_btn").on("click", function() {
+		    if ($(this).data("clicked")) {
+		        $("#login_page").css("display", "none"); // 다시 초기 상태로 설정
+		        $(this).data("clicked", false); // 다시 초기 상태로 설정
+		    } else {
+		        $(this).data("clicked", true); // 클릭 상태를 true로 변경
+		        $("#login_page").css("display", "block"); // 다시 초기 상태로 설정
+		    }
+		});
+	})
 </script>
 <!-- <style type="text/css">
 	#login_btn{
@@ -79,13 +92,14 @@
 		</h1>
 
 		<div class="material-symbols-outlined icons">
-			<span><a href="search" class="icon">Search</a></span> <span><a
-				href="help" class="icon">headset_mic</a></span> <span><a href="cart"
-				class="icon">Shopping_Cart</a></span> <span><a href="wish"
-				class="icon">Favorite</a></span>
+			<span><a href="search" class="icon">Search</a></span>
+			<span><a href="help" class="icon">headset_mic</a></span>
+			<span><a href="cart" class="icon">Shopping_Cart</a></span>
+			<span><a href="wish" class="icon">Favorite</a></span>
 			<!-- 로그인 상태 가져와서 로그인 X => 로그인창 드롭다운 / 로그인 O => 마이페이지 -->
-			<!-- <span class="icon">Person</span> -->
-			<span><a href="mypage" class="icon">Person</a></span>
+			<span class="icon" id="login_btn">Person</span>
+			<span><a href="mypage" class="icon">house</a></span>
+			<div id="login_page"><%@ include file="/WEB-INF/views/kch-view/login.jsp" %></div>
 		</div>
 
 		<hr class="line">
