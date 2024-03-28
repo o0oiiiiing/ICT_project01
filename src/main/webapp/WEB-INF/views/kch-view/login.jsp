@@ -13,10 +13,10 @@
 <!-- 서버용 함수 -->
 <script type="text/javascript">
 	function join() {
-		location.href="join";
+		location.href="join.jsp";
 	}
 	function find() {
-		location.href="find";
+		location.href="find.jsp";
 	}
 </script>
 </head>
@@ -28,11 +28,6 @@
 			</h2>
 			<br>
 			<div id="login_form">
-				<div class="inputBox">
-					<input type="radio" name="sel_login" value="seller">판매자로그인
-					<input type="radio" name="sel_login" value="customer">구매자로그인
-				</div>
-				<br>
 				<div class="inputBox">
 					<input type="text" placeholder="Username">
 				</div>

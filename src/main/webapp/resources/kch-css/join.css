@@ -4,9 +4,7 @@ div.container {
 	padding-top: 160px;	
 }
 
-div.insert {
-	
-}
+
  /* 제목 */
 caption {
 	font-size: 2em;
@@ -100,9 +98,15 @@ input[type="text"], [type="password"]{
 	margin-bottom: 10px;
 }
 
+#domain-list{
+	height: 30px;
+}
 
+.menu{
+	vertical-align: middle;
+}
 
-
-
-
-
+.chtext {
+	font-size: 20px;
+	vertical-align: -10px
+}
