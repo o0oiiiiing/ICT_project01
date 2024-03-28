@@ -1,51 +1,157 @@
 @charset "UTF-8";
-#frame{
-	width: 1000px;  
+
+#frame {
+	width: 1000px;
 	background-color: #f5f5f5;
-	padding-top: 40px; 
+	padding-top: 40px;
 	margin: 0 auto;
 }
-#ccenter{
+
+#ccenter {
 	width: 900px;
 	background-color: rgb(192, 192, 192);
 	border: 1px solid black;
 	margin: 0 auto;
 }
-#sel{width: 100%; }
-#s_menu{width: 100%; height: 50px; display: flex; justify-content: center;}
-#s_menu > a{font-size: 30px; width: 25%; background-color: white; border: 1px solid black;
-text-align: center; text-decoration: none;}
-#s_menu > a:hover{background-color: orange;}
-#s_display{width: 100%; height: 45px; font-size: 25px; text-align: center; border: 1px solid black;}
-#sel_main{width: 100%; height: 40px; border: 1px solid black; display: flex;
+
+#sel {
+	width: 100%;
+}
+
+#s_menu {
+	width: 100%;
+	height: 50px;
+	display: flex;
 	justify-content: center;
 }
-#sel_main > button{width: 12%; height: 40px; margin: 0 20px 0; border: 1px solid blue;}
-#sel_main > button:hover{background-color: orange;}
-#main{width: 100%;  background-color: #f5f5f5;}
-.m_div{width: 100%; height: 60px; background-color: #e5e5e5; 
-display: flex; justify-content: space-around; align-items: center; 
-border-bottom: 1px solid #aeaeae;}
-.m_num{width: 5%; height: 50px; background-color: #f5f5f5; 
-display: flex; align-items: center; justify-content: center;
-font-size: 25px;
-}
-.m_type{width: 13%; height: 50px; background-color: #f5f5f5; 
-display: flex; align-items: center; justify-content: center;
-font-size: 25px;
-}
-.m_content{width: 70%; height: 50px; background-color: #f5f5f5; 
-display: flex; align-items: center; justify-content: center;
-font-size: 25px;
-}
-.m_content:hover{background-color: orange;}
-#sel_faq_page{width: 100%; height: 60px;  
-display: flex; justify-content: center; align-items: center; border: 1px solid black;
 
+#s_menu>a {
+	font-size: 30px;
+	width: 25%;
+	background-color: white;
+	border: 1px solid black;
+	text-align: center;
+	text-decoration: none
 }
-.m_reply{display: none; text-align: center;}
-#sel_faq_page > .entity{width: 40px; height: 40px; }
-#sel_faq_page > .page_num{width: 40px; height: 40px; background-color: #e5e5e5; text-align: center; }
-#sel_faq_page > .page_num:hover{background-color: orange;}
-#footer{width: 100%; height: 140px; background-color: white;}
-#footer > div{display: flex; justify-content: center; line-height: 50px;}
+
+#s_menu>a:hover {
+	background-color: orange;
+}
+
+#s_display {
+	width: 100%;
+	height: 45px;
+	font-size: 25px;
+	text-align: center;
+	border: 1px solid black;
+}
+
+#sel_main {
+	width: 100%;
+	height: 40px;
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+}
+
+#sel_main>button {
+	width: 12%;
+	height: 40px;
+	margin: 0 20px 0;
+	border: 1px solid blue;
+}
+
+#sel_main>button:hover {
+	background-color: orange;
+}
+
+#main {
+	width: 100%;
+	background-color: #f5f5f5;
+}
+
+.m_div {
+	width: 100%;
+	height: 60px;
+	background-color: #e5e5e5;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-bottom: 1px solid #aeaeae;
+}
+
+.m_num {
+	width: 5%;
+	height: 50px;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+}
+
+.m_type {
+	width: 13%;
+	height: 50px;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+}
+
+.m_content {
+	width: 70%;
+	height: 50px;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+}
+
+.m_content:hover {
+	background-color: orange;
+}
+
+#sel_faq_page {
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+}
+
+.m_reply {
+	display: none;
+	text-align: center;
+}
+
+#sel_faq_page>.entity {
+	width: 40px;
+	height: 40px;
+}
+
+#sel_faq_page>.page_num {
+	width: 40px;
+	height: 40px;
+	background-color: #e5e5e5;
+	text-align: center;
+}
+
+#sel_faq_page>.page_num:hover {
+	background-color: orange;
+}
+
+#footer {
+	width: 100%;
+	height: 140px;
+	background-color: white;
+}
+
+#footer>div {
+	display: flex;
+	justify-content: center;
+	line-height: 50px;
+}

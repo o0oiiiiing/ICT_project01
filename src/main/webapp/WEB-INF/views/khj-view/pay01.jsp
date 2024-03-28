@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/common-css/reset.css">
-<link rel="stylesheet" href="resources/khj-css/수정중pay01c.css">
+<link rel="stylesheet" href="resources/khj-css/pay01c.css">
 
 <script type="text/javascript">
 
@@ -110,7 +110,7 @@ function selectAll(selectAll)  {
 		<article id="p1_s2_a3">
 			<div id="s2a3_d1"><input type="checkbox" onclick="selectAll(this)" name="p1_agree" value="all_a">모두 동의</div>
 			<a id="s2a3_a1"><input type="checkbox" name="p1_agree" value="info_a">개인정보 수집 및 이용동의</a>
-			<a id="terms">약관보기</a>
+			<a id="terms">약관보기<br></a>
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
 			<button id="pay_b1" type="submit">결제하러가기</button>
 		</article>
