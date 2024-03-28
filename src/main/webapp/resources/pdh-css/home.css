@@ -8,6 +8,16 @@ html {
 	transition: background 2.0s ease-in-out;
 }
 
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
 /* 헤더 영역 */
 header {
 	position: fixed;
@@ -63,6 +73,7 @@ a:active {
 .nav__item {
 	font-family: 'Avenir', sans-serif;
 	font-size: 18px;
+	color: white;
 	float: left;
 	padding: 25px 0px;
 	border-bottom: 1px solid transparent;
@@ -70,6 +81,9 @@ a:active {
 
 .nav__item:hover {
 	border-bottom-color: white;
+	color: #878787;
+	transition: color 0.3s linear;
+	cursor: pointer;
 }
 
 /* 수평선 */
@@ -93,59 +107,151 @@ a:active {
 }
 
 /* 메뉴에 마우스 올리면 하위 카테고리 보여주기 */
-.nav-list__open {
+.perfume-nav-list__open {
 	display: none;
-	height: 550px;
+	height: 650px;
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.8);
-	z-index: 3;
+	background-color: #F5F5F5;
+	z-index: 4;
 	position: fixed;
 	top: 0;
 }
 
-.nav-list__category {
+.perfume-nav-list__category {
 	width: 60%;
 	margin: 240px auto;
 	display: flex;
 	justify-content: space-between;
 }
 
-.nav-list__category li {
+.perfume-nav-list__category li {
 	width: 200px;
 }
 
 .nav-list__brand-name {
 	font-family: 'Avenir', sans-serif;
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 18px;
 	color: #1E1E1E;
 	text-align: center;
 	padding-top: 20px;
 }
 
-.nav-list__category li:hover img {
+.perfume-nav-list__category li:hover img {
 	filter: brightness(70%);
 	transition: filter 0.3s linear;
 }
 
-.nav-list__category li:hover .nav-list__brand-name {
+.perfume-nav-list__category li:hover .nav-list__brand-name {
+	color: #878787;
+	transition: color 0.3s linear;
+}
+
+.nav-list__all {
+	width: 100px;
+	height: 30px;
+	color: #1E1E1E;
+	font-size: 18px;
+	font-family: 'Avenir', sans-serif;
+	text-align: center;
+	border-radius: 50px;
+	border: 1px solid #878787;
+	cursor: pointer;
+	position: absolute;
+	top: 540px;
+	margin: 0 auto;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #F5F5F5;
+}
+
+.nav-list__all:hover {
+	background-color: #E6E6E6;
+	transition: background-color 0.3s linear;
+}
+
+/* handBody */
+.handBody-nav-list__open {
+	display: none;
+	height: 650px;
+	width: 100%;
+	background-color: #F5F5F5;
+	z-index: 4;
+	position: fixed;
+	top: 0;
+}
+
+.handBody-nav-list__category {
+	width: 60%;
+	margin: 240px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.handBody-nav-list__category li {
+	width: 200px;
+}
+
+.handBody-nav-list__category li:hover img {
+	filter: brightness(70%);
+	transition: filter 0.3s linear;
+}
+
+.handBody-nav-list__category li:hover .nav-list__brand-name {
+	color: #878787;
+	transition: color 0.3s linear;
+}
+
+/* home fragrance */
+.homeFragrance-nav-list__open {
+	display: none;
+	height: 650px;
+	width: 100%;
+	background-color: #F5F5F5;
+	z-index: 4;
+	position: fixed;
+	top: 0;
+}
+
+.homeFragrance-nav-list__category {
+	width: 60%;
+	margin: 240px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.homeFragrance-nav-list__category li {
+	width: 200px;
+}
+
+.homeFragrance-nav-list__category li:hover img {
+	filter: brightness(70%);
+	transition: filter 0.3s linear;
+}
+
+.homeFragrance-nav-list__category li:hover .nav-list__brand-name {
 	color: #878787;
 	transition: color 0.3s linear;
 }
 
 /* best-seller 영역 */
 .best-seller {
-	margin-top: 100vh;
-	background: rgba(255, 255, 255, 0.1);
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
 	width: 100%;
 	height: 710px;
+	margin-top: 100vh;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	-webkit-backdrop-filter: blur(10px);
 	overscroll-behavior-y: none;
 	position: absolute;
 	top: 0;
 	z-index: 2;
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	background: rgba(255, 255, 255, 0.1);
+	margin-top: 100vh;
 }
 
 .best-seller__title {
