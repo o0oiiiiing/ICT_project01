@@ -301,11 +301,13 @@ a:active {
 }
 
 /* 로그인 이벤트 css */
-#login_btn{
+#login_btn {
 	position: relative;
 }
-#login_page{
+
+#login_page {
 	position: absolute;
 	top: 70px;
 	display: none;
+	z-index: 5;
 }
