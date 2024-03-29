@@ -24,8 +24,9 @@
 			<p>Soie SignaturePerfume Soie SignaturePerfume</p>
 			<p>LE LABO</p>
 			<div>
+				<p>500ml</p>
 				<p>100,000 KRW</p>
-				<button><span class="material-symbols-outlined">favorite</span></button>
+				<button class="material-symbols-outlined">favorite</button>
 				<button>장바구니로 이동</button>
 			</div>
 		</div>
@@ -56,7 +57,7 @@
 	);
 	
 	/* 위시리스트 삭제 */
-	$(".wishitems > div:nth-of-type(2) button:nth-of-type(2)").click(function() {
+	$(".wishitems > div:nth-of-type(2) button:nth-of-type(1)").click(function() {
 		$(this).parent().parent().remove();
 	});
 	$(".wishitems > div:nth-of-type(2) button:nth-of-type(2)").hover(
