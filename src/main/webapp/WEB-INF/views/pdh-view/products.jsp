@@ -45,11 +45,12 @@
 			</ul>
 
 			<div class="material-symbols-outlined icons">
-				<span><a href="search" class="icon">Search</a></span> <span><a
-					href="help" class="icon">headset_mic</a></span> <span><a
-					href="cart" class="icon">Shopping_Cart</a></span> <span><a
-					href="wish" class="icon">Favorite</a></span> <span><a href="mypage"
-					class="icon">Person</a></span> <span><a href="login" class="icon">Person</a></span>
+				<span><a href="search" class="icon">Search</a></span>
+				<span><a href="help" class="icon">headset_mic</a></span>
+				<span><a href="cart" class="icon">Shopping_Cart</a></span>
+				<span><a href="wish" class="icon">Favorite</a></span>
+				<span><a href="login" class="icon">Person</a></span>
+				<span><a href="mypage" class="icon">house</a></span>
 			</div>
 		</section>
 		<hr class="line">

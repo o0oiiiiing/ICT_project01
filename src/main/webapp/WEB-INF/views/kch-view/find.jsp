@@ -21,14 +21,16 @@
 					<input type="radio" name="f_id">이메일
 					<input type="radio" name="f_id">휴대폰
 				</div>
-				<div class="f_ne">
-					이름&nbsp;&nbsp;&nbsp; <input type="text" class="in_text"><br>
+				<div class="f_ne"> 
+					<label for="name_id" >이름&nbsp;&nbsp;&nbsp;</label>
+						 <input type="text" class="in_text" id="name_id"><br>
 				</div>
 				<div class="f_ne">
-					이메일 <input type="text" class="in_text">
+					<label for="name_email" >이메일</label>
+						 <input type="text" class="in_text" id="name_email">
 				</div>
 				<div class="f_ir">
-					<input type="submit" value="아이디 찾기">&nbsp;
+					<input type="button" value="아이디 찾기" onclick="location='findresult.jsp'">&nbsp;
 					<input type="button" value="취소" onclick="location='login.jsp'">
 				</div>
 			</form>
@@ -45,10 +47,12 @@
 					<input type="radio" name="f_id">휴대폰
 				</div>
 				<div class="f_ne">
-					아이디 <input type="text" class="in_text"><br>
+					<label for="name_id2" >아이디</label>
+					 <input type="text" class="in_text" id="name_id2"><br>
 				</div>
 				<div class="f_ne">
-					이메일 <input type="text" class="in_text">
+					<label for="name_email2" >이메일</label>
+					 <input type="text" class="in_text" id="name_email2">
 				</div>
 				<div class="f_ir">
 					<input type="submit" value="임시비밀번호 발급">&nbsp;

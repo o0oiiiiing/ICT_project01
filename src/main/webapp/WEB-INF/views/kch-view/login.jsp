@@ -13,17 +13,17 @@
 <!-- 서버용 함수 -->
 <script type="text/javascript">
 	function join() {
-		location.href="join";
+		location.href="join.jsp";
 	}
 	function find() {
-		location.href="find";
+		location.href="find.jsp";
 	}
 </script>
 </head>
 <body>
 	<section class="login">
 		<form method="post">
-			<h2 class="material-symbols-outlined icons color-white">
+			<h2 class="material-symbols-outlined">
 				<span><a class="icon">Person</a>로그인</span>
 			</h2>
 			<br>

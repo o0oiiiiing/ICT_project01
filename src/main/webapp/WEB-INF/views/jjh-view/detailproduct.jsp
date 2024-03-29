@@ -18,8 +18,6 @@
 <link href="resources/jjh-css/01_07_extext.css" rel="stylesheet">
 <link href="resources/jjh-css/01_08_totalreview.css" rel="stylesheet">
 <link href="resources/jjh-css/02_01_minibuy.css" rel="stylesheet">
-<link href="resources/jjh-css/header.css" rel="stylesheet">
-<link href="resources/jjh-css/headerfont.css" rel="stylesheet">
 
 <!-- 이모티콘 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -33,27 +31,7 @@
 </script>
 </head>
 <body>
-<%-- 메뉴 --%>
-<header>
-  <h1 class="title judson-bold"><a href="#">forest</a></h1>
-        
-    <div class="material-symbols-outlined icons">
-      <span><a href="search.jsp" class="icon">Search</a></span>
-      <span><a href="#" class="icon">headset_mic</a></span>
-      <span><a href="#" class="icon">Shopping_Cart</a></span>
-      <span><a href="#" class="icon">Favorite</a></span>
-      <span><a href="#" class="icon">Person</a></span>
-    </div>
-        
-    <hr class="line">
-
-    <ul class="nav__list">
-      <li class="nav__item perfume"><a href="products.jsp">perfume</a></li>
-      <li class="nav__item hand-body"><a href="#">hand&body</a></li>
-      <li class="nav__item home-fragrance"><a href="#">home fragrance</a></li>
-      <li class="nav__item"><a href="#">about</a></li>
-    </ul>
-</header>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%-- 1. 상품 메인 소개 --%>
 <section id="first">
 	<c:set var="su" value="200000"/>
@@ -72,14 +50,14 @@
 			<p id="info_price"><span><fmt:formatNumber value="${su}"/></span> KRW</p>
 		</div>
 			<div id="p_btns">
-				<div id="p_btn">
-					<input type="checkbox" name="present">
-					<p>선물 포장</p>
-				</div>
 				<div id="num_btn">
 					<button>⟨</button>
 					<p>수량 선택</p>
 					<button>⟩</button>
+				</div>
+				<div id="p_btn">
+					<input type="checkbox" name="present">
+					<p>선물 포장</p>
 				</div>
 			</div>
 			<div id="sum_box">
@@ -166,51 +144,6 @@
 		</div>
 	</article>
 </section>
-	<!-- 빠른 구매 이벤트 버튼-->
-<div id="mini_btn">
-	<div><img src="resources/jjh-image/projtest.png"></div>
-	<div><p>빠른구매</p></div>	
-<!-- 빠른 구매 창 -->
-<section id="mini">
-	<article>
-			<div id="mini_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div id="mini_btns">
-				<div id="mini_info">
-					<p>Soie SignaturePerfume</p>
-					<p><span><fmt:formatNumber value="${su}"/></span> KRW</p>
-				</div>
-				<div id="p_btn">
-					<input type="checkbox" name="present">
-					<p>선물 포장</p>
-				</div>
-				<div id="num_btn">
-					<button>⟨</button>
-					<p>수량 선택</p>
-					<button>⟩</button>
-				</div>
-			</div>
-			<div id="sum_box">
-				<p><span><fmt:formatNumber value="${su}"/></span> KRW</p>
-				<p>X</p>
-				<p>수량 선택</p>
-				<p>총 상품 금액 : <span>200,000</span> KRW</p>
-			</div>
-		<form method="get" id="mini_form">
-			<div id="pick_box">
-				<button>
-					<span class="material-symbols-outlined">
-						favorite
-					</span>
-				</button>
-				<button>장바구니 담기</button>
-				<button onclick="pay(this.form)">구매하기</button>
-			</div>
-		</form>
-	</article>
-</section>
-</div>
 <!-- 최근 리뷰 -->
 <section id="fourth">
 	<p>최근 리뷰</p>
@@ -420,18 +353,76 @@
 		</div>
 	</article>
 </section>
+	<!-- 빠른 구매 이벤트 버튼-->
+<div id="mini_btn">
+	<div>
+		<div><img src="resources/jjh-image/projtest.png"></div>
+		<div><p>빠른구매</p></div>	
+	</div>
+</div>
+<!-- 빠른 구매 창 -->
+<section id="mini">
+	<article>
+		<button id="cancel">x</button>
+		<div id="mini_img">
+			<img src="resources/jjh-image/projtest.png">
+		</div>
+		<div id="mini_btns">
+			<div id="mini_info">
+				<p>Soie SignaturePerfume</p>
+				<p><span><fmt:formatNumber value="${su}"/></span> KRW</p>
+			</div>
+			<div id="p_btn">
+				<input type="checkbox" name="present">
+				<p>선물 포장</p>
+			</div>
+			<div id="num_btn">
+				<button>⟨</button>
+				<p>수량 선택</p>
+				<button>⟩</button>
+			</div>
+		</div>
+		<div id="sum_box">
+			<p><span><fmt:formatNumber value="${su}"/></span> KRW</p>
+			<p>X</p>
+			<p>수량 선택</p>
+			<p>총 상품 금액 : <span>200,000</span> KRW</p>
+		</div>
+		<form method="get" id="mini_form">
+			<div id="pick_box">
+				<button>
+					<span class="material-symbols-outlined">
+						favorite
+					</span>
+				</button>
+				<button>장바구니 담기</button>
+				<button onclick="pay(this.form)">구매하기</button>
+			</div>
+		</form>
+	</article>
+</section>
 <script type="text/javascript">
+		/* 버튼 위치일때 나오기 */
+ 		$(window).scroll(function() {
+		    if ($(this).scrollTop() >= 1000) {
+		        $("#mini_btn").fadeIn(1000)
+		    } else {
+		        $("#mini_btn").fadeOut(1000);
+		    }
+		});
+		
 		/* 빠른 구매 버튼 */
 		$("#mini_btn").on("click", function() {
 			$("#mini").fadeIn(600, function() {
 				$("#mini").css("display","block");
 			});
 		});
-		$("#mini").on("mouseleave", function() {
+		$("#mini #cancel").on("click", function() {
 			$("#mini").fadeOut(600, function() {
 				$("#mini").css("display","none");
 			});
 		});
+		
 		
 		/* 간편 설명 슬라이드 이벤트 */
 		$("#s_event01").click(function() {
@@ -500,15 +491,24 @@
 		/* 이미지 변경 이벤트 */
 		$(".sub_img:nth-of-type(1)").click(function() {
 			let k = $(".sub_img:nth-of-type(1) img").attr("src");
-			$("#t1").attr("src", k)
+			$("#t1").fadeOut(0, function() {
+				$("#t1").attr("src", k)
+				$("#t1").fadeIn(1000)
+			})
 		});
 		$(".sub_img:nth-of-type(2)").click(function() {
 			let k = $(".sub_img:nth-of-type(2) img").attr("src");
-			$("#t1").attr("src", k)
+			$("#t1").fadeOut(0, function() {
+				$("#t1").attr("src", k)
+				$("#t1").fadeIn(1000)
+			})
 		});
 		$(".sub_img:nth-of-type(3)").click(function() {
 			let k = $(".sub_img:nth-of-type(3) img").attr("src");
-			$("#t1").attr("src", k)
+			$("#t1").fadeOut(0, function() {
+				$("#t1").attr("src", k)
+				$("#t1").fadeIn(1000)
+			})
 		});
 </script>
 </body>
