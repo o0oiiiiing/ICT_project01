@@ -16,12 +16,12 @@ body{
 	opacity: 0.9;
 	
 }
-#login_form{
+.login_form{
 	display: flex;
 	flex-direction: column;
 }
 
-input[type="text"], input[type="password"] {
+.login input[type="text"], input[type="password"] {
 	width: 80%;
 	padding: 15px 20px;
 	margin-bottom: 10px;
@@ -31,7 +31,7 @@ input[type="text"], input[type="password"] {
 	border: none;
 }
 
-input[type="submit"] {
+.login input[type="submit"] {
 	width: 70%;
 	display: inline-block;
 	padding: 15px 20px;
@@ -43,7 +43,7 @@ input[type="submit"] {
 	margin-bottom: 20px;
 }
 
-input[type="button"] {
+.login input[type="button"] {
 	width: 100%;
 	padding: 15px 20px;
 	box-shadow: 2px 2px 5px gray,
@@ -52,7 +52,7 @@ input[type="button"] {
 	border: none;
 }
 
-h2{ 
+.login h2{ 
 	margin-bottom: 20px;
 }
 

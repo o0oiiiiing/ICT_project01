@@ -55,34 +55,17 @@
 		$(document).ready(function() {
 		$("#login_btn").on("click", function() {
 		    if ($(this).data("clicked")) {
+		        $(".overlay").css("z-index", "3");
 		        $("#login_page").css("display", "none"); // 다시 초기 상태로 설정
 		        $(this).data("clicked", false); // 다시 초기 상태로 설정
 		    } else {
 		        $(this).data("clicked", true); // 클릭 상태를 true로 변경
+		        $(".overlay").css("z-index", "5");
 		        $("#login_page").css("display", "block"); // 다시 초기 상태로 설정
 		    }
 		});
 	})
 </script>
-<!-- <style type="text/css">
-	#login_btn{
-		position: relative;
-	}
-	#login_page{
-		display : none;
-		position: absolute;
-		top:0px;
-	}
-</style>
-<script type="text/javascript">
-	$(function() {
-		$("#login_btn").click(function() {
-			$("#login_page").fadeIn(500, function() {
-				$("#login_page").css("display", "block")
-			})
-		})
-	})
-</script> -->
 </head>
 <body>
 	<div class="overlay"></div>
@@ -97,7 +80,7 @@
 			<span><a href="cart" class="icon">Shopping_Cart</a></span>
 			<span><a href="wish" class="icon">Favorite</a></span>
 			<!-- 로그인 상태 가져와서 로그인 X => 로그인창 드롭다운 / 로그인 O => 마이페이지 -->
-			<span class="icon" id="login_btn">Person</span>
+			<span><a class="icon" id="login_btn">Person</a></span>
 			<span><a href="mypage" class="icon">house</a></span>
 			<div id="login_page"><%@ include file="/WEB-INF/views/kch-view/login.jsp" %></div>
 		</div>
