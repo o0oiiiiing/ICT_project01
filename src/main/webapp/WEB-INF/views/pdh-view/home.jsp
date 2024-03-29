@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/pdh-css/home.css">
 <link rel="stylesheet" href="resources/pdh-css/font.css">
-<script type="text/javascript">
+<script type="text/javascript" defer>
 	// 배경 이미지 변경 스크립트
 	window.onload = function() {
 		var images = [ 'background_01.jpg', 'background_02.jpg',
@@ -50,24 +50,50 @@
 		// 5초마다 배경 이미지 변경
 		setInterval(changeBackgroundImage, 4000);
 	};
-	
+
 	// 로그인 페이지 버튼
-		$(document).ready(function() {
+	$(document).ready(function() {
 		$("#login_btn").on("click", function() {
-		    if ($(this).data("clicked")) {
-		        $(".overlay").css("z-index", "3");
-		        $("#login_page").css("display", "none"); // 다시 초기 상태로 설정
-		        $(this).data("clicked", false); // 다시 초기 상태로 설정
-		    } else {
-		        $(this).data("clicked", true); // 클릭 상태를 true로 변경
-		        $(".overlay").css("z-index", "5");
-		        $("#login_page").css("display", "block"); // 다시 초기 상태로 설정
+			if ($(this).data("clicked")) {
+				$(".overlay").css("z-index", "3");
+				$("#login_page").css("display", "none"); // 다시 초기 상태로 설정
+				$(this).data("clicked", false); // 다시 초기 상태로 설정
+			} else {
+				$(this).data("clicked", true); // 클릭 상태를 true로 변경
+				$(".overlay").css("z-index", "5");
+				$("#login_page").css("display", "block"); // 다시 초기 상태로 설정
+			}
+		});
+		// 마우스 휠 이벤트 핸들러 등록
+		$(window).on('scroll', function windowScrollHandler() {
+		    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+		        // 윈도우 스크롤 이벤트 해제
+		        $(window).off('scroll', windowScrollHandler);
+
+		        // #best-seller__inner 영역에서 마우스휠 이벤트 핸들러 등록
+		        $("#best-seller__inner").on('mousewheel', function mousewheelHandler(e) {
+		            e.preventDefault();
+		            var wheelDelta = e.originalEvent.wheelDelta;
+		            $(this).scrollLeft($(this).scrollLeft() - wheelDelta);
+		            
+		            // #best-seller__inner 영역의 scrollLeft() 값이 0이면 window 스크롤 이벤트 재등록
+		            if ($(this).scrollLeft() == 0) {
+		                $(window).on('scroll', windowScrollHandler);
+		                $(this).off('mousewheel', mousewheelHandler);
+		            }
+		        });
 		    }
 		});
-	})
+		$("#search_btn").click(function() {
+			$("#search").css("display", "block");
+		})
+	});
 </script>
 </head>
 <body>
+	<div id="search">
+		<%@ include file="/WEB-INF/views/pdh-view/search.jsp"%>
+	</div>
 	<div class="overlay"></div>
 	<header>
 		<h1 class="title judson-bold">
@@ -75,14 +101,15 @@
 		</h1>
 
 		<div class="material-symbols-outlined icons">
-			<span><a href="search" class="icon">Search</a></span>
-			<span><a href="help" class="icon">headset_mic</a></span>
-			<span><a href="cart" class="icon">Shopping_Cart</a></span>
-			<span><a href="wish" class="icon">Favorite</a></span>
+			<span><a class="icon" id="search_btn">Search</a></span> <span><a
+				href="help" class="icon">headset_mic</a></span> <span><a href="cart"
+				class="icon">Shopping_Cart</a></span> <span><a href="wish"
+				class="icon">Favorite</a></span>
 			<!-- 로그인 상태 가져와서 로그인 X => 로그인창 드롭다운 / 로그인 O => 마이페이지 -->
-			<span><a class="icon" id="login_btn">Person</a></span>
-			<span><a href="mypage" class="icon">house</a></span>
-			<div id="login_page"><%@ include file="/WEB-INF/views/kch-view/login.jsp" %></div>
+			<span><a class="icon" id="login_btn">Person</a></span> <span><a
+				href="mypage" class="icon">house</a></span>
+			<div id="login_page"><%@ include
+					file="/WEB-INF/views/kch-view/login.jsp"%></div>
 		</div>
 
 		<hr class="line">
@@ -172,7 +199,7 @@
 	<div class="middle-title judson-bold">scent</div>
 
 	<section class="best-seller">
-		<div class="best-seller__inner">
+		<div id="best-seller__inner">
 			<h2 class="best-seller__title judson-bold">best seller</h2>
 			<ul class="best-seller__list">
 				<li class="best-seller__item"><a href="detailproduct"> <img
@@ -217,6 +244,61 @@
 							<P>THÉ MATCHA 26</P>
 							<P>500ml</P>
 							<P>1,500,000₩</P>
+						</div>
+				</a></li>
+				<li class="best-seller__item"><a href="detailproduct"> <img
+						class="best-seller__thumbnail"
+						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
+						alt="LAVANDE31_15ml" />
+						<div class="best-seller__brand">LE LABO</div>
+						<div class="best-seller__information">
+							<P>LAVANDE 31</P>
+							<P>15ml</P>
+							<P>132,000₩</P>
+						</div>
+				</a></li>
+				<li class="best-seller__item"><a href="detailproduct"> <img
+						class="best-seller__thumbnail"
+						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
+						alt="LAVANDE31_15ml" />
+						<div class="best-seller__brand">LE LABO</div>
+						<div class="best-seller__information">
+							<P>LAVANDE 31</P>
+							<P>15ml</P>
+							<P>132,000₩</P>
+						</div>
+				</a></li>
+				<li class="best-seller__item"><a href="detailproduct"> <img
+						class="best-seller__thumbnail"
+						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
+						alt="LAVANDE31_15ml" />
+						<div class="best-seller__brand">LE LABO</div>
+						<div class="best-seller__information">
+							<P>LAVANDE 31</P>
+							<P>15ml</P>
+							<P>132,000₩</P>
+						</div>
+				</a></li>
+				<li class="best-seller__item"><a href="detailproduct"> <img
+						class="best-seller__thumbnail"
+						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
+						alt="LAVANDE31_15ml" />
+						<div class="best-seller__brand">LE LABO</div>
+						<div class="best-seller__information">
+							<P>LAVANDE 31</P>
+							<P>15ml</P>
+							<P>132,000₩</P>
+						</div>
+				</a></li>
+				<li class="best-seller__item"><a href="detailproduct"> <img
+						class="best-seller__thumbnail"
+						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
+						alt="LAVANDE31_15ml" />
+						<div class="best-seller__brand">LE LABO</div>
+						<div class="best-seller__information">
+							<P>LAVANDE 31</P>
+							<P>15ml</P>
+							<P>132,000₩</P>
 						</div>
 				</a></li>
 				<li class="best-seller__item"><a href="detailproduct"> <img

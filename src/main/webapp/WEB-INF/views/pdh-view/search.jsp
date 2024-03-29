@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="resources/pdh-css/search.css">
 </head>
 <body>
+<div id="t1">
 	<div class="search">
 		<input type="text" class="search-field">
 		<span class="material-symbols-outlined icon search-icon">Search</span>
@@ -58,5 +59,6 @@
 	</ul>
 	
 	<span class="material-symbols-outlined icon">close</span>
+</div>
 </body>
 </html>
