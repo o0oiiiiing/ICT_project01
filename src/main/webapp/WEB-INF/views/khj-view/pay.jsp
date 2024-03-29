@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/common-css/reset.css">
-<link rel="stylesheet" href="resources/khj-css/pay01c.css">
+<link rel="stylesheet" href="resources/khj-css/pay.css">
 
 <script type="text/javascript">
 
