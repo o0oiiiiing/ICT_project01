@@ -27,7 +27,9 @@ function selectAll(selectAll)  {
 <div id="p_main">	
 	<section id="p1_s1">
 		<article id="p1_s1_a1">
+			
 			<h3 style="text-align: center;">주문 상품 정보</h3>
+			<div>
 			<div class="s1a1_d1">
 				<div class="s1a1d1_img"><img src=""></div>
 				<div id="s1a1d1_pa">
@@ -54,6 +56,7 @@ function selectAll(selectAll)  {
 			</div>
 			<div id="s1a1_d2">
 				<a>배송비 무료</a>
+			</div>
 			</div>
 		</article>
 		<article id="p1_s1_a2">
@@ -85,11 +88,7 @@ function selectAll(selectAll)  {
 			<button id="import_addr">배송지 가져오기</button>
 			<input id="recipient_name" placeholder="수령인" readonly required>
 			<input id="recipient_addr" placeholder="수령인 주소" readonly required>
-			<!-- <input id="recipient_phone" type="text" oninput="oniput_rp(this)" placeholder="수령인 연락처"  required> -->
-			<!-- <input id="recipient_zipcode" placeholder="수령인 우편번호"  required>
-			<button>주소찾기</button>
-			<input id="r_addr" readonly required>
-			<input id="r_det_addr" placeholder="상세주소"  required> -->
+			
 		</article>
 	</section>
 		

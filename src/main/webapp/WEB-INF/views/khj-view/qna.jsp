@@ -21,19 +21,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
 				<div class="user_id">
-					<a>아이디</a>
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -49,19 +49,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -77,19 +77,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -105,19 +105,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -133,19 +133,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -161,19 +161,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -189,19 +189,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -217,19 +217,19 @@
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<a>num</a>
+					<p>num</p>
 				</div>
-				<div class="user_name">
-					<a>이름</a>
+				<div class="user_id">
+					<p>아이디</p>
 				</div>
 				<div class="qna_created_date">
-					<a>작성일</a>
+					<p>작성일</p>
 				</div>
 				<div class="qna_subject">
 					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
 				</div>
 				<div class="qna_reply_status">
-					<a>답변상태</a>
+					<p>답변상태</p>
 				</div>
 			</article>
 			<article class="qna_body">
@@ -242,6 +242,7 @@
 				</div>
 			</article>
 		</div>
+		
 		
 		<article class="qna_page_body">
 			<div id="sel_qna_page">

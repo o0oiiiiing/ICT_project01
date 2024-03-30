@@ -281,14 +281,8 @@
 				</div>
 			</article>
 		</div>
+		
 	</div>
-	<div id="sel_claim_page"> 
-			<button class="entity">&lt;</button>
-			<button class="page_num">1</button>
-			<button class="page_num">2</button>
-			<button class="page_num">3</button>
-			<button class="entity">&gt;</button>
-		</div>
 	<script type="text/javascript">
 		$(".claim_head").click(
 				function() {
