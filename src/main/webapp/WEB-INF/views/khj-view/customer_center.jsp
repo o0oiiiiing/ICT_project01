@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/common-css/reset.css">
-<link rel="stylesheet" href="resources/khj-css/customer_centerC.css">
+<link rel="stylesheet" href="resources/khj-css/customer_center.css">
 </head>
 <body>
 <div id="frame">
@@ -16,7 +16,7 @@
 		<div id="s_menu">
 			<a href="">QnA</a>
 			<a href="">FaQ</a>
-			<a href="">신고하기</a>
+			<a href="">Claim</a>
 		</div>
 		<div id="s_display"><p>FAQ(s_menu 누르면 창 바뀌고 누른거 표시)</p></div>
 	</article>
@@ -132,7 +132,7 @@
 		</div>
 	</div>
 		
-		<div id="sel_faq_page">
+		<div id="sel_faq_page"> 
 			<button class="entity">&lt;</button>
 			<button class="page_num">1</button>
 			<button class="page_num">2</button>
@@ -140,23 +140,23 @@
 			<button class="entity">&gt;</button>
 		</div>
 	</article>
-	<article id="footer">
-		<div>
-			<p>푸터 ~~~ 여러가지 사항들이 적혀 있습니다. </p>
-		</div>
-	</article>
+
 </section>
 </div>	
 <script type="text/javascript">
 	$(".m_div").click(
+			
 			function() {
 				console.log($(this).next())
 				$(this).next().fadeToggle(
-						500, function() {$(this).css("display", "block")
+						200, function() {$(this).css("display", "block")
 					})
-				})
+				
+				}
+			
+			)
 	$(".m_reply").click(function() {
-		$(this).fadeOut(500, function() {
+		$(this).fadeOut(200, function() {
 			$(this).css("display", "none")
 		})
 	})
