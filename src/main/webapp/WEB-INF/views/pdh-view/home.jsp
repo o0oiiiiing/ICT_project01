@@ -30,40 +30,28 @@
 	rel="stylesheet">
 <!-- CSS 파일 -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
+<link rel="stylesheet" href="resources/common-css/font.css">
 <link rel="stylesheet" href="resources/pdh-css/home.css">
-<link rel="stylesheet" href="resources/pdh-css/font.css">
 <script type="text/javascript" defer>
 	// 배경 이미지 변경 스크립트
-	window.onload = function() {
-		var images = [ 'background_01.jpg', 'background_02.jpg',
-				'background_03.jpg' ]; // 변경할 배경 이미지들의 파일명
-		var index = 0;
-
-		function changeBackgroundImage() {
-			var url = 'url("resources/pdh-image/' + images[index] + '")';
-			document.documentElement.style.backgroundImage = url;
-			index = (index + 1) % images.length; // 다음 이미지 인덱스 계산
-		}
-
-		changeBackgroundImage(); // 페이지 로드 시 초기 배경 이미지 설정
-
-		// 5초마다 배경 이미지 변경
-		setInterval(changeBackgroundImage, 4000);
-	};
-
-	// 로그인 페이지 버튼
-	$(document).ready(function() {
-		$("#login_btn").on("click", function() {
-			if ($(this).data("clicked")) {
-				$(".overlay").css("z-index", "3");
-				$("#login_page").css("display", "none"); // 다시 초기 상태로 설정
-				$(this).data("clicked", false); // 다시 초기 상태로 설정
-			} else {
-				$(this).data("clicked", true); // 클릭 상태를 true로 변경
-				$(".overlay").css("z-index", "5");
-				$("#login_page").css("display", "block"); // 다시 초기 상태로 설정
+		window.onload = function() {
+			var images = [ 'background_01.jpg', 'background_02.jpg',
+					'background_03.jpg' ]; // 변경할 배경 이미지들의 파일명
+			var index = 0;
+	
+			function changeBackgroundImage() {
+				var url = 'url("resources/pdh-image/' + images[index] + '")';
+				document.documentElement.style.backgroundImage = url;
+				index = (index + 1) % images.length; // 다음 이미지 인덱스 계산
 			}
-		});
+	
+			changeBackgroundImage(); // 페이지 로드 시 초기 배경 이미지 설정
+	
+			// 5초마다 배경 이미지 변경
+			setInterval(changeBackgroundImage, 4000);
+		};
+
+	$(document).ready(function() {
 		// 마우스 휠 이벤트 핸들러 등록
 		$(window).on('scroll', function windowScrollHandler() {
 		    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -84,32 +72,50 @@
 		        });
 		    }
 		});
+		
+		// 로그인 페이지 버튼
+ 		$("#login_btn").on("click", function() {
+			if ($(this).data("clicked")) {
+
+				$("#login_page").css("display", "none"); 
+				$(this).data("clicked", false); 
+			} else {
+				$(this).data("clicked", true);
+				$("#login_page").css("display", "block");
+			}
+		});
+
+		// 검색창 활성화
 		$("#search_btn").click(function() {
-			$("#search").css("display", "block");
+			$("#search-page").css("backgroundColor", "#F5F5F5");
+			$("#search-page").css("display", "block");
 		})
+		$("#s-close").click(function() {
+			$("#search-page").css("backgroundColor", "none");
+			$("#search-page").css("display", "none");
+		})
+		
 	});
 </script>
 </head>
 <body>
-	<div id="search">
-		<%@ include file="/WEB-INF/views/pdh-view/search.jsp"%>
+	<div id="search-page">
+		<%@ include file="/WEB-INF/views/common/search.jsp"%>
 	</div>
 	<div class="overlay"></div>
 	<header>
 		<h1 class="title judson-bold">
-			<a href="">forest</a>
+			<a href="" class="a_tag">forest</a>
 		</h1>
 
 		<div class="material-symbols-outlined icons">
-			<span><a class="icon" id="search_btn">Search</a></span> <span><a
-				href="help" class="icon">headset_mic</a></span> <span><a href="cart"
-				class="icon">Shopping_Cart</a></span> <span><a href="wish"
-				class="icon">Favorite</a></span>
-			<!-- 로그인 상태 가져와서 로그인 X => 로그인창 드롭다운 / 로그인 O => 마이페이지 -->
-			<span><a class="icon" id="login_btn">Person</a></span> <span><a
-				href="mypage" class="icon">house</a></span>
-			<div id="login_page"><%@ include
-					file="/WEB-INF/views/kch-view/login.jsp"%></div>
+			<span><a class="icon a_tag" id="search_btn">Search</a></span>
+			<span><a href="help" class="icon a_tag">headset_mic</a></span>
+			<span><a href="cart" class="icon a_tag">Shopping_Cart</a></span>
+			<span><a href="wish" class="icon a_tag">Favorite</a></span>
+			<span><a class="icon a_tag" id="login_btn">Person</a></span>
+			<span><a href="mypage" class="icon a_tag">house</a></span>
+			<div id="login_page"><%@ include file="/WEB-INF/views/common/login.jsp"%></div>
 		</div>
 
 		<hr class="line">
@@ -124,24 +130,24 @@
 
 	<div class="perfume-nav-list__open">
 		<ul class="perfume-nav-list__category">
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
 					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
@@ -151,20 +157,20 @@
 	</div>
 	<div class="handBody-nav-list__open">
 		<ul class="handBody-nav-list__category">
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
 					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
@@ -174,20 +180,20 @@
 	</div>
 	<div class="homeFragrance-nav-list__open">
 		<ul class="homeFragrance-nav-list__category">
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
-			<li><a href="products"> <img
+			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
@@ -202,7 +208,7 @@
 		<div id="best-seller__inner">
 			<h2 class="best-seller__title judson-bold">best seller</h2>
 			<ul class="best-seller__list">
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/ANOTHER13_15ml.jpg"
 						alt="ANOTHER13_15ml" />
@@ -213,7 +219,7 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_100ml.jpg"
 						alt="LAVANDE31_100ml" />
@@ -224,7 +230,7 @@
 							<P>440,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/SANTAL33_500ml.jpg"
 						alt="SANTAL33_500ml" />
@@ -235,7 +241,7 @@
 							<P>1,500,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/THEMATCHA26_500ml.jpg"
 						alt="THEMATCHA26_500ml" />
@@ -246,7 +252,7 @@
 							<P>1,500,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
 						alt="LAVANDE31_15ml" />
@@ -257,7 +263,7 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
 						alt="LAVANDE31_15ml" />
@@ -268,7 +274,7 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
 						alt="LAVANDE31_15ml" />
@@ -279,7 +285,7 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
 						alt="LAVANDE31_15ml" />
@@ -290,7 +296,7 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
 						alt="LAVANDE31_15ml" />
@@ -301,7 +307,7 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
-				<li class="best-seller__item"><a href="detailproduct"> <img
+				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
 						class="best-seller__thumbnail"
 						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
 						alt="LAVANDE31_15ml" />

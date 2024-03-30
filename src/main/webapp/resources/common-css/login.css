@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-body{
+/* body{
 	background-color: lightgray;
 }
-
+ */
 .login{
 	width: 280px;
 	border-radius: 20px;
@@ -55,8 +55,6 @@ body{
 .login h2{ 
 	margin-bottom: 20px;
 }
-
-
 
 
 

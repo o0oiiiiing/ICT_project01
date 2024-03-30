@@ -25,8 +25,8 @@
 	rel="stylesheet">
 <!-- CSS 파일 -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
+<link rel="stylesheet" href="resources/common-css/font.css">
 <link rel="stylesheet" href="resources/pdh-css/products.css">
-<link rel="stylesheet" href="resources/pdh-css/font.css">
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
 </head>
 <body>

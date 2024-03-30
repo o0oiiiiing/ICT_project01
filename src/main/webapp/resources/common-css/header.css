@@ -13,10 +13,10 @@
 /* 헤더 영역 */
 header {
 	width: 100%;
-	height: 131px;
+	height: 130px;
 	position: fixed;
 	top: 0;
-	z-index: 99;
+	z-index: 10;
 	
 }
 
@@ -77,15 +77,15 @@ header {
 }
 
 /* a 태그 */
-a {
+.a_tag {
 	text-decoration: none;
 }
 
-a:link, a:visited {
+.a_tag:link, .a_tag:visited {
 	color: #1E1E1E;
 }
 
-a:active {
+.a_tag:active {
 	color: #878787;
 }
 
@@ -218,12 +218,24 @@ a:active {
 	transition: color 0.3s linear;
 }
 
-/* 로그인 이벤트 css */
-#login_btn{
+/* 로그인창 이벤트 속성 */
+#login_btn {
 	position: relative;
 }
-#login_page{
+
+#login_page {
 	position: absolute;
 	top: 70px;
 	display: none;
+	z-index: 20;
+} 
+
+/* 검색창 include 속성 */
+#search-page{
+	display: none;
+	position: fixed;
+	top:0;
+	z-index: 11;
+	width: 100%;
+	height: 100%;
 }

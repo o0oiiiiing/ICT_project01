@@ -9,7 +9,7 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
 	rel="stylesheet" />
 <link rel="stylesheet" href="resources/common-css/reset.css">
-<link rel="stylesheet" href="resources/kch-css/login.css">
+<link rel="stylesheet" href="resources/common-css/login.css">
 <!-- 서버용 함수 -->
 <script type="text/javascript">
 	function join() {
