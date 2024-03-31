@@ -15,39 +15,146 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <section id="wishlist">
 	<article id="lists">
 		<div class="wishitems">
-			<div>
+			<div class="wish_img">
 				<img src="resources/jjh-image/projtest.png">
 			</div>
-			<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-			<p>LE LABO</p>
-			<div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
 				<p>500ml</p>
 				<p>100,000 KRW</p>
-				<button class="material-symbols-outlined">favorite</button>
-				<button>장바구니로 이동</button>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
+			</div>
+		</div>
+		<div class="wishitems">
+			<div class="wish_img">
+				<img src="resources/jjh-image/projtest.png">
+			</div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
+				<p>500ml</p>
+				<p>100,000 KRW</p>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
+			</div>
+		</div>
+		<div class="wishitems">
+			<div class="wish_img">
+				<img src="resources/jjh-image/projtest.png">
+			</div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
+				<p>500ml</p>
+				<p>100,000 KRW</p>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
+			</div>
+		</div>
+		<div class="wishitems">
+			<div class="wish_img">
+				<img src="resources/jjh-image/projtest.png">
+			</div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
+				<p>500ml</p>
+				<p>100,000 KRW</p>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
+			</div>
+		</div>
+		<div class="wishitems">
+			<div class="wish_img">
+				<img src="resources/jjh-image/projtest.png">
+			</div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
+				<p>500ml</p>
+				<p>100,000 KRW</p>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
+			</div>
+		</div>
+		<div class="wishitems">
+			<div class="wish_img">
+				<img src="resources/jjh-image/projtest.png">
+			</div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
+				<p>500ml</p>
+				<p>100,000 KRW</p>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
+			</div>
+		</div>
+		<div class="wishitems">
+			<div class="wish_img">
+				<img src="resources/jjh-image/projtest.png">
+			</div>
+			<div class="wish_sub_title">
+				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
+				<p>LE LABO</p>
+			</div>
+			<div class="wish_hide">
+				<p>500ml</p>
+				<p>100,000 KRW</p>
+				<div class="wish_move_btn">
+					<button class="material-symbols-outlined">favorite</button>
+					<button>장바구니에 추가</button>
+				</div>
 			</div>
 		</div>
 	</article>
 </section>
 <script type="text/javascript">
 	/* 장바구니 버튼 보이는 애니메이션 효과 */
-/* 	$(".wishitems").hover(
+ 	$(".wishitems").hover(
 	    function() {
-	        $(this).find("div:nth-of-type(2)").slideDown(300, function() {
-	        	$(this).find("div:nth-of-type(2)").css("display", "block")
+	        $(this).find(".wish_hide").slideDown(300, function() {
+	        	$(this).find(".wish_hide").css("display", "block")
 			});
 	    },
 	    function() {
-	        $(this).find("div:nth-of-type(2)").stop(true, true).slideUp(600, function() {
-	        	$(this).find("div:nth-of-type(2)").css("display", "none")
+	        $(this).find(".wish_hide").stop(true, true).slideUp(600, function() {
+	        	$(this).find(".wish_hide").css("display", "none")
 			});
 	    }
-	); */
+	);
 	/* 글자 생략 보이기 */
-	$(".wishitems > p:nth-of-type(1)").hover(
+	$(".wish_sub_title > p:nth-of-type(1)").hover(
 			function() {
 				$(this).css("whiteSpace", "wrap")
 			},
@@ -57,10 +164,10 @@
 	);
 	
 	/* 위시리스트 삭제 */
-	$(".wishitems > div:nth-of-type(2) button:nth-of-type(1)").click(function() {
-		$(this).parent().parent().remove();
+	$(".wish_move_btn button:nth-of-type(1)").click(function() {
+		$(this).parent().parent().parent().remove();
 	});
-	$(".wishitems > div:nth-of-type(2) button:nth-of-type(2)").hover(
+	$(".wish_move_btn button:nth-of-type(2)").hover(
 		function() {
 			$(this).css("backgroundColor", "gray");
 		},

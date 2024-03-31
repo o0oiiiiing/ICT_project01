@@ -17,10 +17,11 @@ public class ForestController {
 		return new ModelAndView("pdh-view/home");
 	}
 	
-	// 검색창 이동
-	@GetMapping("search")
-	public ModelAndView seach() {
-		ModelAndView mv = new ModelAndView("pdh-view/search");
+	
+	// 메인으로 이동
+	@GetMapping("home")
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView("pdh-view/home");
 		return mv;
 	}
 	
@@ -59,43 +60,48 @@ public class ForestController {
 		return mv;
 	}
 	
-	// 상세 상품페이지 이동 이동
-	@GetMapping("login")
-	public ModelAndView login() {
-		ModelAndView mv = new ModelAndView("kch-view/login");
-		return mv;
-	}
-	
-	// 상세 상품페이지 이동 이동
+	// 아이디 및 비번 찾기 이동
 	@GetMapping("find")
 	public ModelAndView find() {
 		ModelAndView mv = new ModelAndView("kch-view/find");
 		return mv;
 	}
 	
-	// 상세 상품페이지 이동 이동
+	// 회원가입 페이지 이동
 	@GetMapping("join")
 	public ModelAndView join() {
 		ModelAndView mv = new ModelAndView("kch-view/join");
 		return mv;
 	}
-	// 상세 상품페이지 이동 이동
+	// 회원수정 페이지 이동
 	@GetMapping("update")
 	public ModelAndView update() {
 		ModelAndView mv = new ModelAndView("kch-view/update");
 		return mv;
 	}
-	// 상세 상품페이지 이동 이동
+	// 아이디찾기 결과 페이지 이동
+	@GetMapping("findresult")
+	public ModelAndView findresult() {
+		ModelAndView mv = new ModelAndView("kch-view/findresult");
+		return mv;
+	}
+	// 고객센터faq 이동 이동
 	@GetMapping("help")
 	public ModelAndView help() {
 		ModelAndView mv = new ModelAndView("khj-view/customer_center");
 		return mv;
 	}
+	// 고객센터faq 이동 이동
+	@GetMapping("qna")
+	public ModelAndView qna() {
+		ModelAndView mv = new ModelAndView("khj-view/qna");
+		return mv;
+	}
 	
-	// 상세 상품페이지 이동 이동
+	// 상품 결제페이지 이동
 	@GetMapping("pay")
 	public ModelAndView pay() {
-		ModelAndView mv = new ModelAndView("khj-view/pay01");
+		ModelAndView mv = new ModelAndView("khj-view/pay");
 		return mv;
 	}
 	

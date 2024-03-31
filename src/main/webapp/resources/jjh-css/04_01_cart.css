@@ -1,27 +1,32 @@
 @charset "UTF-8";
+body{
+	background-color: #f5f5f5
+}
 #first{
 	width: 1300px;
 	height: 1000px;
 	background-color: #f5f5f5;
-	border: 1px solid black;
 	margin: 0 auto;
-	padding-top: 160px;
+	padding-top: 250px;
+}
+
+#first img{
+	width: 100%;
+	height: 100%;
+	object-fit : contain;	
 }
 
 #f_list{
-	width: 72%;
-	height: 610px;
+	width: 80%;
 	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
-	overflow: auto;
-	
+	align-items: center;	
 }
 
 #buymenu{
 	display: flex;
-	width: 59%;
+	width: 1040px;
 	border: none;
 	border-bottom: 1px solid black;
 	align-items: center;
@@ -30,12 +35,24 @@
 	padding-bottom: 10px;
 }
 #buymenu div{
-	width: 20%;
+	width: 22%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
 }
+#buymenu div > p{
+	font-size: 16px;
+}
+#rm_btn{
+	background-color: transparent;
+	border: none;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	font-size: 16px;
+	font-weight: bold;
+}
+
 #buymenu input{
 	width: 20px;
 	height: 20px;
@@ -45,16 +62,16 @@
 	height: 20px;
 }
 #buymenu > p:nth-of-type(1){
-	width: 50%;
+	width: 56%;
 	text-align: center;
 }
 #buymenu > p:nth-of-type(2){
-	width: 25%;
+	width: 22%;
 	text-align: center;
 }
 
-.f_items{
-	width: 95%;
+.c_product{
+	width: 100%;
 	height: 170px;
 	border: none;
 	border-bottom: 1px solid black;
@@ -63,22 +80,23 @@
 	align-items: center;
 	justify-content: space-around;
 }
-.f_items > input{
+.f_imgs{
+	width: 22%;
+	display: flex;
+	align-items: center;
+}
+.f_imgs > input{
 	width: 20px;
 	height: 20px;
 }
+
 .f_img{
-	width: 15%;
+	margin-left: 10px;
+	width: 75%;
 	height: 135px;
 }
-#first img{
-	width: 100%;
-	height: 100%;
-	object-fit : contain;	
-}
-
 .f_option{
-	width: 50%;
+	width: 56%;
 	height: 135px;
 	display: flex;
 	flex-wrap: wrap;
@@ -90,7 +108,7 @@
 }
 .f_option > p{
 	display: block;
-	width: 40%;
+	width: 38%;
 	font-size: 18px;
 	font-weight: bold;
 	text-align: center;
@@ -101,36 +119,32 @@
 	margin-left: 7px;
 }
 .f_option div{
-	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
 .f_option > div:nth-of-type(1){
-	width: 27%;
+	width: 29%;
 }
 .f_option > div:nth-of-type(1) select{
 	background-color: transparent;
 	border-bottom: none;
 	border-top: none;
+	margin-right: 5px;
 }
-.f_option > div:nth-of-type(1) p{
-	width: 100%;
-	font-size: 12px;
+.f_option > div:nth-of-type(1) span{
+	font-size: 14px;
 	font-weight: bold;
 	text-align : center;
-	margin-bottom: 10px;
 	
 }
 .f_option > div:nth-of-type(2){
-	width: 27%
+	width: 29%
 }
-.f_option > div:nth-of-type(2) p{
-	width: 100%;
-	font-size: 12px;
+.f_option > div:nth-of-type(2) span{
+	font-size: 14px;
 	font-weight: bold;
 	text-align : center;
-	margin-bottom: 10px;
 }
 .f_option > div:nth-of-type(2) select{
 	background-color: transparent;
@@ -138,20 +152,20 @@
 	border-top: none;
 }
 
-.f_items > div:nth-of-type(3){
-	width: 20%;
+.c_product > div:nth-of-type(3){
+	width: 22%;
 	height: 135px;
 	display: flex;
 	align-items: center;
 	text-align: center;
 }
-.f_items > div:nth-of-type(3) p{
+.c_product > div:nth-of-type(3) p{
 	width: 100%;
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
 }
-.f_items > button{
+.c_product > button{
 	width: 5%;
 	height: 135px;
 	background-color: transparent;
@@ -162,7 +176,7 @@
 
 /* 계산 박스 css */
 #f_sum{
-	width: 62%;
+	width: 80%;
 	height: 150px;
 	margin: 50px auto 0;
 	

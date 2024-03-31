@@ -1,10 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/kch-css/find.css">
 </head>
@@ -30,7 +35,7 @@
 						 <input type="text" class="in_text" id="name_email">
 				</div>
 				<div class="f_ir">
-					<input type="button" value="아이디 찾기" onclick="location='findresult.jsp'">&nbsp;
+					<input type="button" value="아이디 찾기" onclick="location='findresult'">&nbsp;
 					<input type="button" value="취소" onclick="location='login.jsp'">
 				</div>
 			</form>
@@ -56,7 +61,7 @@
 				</div>
 				<div class="f_ir">
 					<input type="submit" value="임시비밀번호 발급">&nbsp;
-					<input type="button" value="취소" onclick="location='login.jsp'">
+					<input type="button" value="취소" onclick="location='home'">
 				</div>
 			</form>
 		</section>

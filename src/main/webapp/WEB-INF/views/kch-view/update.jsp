@@ -1,12 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/kch-css/join.css">
+
+<!-- ??? -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 function sample6_execDaumPostcode() {
@@ -136,7 +143,7 @@ function sample6_execDaumPostcode() {
 
 			<div class="create">
 				<input class="but4" type="submit" value="수정하기">
-				<input class="but5" type="button" value="취소하기" onclick="location='login.jsp'"> 
+				<input class="but5" type="button" value="취소하기" onclick="location.href='mypage'"> 
 
 			</div>
 		</div>

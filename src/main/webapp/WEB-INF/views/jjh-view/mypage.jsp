@@ -18,26 +18,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <script type="text/javascript">
-	function order() {
-		location.href="order"
-	}
-	function buy() {
-		location.href="buy"
-	}
-	function point() {
-		location.href="point"
-	}
 	function update() {
 		location.href="update"
-	}
-	function addrplus() {
-		location.href="addrplus"
 	}
 	function qna() {
 		location.href="qna"
 	}
 	function help() {
 		location.href="help"
+	}
+	/* 미구현 */
+	function order() {
+		location.href="order"
+	}
+	function buy() {
+		location.href="buy"
+	}
+	function addrplus() {
+		location.href="addrplus"
+	}
+	function point() {
+		location.href="point"
 	}
 </script>
 </head>

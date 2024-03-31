@@ -1,16 +1,17 @@
 @charset "UTF-8";
-
+body{
+	background-color: #f5f5f5;
+}
 #frame {
 	width: 1000px;
 	background-color: #f5f5f5;
 	padding-top: 40px;
-	margin: 20px auto 20px auto;
-	border: 1px solid black;
+	margin: 160px auto 20px auto;
 }
 
 #ccenter {
-	width: 900px;
-	background-color: #fafafa;
+	width: 100%;
+	background-color: #f5f5f5;
 	margin: 0 auto;
 }
 
@@ -28,7 +29,7 @@
 #s_menu>a {
 	font-size: 40px;
 	width: 25%;
-	background-color: #fafafa;
+	background-color: transparent;
 	text-align: center;
 	text-decoration: none
 }
@@ -51,6 +52,7 @@
 	height: 40px;
 	display: flex;
 	justify-content: center;
+	margin-bottom: 30px;
 }
 
 #sel_main>button {
@@ -58,6 +60,7 @@
 	height: 40px;
 	margin: 0 20px 0;
 	font-size: 20px;
+	border: none;
 }
 
 #sel_main>button:hover {
