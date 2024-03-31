@@ -182,6 +182,8 @@
 			<artifactId>mariadb-java-client</artifactId>
 			<version>2.3.0</version>
 		</dependency>
+		<!-- 과연 -->
+		
 		
 		<!-- Test -->
 		<dependency>
