@@ -7,11 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ict.forest.common.Paging;
+
 @Controller
 public class ForestController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private Paging paging;
 	
+	// 첫 화면 설정 
 	@RequestMapping("/")
 	public ModelAndView main() {
 		return new ModelAndView("pdh-view/home");
