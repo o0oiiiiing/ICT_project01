@@ -1,5 +1,8 @@
 package com.ict.forest.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -8,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.Paging;
+import com.ict.forest.common.SessionUser;
+import com.ict.forest.jjh.dao.UserVO;
+import com.ict.forest.jjh.service.UserService;
 
 @Controller
 public class ForestController {
@@ -48,13 +54,6 @@ public class ForestController {
 	@GetMapping("wish")
 	public ModelAndView wish() {
 		ModelAndView mv = new ModelAndView("jjh-view/wish");
-		return mv;
-	}
-	
-	// 마이페이지 이동
-	@GetMapping("mypage")
-	public ModelAndView mypage() {
-		ModelAndView mv = new ModelAndView("jjh-view/mypage");
 		return mv;
 	}
 	

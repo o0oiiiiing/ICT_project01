@@ -55,7 +55,7 @@
 		        $("#best-seller__inner").on('mousewheel', function mousewheelHandler(e) {
 		            e.preventDefault();
 		            var wheelDelta = e.originalEvent.wheelDelta;
-		            $(this).scrollLeft($(this).scrollLeft() - wheelDelta);
+		            $(this).scrollLeft($(this).scrollLeft() - (wheelDelta));
 		            
 		            // #best-seller__inner 영역의 scrollLeft() 값이 0이면 window 스크롤 이벤트 재등록
 		            if ($(this).scrollLeft() == 0) {
@@ -88,6 +88,19 @@
 			$("#search-page").css("display", "none");
 		})
 		
+		// 회원가입 성공 메세지
+		let join_ok = "${join_ok}";
+		if (join_ok == "true") {
+			alert("회원가입을 축하합니다.");
+		}
+		
+		// 로그인 실패시
+		let login_false = "${login_false}"
+		if (login_false == "false") {
+			alert("아이디 또는 비밀번호가 틀립니다.");
+		}
+		
+		
 	});
 </script>
 </head>
@@ -106,9 +119,30 @@
 			<span><a href="help" class="icon a_tag">headset_mic</a></span>
 			<span><a href="cart" class="icon a_tag">Shopping_Cart</a></span>
 			<span><a href="wish" class="icon a_tag">Favorite</a></span>
-			<span><a class="icon a_tag" id="login_btn">Person</a></span>
-			<span><a href="mypage" class="icon a_tag">house</a></span>
-			<div id="login_page"><%@ include file="/WEB-INF/views/common/login.jsp"%></div>
+			<span><a class="icon a_tag" id="login_btn">
+				<c:choose>
+					<c:when test="${ssuvo.login == 'true'}">
+						<a class="icon a_tag">Person
+						<span style="font-size: 12px;">${ssuvo.user_id}님 환영합니다.</span>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a class="icon a_tag">Person
+						<span style="font-size: 12px;">로그인/회원가입</span>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</span>
+			<div id="login_page">
+				<c:choose>
+					<c:when test="${ssuvo.login == 'true'}">
+						<%@ include file="/WEB-INF/views/common/logout.jsp" %>
+					</c:when>
+				<c:otherwise>
+					<%@ include file="/WEB-INF/views/common/login.jsp" %>
+				</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 
 		<hr class="line">
@@ -311,6 +345,12 @@
 							<P>132,000₩</P>
 						</div>
 				</a></li>
+			</ul>
+			<ul class="best-seller__footer">
+				<li>회사정보</li>
+				<li>이용약관</li>
+				<li>개인정보처리방침</li>
+				<li>고객센터</li>
 			</ul>
 		</div>
 	</section>

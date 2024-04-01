@@ -111,50 +111,53 @@
 		</dependency>
 
 		<!-- 외부 라이브러리들 -->
+		<!-- 스프링 파일업로드 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
 
+		<!-- 스프링 파일 다운로드 라이브러리 -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.11.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
+		<!-- java와 오라클 연결, ojdbc8 -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>18.3.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<!-- spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.11</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<!-- mybatis-spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.1</version>
 		</dependency>
 
+		<!-- DB config 파일 보안용 라이브러리 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
 
-		<!-- 스프링 시큐리티 -->
+		<!-- Spring-Security 관련 라이브러리 3개 -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -171,26 +174,26 @@
 			<version>5.3.13.RELEASE</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<!-- mysql 연결용 라이브러리(mariaDB와 엔진이 같아서 연결가능) -->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<version>8.3.0</version>
 		</dependency>
-		<!-- mariadb -->
+
+		<!-- mariadb 연결용 라이브러리 -->
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<version>2.3.0</version>
 		</dependency>
 
-		<!-- ssh터널링용 라이브러리 -->
+		<!-- ssh 터널링 -->
 		<dependency>
 			<groupId>com.jcraft</groupId>
 			<artifactId>jsch</artifactId>
-			<version>0.1.55</version>
+			<version>0.1.55</version> <!-- 현재 사용 가능한 최신 버전을 사용하십시오 -->
 		</dependency>
-
 
 		<!-- Test -->
 		<dependency>

@@ -33,6 +33,7 @@
 	
 	<!-- 상품 리스트 -->
 	<main>
+		<div class="product-category judson-bold">perfume</div>
 		<div class="select-box">
 			<select class="select">
 				<option value="alphabetical-order">이름순</option>

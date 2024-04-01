@@ -300,6 +300,21 @@ header {
 	margin-bottom: 10px;
 }
 
+.best-seller__footer {
+	color: white;
+	font-size: 14px;
+	font-family: 'NanumSquareLight';
+	width: 20%;
+	margin-top: 140px;
+	text-align: center;
+	list-style-type: none;
+	justify-content: space-between;
+	display: flex;
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 /* 로그인창 이벤트 속성 */
 #login_btn {
 	position: relative;
@@ -310,13 +325,13 @@ header {
 	top: 60px;
 	display: none;
 	z-index: 20;
-} 
+}
 
 /* 검색창 include 속성 */
-#search-page{
+#search-page {
 	display: none;
 	position: fixed;
-	top:0;
+	top: 0;
 	z-index: 11;
 	width: 100%;
 	height: 100%;

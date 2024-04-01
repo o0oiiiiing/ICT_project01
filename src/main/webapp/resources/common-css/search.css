@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /* 배경 색상 */
-
 #search_section {
 	width: 100%;
 	display: grid;
@@ -8,10 +7,17 @@
 	background-color: #F5F5F5;
 }
 
+.search {
+	position: relative;
+}
+
 /* 아이콘 */
-.s-icon {
+.search-icon {
+	position: absolute;
 	font-size: 30px;
 	color: #1E1E1E;
+	top: 133px;
+	left: 950px;
 }
 
 .icon:hover, icon:active {
@@ -26,7 +32,6 @@
 	border: 1px solid #CECECE;
 	border-radius: 50px;
 	box-sizing: border-box;
-	position: relative;
 	font-family: 'Avenir', sans-serif;
 	font-size: 15px;
 	padding-left: 30px;
@@ -37,7 +42,8 @@
 	border: 1px solid #CECECE;
 	background-color: rgb(239, 239, 239);
 }
-.search{
+
+.search {
 	position: relative;
 }
 
@@ -45,13 +51,6 @@
 	font-size: 30px;
 	margin: 50px auto;
 	color: #1E1E1E;
-}
-
-.search-icon {
-	position: absolute;
-	top: 140px;
-	right: -160px;
-	
 }
 
 /* 체크박스 */

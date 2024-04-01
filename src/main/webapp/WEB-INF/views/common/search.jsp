@@ -27,8 +27,8 @@
 <body>
 	<section id="search_section">
 		<div class="search">
+			<span class="material-symbols-outlined search-icon icon">Search</span>
 			<input type="text" class="search-field">
-			<span class="material-symbols-outlined s-icon search-icon">Search</span>
 		</div>
 
 		<!-- 카테고리 -->
@@ -63,7 +63,7 @@
 				</ul>
 			</li>
 		</ul>
-		<span class="material-symbols-outlined s-icon" id="s-close">close</span>
+		<span class="material-symbols-outlined icon" id="s-close">close</span>
 	</section>
 </body>
 </html>

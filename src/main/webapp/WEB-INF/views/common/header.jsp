@@ -72,9 +72,30 @@
 				<span><a href="help" class="icon a_tag">headset_mic</a></span>
 				<span><a href="cart" class="icon a_tag">Shopping_Cart</a></span>
 				<span><a href="wish" class="icon a_tag">Favorite</a></span>
-				<span id="login_btn"><a class="icon a_tag">Person</a></span>
-				<span><a href="mypage" class="icon a_tag">house</a></span>
-				<div id="login_page"><%@ include file="/WEB-INF/views/common/login.jsp" %></div>
+				<span id="login_btn">
+					<c:choose>
+						<c:when test="${ssuvo.login == 'true'}">
+							<a class="icon a_tag">Person
+							<span style="font-size: 12px;">${ssuvo.user_id}님 환영합니다.</span>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a class="icon a_tag">Person
+							<span style="font-size: 12px;">로그인/회원가입</span>
+							</a>
+						</c:otherwise>
+					</c:choose>
+				</span>
+				<div id="login_page">
+					<c:choose>
+						<c:when test="${ssuvo.login == 'true'}">
+							<%@ include file="/WEB-INF/views/common/logout.jsp" %>
+						</c:when>
+						<c:otherwise>
+							<%@ include file="/WEB-INF/views/common/login.jsp" %>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 		</section>
 		<hr class="line">
@@ -110,21 +131,16 @@
 	<div class="handBody-nav-list__open">
 		<ul class="handBody-nav-list__category">
 			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
-					<div class="nav-list__brand-name">GRANHAND.</div>
-			</a></li>
-			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
 			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/MaisonMargiela.png"
-					alt="Maison Margiela" />
-					<div class="nav-list__brand-name">Maison Margiela</div>
-			</a></li>
-			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
+			</a></li>
+			<li><a href="products" class="a_tag"> <img
+					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
+					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
@@ -133,8 +149,8 @@
 	<div class="homeFragrance-nav-list__open">
 		<ul class="homeFragrance-nav-list__category">
 			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
-					<div class="nav-list__brand-name">LE LABO</div>
+					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
+					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
 			<li><a href="products" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"

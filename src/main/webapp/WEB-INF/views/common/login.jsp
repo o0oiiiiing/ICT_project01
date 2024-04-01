@@ -26,14 +26,14 @@
 </script>
 <body>
 	<section class="login">
-		<form method="post">
+		<form method="post" action="login">
 			<br>
 			<div id="login_form">
 				<div class="inputBox">
-					<input type="text" placeholder="Username">
+					<input type="text" name="user_id" placeholder="Username">
 				</div>
 				<div class="inputBox">
-					<input type="password" placeholder="Password">
+					<input type="password" name="user_pwd" placeholder="Password">
 				</div>
 				<div class="inputBox">
 					<input type="submit" value="Log in">

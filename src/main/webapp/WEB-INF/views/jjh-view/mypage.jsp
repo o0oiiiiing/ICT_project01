@@ -28,17 +28,17 @@
 		location.href="help"
 	}
 	/* 미구현 */
-	function order() {
-		location.href="order"
-	}
-	function buy() {
-		location.href="buy"
-	}
 	function addrplus() {
 		location.href="addrplus"
 	}
 	function point() {
 		location.href="point"
+	}
+	function sell_list(){
+		location.href="sell_list"
+	}
+	function product_insert(){
+		location.href="product_insert"
 	}
 </script>
 </head>
@@ -49,6 +49,12 @@
 			<button class="menu_btn" onclick="order()">주문리스트</button>
 			<button class="menu_btn" onclick="buy()">구매리스트</button>
 			<button class="menu_btn" onclick="point()">내 포인트 관리</button>
+			<c:choose>
+				<c:when test="${ssuvo.user_type==0}">
+					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
+					<button class="menu_btn" onclick="product_insert()">상품 등록</button>
+				</c:when>
+			</c:choose>
 		</article>
 		<article id="f_info">
 			<div id="info_pro">
@@ -57,31 +63,31 @@
 					<p>
 						<span class="material-symbols-outlined">person</span>
 					</p>
-					<p>이름 : 아무개</p>
+					<p>이름 : ${uvo.user_name}</p>
 				</div>
 				<div class="infos">
 					<p>
 						<span class="material-symbols-outlined">how_to_reg</span>
 					</p>
-					<p>아이디 : 아무개</p>
+					<p>아이디 : ${uvo.user_id}</p>
 				</div>
 				<div class="infos">
 					<p>
 						<span class="material-symbols-outlined">smartphone</span>
 					</p>
-					<p>번호 : 010-8888-8888</p>
+					<p>번호 : ${uvo.user_phone}</p>
 				</div>
 				<div class="infos">
 					<p>
 						<span class="material-symbols-outlined">alternate_email</span>
 					</p>
-					<p>이메일 : ww1234@naver.com</p>
+					<p>이메일 : ${uvo.user_email}</p>
 				</div>
 				<div class="infos">
 					<p>
 						<span class="material-symbols-outlined">home</span>
 					</p>
-					<p>주소 : 서울특별시 마포구</p>
+					<p>주소 : ${uaddrlist[0].main_addr}</p>
 				</div>
 				<button class="move_btn" onclick="update()">회원정보 수정</button>
 			</div>
@@ -89,7 +95,7 @@
 				<p>배송지 주소</p>
 				<div>
 					<p>배송지 주소1 : </p>
-					<p>서울특별시 마포구 xx동</p>
+					<p>저장된 주소가 없습니다.</p>
 				</div>
 				<div>
 					<p>배송지 주소2 :</p>
