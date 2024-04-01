@@ -27,7 +27,7 @@ public class UserController {
 	
 	@PostMapping("join_ok")
 	public ModelAndView joinOK(UserVO uvo, UserAddrVO uavo, String front_email, String back_email) {
-		ModelAndView mv = new ModelAndView("redirect:home");
+		ModelAndView mv = new ModelAndView("pdh-view/home");
 		uvo.setUser_email(front_email+"@"+back_email);
 		uvo.setUser_pwd(passwordEncoder.encode(uvo.getUser_pwd()));
 		try {
@@ -45,7 +45,7 @@ public class UserController {
 	
 	@PostMapping("login")
 	public ModelAndView login(HttpServletRequest request, UserVO uvo) {
-		ModelAndView mv = new ModelAndView("redirect:home");
+		ModelAndView mv = new ModelAndView("pdh-view/home");
 		UserVO uvo2 = userService.userLogin(uvo.getUser_id());
 		if (uvo2 != null && passwordEncoder.matches(uvo.getUser_pwd(), uvo2.getUser_pwd())) {
 			HttpSession ssu = request.getSession();
@@ -58,6 +58,7 @@ public class UserController {
 			return mv;
 		}else {
 			request.setAttribute("login_false", "false");
+			System.out.println(request.getAttribute("login_false"));
 			return mv;
 		}
 	}
@@ -77,7 +78,7 @@ public class UserController {
 	
 	@GetMapping("logout")
 	public ModelAndView logout(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("redirect:home");
+		ModelAndView mv = new ModelAndView("pdh-view/home");
 		HttpSession ssu = request.getSession();
 		ssu.removeAttribute("ssuvo");
 		return mv;

@@ -95,7 +95,8 @@
 		}
 		
 		// 로그인 실패시
-		let login_false = "${login_false}"
+		let login_false = "${login_false}";
+		console.log(login_false)
 		if (login_false == "false") {
 			alert("아이디 또는 비밀번호가 틀립니다.");
 		}
@@ -119,7 +120,7 @@
 			<span><a href="help" class="icon a_tag">headset_mic</a></span>
 			<span><a href="cart" class="icon a_tag">Shopping_Cart</a></span>
 			<span><a href="wish" class="icon a_tag">Favorite</a></span>
-			<span><a class="icon a_tag" id="login_btn">
+			<span id="login_btn">
 				<c:choose>
 					<c:when test="${ssuvo.login == 'true'}">
 						<a class="icon a_tag">Person

@@ -31,7 +31,7 @@ public class ForestController {
 	
 	// 메인으로 이동
 	@GetMapping("home")
-	public ModelAndView home() {
+	public ModelAndView home(String join_ok, String login_false) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
 		return mv;
 	}
