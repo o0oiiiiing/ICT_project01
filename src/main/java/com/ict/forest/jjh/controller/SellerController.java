@@ -31,13 +31,21 @@ public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	
+	@GetMapping("product_write")
+	public ModelAndView productWrite() {
+		ModelAndView mv = new ModelAndView("seller/product_write");
+		return mv;
+	}
+	
 	@PostMapping("product_insert")
 	public ModelAndView productInsert(HttpServletRequest request, SellerProductVO spvo, SellerProductImgVO spivo) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("pdh-view/home");
 		try {
 			String path = request.getSession().getServletContext().getRealPath("resources/upload");
 			MultipartFile main_img = spivo.getMain_img();
 			MultipartFile[] sub_imgs = spivo.getSub_imgs();
+			HttpSession ssu = request.getSession();
+			SessionUser ssuvo = (SessionUser) ssu.getAttribute("ssuvo");
 			if (main_img.isEmpty()) {
 				spivo.setP_img("");
 			}else {
@@ -49,13 +57,13 @@ public class SellerController {
 				byte[] in = main_img.getBytes();
 				File out = new File(path, f_name);
 				FileCopyUtils.copy(in, out);
-				
-				HttpSession ssu = request.getSession();
-				SessionUser ssuvo = (SessionUser) ssu.getAttribute("ssuvo");
 				spvo.setUser_idx(ssuvo.getUser_idx());
+				spivo.setUser_idx(ssuvo.getUser_idx());
+				System.out.println(spvo.getP_price());
+				System.out.println(spvo.getP_saleprice());
 				spivo.setP_img_type("0");
 				int res_p = sellerService.productInsert(spvo);
-				int res_m = sellerService.productImgInsert(spivo);	
+				int res_m = sellerService.productImgInsert(spivo);
 			}
 			if (sub_imgs!=null) {
 				for (MultipartFile k : sub_imgs) {
@@ -63,16 +71,17 @@ public class SellerController {
 					UUID uuid = UUID.randomUUID();
 					String f_name = uuid.toString()+"_"+k.getOriginalFilename();
 					spivo.setP_img(f_name);
-					
+					spivo.setP_img_type("1");
+					spivo.setUser_idx(ssuvo.getUser_idx());
 					// 파일 업로드(복사)
-					byte[] in = main_img.getBytes();
+					byte[] in = k.getBytes();
 					File out = new File(path, f_name);
 					FileCopyUtils.copy(in, out);
 					
 					int res_m = sellerService.productImgInsert(spivo);
 				}
 			}
-			
+			return mv;
 			
 		} catch (Exception e) {
 			System.out.println(e);

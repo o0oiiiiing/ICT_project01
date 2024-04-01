@@ -10,10 +10,20 @@ public class SellerDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public int productInsert(SellerProductVO spvo) {
+		try {
+			return sqlSessionTemplate.insert("product_table.p_insert", spvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return -1;
 	}
 
 	public int productImgInsert(SellerProductImgVO spivo) {
+		try {
+			return sqlSessionTemplate.insert("product_table.p_img_insert", spivo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return -1;
 	}
 	

@@ -1,7 +1,7 @@
 package com.ict.forest.jjh.dao;
 
 public class SellerProductVO {
-	private String p_idx, user_idx, p_type, p_brand, p_volume, p_price, p_saleprice, buy_rate, total_quatity, regdate;
+	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_saleprice, buy_rate, total_quatity, regdate;
 
 	public String getP_idx() {
 		return p_idx;
@@ -17,6 +17,14 @@ public class SellerProductVO {
 
 	public void setUser_idx(String user_idx) {
 		this.user_idx = user_idx;
+	}
+
+	public String getP_name() {
+		return p_name;
+	}
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 
 	public String getP_type() {
@@ -82,5 +90,6 @@ public class SellerProductVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
 	
 }

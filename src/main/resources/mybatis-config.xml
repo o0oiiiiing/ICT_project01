@@ -10,8 +10,11 @@
 	<typeAliases>
 		<typeAlias type="com.ict.forest.jjh.dao.UserVO" alias="uvo"/>
 		<typeAlias type="com.ict.forest.jjh.dao.UserAddrVO" alias="uavo"/>
+		<typeAlias type="com.ict.forest.jjh.dao.SellerProductVO" alias="spvo"/>
+		<typeAlias type="com.ict.forest.jjh.dao.SellerProductImgVO" alias="spivo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/user-mapper.xml" />
+		<mapper resource="mappers/seller-mapper.xml" />
 	</mappers>
 </configuration>
