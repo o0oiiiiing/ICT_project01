@@ -18,9 +18,9 @@ public class ProductDAO {
 		return -1;
 	}
 
-	public int productImgInsert(ProductImgVO pivo) {
+	public int productImgInsert(ProductSubImgVO pivo) {
 		try {
-			return sqlSessionTemplate.insert("product_table.p_img_insert", pivo);
+			return sqlSessionTemplate.insert("product_table.p_sub_img_insert", pivo);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

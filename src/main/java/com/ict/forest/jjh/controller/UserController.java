@@ -26,9 +26,8 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping("join_ok")
-	public ModelAndView joinOK(UserVO uvo, UserAddrVO uavo, String front_email, String back_email) {
+	public ModelAndView joinOK(UserVO uvo, UserAddrVO uavo) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
-		uvo.setUser_email(front_email+"@"+back_email);
 		uvo.setUser_pwd(passwordEncoder.encode(uvo.getUser_pwd()));
 		try {
 			int res1 = userService.userJoin(uvo);
@@ -81,6 +80,34 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
 		HttpSession session = request.getSession();
 		session.removeAttribute("ssuvo");
+		return mv;
+	}
+	
+	// 장바구니 이동
+	@GetMapping("cart")
+	public ModelAndView cart() {
+		ModelAndView mv = new ModelAndView("jjh-view/cart");
+		return mv;
+	}
+	
+	// 위시리스트 이동
+	@GetMapping("wish")
+	public ModelAndView wish() {
+		ModelAndView mv = new ModelAndView("jjh-view/wish");
+		return mv;
+	}
+	
+	// 상세 상품페이지 이동 이동
+	@GetMapping("detailproduct")
+	public ModelAndView detailproduct() {
+		ModelAndView mv = new ModelAndView("jjh-view/detailproduct");
+		return mv;
+	}
+	
+	// 회원가입 페이지 이동
+	@GetMapping("join")
+	public ModelAndView join() {
+		ModelAndView mv = new ModelAndView("kch-view/join");
 		return mv;
 	}
 	

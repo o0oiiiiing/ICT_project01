@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.ProductDAO;
-import com.ict.forest.jjh.dao.ProductImgVO;
+import com.ict.forest.jjh.dao.ProductSubImgVO;
 import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.jjh.service.ProductService;
 import com.ict.forest.jjh.service.UserService;
@@ -38,39 +38,34 @@ public class ProductController {
 	}
 	
 	@PostMapping("product_insert")
-	public ModelAndView productInsert(HttpServletRequest request, ProductVO pvo, ProductImgVO pivo) {
+	public ModelAndView productInsert(HttpServletRequest request, ProductVO pvo, ProductSubImgVO pivo) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
 		try {
 			String path = request.getSession().getServletContext().getRealPath("resources/upload");
-			MultipartFile main_img = pivo.getMain_img();
+			MultipartFile main_img = pvo.getMain_img();
 			MultipartFile[] sub_imgs = pivo.getSub_imgs();
 			HttpSession session = request.getSession();
 			SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 			if (main_img.isEmpty()) {
-				pivo.setP_img("");
+				pvo.setP_main_img("");
 			}else {
 				// 파일 이름 지정
 				UUID uuid = UUID.randomUUID();
 				String f_name = uuid.toString()+"_"+main_img.getOriginalFilename();
-				pivo.setP_img(f_name);
 				pvo.setP_main_img(f_name);
 				// 파일 업로드(복사)
 				byte[] in = main_img.getBytes();
 				File out = new File(path, f_name);
 				FileCopyUtils.copy(in, out);
 				pvo.setUser_idx(ssuvo.getUser_idx());
-				pivo.setUser_idx(ssuvo.getUser_idx());
-				pivo.setP_img_type("0");
 				int res_p = productService.productInsert(pvo);
-				int res_m = productService.productImgInsert(pivo);
 			}
-			if (sub_imgs != null) {
+			if (sub_imgs.length > 0) {
 				for (MultipartFile k : sub_imgs) {
 					// 파일 이름 지정
 					UUID uuid = UUID.randomUUID();
 					String f_name = uuid.toString()+"_"+k.getOriginalFilename();
 					pivo.setP_img(f_name);
-					pivo.setP_img_type("1");
 					pivo.setUser_idx(ssuvo.getUser_idx());
 					// 파일 업로드(복사)
 					byte[] in = k.getBytes();

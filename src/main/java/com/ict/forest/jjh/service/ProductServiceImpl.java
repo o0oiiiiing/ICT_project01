@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ict.forest.jjh.dao.ProductDAO;
-import com.ict.forest.jjh.dao.ProductImgVO;
+import com.ict.forest.jjh.dao.ProductSubImgVO;
 import com.ict.forest.jjh.dao.ProductVO;
 
 @Service
@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int productImgInsert(ProductImgVO pivo) {
+	public int productImgInsert(ProductSubImgVO pivo) {
 		return productDAO.productImgInsert(pivo);
 	}
 	

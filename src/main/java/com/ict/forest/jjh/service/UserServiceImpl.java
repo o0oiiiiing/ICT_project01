@@ -16,8 +16,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int userJoin(UserVO uvo) {
-		System.out.println(uvo.getUser_email());
-		System.out.println(uvo.getUser_type());
 		return userDAO.userJoin(uvo);
 	}
 	

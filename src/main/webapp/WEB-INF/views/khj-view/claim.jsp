@@ -16,9 +16,9 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div id="s_menu">
-			<a href="">QnA</a>
-			<a href="">FaQ</a>
-			<a href="">Claim</a>
+			<a href="qna">QnA</a>
+			<a href="faq">FaQ</a>
+			<a href="clail">Claim</a>
 	</div>
 	<div id="s_display"><p>Claim(s_menu 누르면 창 바뀌고 누른거 표시)</p></div>
 	<div id="claim_block">

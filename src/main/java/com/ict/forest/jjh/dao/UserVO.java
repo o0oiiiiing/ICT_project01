@@ -1,7 +1,7 @@
 package com.ict.forest.jjh.dao;
 
 public class UserVO {
-	private String user_idx, user_name, user_id, user_pwd, user_email, user_phone, user_type, user_point, user_regdate;
+	private String user_idx, user_name, user_id, user_pwd, user_f_email, user_b_email,  user_phone, user_type, user_point, user_regdate;
 
 	public String getUser_idx() {
 		return user_idx;
@@ -34,13 +34,20 @@ public class UserVO {
 	public void setUser_pwd(String user_pwd) {
 		this.user_pwd = user_pwd;
 	}
-
-	public String getUser_email() {
-		return user_email;
+	public String getUser_f_email() {
+		return user_f_email;
 	}
 
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUser_f_email(String user_f_email) {
+		this.user_f_email = user_f_email;
+	}
+
+	public String getUser_b_email() {
+		return user_b_email;
+	}
+
+	public void setUser_b_email(String user_b_email) {
+		this.user_b_email = user_b_email;
 	}
 
 	public String getUser_phone() {

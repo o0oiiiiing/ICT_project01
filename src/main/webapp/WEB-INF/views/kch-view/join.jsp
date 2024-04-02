@@ -65,26 +65,19 @@ function sample6_execDaumPostcode() {
             	  }
         }
     }
-
-	//이메일 자동완성
-	function email_change() {
-	// 도메인 직접 입력 or domain option 선택
-	const domainListEl = document.querySelector('#domain-list')
-	const domainInputEl = document.querySelector('#domain-txt')
-	// select 옵션 변경 시
-	domainListEl.addEventListener('change', (event) => {
-	  // option에 있는 도메인 선택 시
-	  if(event.target.value !== "type") {
-	    // 선택한 도메인을 input에 입력하고 disabled
-	    domainInputEl.value = event.target.value
-	    domainInputEl.disabled = true
-	  } else { // 직접 입력 시
-	    // input 내용 초기화 & 입력 가능하도록 변경
-	    domainInputEl.value = ""
-	    domainInputEl.disabled = false
-	  }
+    
+    $(document).ready(function() {
+		$("#domain-list").change(function() {
+			if ($(this).find("option:selected").val()!="type") {
+				$("#domain-txt").val($(this).find("option:selected").val());
+				$("#domain-txt").prop("disabled", "true");
+			}
+			else {
+				$("#domain-txt").removeAttr("disabled");
+				$("#domain-txt").val("");
+			}
+		})
 	})
-	}
 </script>
 </head>
 <body>
@@ -122,7 +115,7 @@ function sample6_execDaumPostcode() {
 						<td class="menu">이메일</td>
 						<td class="userin"><input type="text" name="front_email"> 
 						<span class="a">@</span> <input type="text" id="domain-txt" name="back_email"> 
-							<select	name="mailsel" id="domain-list" onchange="email_change()">
+							<select	name="mailsel" id="domain-list">
 								<option value="type" selected >직접입력</option>
 								<option value="naver.com">naver.com</option>
 								<option value="gmail.com">gmail.com</option>

@@ -39,7 +39,14 @@ public class KchController {
 		mv.addObject("uaddrlist", uaddrlist);
 		return mv;
 	}
-		
+	
+	// 아이디 및 비번 찾기 이동
+	@GetMapping("find")
+	public ModelAndView find() {
+		ModelAndView mv = new ModelAndView("kch-view/find");
+		return mv;
+	}
+	
 	
 	@PostMapping("find_user_id")
 	public ModelAndView findUserId() {
