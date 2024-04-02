@@ -124,12 +124,12 @@
 				<c:choose>
 					<c:when test="${ssuvo.login == 'true'}">
 						<a class="icon a_tag">Person
-						<span style="font-size: 12px;">${ssuvo.user_id}님 환영합니다.</span>
+						<span class="login-state">${ssuvo.user_id}님 환영합니다.</span>
 						</a>
 					</c:when>
 					<c:otherwise>
 						<a class="icon a_tag">Person
-						<span style="font-size: 12px;">로그인/회원가입</span>
+						<span class="login-state">로그인 | 회원가입</span>
 						</a>
 					</c:otherwise>
 				</c:choose>
