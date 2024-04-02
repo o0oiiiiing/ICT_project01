@@ -2,8 +2,12 @@ package com.ict.forest.jjh.dao;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class SellerProductImgVO {
+public class ProductImgVO {
 	private String p_img_idx, p_idx, user_idx, p_img, p_img_type;
+	private MultipartFile main_img;
+	private MultipartFile[] sub_imgs;
+	
+	
 	public String getP_img_type() {
 		return p_img_type;
 	}
@@ -16,10 +20,6 @@ public class SellerProductImgVO {
 	public void setP_img(String p_img) {
 		this.p_img = p_img;
 	}
-	private MultipartFile main_img;
-	private MultipartFile[] sub_imgs;
-	
-	
 	public String getP_img_idx() {
 		return p_img_idx;
 	}

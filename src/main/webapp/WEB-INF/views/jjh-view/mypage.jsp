@@ -37,8 +37,8 @@
 	function sell_list(){
 		location.href="sell_list"
 	}
-	function product_insert(){
-		location.href="product_insert"
+	function product_write(){
+		location.href="product_write"
 	}
 </script>
 </head>
@@ -52,7 +52,7 @@
 			<c:choose>
 				<c:when test="${ssuvo.user_type==0}">
 					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
-					<button class="menu_btn" onclick="product_insert()">상품 등록</button>
+					<button class="menu_btn" onclick="product_write()">상품 등록</button>
 				</c:when>
 			</c:choose>
 		</article>

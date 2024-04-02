@@ -17,62 +17,69 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
-import com.ict.forest.jjh.dao.SellerDAO;
-import com.ict.forest.jjh.dao.SellerProductImgVO;
-import com.ict.forest.jjh.dao.SellerProductVO;
-import com.ict.forest.jjh.service.SellerService;
+import com.ict.forest.jjh.dao.ProductDAO;
+import com.ict.forest.jjh.dao.ProductImgVO;
+import com.ict.forest.jjh.dao.ProductVO;
+import com.ict.forest.jjh.service.ProductService;
 import com.ict.forest.jjh.service.UserService;
 import com.jcraft.jsch.Session;
 
 @Controller
-public class SellerController {
+public class ProductController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
-	private SellerService sellerService;
+	private ProductService productService;
+	
+	@GetMapping("product_write")
+	public ModelAndView productWrite() {
+		ModelAndView mv = new ModelAndView("seller/product_write");
+		return mv;
+	}
 	
 	@PostMapping("product_insert")
-	public ModelAndView productInsert(HttpServletRequest request, SellerProductVO spvo, SellerProductImgVO spivo) {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView productInsert(HttpServletRequest request, ProductVO pvo, ProductImgVO pivo) {
+		ModelAndView mv = new ModelAndView("pdh-view/home");
 		try {
 			String path = request.getSession().getServletContext().getRealPath("resources/upload");
-			MultipartFile main_img = spivo.getMain_img();
-			MultipartFile[] sub_imgs = spivo.getSub_imgs();
+			MultipartFile main_img = pivo.getMain_img();
+			MultipartFile[] sub_imgs = pivo.getSub_imgs();
+			HttpSession session = request.getSession();
+			SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 			if (main_img.isEmpty()) {
-				spivo.setP_img("");
+				pivo.setP_img("");
 			}else {
 				// 파일 이름 지정
 				UUID uuid = UUID.randomUUID();
 				String f_name = uuid.toString()+"_"+main_img.getOriginalFilename();
-				spivo.setP_img(f_name);
+				pivo.setP_img(f_name);
 				// 파일 업로드(복사)
 				byte[] in = main_img.getBytes();
 				File out = new File(path, f_name);
 				FileCopyUtils.copy(in, out);
-				
-				HttpSession ssu = request.getSession();
-				SessionUser ssuvo = (SessionUser) ssu.getAttribute("ssuvo");
-				spvo.setUser_idx(ssuvo.getUser_idx());
-				spivo.setP_img_type("0");
-				int res_p = sellerService.productInsert(spvo);
-				int res_m = sellerService.productImgInsert(spivo);	
+				pvo.setUser_idx(ssuvo.getUser_idx());
+				pivo.setUser_idx(ssuvo.getUser_idx());
+				pivo.setP_img_type("0");
+				int res_p = productService.productInsert(pvo);
+				int res_m = productService.productImgInsert(pivo);
 			}
 			if (sub_imgs!=null) {
 				for (MultipartFile k : sub_imgs) {
 					// 파일 이름 지정
 					UUID uuid = UUID.randomUUID();
 					String f_name = uuid.toString()+"_"+k.getOriginalFilename();
-					spivo.setP_img(f_name);
-					
+					pivo.setP_img(f_name);
+					pivo.setP_img_type("1");
+					pivo.setUser_idx(ssuvo.getUser_idx());
 					// 파일 업로드(복사)
-					byte[] in = main_img.getBytes();
+					byte[] in = k.getBytes();
 					File out = new File(path, f_name);
 					FileCopyUtils.copy(in, out);
 					
-					int res_m = sellerService.productImgInsert(spivo);
+					int res_m = productService.productImgInsert(pivo);
 				}
 			}
-			
+			return mv;
 			
 		} catch (Exception e) {
 			System.out.println(e);
