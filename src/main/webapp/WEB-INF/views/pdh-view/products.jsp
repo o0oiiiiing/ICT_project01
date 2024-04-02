@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +9,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>products | forest</title>
 <!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!-- 구글 아이콘 -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+	rel="stylesheet" />
 
 <!-- 폰트 링크 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap"
+	rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+	rel="stylesheet">
 
 <!-- CSS 파일 -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
@@ -29,8 +39,8 @@
 </head>
 <body>
 	<!-- 메뉴바 -->
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
 	<!-- 상품 리스트 -->
 	<main>
 		<div class="product-category judson-bold">perfume</div>
@@ -42,114 +52,24 @@
 			</select>
 		</div>
 		<ul class="product-wrapper">
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/ANOTHER13_15ml.jpg"
-				alt="ANOTHER13_15ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>ANOTHER 13</P>
-					<P>15ml</P>
-					<P>132,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/ANOTHER13_100ml.jpg"
-				alt="ANOTHER13_100ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>ANOTHER 13</P>
-					<P>100ml</P>
-					<P>440,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/ANOTHER13_500ml.jpg"
-				alt="ANOTHER13_500ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>ANOTHER 13</P>
-					<P>500ml</P>
-					<P>1,500,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-				alt="LAVANDE31_15ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>LAVANDE 31</P>
-					<P>15ml</P>
-					<P>132,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/LAVANDE31_100ml.jpg"
-				alt="LAVANDE31_100ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>LAVANDE 31</P>
-					<P>100ml</P>
-					<P>440,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/LAVANDE31_500ml.jpg"
-				alt="LAVANDE31_500ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>LAVANDE 31</P>
-					<P>500ml</P>
-					<P>1,500,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/SANTAL33_15ml.jpg"
-				alt="SANTAL33_15ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>SANTAL 33</P>
-					<P>15ml</P>
-					<P>132,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/SANTAL33_100ml.jpg"
-				alt="SANTAL33_100ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>SANTAL 33</P>
-					<P>100ml</P>
-					<P>440,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/SANTAL33_500ml.jpg"
-				alt="SANTAL33_500ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>SANTAL 33</P>
-					<P>500ml</P>
-					<P>1,500,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/THEMATCHA26_15ml.jpg"
-				alt="THEMATCHA26_15ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>THÉ MATCHA 26</P>
-					<P>15ml</P>
-					<P>132,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/THEMATCHA26_100ml.jpg"
-				alt="THEMATCHA26_100ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>THÉ MATCHA 26</P>
-					<P>100ml</P>
-					<P>440,000₩</P>
-				</div></li>
-			<li class="product"><img class="product-thumbnail"
-				src="resources/pdh-image/LeLabo/THEMATCHA26_500ml.jpg"
-				alt="THEMATCHA26_500ml" />
-				<div class="product-brand">LE LABO</div>
-				<div class="product-information">
-					<P>THÉ MATCHA 26</P>
-					<P>500ml</P>
-					<P>1,500,000₩</P>
-				</div></li>
+			<c:choose>
+				<c:when test="${empty products_list}">
+					<p>상품이 존재하지 않습니다.</p>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="k" items="${products_list}">
+							<li class="product">
+								<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
+								<div class="product-brand">${k.p_brand}</div>
+								<div class="product-information">
+									<P>${k.p_name}</P>
+									<P>${k.p_volume}ml</P>
+									<P>${k.p_price}</P>
+								</div>
+							</li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</main>
 

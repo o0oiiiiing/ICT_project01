@@ -57,7 +57,6 @@
 </div>
 <div id="hand_body">
 	<form action="product_insert" method="post" enctype="multipart/form-data">
-		<div id="perfume">
 		<label for="p_name">상품명 : </label>
 		<input type="text" id="p_name" name="p_name">
 		<br>
@@ -86,7 +85,6 @@
 </div>
 <div id="home_fragrance">
 	<form action="product_insert" method="post" enctype="multipart/form-data">
-		<div id="perfume">
 		<label for="p_name">상품명 : </label>
 		<input type="text" id="p_name" name="p_name">
 		<br>

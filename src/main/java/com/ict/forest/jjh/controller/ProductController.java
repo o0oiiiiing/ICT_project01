@@ -53,6 +53,7 @@ public class ProductController {
 				UUID uuid = UUID.randomUUID();
 				String f_name = uuid.toString()+"_"+main_img.getOriginalFilename();
 				pivo.setP_img(f_name);
+				pvo.setP_main_img(f_name);
 				// 파일 업로드(복사)
 				byte[] in = main_img.getBytes();
 				File out = new File(path, f_name);

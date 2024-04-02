@@ -18,6 +18,11 @@ html {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
+.login-state {
+	font-size: 13px;
+	font-family: 'NanumSquareLight';
+}
+
 /* 헤더 영역 */
 header {
 	position: fixed;

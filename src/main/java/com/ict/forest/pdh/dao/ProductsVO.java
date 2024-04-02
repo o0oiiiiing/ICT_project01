@@ -1,14 +1,14 @@
-package com.ict.forest.jjh.dao;
+package com.ict.forest.pdh.dao;
 
-public class ProductVO {
-	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, p_main_img, regdate;
+import org.springframework.web.multipart.MultipartFile;
+
+public class ProductsVO {
+	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, regdate, p_main_img;
+	
+	private MultipartFile file_main;
 
 	public String getP_idx() {
 		return p_idx;
-	}
-
-	public void setP_idx(String p_idx) {
-		this.p_idx = p_idx;
 	}
 
 	public String getP_main_img() {
@@ -17,6 +17,10 @@ public class ProductVO {
 
 	public void setP_main_img(String p_main_img) {
 		this.p_main_img = p_main_img;
+	}
+
+	public void setP_idx(String p_idx) {
+		this.p_idx = p_idx;
 	}
 
 	public String getUser_idx() {
@@ -91,5 +95,11 @@ public class ProductVO {
 		this.regdate = regdate;
 	}
 
-	
+	public MultipartFile getFile_main() {
+		return file_main;
+	}
+
+	public void setFile_main(MultipartFile file_main) {
+		this.file_main = file_main;
+	}
 }
