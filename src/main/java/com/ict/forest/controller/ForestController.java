@@ -36,13 +36,6 @@ public class ForestController {
 		return mv;
 	}
 	
-	// 전체 상품페이지 이동 이동
-	@GetMapping("products")
-	public ModelAndView products() {
-		ModelAndView mv = new ModelAndView("pdh-view/products");
-		return mv;
-	}
-	
 	// 장바구니 이동
 	@GetMapping("cart")
 	public ModelAndView cart() {

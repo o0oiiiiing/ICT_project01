@@ -27,23 +27,22 @@
 <link rel="stylesheet" href="resources/pdh-css/home.css">
 <script type="text/javascript" defer>
 	// 배경 이미지 변경 스크립트
-		window.onload = function() {
-			var images = [ 'background_01.jpg', 'background_02.jpg',
-					'background_03.jpg' ]; // 변경할 배경 이미지들의 파일명
-			var index = 0;
+	window.onload = function() {
+		var images = [ 'background_01.jpg', 'background_02.jpg', 'background_03.jpg' ]; // 변경할 배경 이미지들의 파일명
+		var index = 0;
 	
-			function changeBackgroundImage() {
-				var url = 'url("resources/pdh-image/' + images[index] + '")';
-				document.documentElement.style.backgroundImage = url;
-				index = (index + 1) % images.length; // 다음 이미지 인덱스 계산
-			}
+		function changeBackgroundImage() {
+			var url = 'url("resources/pdh-image/' + images[index] + '")';
+			document.documentElement.style.backgroundImage = url;
+			index = (index + 1) % images.length; // 다음 이미지 인덱스 계산
+		}
 	
-			changeBackgroundImage(); // 페이지 로드 시 초기 배경 이미지 설정
+		changeBackgroundImage(); // 페이지 로드 시 초기 배경 이미지 설정
 	
-			// 5초마다 배경 이미지 변경
-			setInterval(changeBackgroundImage, 4000);
-		};
-
+		// 5초마다 배경 이미지 변경
+		setInterval(changeBackgroundImage, 4000);
+	};
+	
 	$(document).ready(function() {
 		// 마우스 휠 이벤트 핸들러 등록
 		$(window).on('scroll', function windowScrollHandler() {
@@ -103,6 +102,19 @@
 		
 		
 	});
+</script>
+<script type="text/javascript">
+function products_list_perfume() {
+	location.href = "products?p_type=perfume";
+}
+
+function products_list_handBody() {
+	location.href = "products?p_type=hand_body";
+}
+
+function products_list_homeFragrance() {
+	location.href = "products?p_type=home_fragrance";
+}
 </script>
 </head>
 <body>
@@ -181,7 +193,7 @@
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
-			onclick="location.href='products'">
+			onclick="products_list_perfume()">
 	</div>
 	<div class="handBody-nav-list__open">
 		<ul class="handBody-nav-list__category">
@@ -204,7 +216,7 @@
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
-			onclick="location.href='products'">
+			onclick="products_list_handBody()">
 	</div>
 	<div class="homeFragrance-nav-list__open">
 		<ul class="homeFragrance-nav-list__category">
@@ -227,7 +239,7 @@
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
-			onclick="location.href='products'">
+			onclick="products_list_homeFragrance()">
 	</div>
 
 	<div class="middle-title judson-bold">scent</div>
