@@ -4,11 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="product_table">
-	<insert id="p_insert" parameterType="spvo">
+	<insert id="p_insert" parameterType="pvo">
 	    INSERT INTO product_table (user_idx, p_name, p_type, p_brand, p_volume, p_price, p_saleprice, buy_rate, total_quatity, regdate) 
 	    VALUES (#{user_idx}, #{p_name},#{p_type},#{p_brand},#{p_volume},#{p_price},#{p_saleprice},0,#{total_quatity},sysdate())
 	</insert>
-	<insert id="p_img_insert" parameterType="spivo">
+	<insert id="p_img_insert" parameterType="pivo">
 		<selectKey keyProperty="p_idx" resultType="String" order="BEFORE">
 			SELECT (IFNULL(MAX(p_idx),0)) as p_idx FROM product_table
 	    </selectKey>

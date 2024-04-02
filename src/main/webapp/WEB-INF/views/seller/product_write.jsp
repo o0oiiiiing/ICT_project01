@@ -44,9 +44,6 @@
 		<label for="p_price">상품가격 : </label>
 		<input type="number" id="p_price" name="p_price">
 		<br>
-		<label for="p_saleprice">할인가격 : </label>
-		<input type="text" id="p_saleprice" name="p_saleprice">
-		<br>
 		<label for="total_quatity">총수량 : </label>
 		<input type="text" id="total_quatity" name="total_quatity">
 		<br>
@@ -75,9 +72,6 @@
 		<input type="hidden" name="p_volume" value="free">
 		<label for="p_price">상품가격 : </label>
 		<input type="number" id="p_price" name="p_price">
-		<br>
-		<label for="p_saleprice">할인가격 : </label>
-		<input type="text" id="p_saleprice" name="p_saleprice">
 		<br>
 		<label for="total_quatity">총수량 : </label>
 		<input type="text" id="total_quatity" name="total_quatity">
@@ -108,9 +102,6 @@
 		<input type="hidden" name="p_volume" value="free">
 		<label for="p_price">상품가격 : </label>
 		<input type="number" id="p_price" name="p_price">
-		<br>
-		<label for="p_saleprice">할인가격 : </label>
-		<input type="text" id="p_saleprice" name="p_saleprice">
 		<br>
 		<label for="total_quatity">총수량 : </label>
 		<input type="text" id="total_quatity" name="total_quatity">

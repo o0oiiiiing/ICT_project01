@@ -48,13 +48,13 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
 		UserVO uvo2 = userService.userLogin(uvo.getUser_id());
 		if (uvo2 != null && passwordEncoder.matches(uvo.getUser_pwd(), uvo2.getUser_pwd())) {
-			HttpSession ssu = request.getSession();
+			HttpSession session = request.getSession();
 			SessionUser ssuvo = new SessionUser();
 			ssuvo.setLogin("true");
 			ssuvo.setUser_type(uvo2.getUser_type());
 			ssuvo.setUser_idx(uvo2.getUser_idx());
 			ssuvo.setUser_id(uvo2.getUser_id());
-			ssu.setAttribute("ssuvo", ssuvo);
+			session.setAttribute("ssuvo", ssuvo);
 			return mv;
 		}else {
 			request.setAttribute("login_false", "false");
@@ -67,8 +67,8 @@ public class UserController {
 	@GetMapping("mypage")
 	public ModelAndView mypage(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("jjh-view/mypage");
-		HttpSession ssu = request.getSession();
-		SessionUser ssuvo = (SessionUser) ssu.getAttribute("ssuvo");
+		HttpSession session = request.getSession();
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		UserVO uvo = userService.userDetail(ssuvo.getUser_idx());
 		List<UserAddrVO> uaddrlist = userService.userAddr(ssuvo.getUser_idx());
 		mv.addObject("uvo", uvo);
@@ -79,8 +79,8 @@ public class UserController {
 	@GetMapping("logout")
 	public ModelAndView logout(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
-		HttpSession ssu = request.getSession();
-		ssu.removeAttribute("ssuvo");
+		HttpSession session = request.getSession();
+		session.removeAttribute("ssuvo");
 		return mv;
 	}
 	
