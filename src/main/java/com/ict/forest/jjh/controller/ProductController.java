@@ -63,7 +63,7 @@ public class ProductController {
 				int res_p = productService.productInsert(pvo);
 				int res_m = productService.productImgInsert(pivo);
 			}
-			if (sub_imgs!=null) {
+			if (sub_imgs != null) {
 				for (MultipartFile k : sub_imgs) {
 					// 파일 이름 지정
 					UUID uuid = UUID.randomUUID();

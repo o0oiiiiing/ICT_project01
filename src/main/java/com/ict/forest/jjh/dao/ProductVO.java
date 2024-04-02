@@ -1,8 +1,9 @@
 package com.ict.forest.jjh.dao;
 
 public class ProductVO {
-	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, regdate;
-
+	private String p_idx, user_idx, p_name, p_type, p_brand, 
+	p_volume, p_price, buy_rate, total_quatity, wish_count, cart_count, regdate;
+	
 	public String getP_idx() {
 		return p_idx;
 	}
