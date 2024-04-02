@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
 
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
@@ -21,7 +24,7 @@
 				<hr>
 				<span>회원가입시 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인할 수 있습니다.</span>
 			</div>
-			<form action="" class="f_form">
+			<form action="find_user_id" class="f_form">
 				<div class="f_ep">
 					<input type="radio" name="f_id">이메일
 					<input type="radio" name="f_id">휴대폰
@@ -35,7 +38,7 @@
 						 <input type="text" class="in_text" id="name_email">
 				</div>
 				<div class="f_ir">
-					<input type="button" value="아이디 찾기" onclick="location='findresult'">&nbsp;
+					<input type="submit" value="아이디 찾기" >&nbsp;
 					<input type="button" value="취소" onclick="location='login.jsp'">
 				</div>
 			</form>

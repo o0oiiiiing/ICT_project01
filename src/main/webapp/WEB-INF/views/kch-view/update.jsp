@@ -86,10 +86,16 @@ function sample6_execDaumPostcode() {
 	  }
 	})
 	}
+	
+	function info_update_ok(f){
+		f.action="info_update_ok";
+		f.submit();
+	}
+	
 </script>
 </head>
 <body>
-	<form method="post" action="">
+	<form method="post" >
 		<div class="container">
 			<div class="insert">
 
@@ -99,11 +105,15 @@ function sample6_execDaumPostcode() {
 					</caption>
 					<tr>
 						<td class="menu">이름</td>
-						<td class="userin"></td>
+						<td class="userin"><input type="text" name="user_name" maxlength="5" value="${uvo.user_name}"></td>
 					</tr>
 					<tr>
 						<td class="menu">아이디</td>
-						<td class="userin"></td>
+						<td class="userin"><input type="text" name="user_id" maxlength="10" value="${uvo.user_id}"></td>
+					</tr>
+					<tr>
+						<td class="menu">휴대폰 번호</td>
+						<td class="userin"><input type="text" name="user_phone" value="${uvo.user_phone}"></td>
 					</tr>
 					<tr>
 						<td class="menu">비밀번호</td>
@@ -118,7 +128,7 @@ function sample6_execDaumPostcode() {
 					<tr>
 						<td class="menu">이메일</td>
 						<td class="userin"><input type="text" name="mail"> 
-						<span class="a">@</span> <input type="text" id="domain-txt" name="email"> 
+						<span class="a">@</span> <input type="text" id="domain-txt" name="email" value="${uvo.user_email}"> 
 							<select	name="mailsel" id="domain-list" onchange="email_change()">
 								<option value="type" selected >직접입력</option>
 								<option value="naver.com">naver.com</option>
@@ -130,11 +140,11 @@ function sample6_execDaumPostcode() {
 					<tr id="addr">
 						<td class="menu">주소</td>
 						<td class="userin" id="addr-in">
-							<input class="addr-box" type="text" id="sample6_postcode" placeholder="우편번호"> 
+							<input class="addr-box" type="text" id="sample6_postcode" value="${uaddrlist[0].zip_code}"> 
 							<input class="addr-box" class="but3" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input class="addr-box" type="text" id="sample6_address" placeholder="주소"><br>
-							<input class="addr-box" type="text" id="sample6_detailAddress" placeholder="상세주소">
-							<input class="addr-box" type="text" id="sample6_extraAddress" placeholder="참고항목">
+							<input class="addr-box" type="text" id="sample6_address" value="${uaddrlist[0].main_addr}"><br>
+							<input class="addr-box" type="text" id="sample6_detailAddress" value="${uaddrlist[0].detail_addr}">
+							<input class="addr-box" type="text" id="sample6_extraAddress" value="${uaddrlist[0].ex_addr}">
 						</td>
 					</tr>
 				</table>
@@ -142,7 +152,7 @@ function sample6_execDaumPostcode() {
 			</div>
 
 			<div class="create">
-				<input class="but4" type="submit" value="수정하기">
+				<input class="but4" type="button" value="수정하기" onclick="info_update_ok(this.form)">
 				<input class="but5" type="button" value="취소하기" onclick="location.href='mypage'"> 
 
 			</div>

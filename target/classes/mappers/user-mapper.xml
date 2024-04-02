@@ -26,6 +26,7 @@
 	<select id="user_addr" parameterType="String" resultType="uavo">
 		select * from user_addr_table where user_idx = #{user_idx} order by addr_type desc
 	</select>
+	
 </mapper>
 
 
