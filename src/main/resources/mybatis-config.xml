@@ -13,6 +13,7 @@
 		<typeAlias type="com.ict.forest.jjh.dao.ProductVO" alias="pvo"/>
 		<typeAlias type="com.ict.forest.jjh.dao.ProductImgVO" alias="pivo"/>
 		<typeAlias type="com.ict.forest.pdh.dao.ProductsVO" alias="ProductsVO"/>
+		<typeAlias type="com.ict.forest.pdh.dao.PagingVO" alias="PagingVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/user-mapper.xml" />
