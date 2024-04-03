@@ -43,7 +43,17 @@
 
 	<!-- 상품 리스트 -->
 	<main>
-		<div class="product-category judson-bold">perfume</div>
+		<c:choose>
+			<c:when test="${p_type == 'perfume'}">
+				<div class="product-category judson-bold">perfume</div>
+			</c:when>
+			<c:when test="${p_type == 'hand_body'}">
+				<div class="product-category judson-bold">hand&body</div>
+			</c:when>
+			<c:otherwise>
+					<div class="product-category judson-bold">home fragrance</div>
+			</c:otherwise>
+		</c:choose>
 		<div class="select-box">
 			<select class="select">
 				<option value="alphabetical-order">이름순</option>
@@ -56,7 +66,7 @@
 				<c:when test="${empty products_list}">
 					<p>상품이 존재하지 않습니다.</p>
 				</c:when>
-				<c:otherwise>
+				<c:when test="${p_type == 'perfume'}">
 					<c:forEach var="k" items="${products_list}">
 							<li class="product">
 								<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
@@ -64,14 +74,65 @@
 								<div class="product-information">
 									<P>${k.p_name}</P>
 									<P>${k.p_volume}ml</P>
-									<P>${k.p_price}</P>
+									<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩</P>
 								</div>
 							</li>
-					</c:forEach>
+						</c:forEach>
+				</c:when>
+				<c:otherwise>
+						<c:forEach var="k" items="${products_list}">
+								<li class="product">
+									<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
+									<div class="product-brand">${k.p_brand}</div>
+									<div class="product-information">
+										<P>${k.p_name}</P>
+										<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩<</P>
+									</div>
+								</li>
+						</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</ul>
 	</main>
+
+	<ol class="">
+		<!-- 이전 버튼 -->
+		<c:choose>
+			<c:when test="${paging.beginBlock <= paging.pagePerBlock}">
+				<li class="disable">이전으로</li>
+			</c:when>
+			<c:otherwise>
+				<li><a
+					href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}">이전으로</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+
+		<!-- 페이지번호들 -->
+		<c:forEach begin="${paging.beginBlock}" end="${paging.endBlock}"
+			step="1" var="k">
+			<c:choose>
+				<c:when test="${k == paging.nowPage}">
+					<li class="now">${k}</li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="products_list?cPage=${k}">${k}</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<!-- 이후 버튼 -->
+		<c:choose>
+			<c:when test="${paging.endBlock <= paging.totalPage}">
+				<li class="disable">다음으로</li>
+			</c:when>
+			<c:otherwise>
+				<li><a
+					href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}">다음으로</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+	</ol>
 
 	<div>
 		<button id="scrollToTopButton">

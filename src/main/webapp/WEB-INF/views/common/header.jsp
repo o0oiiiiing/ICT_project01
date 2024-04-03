@@ -48,6 +48,19 @@
 		
 	});
 </script>
+<script type="text/javascript">
+	function products_list_perfume() {
+		location.href = "products_list?p_type=perfume";
+	}
+	
+	function products_list_handBody() {
+		location.href = "products_list?p_type=hand_body";
+	}
+	
+	function products_list_homeFragrance() {
+		location.href = "products_list?p_type=home_fragrance";
+	}
+</script>
 </head>
 <body>
 	<div id="search-page">
@@ -126,7 +139,7 @@
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
-			onclick="location.href='products'">
+			onclick="products_list_perfume()">
 	</div>
 	<div class="handBody-nav-list__open">
 		<ul class="handBody-nav-list__category">
@@ -144,7 +157,7 @@
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
-			onclick="location.href='products'">
+			onclick="products_list_handBody()">
 	</div>
 	<div class="homeFragrance-nav-list__open">
 		<ul class="homeFragrance-nav-list__category">
@@ -167,7 +180,7 @@
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
-			onclick="location.href='products'">
+			onclick="products_list_homeFragrance()">
 	</div>
 </body>
 </html>

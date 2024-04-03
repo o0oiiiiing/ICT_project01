@@ -105,15 +105,15 @@
 </script>
 <script type="text/javascript">
 function products_list_perfume() {
-	location.href = "products?p_type=perfume";
+	location.href = "products_list?p_type=perfume";
 }
 
 function products_list_handBody() {
-	location.href = "products?p_type=hand_body";
+	location.href = "products_list?p_type=hand_body";
 }
 
 function products_list_homeFragrance() {
-	location.href = "products?p_type=home_fragrance";
+	location.href = "products_list?p_type=home_fragrance";
 }
 </script>
 </head>
