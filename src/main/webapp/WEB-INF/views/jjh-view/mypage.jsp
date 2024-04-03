@@ -81,7 +81,7 @@
 					<p>
 						<span class="material-symbols-outlined">alternate_email</span>
 					</p>
-					<p>이메일 : ${uvo.user_email}</p>
+					<p>이메일 : ${uvo.user_f_email}@${uvo.user_b_email}</p>
 				</div>
 				<div class="infos">
 					<p>

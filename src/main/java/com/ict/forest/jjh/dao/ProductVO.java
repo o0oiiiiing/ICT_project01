@@ -3,10 +3,16 @@ package com.ict.forest.jjh.dao;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductVO {
-	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, p_main_img, regdate;
+	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, p_main_img, p_content, regdate;
 	private MultipartFile main_img;
 	
 	
+	public String getP_content() {
+		return p_content;
+	}
+	public void setP_content(String p_content) {
+		this.p_content = p_content;
+	}
 	public String getP_idx() {
 		return p_idx;
 	}

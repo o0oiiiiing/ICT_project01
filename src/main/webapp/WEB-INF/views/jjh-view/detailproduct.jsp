@@ -45,9 +45,9 @@
 	</article>
 	<article class="first_items" id="main_info">
 		<div id="info">
-			<p id="info_name">Soie SignaturePerfume</p>
-			<p id="info_hname">수아 시그니처 퍼퓸</p>
-			<p id="info_price"><span><fmt:formatNumber value="${su}"/></span> KRW</p>
+			<p id="info_name">${pvo.p_price}</p>
+			<p id="info_hname">{pvo.p_brand}</p>
+			<p id="info_price"><span><fmt:formatNumber value="${pvo.p_price}"/></span> KRW</p>
 		</div>
 			<div id="p_btns">
 				<div id="num_btn">
@@ -89,31 +89,31 @@
 			</div>
 			<div>
 				<p>
-					안정되는 향을 통해
-					심신이 진정되는 효과.
-					고혹적이고 매혹적인 느낌을
-					살릴 수 있는 선택.
-					
-				</p>
-				<p>
-					휴대하기 편한 사이즈.
-					매력적인 디자인.
-					사용하기 편한 분사식.
-					오래지속되는 향
+					${pvo.p_content}
 				</p>
 			</div>
 		</article>
 		<article id="sec_art_2">
 			<div id = "s_event02">
 				<p>+</p>
-				<p>상품 정보</p>
+				<p>상품 정보 요약</p>
 			</div>
 			<ul>
-				<li>상명명 : Soie SignaturePerfume</li>
-				<li>브랜드명 : 에르메스</li>
-				<li>용량 : 500ml</li>
-				<li>기본 향 : 장미향</li>
-				<li>지속력 : 5 ~ 7시간</li>
+				<li>상품 타입 : ${pvo.p_type}</li>
+				<li>브랜드명 : ${pvo.p_brand}</li>
+				<li>상품명 : ${pvo.p_name}</li>
+				<c:choose>
+					<c:when test="${pvo.p_type}=="perfume">
+						<li>사용법 : 피부에 분사해서 사용</li>
+					</c:when>
+					<c:when test="${pvo.p_type}=="hand_body">
+						<li>사용법 : 손에 고르게 펴서 바르세요</li>
+					</c:when>
+					<c:when test="${pvo.p_type}=="home_fragrance">
+						<li>사용법 : 주변이 틔인 장소에 올려두세요</li>
+					</c:when>
+				</c:choose>
+				<li>총 평점 : 4.0</li>
 			</ul>
 		</article>
 	</article>

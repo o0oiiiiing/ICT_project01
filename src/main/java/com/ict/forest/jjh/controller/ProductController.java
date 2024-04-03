@@ -17,12 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
-import com.ict.forest.jjh.dao.ProductDAO;
 import com.ict.forest.jjh.dao.ProductSubImgVO;
 import com.ict.forest.jjh.dao.ProductVO;
+import com.ict.forest.jjh.dao.ReviewVO;
 import com.ict.forest.jjh.service.ProductService;
-import com.ict.forest.jjh.service.UserService;
-import com.jcraft.jsch.Session;
 
 @Controller
 public class ProductController {
@@ -82,4 +80,21 @@ public class ProductController {
 		}
 		return mv;
 	}
+	
+	// 상세 상품페이지 이동 이동
+	@GetMapping("detailproduct")
+	public ModelAndView detailproduct(HttpSession session, String p_idx) {
+		ModelAndView mv = new ModelAndView("jjh-view/detailproduct");
+		ProductVO pvo = productService.productdetail(p_idx);
+		List<ProductSubImgVO> pivo_list = productService.productSubImgList(p_idx);
+		List<ReviewVO> review_list = productService.productReviewList(p_idx);
+		List<String> resent = (List<String>) session.getAttribute("recent");
+		resent.add(p_idx);
+		session.setAttribute("resent", resent);
+		mv.addObject("pvo", pvo);
+		mv.addObject("pivo_list", pivo_list);
+		mv.addObject("review_list", review_list);
+		return mv;
+	}
+	
 }

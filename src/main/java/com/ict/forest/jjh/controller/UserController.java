@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
+import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.service.UserService;
@@ -94,13 +95,6 @@ public class UserController {
 	@GetMapping("wish")
 	public ModelAndView wish() {
 		ModelAndView mv = new ModelAndView("jjh-view/wish");
-		return mv;
-	}
-	
-	// 상세 상품페이지 이동 이동
-	@GetMapping("detailproduct")
-	public ModelAndView detailproduct() {
-		ModelAndView mv = new ModelAndView("jjh-view/detailproduct");
 		return mv;
 	}
 	

@@ -52,6 +52,8 @@
 		<br>
 		<label>상품 서브 이미지 등록 :</label>
 		<input type="file" name="sub_imgs" multiple>
+		<textarea rows="6" cols="40" name="p_content"></textarea>
+		<br>
 		<input type="submit" value="상품 등록">
 	</form>
 </div>
@@ -80,6 +82,8 @@
 		<br>
 		<label>상품 서브 이미지 등록 :</label>
 		<input type="file" name="sub_imgs" multiple>
+		<textarea rows="6" cols="40" name="p_content"></textarea>
+		<br>
 		<input type="submit" value="상품 등록">
 	</form>
 </div>
@@ -109,6 +113,8 @@
 		<br>
 		<label>상품 서브 이미지 등록 :</label>
 		<input type="file" name="sub_imgs" multiple>
+		<textarea rows="6" cols="40" name="p_content"></textarea>
+		<br>
 		<input type="submit" value="상품 등록">
 	</form>
 </div>
