@@ -53,9 +53,21 @@ public class KchController {
 		
 		return new ModelAndView("findresult");
 	}
+	
+	@GetMapping("claim_ok")
+	public ModelAndView getClaimOK(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("ex_page/claim_write");
+		HttpSession ssu = request.getSession();
+		SessionUser ssuvo = (SessionUser) ssu.getAttribute("ssuvo");
+		UserVO uvo = userService.userDetail(ssuvo.getUser_idx());
+		List<UserAddrVO> uaddrlist = userService.userAddr(ssuvo.getUser_idx());
+		System.out.println(mv);
+		mv.addObject("uvo", uvo);
+		mv.addObject("uaddrlist", uaddrlist);
+		return mv;
 }
 
-
+}
 
 
 
