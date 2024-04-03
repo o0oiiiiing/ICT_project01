@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,20 @@ public class ProductsController {
 	
 	@Autowired
 	private Paging_pdh paging;
+	
+	@RequestMapping("/")
+	public ModelAndView start(HttpSession session) {
+		List<String> recent = new ArrayList<String>();
+		List<String> cart = new ArrayList<String>();
+		session.setAttribute("recent", recent);
+		session.setAttribute("cart", cart);
+		return new ModelAndView("redirect:home"); 
+	}
+	
+	@RequestMapping("home")
+	public ModelAndView home() {
+		return new ModelAndView("pdh-view/home");
+	}
 	
 	@GetMapping("products_list")
 	public ModelAndView getProductsList(String p_type, HttpServletRequest request) {

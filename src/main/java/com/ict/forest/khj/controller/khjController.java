@@ -1,9 +1,11 @@
 package com.ict.forest.khj.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-public class Controller {
+@Controller
+public class khjController {
 	
 	// 고객센터 faq 이동 이동
 	@GetMapping("faq")
