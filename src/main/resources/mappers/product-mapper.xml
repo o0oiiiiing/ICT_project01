@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="product_table">
+	<!-- jjh : 상품 테이블 입력 -->
+	<insert id="p_insert" parameterType="pvo">
+	    INSERT INTO product_table (user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, p_main_img,p_content, regdate) 
+	    VALUES (#{user_idx}, #{p_name},#{p_type},#{p_brand},#{p_volume},#{p_price},0,#{total_quatity}, #{p_main_img},#{p_content}, sysdate())
+	</insert>
+	
+	<!-- jjh : 특정 상품의 서브 이미지 등록 -->
+	<insert id="p_sub_img_insert" parameterType="pivo">
+		<selectKey keyProperty="p_idx" resultType="String" order="BEFORE">
+			SELECT (IFNULL(MAX(p_idx),0)) as p_idx FROM product_table
+	    </selectKey>
+	    INSERT INTO product_sub_img_table (p_idx, user_idx, p_img) 
+	    VALUES (#{p_idx}, #{user_idx},#{p_img})
+	</insert>
+	
+	<select id="p_detail" parameterType="String" resultType="pvo">
+		select * from product_table where p_idx = #{p_idx}
+	</select>
+	<select id="p_sub_img_list" parameterType="String" resultType="pvo">
+		select * from product_sub_img_table where p_idx = #{p_idx}
+	</select>
+	
+	<select id="review_list" parameterType="String" resultType="rivo">
+		select * from review_table where p_idx = #{p_idx}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
