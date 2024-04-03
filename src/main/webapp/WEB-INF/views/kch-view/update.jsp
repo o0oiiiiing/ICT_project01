@@ -105,11 +105,11 @@ function sample6_execDaumPostcode() {
 					</caption>
 					<tr>
 						<td class="menu">이름</td>
-						<td class="userin"><input type="text" name="user_name" maxlength="5" value="${uvo.user_name}"></td>
+						<td class="userin">${uvo.user_name}</td>
 					</tr>
 					<tr>
 						<td class="menu">아이디</td>
-						<td class="userin"><input type="text" name="user_id" maxlength="10" value="${uvo.user_id}"></td>
+						<td class="userin">${uvo.user_id}</td>
 					</tr>
 					<tr>
 						<td class="menu">휴대폰 번호</td>
