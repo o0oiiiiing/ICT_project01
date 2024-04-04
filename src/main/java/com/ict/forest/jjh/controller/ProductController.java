@@ -3,6 +3,8 @@ package com.ict.forest.jjh.controller;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -37,7 +39,7 @@ public class ProductController {
 	
 	@PostMapping("product_insert")
 	public ModelAndView productInsert(HttpServletRequest request, ProductVO pvo, ProductSubImgVO pivo) {
-		ModelAndView mv = new ModelAndView("pdh-view/home");
+		ModelAndView mv = new ModelAndView("jjh-view/mypage");
 		try {
 			String path = request.getSession().getServletContext().getRealPath("resources/upload");
 			MultipartFile main_img = pvo.getMain_img();
@@ -82,15 +84,25 @@ public class ProductController {
 	}
 	
 	// 상세 상품페이지 이동 이동
+	// 여기서 최근 상품
 	@GetMapping("detailproduct")
 	public ModelAndView detailproduct(HttpSession session, String p_idx) {
 		ModelAndView mv = new ModelAndView("jjh-view/detailproduct");
 		ProductVO pvo = productService.productdetail(p_idx);
 		List<ProductSubImgVO> pivo_list = productService.productSubImgList(p_idx);
 		List<ReviewVO> review_list = productService.productReviewList(p_idx);
-		List<String> resent = (List<String>) session.getAttribute("recent");
-		resent.add(p_idx);
-		session.setAttribute("resent", resent);
+		List<ProductVO> recent = (List<ProductVO>) session.getAttribute("recent");
+		
+		List<ProductVO> recent2 = recent.stream().filter(x->x.getP_idx() != p_idx).collect(Collectors.toList());
+		recent2.add(0,pvo);
+		System.out.println(recent2);
+		for (ProductVO k : recent2) {
+			System.out.println(k.getP_name());
+		}
+		if (recent2.size() == 6) {
+			recent2.remove(recent2.size()-1);
+		}
+		session.setAttribute("recent", recent2);
 		mv.addObject("pvo", pvo);
 		mv.addObject("pivo_list", pivo_list);
 		mv.addObject("review_list", review_list);

@@ -18,125 +18,26 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <section id="wishlist">
 	<article id="lists">
+		<c:forEach var="k" items="list_wvo">
+		
 		<div class="wishitems">
 			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
+				<img src="resources/upload/${k.p_main_img}">
 			</div>
 			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
+				<p>${k.p_name}</p>
+				<p>${k.p_brand}</p>
 			</div>
 			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
+				<p>${k.p_volume}ml</p>
+				<p>${k.p_price} KRW</p>
 				<div class="wish_move_btn">
 					<button class="material-symbols-outlined">favorite</button>
 					<button>장바구니에 추가</button>
 				</div>
 			</div>
 		</div>
-		<div class="wishitems">
-			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
-			</div>
-			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
-				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
-				</div>
-			</div>
-		</div>
-		<div class="wishitems">
-			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
-			</div>
-			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
-				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
-				</div>
-			</div>
-		</div>
-		<div class="wishitems">
-			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
-			</div>
-			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
-				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
-				</div>
-			</div>
-		</div>
-		<div class="wishitems">
-			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
-			</div>
-			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
-				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
-				</div>
-			</div>
-		</div>
-		<div class="wishitems">
-			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
-			</div>
-			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
-				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
-				</div>
-			</div>
-		</div>
-		<div class="wishitems">
-			<div class="wish_img">
-				<img src="resources/jjh-image/projtest.png">
-			</div>
-			<div class="wish_sub_title">
-				<p>Soie SignaturePerfume Soie SignaturePerfume</p>
-				<p>LE LABO</p>
-			</div>
-			<div class="wish_hide">
-				<p>500ml</p>
-				<p>100,000 KRW</p>
-				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
-				</div>
-			</div>
-		</div>
+		</c:forEach>
 	</article>
 </section>
 <script type="text/javascript">

@@ -35,6 +35,19 @@
 		select * from user_addr_table where user_idx = #{user_idx} order by addr_type desc
 	</select>
 	
+	<insert id="wish_insert" parameterType="wvo">
+		insert into wish_table(p_idx, user_idx, p_name, p_brand, p_volume, p_price, p_main_img)
+		values(#{p_idx},#{user_idx},#{p_name},#{p_brand},#{p_volume},#{p_price},#{p_main_img})
+	</insert>
+	
+	<select id="wish_list" parameterType="String" resultType="wvo">
+		select * from wish_table where user_idx=#{user_idx}
+	</select>
+	
+	<select id="wish_count" parameterType="String" resultType="int">
+		select count(*) from wish_table where user_idx=#{user_idx}
+	</select>
+	
 	
 </mapper>
 

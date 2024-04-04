@@ -22,7 +22,7 @@
 	<select id="p_detail" parameterType="String" resultType="pvo">
 		select * from product_table where p_idx = #{p_idx}
 	</select>
-	<select id="p_sub_img_list" parameterType="String" resultType="pvo">
+	<select id="p_sub_img_list" parameterType="String" resultType="pivo">
 		select * from product_sub_img_table where p_idx = #{p_idx}
 	</select>
 	

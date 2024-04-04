@@ -58,4 +58,31 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public int wishInsert(WishVO wvo) {
+		try {
+			return sqlSessionTemplate.insert("user_table.wish_insert", wvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public List<WishVO> wishList(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectList("user_table.wish_list", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public int wishCount(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectOne("user_table.wish_count", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
 }

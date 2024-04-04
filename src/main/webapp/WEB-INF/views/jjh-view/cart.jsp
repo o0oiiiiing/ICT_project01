@@ -32,15 +32,16 @@
 			<p>가격</p>
 		</div>
 		<article id="f_list">
+			<c:forEach var="k" items="${cart}">
 			<div class="c_product">
 				<div class="f_imgs">
 					<input type="checkbox">
 					<div class="f_img">
-						<img src="resources/jjh-image/projtest.png">
+						<img src="resources/upload/${k.p_main_img}">
 					</div>
 				</div>
 				<div class="f_option">
-					<p>Soie SignaturePerfume</p>
+					<p>${k.p_name}</p>
 					<div>
 						<span>선물 옵션</span>
 						<select name="present" class="present_ck">
@@ -50,7 +51,7 @@
 					</div>
 					<div>
 						<span>수량 옵션</span>
-						<input type="hidden" name="p_price" value="${test1}">
+						<input type="hidden" name="p_price" value="${k.p_price}">
 						<select name="su" class="su_ck" >
 							<option value="1" selected>1개</option>
 							<option value="2">2개</option>
@@ -61,73 +62,10 @@
 					</div>
 				</div>
 				<div>
-					<p><span><fmt:formatNumber value="${test1}"/></span> KRW</p>
+					<p><span><fmt:formatNumber value="${k.p_price}"/></span> KRW</p>
 				</div>
 			</div>
-			<div class="c_product">
-				<div class="f_imgs">
-					<input type="checkbox">
-					<div class="f_img">
-						<img src="resources/jjh-image/projtest.png">
-					</div>
-				</div>
-				<div class="f_option">
-					<p>Soie SignaturePerfume</p>
-					<div>
-						<span>선물 옵션</span>
-						<select name="present" class="present_ck">
-							<option value="1">일반 포장</option>
-							<option value="2">선물용 포장</option>
-						</select>
-					</div>
-					<div>
-						<span>수량 옵션</span>
-						<input type="hidden" name="p_price" value="${test2}">
-						<select name="su" class="su_ck" >
-							<option value="1" selected>1개</option>
-							<option value="2">2개</option>
-							<option value="3">3개</option>
-							<option value="4">4개</option>
-							<option value="5">5개</option>
-						</select>
-					</div>
-				</div>
-				<div>
-					<p><span><fmt:formatNumber value="${test2}"/></span> KRW</p>
-				</div>
-			</div>
-			<div class="c_product">
-				<div class="f_imgs">
-					<input type="checkbox">
-					<div class="f_img">
-						<img src="resources/jjh-image/projtest.png">
-					</div>
-				</div>
-				<div class="f_option">
-					<p>Soie SignaturePerfume</p>
-					<div>
-						<span>선물 옵션</span>
-						<select name="present" class="present_ck">
-							<option value="1">일반 포장</option>
-							<option value="2">선물용 포장</option>
-						</select>
-					</div>
-					<div>
-						<span>수량 옵션</span>
-						<input type="hidden" name="p_price" value="${test3}">
-						<select name="su" class="su_ck" >
-							<option value="1" selected>1개</option>
-							<option value="2">2개</option>
-							<option value="3">3개</option>
-							<option value="4">4개</option>
-							<option value="5">5개</option>
-						</select>
-					</div>
-				</div>
-				<div>
-					<p><span><fmt:formatNumber value="${test3}"/></span> KRW</p>
-				</div>
-			</div>
+			</c:forEach>
 		</article>
 		<article id="f_sum">
 			<div>
@@ -159,6 +97,7 @@
 	$(".su_ck").change(function() {
 		let k = $(this).find("option:selected").val();
 		$(this).parent().parent().next().find("p").find("span").text(($(this).prev().val()*k).toLocaleString("ko-KR"))
+		sum();
 	})
 	
 	/* 전체 선택 및 헤제, 총계산 함수 실행 */
