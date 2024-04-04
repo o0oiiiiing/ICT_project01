@@ -16,6 +16,7 @@ import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
+import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.UserService;
 import com.jcraft.jsch.Session;
 
@@ -93,8 +94,11 @@ public class UserController {
 	
 	// 위시리스트 이동
 	@GetMapping("wish")
-	public ModelAndView wish() {
+	public ModelAndView wish(HttpSession session) {
 		ModelAndView mv = new ModelAndView("jjh-view/wish");
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+		List<WishVO> list_wvo = userService.wishList(ssuvo.getUser_idx());
+		mv.addObject("list_wvo", list_wvo);
 		return mv;
 	}
 	

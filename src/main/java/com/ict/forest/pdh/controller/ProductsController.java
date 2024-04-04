@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.Paging_pdh;
+import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.pdh.dao.PagingVO;
 import com.ict.forest.pdh.dao.ProductsVO;
 import com.ict.forest.pdh.service.ProductsService;
@@ -28,8 +29,8 @@ public class ProductsController {
 	
 	@RequestMapping("/")
 	public ModelAndView start(HttpSession session) {
-		List<String> recent = new ArrayList<String>();
-		List<String> cart = new ArrayList<String>();
+		List<ProductVO> recent = new ArrayList<ProductVO>();
+		List<ProductVO> cart = new ArrayList<ProductVO>();
 		session.setAttribute("recent", recent);
 		session.setAttribute("cart", cart);
 		return new ModelAndView("redirect:home"); 

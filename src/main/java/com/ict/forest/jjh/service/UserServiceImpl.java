@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserDAO;
 import com.ict.forest.jjh.dao.UserVO;
+import com.ict.forest.jjh.dao.WishVO;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -38,5 +39,18 @@ public class UserServiceImpl implements UserService{
 	public List<UserAddrVO> userAddr(String user_idx) {
 		return userDAO.userAddr(user_idx);
 	}
+	@Override
+	public int wishInsert(WishVO wvo) {
+		return userDAO.wishInsert(wvo);
+	}
 	
+	@Override
+	public List<WishVO> wishList(String user_idx) {
+		return userDAO.wishList(user_idx);
+	}
+	
+	@Override
+	public int wishCount(String user_idx) {
+		return userDAO.wishCount(user_idx);
+	}
 }

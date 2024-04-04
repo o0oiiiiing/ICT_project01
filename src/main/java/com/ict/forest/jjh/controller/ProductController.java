@@ -3,6 +3,8 @@ package com.ict.forest.jjh.controller;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -88,8 +90,11 @@ public class ProductController {
 		ProductVO pvo = productService.productdetail(p_idx);
 		List<ProductSubImgVO> pivo_list = productService.productSubImgList(p_idx);
 		List<ReviewVO> review_list = productService.productReviewList(p_idx);
-		List<String> resent = (List<String>) session.getAttribute("recent");
-		resent.add(p_idx);
+		List<ProductVO> resent = (List<ProductVO>) session.getAttribute("recent");
+		resent.stream().filter(x->x.getP_idx() != p_idx).collect(Collectors.toList()).add(0, pvo);
+		if (resent.size() == 6) {
+			resent.remove(resent.size()-1);
+		}
 		session.setAttribute("resent", resent);
 		mv.addObject("pvo", pvo);
 		mv.addObject("pivo_list", pivo_list);
