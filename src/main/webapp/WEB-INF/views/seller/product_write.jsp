@@ -28,7 +28,7 @@
 		<label for="p_brand">브랜드 : </label>
 		<input type="radio" name="p_brand" value="GRANHAND.">GRANHAND.
 		<input type="radio" name="p_brand" value="LE LABO">LE LABO
-		<input type="radio" name="p_brand" value="Maison_Margiela">Maison Margiela
+		<input type="radio" name="p_brand" value="Maison Margiela">Maison Margiela
 		<input type="radio" name="p_brand" value="SHIRO">SHIRO
 		<input type="radio" name="p_brand" value="Aesop">Aesop
 		<br>
@@ -37,7 +37,7 @@
 		<input type="radio" name="p_volume" value="15">15ml
 		<input type="radio" name="p_volume" value="30">30ml
 		<input type="radio" name="p_volume" value="40">40ml
-		<input type="radio" name="p_volume" value="500">50ml
+		<input type="radio" name="p_volume" value="50">50ml
 		<input type="radio" name="p_volume" value="100">100ml
 		<input type="radio" name="p_volume" value="500">500ml
 		<br>

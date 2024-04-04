@@ -39,15 +39,18 @@ main {
 }
 
 .product-wrapper {
-	width: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+	width: 1050px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	place-items: center;
 }
 
 .product {
 	margin-bottom: 50px;
+}
+
+.product-link {
+	text-decoration: none;
 }
 
 .product:hover {
