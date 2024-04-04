@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="user2_table">
+	
+	<!-- 아이디 찾기 -->
+	<select id="find_id" resultType="kvo">
+		select * from user_table order by user_idx 
+	</select>
+	
+	<!-- -->
+	<select id="user_detail" parameterType="String" resultType="uvo">
+		select * from user_table where user_idx = #{user_idx}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

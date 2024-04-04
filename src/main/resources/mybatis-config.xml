@@ -21,6 +21,8 @@
 		<!-- pdh : 상품 정보 VO -->
 		<typeAlias type="com.ict.forest.pdh.dao.ProductsVO" alias="ProductsVO"/>
 		<typeAlias type="com.ict.forest.pdh.dao.PagingVO" alias="PagingVO"/>
+		<!-- kch : 유저정보VO -->
+		<typeAlias type="com.ict.forest.kch.dao.KchVO" alias="kvo"/>
 	</typeAliases>
 	<mappers>
 		<!-- jjh : 유저 관련 mapper -->
@@ -29,5 +31,8 @@
 		<mapper resource="mappers/product-mapper.xml" />
 		<!-- pdh -->
 		<mapper resource="mappers/products-mapper.xml" />
+		<!-- kch : user -->
+		<mapper resource="mappers/user2-mapper.xml" />
+		
 	</mappers>
 </configuration>

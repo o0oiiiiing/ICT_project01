@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
@@ -23,6 +24,7 @@ public class KchController {
 
 	@Autowired
 	private KchService kchservice;
+	
 	
 	@Autowired
 	private UserService userService;
@@ -48,11 +50,34 @@ public class KchController {
 	}
 	
 	
-	@PostMapping("find_user_id")
-	public ModelAndView findUserId() {
+	
+	 @PostMapping("find_user_id") 
+	 public ModelAndView findUserId(@RequestParam("name_id")String name_id,
+			 @RequestParam("email_id")String email_id, UserVO uvo
+			 ) {
+		 //System.out.println(name_id);
+		 //System.out.println(email_id);
+		 ModelAndView mv = new ModelAndView("kch-view/findresult");
+		 String dname = "";
+		 String demail = "";
+		 uvo.setUser_f_email(demail);
+		 System.out.println(dname);
+		 if (name_id == dname && email_id == demail) {
+			mv.addObject("uvo", uvo);
+			 return mv; 
+		}
+		 return new ModelAndView("pdh-view/error");
+	 }
+	 
+	/*
+	@PostMapping("find_user_id") 
+	public ModelAndView findUserId(HttpServletRequest request, KchVO kvo) {
+		ModelAndView mv = new ModelAndView("kch-view/findresult");
 		
-		return new ModelAndView("findresult");
+		return mv;
+		
 	}
+	 */
 	
 	@GetMapping("claim_ok")
 	public ModelAndView getClaimOK(HttpServletRequest request) {
