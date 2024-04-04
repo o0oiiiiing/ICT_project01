@@ -59,7 +59,6 @@ public class ProductsController {
 					paging.setTotalPage(paging.getTotalPage() + 1);
 				}
 			}
-			
 			// 현재 페이지 구하기
 			String cPage = request.getParameter("cPage");
 			if (cPage == null) {
