@@ -19,4 +19,22 @@ public class KchDAO {
 		}
 		return -1;
 	}
+	
+	public int findId(KchVO kvo) {
+		try {
+			return sqlSessionTemplate.selectOne("user2_table.find_id", kvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public KchVO kchdetail(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectOne("user2_table.kchdetail", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
 }

@@ -16,7 +16,7 @@
 <body>
 	<section id="wrap">
 		<div id="findt">
-			<h1>회원님의 아이디는</h1><a>!!!!!!!</a><h1>입니다.</h1>
+			<h1>회원님의 아이디는</h1><a>${uvo.user_id}</a><h1>입니다.</h1>
 		</div>
 		<div id="btnn">
 			<input type="button" value="login" onclick="location.href='home'">

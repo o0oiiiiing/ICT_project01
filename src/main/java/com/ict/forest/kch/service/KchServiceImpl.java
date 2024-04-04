@@ -12,9 +12,21 @@ public class KchServiceImpl implements KchService{
 	@Autowired KchDAO kchDAO;
 
 	@Override
-	public int getInfoUpdateOK(KchVO kchvo) {
-		return kchDAO.getInfoUpdateOK(kchvo);
+	public int getInfoUpdateOK(KchVO kvo) {
+		return kchDAO.getInfoUpdateOK(kvo);
 	}
+
+	@Override
+	public int findId(KchVO kvo) {
+		return kchDAO.findId(kvo);
+	}
+
+	@Override
+	public KchVO kchdetail(String user_idx) {
+		return kchDAO.kchdetail(user_idx);
+	}
+	
+	
 	
 	
 }
