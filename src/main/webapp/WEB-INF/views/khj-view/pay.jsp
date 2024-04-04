@@ -38,7 +38,7 @@ function selectAll(selectAll)  {
 				<div class="s1a1d1_img"><img src=""></div>
 				<div id="s1a1d1_pa">
 					<div id="p_name">(물건 이름)<a></a></div>
-					<div id="p_count">(개수)<a>개</a></div>
+					<div id="p_count"  >(개수)<a>개</a></div>
 					<div id="pt_price">(금액)<a>KRW</a></div>
 				</div>
 			</div>
@@ -115,7 +115,7 @@ function selectAll(selectAll)  {
 			<a id="s2a3_a1"><input type="checkbox" name="p1_agree" value="info_a">개인정보 수집 및 이용동의</a>
 			<a id="terms">약관보기<br></a>
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
-			<button id="pay_b1" type="submit">결제하러가기</button>
+			<button id="pay_b1" type="submit">결제하기</button>
 		</article>
 	</section>
 </div>	

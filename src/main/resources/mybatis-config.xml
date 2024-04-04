@@ -23,8 +23,10 @@
 		<!-- pdh : 상품 정보 VO -->
 		<typeAlias type="com.ict.forest.pdh.dao.ProductsVO" alias="ProductsVO"/>
 		<typeAlias type="com.ict.forest.pdh.dao.PagingVO" alias="PagingVO"/>
-		<!-- kch : 유저정보VO -->
-		<typeAlias type="com.ict.forest.kch.dao.KchVO" alias="kvo"/>
+		<!-- khj 결제하기 VO -->
+		<typeAlias type="com.ict.forest.khj.dao.PayVO" alias="payvo" />
+		<!-- khj 결제를 위해 넘어올 테스트용 정보를 담은 VO -->
+		<typeAlias type="com.ict.forest.khj.dao.PayTestVO" alias="ptvo" />
 	</typeAliases>
 	<mappers>
 		<!-- jjh : 유저 관련 mapper -->
@@ -33,8 +35,7 @@
 		<mapper resource="mappers/product-mapper.xml" />
 		<!-- pdh -->
 		<mapper resource="mappers/products-mapper.xml" />
-		<!-- kch : user -->
-		<mapper resource="mappers/user2-mapper.xml" />
-		
+		<!-- khj  pay_table  db로 가는 매퍼 -->
+		<mapper resource="mappers/pay_table.xml" />
 	</mappers>
 </configuration>
