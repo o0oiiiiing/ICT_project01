@@ -83,7 +83,7 @@
 			<div class="material-symbols-outlined icons">
 				<span><a class="icon a_tag" id="search_btn">Search</a></span>
 				<span><a href="faq" class="icon a_tag">headset_mic</a></span>
-				<span id="cart_ajax"><a href="cart" class="icon a_tag">Shopping_Cart</a>(${cart.size()})</span>
+				<span><a href="cart" class="icon a_tag">Shopping_Cart<span id="cart_ajax">(${cart.size()})</span></a></span>
 				<span><a href="wish" class="icon a_tag">Favorite</a></span>
 				<span id="login_btn">
 					<c:choose>

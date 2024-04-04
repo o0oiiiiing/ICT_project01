@@ -31,7 +31,7 @@ public class ProductDAO {
 	
 	public ProductVO productdetail(String p_idx) {
 		try {
-			return sqlSessionTemplate.selectOne("product_table.p_detail");
+			return sqlSessionTemplate.selectOne("product_table.p_detail", p_idx);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

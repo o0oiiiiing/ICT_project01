@@ -37,7 +37,7 @@
 				<div class="f_imgs">
 					<input type="checkbox">
 					<div class="f_img">
-						<img src="resources/upload/${k.p_main-img}">
+						<img src="resources/upload/${k.p_main_img}">
 					</div>
 				</div>
 				<div class="f_option">
@@ -97,6 +97,7 @@
 	$(".su_ck").change(function() {
 		let k = $(this).find("option:selected").val();
 		$(this).parent().parent().next().find("p").find("span").text(($(this).prev().val()*k).toLocaleString("ko-KR"))
+		sum();
 	})
 	
 	/* 전체 선택 및 헤제, 총계산 함수 실행 */

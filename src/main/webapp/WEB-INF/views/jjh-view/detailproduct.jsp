@@ -44,6 +44,20 @@
 				}
 			})
 		})
+		$("#wish_ajax").click(function() {
+			$.ajax({
+				url : "wishAjax.do",
+				method : "post",
+				dataType : "text",
+				data : "p_idx="+$(this).attr("name"),
+				success : function(data) {
+					$("#cart_ajax").text("("+data+")")
+				},
+				error: function() {
+					alert("읽기 실패")
+				}
+			})
+		})
 	})
 </script>
 </head>
@@ -51,19 +65,25 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%-- 1. 상품 메인 소개 --%>
 <section id="first">
-	<c:set var="su" value="200000"/>
 	<article class="first_items" id="main_img_box">
 			<div id="m_img"><img id="t1" src="resources/upload/${pvo.p_main_img}"></div>
 			<div id="sub_imgs">
-				<c:forEach var="k" items="pivo_list">
-					<div class="sub_img"><img src="resources/upload/${k.p_img}"></div>
-				</c:forEach>
+				<c:choose>
+					<c:when test="${empty pivo_list}">
+						사진이 없습니다.
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="k" items="${pivo_list}">
+							<div class="sub_img"><img src="resources/upload/${k.p_img}"></div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</div>
 	</article>
 	<article class="first_items" id="main_info">
 		<div id="info">
-			<p id="info_name">${pvo.p_price}</p>
-			<p id="info_hname">{pvo.p_brand}</p>
+			<p id="info_name">${pvo.p_name}</p>
+			<p id="info_hname">${pvo.p_brand}</p>
 			<p id="info_price"><span><fmt:formatNumber value="${pvo.p_price}"/></span> KRW</p>
 		</div>
 			<div id="p_btns">
@@ -120,13 +140,13 @@
 				<li>브랜드명 : ${pvo.p_brand}</li>
 				<li>상품명 : ${pvo.p_name}</li>
 				<c:choose>
-					<c:when test="${pvo.p_type}=="perfume">
+					<c:when test="${pvo.p_type=='perfume'}">
 						<li>사용법 : 피부에 분사해서 사용</li>
 					</c:when>
-					<c:when test="${pvo.p_type}=="hand_body">
+					<c:when test="${pvo.p_type=='hand_body'}">
 						<li>사용법 : 손에 고르게 펴서 바르세요</li>
 					</c:when>
-					<c:when test="${pvo.p_type}=="home_fragrance">
+					<c:when test="${pvo.p_type=='home_fragrance'}">
 						<li>사용법 : 주변이 틔인 장소에 올려두세요</li>
 					</c:when>
 				</c:choose>
@@ -139,32 +159,50 @@
 <section id="third" >
 	<p style="font-size: 40px; margin-bottom: 30px;">최근 본 상품</p>
 	<article id="recent_box">
-		<c:forEach var="k" items="${recent}">
-			<div>
-				<div><img src="resources/upload/${k.p_main_img}"></div>
-				<p style="border-bottom: 1px solid black;">${k.p_name}</p>
-				<p>${k.p_price} KRW</p>
-			</div>
-		</c:forEach>
+		<c:choose>
+			<c:when test="${empty recent || recent.size() == 1}">
+				최근 본 상품이 없습니다.
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="k" items="${recent}" varStatus="vs">
+					<c:choose>
+						<c:when test="${vs.index != 0}">
+							<div>
+								<div><img src="resources/upload/${k.p_main_img}"></div>
+								<p style="border-bottom: 1px solid black;">${k.p_name}</p>
+								<p>${k.p_volume}ml</p>
+								<p>${k.p_price} KRW</p>
+							</div>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</article>
 </section>
 <!-- 최근 리뷰 -->
 <section id="fourth">
 	<p>최근 리뷰</p>
 	<article id="rec_view">
-		<c:forEach begin="1" end="4" var="k" items="review_list">
-		
-		<div class="review_box">
-			<div>
-				<img src="resources/upload/k.review_img">
-			</div>
-			<div>
-				<p>★★★★☆${k.score}</p>
-				<p>${k.review_title}</p>
-				<p>${k.review_content}</p>
-			</div>
-		</div>
-		</c:forEach>
+		<c:choose>
+			<c:when test="${empty review_list}">
+				최근 리뷰가 없습니다.
+			</c:when>
+			<c:otherwise>
+				<c:forEach begin="1" end="4" var="k" items="review_list">
+				<div class="review_box">
+					<div>
+						<img src="resources/upload/k.review_img">
+					</div>
+					<div>
+						<p>★★★★☆${k.score}</p>
+						<p>${k.review_title}</p>
+						<p>${k.review_content}</p>
+					</div>
+				</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</article>
 </section>
 <section id="seven">
@@ -272,17 +310,24 @@
 		<button>평점순</button>
 	</article>
 	<article id="t_view">
-		<c:forEach var="k" items="review_list">
-			<div class="rev1">
-				<p>${k.score}★★★★☆</p>
-				<p>${k.review_title}</p>
-				<p>${k.regdate}</p>
-				<div><img src="resources/upload/${k.review_img}"></div>
-				<p>
-					${k.review_title}
-				</p>
-			</div>
-		</c:forEach>
+		<c:choose>
+			<c:when test="${empty review_list}">
+				리뷰가 없습니다.
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="k" items="review_list">
+					<div class="rev1">
+						<p>${k.score}★★★★☆</p>
+						<p>${k.review_title}</p>
+						<p>${k.regdate}</p>
+						<div><img src="resources/upload/${k.review_img}"></div>
+						<p>
+							${k.review_title}
+						</p>
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</article>
 </section>
 	<!-- 빠른 구매 이벤트 버튼-->
@@ -302,7 +347,7 @@
 		<div id="mini_btns">
 			<div id="mini_info">
 				<p>${pvo.p_name}</p>
-				<p><span><fmt:formatNumber value="${pvo.p_prive}"/></span> KRW</p>
+				<p><span><fmt:formatNumber value="${pvo.p_price}"/></span> KRW</p>
 			</div>
 			<div id="p_btn">
 				<input type="checkbox" name="present">
@@ -376,7 +421,7 @@
 				$("#first #num_btn > p").text(k);
 			}
 			$("#first #sum_box p:nth-of-type(3)").text($("#first #num_btn > p").text());
-			let k = ($("#first #num_btn > p").text()*${su}).toLocaleString("ko-KR")
+			let k = ($("#first #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR")
 			if (k=="NaN") {
 				k = 0
 			}
@@ -389,7 +434,7 @@
 				$("#first #num_btn > p").text(parseInt($("#first #num_btn > p").text())+1)
 			};
 			$("#first #sum_box p:nth-of-type(3)").text($("#first #num_btn > p").text());
-			$("#first #sum_box p:nth-of-type(4) span").text(($("#first #num_btn > p").text()*${su}).toLocaleString("ko-KR"))
+			$("#first #sum_box p:nth-of-type(4) span").text(($("#first #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR"))
 		});
 		
 		/* 바로구매 수량 버튼 이벤트 및 계산 이벤트 */
@@ -404,7 +449,7 @@
 				$("#mini #num_btn > p").text(k);
 			}
 			$("#mini #sum_box p:nth-of-type(3)").text($("#mini #num_btn > p").text());
-			let k = ($("#mini #num_btn > p").text()*${su}).toLocaleString("ko-KR")
+			let k = ($("#mini #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR")
 			if (k=="NaN") {
 				k = 0
 			}
@@ -417,7 +462,7 @@
 				$("#mini #num_btn > p").text(parseInt($("#mini #num_btn > p").text())+1)
 			};
 			$("#mini #sum_box p:nth-of-type(3)").text($("#mini #num_btn > p").text());
-			$("#mini #sum_box p:nth-of-type(4) span").text(($("#mini #num_btn > p").text()*${su}).toLocaleString("ko-KR"))
+			$("#mini #sum_box p:nth-of-type(4) span").text(($("#mini #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR"))
 		});
 		
 		/* 이미지 변경 이벤트 */

@@ -21,6 +21,7 @@ public class AjaxController {
 	private ProductService productService;
 	@Autowired UserService userService;
 	
+	// 장바구니 추가
 	@RequestMapping(value = "cartAjax.do", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String cartAdd(HttpSession session, String p_idx) {
@@ -31,6 +32,8 @@ public class AjaxController {
 		String count = String.valueOf(cart.size());
 		return count;
 	}
+	
+	// 위시리스트 추가
 	@RequestMapping(value = "wishAjax.do", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String wishAdd(HttpSession session, String p_idx) {

@@ -84,18 +84,25 @@ public class ProductController {
 	}
 	
 	// 상세 상품페이지 이동 이동
+	// 여기서 최근 상품
 	@GetMapping("detailproduct")
 	public ModelAndView detailproduct(HttpSession session, String p_idx) {
 		ModelAndView mv = new ModelAndView("jjh-view/detailproduct");
 		ProductVO pvo = productService.productdetail(p_idx);
 		List<ProductSubImgVO> pivo_list = productService.productSubImgList(p_idx);
 		List<ReviewVO> review_list = productService.productReviewList(p_idx);
-		List<ProductVO> resent = (List<ProductVO>) session.getAttribute("recent");
-		resent.stream().filter(x->x.getP_idx() != p_idx).collect(Collectors.toList()).add(0, pvo);
-		if (resent.size() == 6) {
-			resent.remove(resent.size()-1);
+		List<ProductVO> recent = (List<ProductVO>) session.getAttribute("recent");
+		
+		List<ProductVO> recent2 = recent.stream().filter(x->x.getP_idx() != p_idx).collect(Collectors.toList());
+		recent2.add(0,pvo);
+		System.out.println(recent2);
+		for (ProductVO k : recent2) {
+			System.out.println(k.getP_name());
 		}
-		session.setAttribute("resent", resent);
+		if (recent2.size() == 6) {
+			recent2.remove(recent2.size()-1);
+		}
+		session.setAttribute("recent", recent2);
 		mv.addObject("pvo", pvo);
 		mv.addObject("pivo_list", pivo_list);
 		mv.addObject("review_list", review_list);
