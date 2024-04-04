@@ -3,6 +3,7 @@ package com.ict.forest.pdh.dao;
 public class PagingVO {
 	private String p_type;
 	private int limit, offset;
+	
 	public String getP_type() {
 		return p_type;
 	}

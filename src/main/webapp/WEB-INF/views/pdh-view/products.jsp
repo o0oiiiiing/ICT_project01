@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="resources/common-css/font.css">
 <link rel="stylesheet" href="resources/pdh-css/products.css">
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
+<link rel="stylesheet" href="resources/pdh-css/paging.css">
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -69,6 +70,7 @@
 				<c:when test="${p_type == 'perfume'}">
 					<c:forEach var="k" items="${products_list}">
 							<li class="product">
+								<a class="product-link" href="detailproduct?p_idx=${k.p_idx}">
 								<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
 								<div class="product-brand">${k.p_brand}</div>
 								<div class="product-information">
@@ -76,18 +78,21 @@
 									<P>${k.p_volume}ml</P>
 									<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩</P>
 								</div>
+								</a>
 							</li>
 						</c:forEach>
 				</c:when>
 				<c:otherwise>
 						<c:forEach var="k" items="${products_list}">
 								<li class="product">
+									<a class="product-link" href="detailproduct?p_idx=${k.p_idx}">
 									<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
 									<div class="product-brand">${k.p_brand}</div>
 									<div class="product-information">
 										<P>${k.p_name}</P>
 										<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩<</P>
 									</div>
+									</a>
 								</li>
 						</c:forEach>
 				</c:otherwise>
@@ -95,40 +100,40 @@
 		</ul>
 	</main>
 
-	<ol class="">
+	<!-- 페이징 -->
+	<ol class="paging">
 		<!-- 이전 버튼 -->
 		<c:choose>
 			<c:when test="${paging.beginBlock <= paging.pagePerBlock}">
-				<li class="disable">이전으로</li>
+				<li class="disable">이전</li>
 			</c:when>
 			<c:otherwise>
-				<li><a
-					href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}">이전으로</a>
+				<li>
+					<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}">이전</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
 
 		<!-- 페이지번호들 -->
-		<c:forEach begin="${paging.beginBlock}" end="${paging.endBlock}"
-			step="1" var="k">
+		<c:forEach begin="${paging.beginBlock}" end="${paging.endBlock}" step="1" var="k">
 			<c:choose>
 				<c:when test="${k == paging.nowPage}">
 					<li class="now">${k}</li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="products_list?cPage=${k}">${k}</a></li>
+					<li><a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}">${k}</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 
 		<!-- 이후 버튼 -->
 		<c:choose>
-			<c:when test="${paging.endBlock <= paging.totalPage}">
-				<li class="disable">다음으로</li>
+			<c:when test="${paging.endBlock >= paging.totalPage}">
+				<li class="disable">다음</li>
 			</c:when>
 			<c:otherwise>
-				<li><a
-					href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}">다음으로</a>
+				<li>
+					<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}">다음</a>
 				</li>
 			</c:otherwise>
 		</c:choose>

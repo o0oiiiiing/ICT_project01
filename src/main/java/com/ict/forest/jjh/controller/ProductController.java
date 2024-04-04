@@ -37,7 +37,7 @@ public class ProductController {
 	
 	@PostMapping("product_insert")
 	public ModelAndView productInsert(HttpServletRequest request, ProductVO pvo, ProductSubImgVO pivo) {
-		ModelAndView mv = new ModelAndView("pdh-view/home");
+		ModelAndView mv = new ModelAndView("jjh-view/mypage");
 		try {
 			String path = request.getSession().getServletContext().getRealPath("resources/upload");
 			MultipartFile main_img = pvo.getMain_img();
