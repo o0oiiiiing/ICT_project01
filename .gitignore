@@ -2,10 +2,10 @@
 target/
 
 #프로젝트에서 사용하고 있는 외부 플러그인 tern-project 제외
-.tern-project
+#.tern-project
 
 # 프로젝트에 사용되는 외부 플러그인을 전반적으로 관리하는 파일 제외
-.springBeans
+#.springBeans
 
 # 프로젝트 세부 설정을 git에 올리기를 원하면 주석 해제
 #.settings/
@@ -14,4 +14,4 @@ target/
 #.project
 
 # 프로젝트의 외부 라이브러리 경로나 도구들의 경로를 git에 올리기를 원하면 주석 해제
-.classpath
+#.classpath
