@@ -8,10 +8,10 @@ target/
 .springBeans
 
 # 프로젝트 세부 설정을 git에 올리기를 원하면 주석 해제
-.settings/
+#.settings/
 
 # 프로젝트의 구조나 유형 큰은 설정값을 git에 올리기를 원하면 주석 해제
-.project
+#.project
 
 # 프로젝트의 외부 라이브러리 경로나 도구들의 경로를 git에 올리기를 원하면 주석 해제
 .classpath
