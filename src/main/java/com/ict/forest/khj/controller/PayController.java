@@ -18,6 +18,27 @@ public class PayController {
 	@Autowired
 	private PayService payService;
 	
+	// 고객센터 faq 이동 이동
+	@GetMapping("faq")
+	public ModelAndView help() {
+		ModelAndView mv = new ModelAndView("khj-view/customer_center");
+		return mv;
+	}
+	
+	// 고객센터qna 이동 이동
+	@GetMapping("qna")
+	public ModelAndView qna() {
+		ModelAndView mv = new ModelAndView("khj-view/qna");
+		return mv;
+	}
+	// 고객센터qna 이동 이동
+	@GetMapping("claim")
+	public ModelAndView claim() {
+		ModelAndView mv = new ModelAndView("khj-view/claim");
+		return mv;
+	}
+	
+	// 상품 결제페이지 이동
 	@GetMapping("pay")
 	public ModelAndView getPay(PayTestVO paytestvo) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
@@ -55,10 +76,6 @@ public class PayController {
 //		paytestvo.setP_type("10_type");
 //		paytestvo.setP_volume("10_volume");
 //		paytestvo.setUser_idx("2");
-		
-		
-		
-		
 		
 		
 		

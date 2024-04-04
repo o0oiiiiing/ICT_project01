@@ -36,6 +36,6 @@
 		<!-- pdh -->
 		<mapper resource="mappers/products-mapper.xml" />
 		<!-- khj  pay_table  db로 가는 매퍼 -->
-		<mapper resource="mappers/pay_table.xml" />
+		<mapper resource="mappers/pay-mapper.xml" />
 	</mappers>
 </configuration>

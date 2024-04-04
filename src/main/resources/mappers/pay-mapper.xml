@@ -4,9 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="pay_table">
-	<select id="">
-		
-	</select>
+
 </mapper>
 
 
