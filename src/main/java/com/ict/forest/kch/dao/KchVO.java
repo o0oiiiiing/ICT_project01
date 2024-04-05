@@ -2,6 +2,14 @@ package com.ict.forest.kch.dao;
 
 public class KchVO {
 	private String user_idx, user_name, user_id, user_pwd, user_f_email, user_b_email, user_phone, user_type, user_point, regdate;
+	private String match;
+	public String getMatch() {
+		return match;
+	}
+
+	public void setMatch(String match) {
+		this.match = match;
+	}
 
 	public String getUser_idx() {
 		return user_idx;

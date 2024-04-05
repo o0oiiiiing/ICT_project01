@@ -37,4 +37,45 @@ public class KchDAO {
 		}
 		return null;
 	}
+	
+	public KchVO kchfindname(String user_name) {
+		try {
+			return sqlSessionTemplate.selectOne("user_table.findname", user_name);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	public KchVO kchfindemail(String user_email) {
+		try {
+			return sqlSessionTemplate.selectOne("user2_table.findemail", user_email);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	
+	}
+	
+	public KchVO nfind(String user_name) {
+		try {
+			return sqlSessionTemplate.selectOne("user2_table.nfind", user_name);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public KchVO pfind(String user_id) {
+		try {
+			return sqlSessionTemplate.selectOne("user2_table.pfind",user_id);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	
 }

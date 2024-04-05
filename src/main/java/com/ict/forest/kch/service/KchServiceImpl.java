@@ -25,8 +25,26 @@ public class KchServiceImpl implements KchService{
 	public KchVO kchdetail(String user_idx) {
 		return kchDAO.kchdetail(user_idx);
 	}
+
+	@Override
+	public KchVO kchfindname(String user_name) {
+		return kchDAO.kchfindname(user_name);
+	}
+
+	@Override
+	public KchVO kchfindemail(String user_email) {
+		return kchDAO.kchfindemail(user_email);
+	}
+
+	@Override
+	public KchVO nfind(String user_name) {
+		return kchDAO.nfind(user_name);
+	}
 	
-	
+	@Override
+	public KchVO kchfindpw(String user_id) {
+		return kchDAO.pfind(user_id);
+	}
 	
 	
 }
