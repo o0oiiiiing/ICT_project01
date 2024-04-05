@@ -36,7 +36,6 @@ public class KchController {
 		SessionUser ssuvo = (SessionUser) ssu.getAttribute("ssuvo");
 		UserVO uvo = userService.userDetail(ssuvo.getUser_idx());
 		List<UserAddrVO> uaddrlist = userService.userAddr(ssuvo.getUser_idx());
-		System.out.println(mv);
 		mv.addObject("uvo", uvo);
 		mv.addObject("uaddrlist", uaddrlist);
 		return mv;
@@ -52,33 +51,48 @@ public class KchController {
 	
 	
 	 @PostMapping("find_user_id") 
-	 public ModelAndView findUserId(@RequestParam("name_id")String name_id,
-			 @RequestParam("email_id")String email_id, UserVO uvo
-			 ) {
-		 //System.out.println(name_id);
-		 //System.out.println(email_id);
-		 ModelAndView mv = new ModelAndView("kch-view/findresult");
-		 String dname = "";
-		 String demail = "";
-		 uvo.setUser_f_email(demail);
-		 System.out.println(dname);
-		 if (name_id == dname && email_id == demail) {
-			mv.addObject("uvo", uvo);
-			 return mv; 
-		}
-		 return new ModelAndView("pdh-view/error");
+	 public ModelAndView findUserId(HttpServletRequest request, KchVO kvo,
+			 String user_name, String email_id) {
+			ModelAndView mv = new ModelAndView("kch-view/findresult");
+			KchVO kvo2 = kchservice.kchfindname(kvo.getUser_name());
+			if (kvo2 != null && (email_id.equals(kvo2.getUser_f_email()) )) {
+				HttpSession session = request.getSession();
+				SessionUser ssuvo = new SessionUser();
+				ssuvo.setUser_id(kvo2.getUser_id());
+				session.setAttribute("ssuvo", ssuvo);
+				mv.addObject("kvo2" , kvo2);
+				return mv;
+			}else {
+				return new ModelAndView("pdh-view/error");
+			}
 	 }
-	 
-	/*
-	@PostMapping("find_user_id") 
-	public ModelAndView findUserId(HttpServletRequest request, KchVO kvo) {
-		ModelAndView mv = new ModelAndView("kch-view/findresult");
-		
-		return mv;
-		
-	}
-	 */
 	
+	 @PostMapping("find_user_pw") 
+	 public ModelAndView findUserPw(HttpServletRequest request, KchVO kvo,
+			 String user_id, String email_pwd) {
+		 ModelAndView mv = new ModelAndView("kch-view/findresult");
+		 KchVO kvo2 = kchservice.kchfindpw(kvo.getUser_id());
+		 if (kvo2 != null && (user_id.equals(kvo2.getUser_id()) )) {
+			 HttpSession session = request.getSession();
+			 SessionUser ssuvo = new SessionUser();
+			 ssuvo.setUser_id(kvo2.getUser_name());
+			 session.setAttribute("ssuvo", ssuvo);
+			 mv.addObject("kvo2" , kvo2);
+			 
+			 return mv;
+		 }else {
+			 return new ModelAndView("pdh-view/error");
+		 }
+	 }
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	@GetMapping("claim_ok")
 	public ModelAndView getClaimOK(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("ex_page/claim_write");

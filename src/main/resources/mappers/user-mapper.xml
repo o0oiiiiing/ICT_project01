@@ -48,7 +48,18 @@
 		select count(*) from wish_table where user_idx=#{user_idx}
 	</select>
 	
-	
+
+
+
+
+
+	<select id="findname" parameterType="String" resultType="kvo">
+		select * from user_table where user_name = #{user_name}
+	</select>
+
+	<select id="pfind" parameterType="String" resultType="kvo">
+		select * from user_table where user_name = #{user_name}
+	</select>
 </mapper>
 
 
