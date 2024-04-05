@@ -97,7 +97,7 @@
 		<br>
 		<label for="p_brand">브랜드 : </label>
 		<input type="radio" name="p_brand" value="GRANHAND.">GRANHAND.
-		<input type="radio" name="p_brand" value="Maison_Margiela">Maison Margiela
+		<input type="radio" name="p_brand" value="Maison Margiela">Maison Margiela
 		<input type="radio" name="p_brand" value="SHIRO">SHIRO
 		<input type="radio" name="p_brand" value="Aesop">Aesop
 		<br>

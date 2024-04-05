@@ -20,8 +20,24 @@ public class ProductsServiceImpl implements ProductsService {
 	}
 	
 	@Override
+	public int getTotalCountBrand(PagingVO pagingVO) {
+		return productsDAO.getTotalCountBrand(pagingVO);
+	}
+	
+	@Override
 	public List<ProductsVO> getProductsList(PagingVO pagingVO) {
 		return productsDAO.getProductsList(pagingVO);
 	}
+
+	@Override
+	public List<ProductsVO> getProductsListBrand(PagingVO pagingVO) {
+		return productsDAO.getProductsListBrand(pagingVO);
+	}
+
+	@Override
+	public List<ProductsVO> getBestSeller() {
+		return productsDAO.getBestSeller();
+	}
+
 
 }
