@@ -14,7 +14,6 @@ public class PayVO {
 //		    p_brand varchar(50) not null,		
 //		    p_volume varchar(50) not null,		
 //		    p_price int not null,				상품금액
-//		    p_saleprice int not null, 		 	상품의 할인금액
 //		    p_count INT NOT NULL,   			상품수량
 //		    p_option INT NOT NULL,				
 //		    delivery_status INT NOT NULL,		
@@ -26,7 +25,7 @@ public class PayVO {
 //			 FOREIGN KEY (p_idx) REFERENCES product_table(p_idx) ON DELETE CASCADE,
 //			 FOREIGN KEY (user_idx) REFERENCES user_table(user_idx) ON DELETE cascade
 //		  ) ENGINE=INNODB DEFAULT CHARSET UTF8;
-	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_saleprice, p_count,
+	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count,
 	p_option, delivery_status, delivery_start, delivery_end, buy_chk, p_main_img, pay_date;
 
 	public String getOrder_idx() {
@@ -93,13 +92,6 @@ public class PayVO {
 		this.p_price = p_price;
 	}
 
-	public String getP_saleprice() {
-		return p_saleprice;
-	}
-
-	public void setP_saleprice(String p_saleprice) {
-		this.p_saleprice = p_saleprice;
-	}
 
 	public String getP_count() {
 		return p_count;
@@ -157,6 +149,7 @@ public class PayVO {
 		this.p_main_img = p_main_img;
 	}
 
+	
 	public String getPay_date() {
 		return pay_date;
 	}
@@ -164,6 +157,7 @@ public class PayVO {
 	public void setPay_date(String pay_date) {
 		this.pay_date = pay_date;
 	}
+
 	
 	
 	

@@ -4,7 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="pay_table">
-
+	<select id="p_main_img" parameterType="String" resultType="String">
+		select p_main_img from product_table where p_idx = #{p_idx}
+	</select>
+	<insert id="pay_insert" parameterType="payvo">
+		INSERT INTO pay_table (p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, p_option, delivery_status, 
+		delivery_start, delivery_end, buy_chk, p_main_img, pay_date) 
+	    VALUES (#{p_idx},#{user_idx},#{p_name},#{p_type},#{p_brand},#{p_volume},#{p_price},#{p_count},#{p_option},
+	    #{delivery_status},#{delivery_start},#{delivery_end},#{buy_chk},#{p_main_img},sysdate())
+	</insert>
+		 
+			
 </mapper>
 
 

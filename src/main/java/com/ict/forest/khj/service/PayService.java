@@ -1,5 +1,8 @@
 package com.ict.forest.khj.service;
 
-public interface PayService {
+import com.ict.forest.khj.dao.PayVO;
 
+public interface PayService {
+	public String getPMainImg(String p_idx);
+	public int getPayInsert(PayVO payVO1);
 }
