@@ -31,6 +31,7 @@ public class AjaxController {
 		List<ProductVO> cart = (List<ProductVO>) session.getAttribute("cart");
 		cart.add(pvo);
 		session.setAttribute("cart", cart);
+		System.out.println(p_idx);
 		System.out.println(cart);
 		String count = String.valueOf(cart.size());
 		return count;
@@ -43,7 +44,6 @@ public class AjaxController {
 		List<ProductVO> cart2 = cart.stream().filter(x->!x.getP_idx().equals(p_idx)).collect(Collectors.toList());
 		session.setAttribute("cart", cart2);
 		String count = String.valueOf(cart2.size());
-		request.setAttribute("cart_status", "0");
 		return count;
 	}
 	

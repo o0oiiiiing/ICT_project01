@@ -28,7 +28,6 @@
 		<!-- khj 결제하기 VO -->
 		<typeAlias type="com.ict.forest.khj.dao.PayVO" alias="payvo" />
 		<!-- khj 결제를 위해 넘어올 테스트용 정보를 담은 VO -->
-		<typeAlias type="com.ict.forest.khj.dao.PayTestVO" alias="ptvo" />
 		<typeAlias type="com.ict.forest.kch.dao.KchVO" alias="kvo" />
 	</typeAliases>
 	<mappers>
