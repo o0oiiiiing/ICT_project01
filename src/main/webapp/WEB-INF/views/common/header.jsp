@@ -126,24 +126,24 @@
 
 	<div class="perfume-nav-list__open">
 		<ul class="perfume-nav-list__category">
-			<li><a href="products"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=GRANHAND." class="a_tag"> <img
 					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
 					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=LE LABO" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=Maison Margiela" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=SHIRO" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=Aesop" class="a_tag"> <img
 					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
@@ -153,17 +153,18 @@
 	</div>
 	<div class="handBody-nav-list__open">
 		<ul class="handBody-nav-list__category">
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=hand_body&p_brand=LE LABO" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=hand_body&p_brand=Maison Margiela" class="a_tag"> <img
+					src="resources/pdh-image/brand/MaisonMargiela.png"
+					alt="Maison Margiela" />
+					<div class="nav-list__brand-name">Maison Margiela</div>
+			</a></li>
+			<li><a href="products_list_brand?p_type=hand_body&p_brand=SHIRO" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
-			</a></li>
-			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
-					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
 		</ul>
 		<input type="button" class="nav-list__all" value="all"
@@ -171,20 +172,20 @@
 	</div>
 	<div class="homeFragrance-nav-list__open">
 		<ul class="homeFragrance-nav-list__category">
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=GRANHAND." class="a_tag"> <img
 					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
 					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=Maison Margiela" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=SHIRO" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=Aesop" class="a_tag"> <img
 					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>

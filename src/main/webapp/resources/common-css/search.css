@@ -18,6 +18,8 @@
 	color: #1E1E1E;
 	top: 133px;
 	left: 950px;
+	background-color: transparent;
+	border: 0px;
 }
 
 .icon:hover, icon:active {
@@ -78,4 +80,8 @@ label {
 
 .subcategory li {
 	margin-right: 20px;
+}
+
+#s-close {
+	margin-top: 50px;
 }

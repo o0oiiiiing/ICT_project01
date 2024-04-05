@@ -23,47 +23,91 @@
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/common-css/font.css">
 <link rel="stylesheet" href="resources/common-css/search.css">
+<script type="text/javascript">
+	function search_go(f) {
+		f.action = "search";
+		f.submit();
+	}
+</script>
 </head>
 <body>
-	<section id="search_section">
-		<div class="search">
-			<span class="material-symbols-outlined search-icon icon">Search</span>
-			<input type="text" class="search-field">
-		</div>
-
-		<!-- 카테고리 -->
-		<div class="judson-bold category">category</div>
-
-		<ul class="category-wrapper">
-			<li class="categories">
-				<label><input type="checkbox" class="top-category"> PRODUCT</label>
-				<ul class="subcategory">
-					<li><label><input type="checkbox"> perfume</label></li>
-					<li><label><input type="checkbox"> hand&body</label></li>
-					<li><label><input type="checkbox"> home fragrance</label></li>
-				</ul>
-			</li>
-			<li class="categories">
-				<label><input type="checkbox" class="top-category">BRAND</label>
-				<ul class="subcategory">
-					<li><label><input type="checkbox"> GRANHAND.</label></li>
-					<li><label><input type="checkbox"> LE LABO</label></li>
-					<li><label><input type="checkbox"> Maison Margiela</label></li>
-					<li><label><input type="checkbox"> SHIRO</label></li>
-					<li><label><input type="checkbox"> Aēsop</label></li>
-				</ul>
-			</li>
-			<li class="categories">
-			<label><input type="checkbox" class="top-category"> CAPACITY</label>
-				<ul class="subcategory">
-					<li><label><input type="checkbox"> 15ml</label></li>
-					<li><label><input type="checkbox"> 50ml</label></li>
-					<li><label><input type="checkbox"> 100ml</label></li>
-					<li><label><input type="checkbox"> 500ml</label></li>
-				</ul>
-			</li>
-		</ul>
-		<span class="material-symbols-outlined icon" id="s-close">close</span>
-	</section>
+	<form method="post" action="search">
+		<section id="search_section">
+		 	<div class="search">
+				<input type="submit" class="material-symbols-outlined search-icon icon" value="Search">
+				<input type="text" class="search-field" name="keyword">
+			</div> 
+	
+			<!-- 카테고리 -->
+			<div class="judson-bold category">category</div>
+	
+			<ul class="category-wrapper">
+				<li class="categories">
+					<label><input type="checkbox" class="top-category" id="product-all"> PRODUCT</label>
+					<ul class="subcategory">
+						<li><label><input type="checkbox" class="product" name="product" value="perfume"> perfume</label></li>
+						<li><label><input type="checkbox" class="product" name="product" value="hand_body"> hand&body</label></li>
+						<li><label><input type="checkbox" class="product" name="product" value="home_fragrance"> home fragrance</label></li>
+					</ul>
+				</li>
+				<li class="categories">
+					<label><input type="checkbox" class="top-category" id="brand-all">BRAND</label>
+					<ul class="subcategory">
+						<li><label><input type="checkbox" class="brand" name="brand" value="GRANHAND."> GRANHAND.</label></li>
+						<li><label><input type="checkbox" class="brand" name="brand" value="LE LABO"> LE LABO</label></li>
+						<li><label><input type="checkbox" class="brand" name="brand" value="Maison Margiela"> Maison Margiela</label></li>
+						<li><label><input type="checkbox" class="brand" name="brand" value="SHIRO"> SHIRO</label></li>
+						<li><label><input type="checkbox" class="brand" name="brand" value="Aesop"> Aesop</label></li>
+					</ul>
+				</li>
+				<li class="categories">
+				<label><input type="checkbox" class="top-category" id="capacity-all"> CAPACITY ( perfume only )</label>
+					<ul class="subcategory">
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="10"> 10ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="15"> 15ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="30"> 30ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="40"> 40ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="50"> 50ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="100"> 100ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="capacity" value="500"> 500ml</label></li>
+					</ul>
+				</li>
+			</ul>
+		
+			<script>
+		        // "전체 선택" 체크박스 요소 가져오기
+		        var selectAllProduct = document.getElementById('product-all');
+		        var selectAllBrand = document.getElementById('brand-all');
+		        var selectAllCapacity = document.getElementById('capacity-all');
+		        
+		        // 모든 체크박스 요소 가져오기
+		        var products = document.querySelectorAll('.product');
+		        var brands = document.querySelectorAll('.brand');
+		        var capacities = document.querySelectorAll('.capacity');
+		
+		        // "전체 선택" 체크박스의 변경 이벤트 리스너 추가
+		        selectAllProduct.addEventListener('change', function() {
+		            // "전체 선택" 체크박스의 상태에 따라 모든 체크박스를 선택 또는 선택 해제
+		            products.forEach(function(checkbox) {
+		                checkbox.checked = selectAllProduct.checked;
+		            });
+		        });
+		        
+		        selectAllBrand.addEventListener('change', function() {
+		        	brands.forEach(function(checkbox) {
+		                checkbox.checked = selectAllBrand.checked;
+		            });
+		        });
+		        
+		        selectAllCapacity.addEventListener('change', function() {
+		        	capacities.forEach(function(checkbox) {
+		                checkbox.checked = selectAllCapacity.checked;
+		            });
+		        });
+	    	</script>
+			
+			<span class="material-symbols-outlined icon" id="s-close">close</span>
+		</section>
+	</form>
 </body>
 </html>

@@ -180,24 +180,23 @@ function products_list_homeFragrance() {
 
 	<div class="perfume-nav-list__open">
 		<ul class="perfume-nav-list__category">
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=GRANHAND." class="a_tag"> <img
 					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
 					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=LE LABO" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/MaisonMargiela.png"
-					alt="Maison Margiela" />
+			<li><a href="products_list_brand?p_type=perfume&p_brand=Maison Margiela" class="a_tag"> <img
+					src="resources/pdh-image/brand/MaisonMargiela.png" alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=SHIRO" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=perfume&p_brand=Aesop" class="a_tag"> <img
 					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
@@ -207,20 +206,16 @@ function products_list_homeFragrance() {
 	</div>
 	<div class="handBody-nav-list__open">
 		<ul class="handBody-nav-list__category">
-			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
-					<div class="nav-list__brand-name">GRANHAND.</div>
-			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=hand_body&p_brand=LE LABO" class="a_tag"> <img
 					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
 					<div class="nav-list__brand-name">LE LABO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=hand_body&p_brand=Maison Margiela" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=hand_body&p_brand=SHIRO" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
@@ -230,20 +225,20 @@ function products_list_homeFragrance() {
 	</div>
 	<div class="homeFragrance-nav-list__open">
 		<ul class="homeFragrance-nav-list__category">
-			<li><a href="products" class="a_tag"> <img
-					src="resources/pdh-image/brand/LELABO.png" alt="LE LABO" />
-					<div class="nav-list__brand-name">LE LABO</div>
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=GRANHAND." class="a_tag"> <img
+					src="resources/pdh-image/brand/GRANHAND.png" alt="GRANHAND." />
+					<div class="nav-list__brand-name">GRANHAND.</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=Maison Margiela" class="a_tag"> <img
 					src="resources/pdh-image/brand/MaisonMargiela.png"
 					alt="Maison Margiela" />
 					<div class="nav-list__brand-name">Maison Margiela</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=SHIRO" class="a_tag"> <img
 					src="resources/pdh-image/brand/SHIRO.png" alt="SHIRO" />
 					<div class="nav-list__brand-name">SHIRO</div>
 			</a></li>
-			<li><a href="products" class="a_tag"> <img
+			<li><a href="products_list_brand?p_type=home_fragrance&p_brand=Aesop" class="a_tag"> <img
 					src="resources/pdh-image/brand/Aesop.png" alt="Aesop" />
 					<div class="nav-list__brand-name">Aesop</div>
 			</a></li>
@@ -257,118 +252,34 @@ function products_list_homeFragrance() {
 	<section class="best-seller">
 		<div id="best-seller__inner">
 			<h2 class="best-seller__title judson-bold">best seller</h2>
+			
 			<ul class="best-seller__list">
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/ANOTHER13_15ml.jpg"
-						alt="ANOTHER13_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>ANOTHER 13</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_100ml.jpg"
-						alt="LAVANDE31_100ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>100ml</P>
-							<P>440,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/SANTAL33_500ml.jpg"
-						alt="SANTAL33_500ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>SANTAL 33</P>
-							<P>500ml</P>
-							<P>1,500,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/THEMATCHA26_500ml.jpg"
-						alt="THEMATCHA26_500ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>THÉ MATCHA 26</P>
-							<P>500ml</P>
-							<P>1,500,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-						alt="LAVANDE31_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-						alt="LAVANDE31_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-						alt="LAVANDE31_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-						alt="LAVANDE31_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-						alt="LAVANDE31_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
-				<li class="best-seller__item"><a href="detailproduct" class="a_tag"> <img
-						class="best-seller__thumbnail"
-						src="resources/pdh-image/LeLabo/LAVANDE31_15ml.jpg"
-						alt="LAVANDE31_15ml" />
-						<div class="best-seller__brand">LE LABO</div>
-						<div class="best-seller__information">
-							<P>LAVANDE 31</P>
-							<P>15ml</P>
-							<P>132,000₩</P>
-						</div>
-				</a></li>
+				<c:choose>
+					<c:when test="${empty best_seller}">
+						<p>상품이 존재하지 않습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="k" items="${best_seller}">
+							<li class="best-seller__item">
+								<a href="detailproduct?p_idx=${k.p_idx}" class="a_tag">
+									<img class="best-seller__thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
+									<div class="best-seller__brand">${k.p_brand}</div>
+									<div class="best-seller__information">
+										<P>${k.p_name}</P>
+									<c:choose>
+										<c:when test="${k.p_type == 'perfume'}">
+											<P>${k.p_volume}ml</P>
+										</c:when>
+									</c:choose>
+										<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩</P>
+									</div>
+								</a>
+							</li>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</ul>
+			
 			<ul class="best-seller__footer">
 				<li>회사정보</li>
 				<li>이용약관</li>

@@ -10,6 +10,12 @@
 		where p_type = #{p_type}
 	</select>
 	
+	<select id="total_count_brand" resultType="int">
+		select count(*) 
+		from product_table
+		where p_type = #{p_type} and p_brand = #{p_brand}
+	</select>
+	
 	<select id="products_list" resultType="ProductsVO" parameterType="PagingVO">
 		select * 
 		from product_table 
@@ -17,6 +23,22 @@
 		order by p_name
 		limit #{limit}
 		offset #{offset}
+	</select>
+	
+	<select id="products_list_brand" resultType="ProductsVO" parameterType="PagingVO">
+		select * 
+		from product_table 
+		where p_type = #{p_type} and p_brand = #{p_brand}
+		order by p_name
+		limit #{limit}
+		offset #{offset}
+	</select>
+	
+	<select id="best_seller" resultType="ProductsVO">
+		select * 
+		from product_table 
+		order by buy_rate desc
+		limit 10
 	</select>
 </mapper>
 

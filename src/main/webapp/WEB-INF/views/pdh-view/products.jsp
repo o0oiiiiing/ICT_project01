@@ -55,13 +55,15 @@
 					<div class="product-category judson-bold">home fragrance</div>
 			</c:otherwise>
 		</c:choose>
+		
 		<div class="select-box">
-			<select class="select">
+			<select class="select" id="sort-option">
 				<option value="alphabetical-order">이름순</option>
 				<option value="price-order">가격순</option>
 				<option value="popularity-order">인기순</option>
 			</select>
 		</div>
+		
 		<ul class="product-wrapper">
 			<c:choose>
 				<c:when test="${empty products_list}">
@@ -90,7 +92,7 @@
 									<div class="product-brand">${k.p_brand}</div>
 									<div class="product-information">
 										<P>${k.p_name}</P>
-										<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩<</P>
+										<P><fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩</P>
 									</div>
 									</a>
 								</li>
@@ -109,7 +111,14 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}">이전</a>
+					<c:choose>
+						<c:when test="${p_brand != null}">
+							<a class="able" href="products_list_brand?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">이전</a>
+						</c:when>
+						<c:otherwise>
+							<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}">이전</a>
+						</c:otherwise>
+					</c:choose>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -121,7 +130,16 @@
 					<li class="now">${k}</li>
 				</c:when>
 				<c:otherwise>
-					<li><a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}">${k}</a></li>
+					<li>
+						<c:choose>
+							<c:when test="${p_type != null}">
+								<a class="other_page" href="products_list_brand?cPage=${k}&p_type=${p_type}&p_brand=${p_brand}">${k}</a>
+							</c:when>
+							<c:otherwise>
+								<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}">${k}</a>
+							</c:otherwise>
+						</c:choose>
+					</li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -133,7 +151,14 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}">다음</a>
+					<c:choose>
+						<c:when test="${p_brand != null}">
+							<a class="able" href="products_list_brand?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">다음</a>
+						</c:when>
+						<c:otherwise>
+							<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}">다음</a>
+						</c:otherwise>
+					</c:choose>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -144,6 +169,7 @@
 			<span class="material-symbols-outlined">expand_less</span>
 		</button>
 	</div>
+	
 	<script type="text/javascript">
 		// 누르면 한 번에 위로 올라가는 버튼
 		window.onscroll = function() { scrollFunction() };
