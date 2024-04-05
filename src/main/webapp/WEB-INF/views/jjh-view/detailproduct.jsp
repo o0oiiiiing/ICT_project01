@@ -28,37 +28,80 @@
 		f.action = "pay"
 		f.submit();
 	}
-	
-	$(document).ready(function() {
-		$("#pick").click(function() {
+	// cart 추가 ajax
+		function pick_add() {
 			$.ajax({
 				url : "cartAjax.do",
 				method : "post",
 				dataType : "text",
-				data : "p_idx="+$(this).attr("name"),
+				data : "p_idx="+$().attr("name"),
 				success : function(data) {
-					$("#cart_ajax").text("("+data+")")
+					$(".pick").attr("onclick", pick_del);
+					$(".pick").text("장바구니 제거");
+					$("#cart_ajax").text("("+data+")");
 				},
 				error: function() {
 					alert("읽기 실패")
 				}
 			})
-		})
-		$("#wish_ajax").click(function() {
+		}
+	// cart 제거 ajax
+		function pick_del() {
 			$.ajax({
-				url : "wishAjax.do",
+				url : "cartDelAjax.do",
 				method : "post",
 				dataType : "text",
 				data : "p_idx="+$(this).attr("name"),
 				success : function(data) {
-					$("#cart_ajax").text("("+data+")")
+					$("#cart_ajax").text("("+data+")");
+					$(".pick").text("장바구니 추가");
+					$(".pick").attr("onclick", pick_add);
 				},
 				error: function() {
 					alert("읽기 실패")
 				}
 			})
-		})
-	})
+		}
+		// 위시리스트 추가 ajax
+		function wish_add() {
+			if (${ssuvo == null}) {
+				alert("로그인 후 이용 가능합니다.");
+			}else {
+				$.ajax({
+					url : "wishAjax.do",
+					method : "post",
+					dataType : "text",
+					data : "p_idx="+$(this).attr("name"),
+					success : function(data) {
+						$(".wish_ajax").css("font-variation-settings", "'FILL' 1, 'GRAD' 0, 'opsz' 24, 'wght' 400");
+						$(".wish_ajax").attr("onclick", wish_del);
+					},
+					error: function() {
+						alert("읽기 실패")
+					}
+				})
+			}
+		}
+		// 위시리스트 제거 ajax
+		function wish_del() {
+			if (${ssuvo == null}) {
+				alert("로그인 후 이용 가능합니다.");
+			}else {
+				$.ajax({
+					url : "wishDelAjax.do",
+					method : "post",
+					dataType : "text",
+					data : "p_idx="+$(".").attr("name"),
+					success : function(data) {
+						$(".wish_ajax").css("font-variation-settings", "'FILL' 0, 'GRAD' 0, 'opsz' 24, 'wght' 400");
+						$(".wish_ajax").attr("onclick", wish_add);
+					},
+					error: function() {
+						alert("읽기 실패")
+					}
+				})
+			}
+		}
 </script>
 </head>
 <body>
@@ -84,6 +127,14 @@
 		<div id="info">
 			<p id="info_name">${pvo.p_name}</p>
 			<p id="info_hname">${pvo.p_brand}</p>
+			<c:choose>
+				<c:when test="${pvo.p_volume == 'free'}">
+				</c:when>
+				<c:otherwise>
+					<p>${pvo.p_volume}ml</p>
+				</c:otherwise>
+			</c:choose>
+			<p id="info_hname">${pvo.p_brand}</p>
 			<p id="info_price"><span><fmt:formatNumber value="${pvo.p_price}"/></span> KRW</p>
 		</div>
 			<div id="p_btns">
@@ -105,12 +156,33 @@
 			</div>
 		<form method="get">
 			<div id="pick_box">
-				<button id="wish">
-					<span class="material-symbols-outlined" id="wish_ajax" name="${pvo.p_idx}">
-					favorite
-					</span>
-				</button>
-				<button type="button" id="pick" name="${pvo.p_idx}">장바구니 담기</button>
+			
+				<c:choose>
+					<c:when test="${wish_status == 1}">
+						<button id="wish" type="button">
+							<span class="material-symbols-outlined" class="wish_ajax" name="${pvo.p_idx}" onclick="wish_del()"
+							    style="font-variation-settings: 'FILL' 1, 'GRAD' 0, 'opsz' 24, 'wght' 400;">
+							    favorite
+							</span>
+						</button>
+					</c:when>
+					<c:otherwise>
+						<button id="wish" type="button">
+							<span class="material-symbols-outlined" class="wish_ajax" name="${pvo.p_idx}" onclick="wish_add()"
+							    style="font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 24, 'wght' 400;">
+							    favorite
+							</span>
+						</button>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${cart_status == 1}">
+						<button type="button" class="pick" class="${pvo.p_idx}" onclick="pick_del()">장바구니 제거</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="pick" class="${pvo.p_idx}" onclick="pick_add()">장바구니 담기</button>	
+					</c:otherwise>
+				</c:choose>
 				<button type="button" id="sell_btn" onclick="pay(this.form)">구매하기</button>
 			</div>
 		</form>

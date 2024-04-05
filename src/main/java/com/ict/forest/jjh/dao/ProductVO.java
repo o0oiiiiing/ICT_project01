@@ -3,7 +3,8 @@ package com.ict.forest.jjh.dao;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductVO {
-	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, p_main_img, p_content, regdate;
+	private String p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, buy_rate, total_quatity, p_main_img, p_content, regdate,
+					cart_status, wish_status;
 	private MultipartFile main_img;
 	
 	
@@ -84,6 +85,18 @@ public class ProductVO {
 	}
 	public void setMain_img(MultipartFile main_img) {
 		this.main_img = main_img;
+	}
+	public String getCart_status() {
+		return cart_status;
+	}
+	public void setCart_status(String cart_status) {
+		this.cart_status = cart_status;
+	}
+	public String getWish_status() {
+		return wish_status;
+	}
+	public void setWish_status(String wish_status) {
+		this.wish_status = wish_status;
 	}
 	
 	

@@ -47,6 +47,16 @@
 		})
 		
 	});
+	
+	// 로그인 유무 검사 후 위시리스트
+	function loginchk() {
+		if (${ssuvo == null}) {
+			alert("로그인 후 이용 가능합니다.")
+			return false;
+		}else {
+			return true;
+		}
+	}
 </script>
 <script type="text/javascript">
 	function products_list_perfume() {
@@ -84,7 +94,7 @@
 				<span><a class="icon a_tag" id="search_btn">Search</a></span>
 				<span><a href="faq" class="icon a_tag">headset_mic</a></span>
 				<span><a href="cart" class="icon a_tag">Shopping_Cart<span id="cart_ajax">(${cart.size()})</span></a></span>
-				<span><a href="wish" class="icon a_tag">Favorite</a></span>
+				<span><a href="wish" class="icon a_tag" onclick="return loginchk()">Favorite</a></span>
 				<span id="login_btn">
 					<c:choose>
 						<c:when test="${ssuvo.login == 'true'}">

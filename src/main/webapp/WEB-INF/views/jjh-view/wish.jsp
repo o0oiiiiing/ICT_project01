@@ -18,8 +18,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <section id="wishlist">
 	<article id="lists">
-		<c:forEach var="k" items="list_wvo">
-		
+		<c:forEach var="k" items="${list_wvo}">
 		<div class="wishitems">
 			<div class="wish_img">
 				<img src="resources/upload/${k.p_main_img}">

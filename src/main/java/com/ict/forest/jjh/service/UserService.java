@@ -15,5 +15,6 @@ public interface UserService {
 	public int wishInsert(WishVO wvo);
 	public List<WishVO> wishList(String user_idx);
 	public int wishCount(String user_idx);
+	public int wishDelete(String user_idx, String p_idx);
 	
 }

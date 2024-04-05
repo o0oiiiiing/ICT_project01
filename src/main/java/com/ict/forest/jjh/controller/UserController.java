@@ -99,6 +99,9 @@ public class UserController {
 		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		List<WishVO> list_wvo = userService.wishList(ssuvo.getUser_idx());
 		mv.addObject("list_wvo", list_wvo);
+		for (WishVO k : list_wvo) {
+			System.out.println(k.getP_name());
+		}
 		return mv;
 	}
 	

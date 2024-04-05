@@ -22,7 +22,9 @@ import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.ProductSubImgVO;
 import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.jjh.dao.ReviewVO;
+import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.ProductService;
+import com.ict.forest.jjh.service.UserService;
 
 @Controller
 public class ProductController {
@@ -30,6 +32,8 @@ public class ProductController {
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("product_write")
 	public ModelAndView productWrite() {
@@ -93,16 +97,40 @@ public class ProductController {
 		List<ReviewVO> review_list = productService.productReviewList(p_idx);
 		List<ProductVO> recent = (List<ProductVO>) session.getAttribute("recent");
 		
-		List<ProductVO> recent2 = recent.stream().filter(x->x.getP_idx() != p_idx).collect(Collectors.toList());
+		// 弥辟 夯 惑前 贸府
+		List<ProductVO> recent2 = recent.stream().filter(x->!x.getP_idx().equals(p_idx)).collect(Collectors.toList());
+		for (ProductVO k : recent2) {
+			System.out.println(k.getP_idx());
+		}
+		System.out.println("罐篮 p_idx="+p_idx);
 		recent2.add(0,pvo);
 		System.out.println(recent2);
-		for (ProductVO k : recent2) {
-			System.out.println(k.getP_name());
-		}
+
 		if (recent2.size() == 6) {
 			recent2.remove(recent2.size()-1);
 		}
+		
+		session.removeAttribute("recent");
 		session.setAttribute("recent", recent2);
+		
+		// cart 蜡公 贸府
+		if (((List<ProductVO>) session.getAttribute("cart")).size() > 0) {
+			List<ProductVO> cart = (List<ProductVO>) session.getAttribute("cart");
+			if (cart.stream().anyMatch(x->x.getP_idx().equals(pvo.getP_idx()))) {
+				System.out.println("墨飘贸府");
+				mv.addObject("cart_status", "1");
+			}
+		}
+		// wish 蜡公 贸府
+		if (session.getAttribute("ssuvo") != null) {
+			SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+			List<WishVO> list_wvo = userService.wishList(ssuvo.getUser_idx());			
+			if (list_wvo.stream().anyMatch(x->x.getP_idx().equals(pvo.getP_idx()))) {
+				mv.addObject("wish_status", "1");
+			}
+		}
+		
+		
 		mv.addObject("pvo", pvo);
 		mv.addObject("pivo_list", pivo_list);
 		mv.addObject("review_list", review_list);
