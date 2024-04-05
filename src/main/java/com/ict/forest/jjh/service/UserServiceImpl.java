@@ -53,4 +53,8 @@ public class UserServiceImpl implements UserService{
 	public int wishCount(String user_idx) {
 		return userDAO.wishCount(user_idx);
 	}
+	@Override
+	public int wishDelete(String user_idx, String p_idx) {
+		return userDAO.wishDelete(user_idx, p_idx);
+	}
 }

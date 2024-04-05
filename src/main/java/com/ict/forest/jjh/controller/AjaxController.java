@@ -1,7 +1,9 @@
 package com.ict.forest.jjh.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,19 @@ public class AjaxController {
 		List<ProductVO> cart = (List<ProductVO>) session.getAttribute("cart");
 		cart.add(pvo);
 		session.setAttribute("cart", cart);
+		System.out.println(cart);
 		String count = String.valueOf(cart.size());
+		return count;
+	}
+	// 장바구니 제거
+	@RequestMapping(value = "cartDelAjax.do", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String cartDelAjax(HttpServletRequest request, HttpSession session, String p_idx) {
+		List<ProductVO> cart = (List<ProductVO>) session.getAttribute("cart");
+		List<ProductVO> cart2 = cart.stream().filter(x->!x.getP_idx().equals(p_idx)).collect(Collectors.toList());
+		session.setAttribute("cart", cart2);
+		String count = String.valueOf(cart2.size());
+		request.setAttribute("cart_status", "0");
 		return count;
 	}
 	
@@ -53,6 +67,19 @@ public class AjaxController {
 			return String.valueOf(count);
 		}
 
+		return null;
+	}
+	// 위시리스트 제거
+	@RequestMapping(value = "wishDelAjax.do", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String wishDelAjax(HttpServletRequest request, HttpSession session, String p_idx) {
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+		int res = userService.wishDelete(ssuvo.getUser_idx(), p_idx);
+		if (res > 0) {
+			int count = userService.wishCount(ssuvo.getUser_idx());
+			request.setAttribute("wish_status", "0");
+			return String.valueOf(count);
+		}
 		return null;
 	}
 }

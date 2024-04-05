@@ -47,19 +47,10 @@
 	<select id="wish_count" parameterType="String" resultType="int">
 		select count(*) from wish_table where user_idx=#{user_idx}
 	</select>
+	<delete id="wish_delete" parameterType="Map">
+		delete from wish_table where user_idx = #{user_idx} and p_idx=#{p_idx}
+	</delete>
 	
-
-
-
-
-
-	<select id="findname" parameterType="String" resultType="kvo">
-		select * from user_table where user_name = #{user_name}
-	</select>
-
-	<select id="pfind" parameterType="String" resultType="kvo">
-		select * from user_table where user_name = #{user_name}
-	</select>
 </mapper>
 
 

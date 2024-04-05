@@ -1,6 +1,8 @@
 package com.ict.forest.jjh.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +86,17 @@ public class UserDAO {
 			System.out.println(e);
 		}
 		return 0;
+	}
+	
+	public int wishDelete(String user_idx, String p_idx) {
+		try {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("user_idx", user_idx);
+			map.put("p_idx", p_idx);			
+			return sqlSessionTemplate.delete("user_table.wish_delete", map);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0; 
 	}
 }
