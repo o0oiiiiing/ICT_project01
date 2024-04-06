@@ -46,7 +46,7 @@ function selectAll(selectAll)  {
 				<div id="s1a1d1_pa">
 					<div id="p_name">${k.p_name}<a></a></div>
 					<div id="p_count"  >${k.p_count}<a>개</a></div>
-					<div id="pt_price">${k.p_price} * ${k.p_count} 개 + 3000  = ${k.p_price * k.p_count + 3000}<a> KRW(원)</a></div>
+					<div id="pt_price">${k.p_price} * ${k.p_count} 개 + 3000 = ${k.p_price * k.p_count + 3000}<a> KRW(원)</a></div>
 					<c:set var= "total" value="${total + k.p_price * k.p_count + 3000}"/>
 				</div>
 			</div>

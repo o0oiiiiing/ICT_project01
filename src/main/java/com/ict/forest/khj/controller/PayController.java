@@ -2,6 +2,13 @@ package com.ict.forest.khj.controller;
 
 
 
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 // khj 결제하기
@@ -44,16 +51,25 @@ public class PayController {
 	
 	// 상품 결제페이지 이동
 	@GetMapping("pay")
-	public ModelAndView getPay(BuyVO buyvo) {
-		ModelAndView mv = new ModelAndView("pdh-view/home");
+	public ModelAndView getPay() {
+		ModelAndView mv = new ModelAndView("khj-view/pay");
+		BuyVO buyvo = new BuyVO();
 		
 		// 	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count,
 		// p_option, delivery_status, delivery_start, delivery_end, buy_chk, p_main_img, pay_date;
 		
+//		System.out.println(buyvo.getP_idx());
+//		System.out.println(buyvo.getUser_idx());
+//		System.out.println(buyvo.getP_name());
+//		System.out.println(buyvo.getP_type());
+//		System.out.println(buyvo.getP_brand());
+//		System.out.println(buyvo.getP_volume());
+//		System.out.println(buyvo.getP_price());
+//		System.out.println(buyvo.getP_count());
+	
 		
 		
-		
-		String[] p_idx = {"1","5","4","2","3"};
+		String[] p_idx = {"20","23","26","29","30"};
 		String[] user_idx = {"1","1","1","1","1"};
 		String[] p_name = {"향수1","향수5","향수4","향수2","향수3"};
 		String[] p_type = {"3","2","15","66","33"};
@@ -62,6 +78,8 @@ public class PayController {
 		String[] p_price = {"1000","5000","4000","2000","3000"};
 		String[] p_count = {"7","3","11","4","1"};
 		String[] option = {"5","1","2","4","6"};
+		String p_main_img2 = payService.getPMainImg(p_idx[0]);
+		System.out.println(p_main_img2);
 		
 		buyvo.setP_idx(p_idx);
 		buyvo.setUser_idx(user_idx);
@@ -83,12 +101,15 @@ public class PayController {
 		String[] p_count2 = buyvo.getP_count();
 		String[] option2 = buyvo.getOption();
 		
-			
+		
+		List<PayVO> pay_list = new ArrayList();
+	
+		int total_price = 0;
 		for (int i = 0; i < p_idx2.length; i++) {
 			PayVO payVO1 = new PayVO();
-			// 	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, 
-			//  p_price, p_count, p_option, delivery_status,
-			//  delivery_start, delivery_end, buy_chk, p_main_img, pay_date;
+//			 	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, 
+//			  p_price, p_count, p_option, delivery_status,
+//			  delivery_start, delivery_end, buy_chk, p_main_img, pay_date;
 			
 			payVO1.setP_idx(p_idx2[i]); 
 			payVO1.setUser_idx(user_idx2[i]);
@@ -99,22 +120,35 @@ public class PayController {
 			payVO1.setP_price(p_price2[i]);  
 			payVO1.setP_count(p_count2[i]);   
 			payVO1.setP_option(option2[i]);   
-			payVO1.setDelivery_status("1");
-			payVO1.setDelivery_start("2024-04-05");
-			payVO1.setDelivery_end("0");
-			payVO1.setBuy_chk("0");
-			String p_main_img = payService.getPMainImg(p_idx[i]);
-			if(p_main_img != null || p_main_img != "") {
-				payVO1.setP_main_img(p_main_img);
-			}
 			
-			int pay_ins = payService.getPayInsert(payVO1);
-			if(pay_ins > 0) {
-				continue;
+//			 payVO1.setDelivery_status("0"); payVO1.setDelivery_start("2024-04-05");
+//			  payVO1.setDelivery_end("0"); payVO1.setBuy_chk("0");
+			 
+			String p_main_img = payService.getPMainImg(p_idx2[i]);
+			if((p_main_img != null) && !p_main_img.equals("")) {
+				payVO1.setP_main_img(p_main_img);
 			}else {
 				return new ModelAndView("khj-view/error");
 			}
+			pay_list.add(payVO1);
+			
+			
+			
+//			  int pay_ins = payService.getPayInsert(payVO1); if(pay_ins > 0) { continue;
+//			  }else { return new ModelAndView("khj-view/error"); }
+			 
+			
 		}
+		for (PayVO k : pay_list) {
+			System.out.println(k.getP_main_img());
+			System.out.println(k.getP_name());
+			System.out.println(k.getP_count());
+			System.out.println(k.getP_price());
+			
+		}
+		mv.addObject("pay_list", pay_list);
+		
+		
 		return mv;
 		
 
