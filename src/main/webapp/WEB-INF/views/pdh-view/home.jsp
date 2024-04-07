@@ -32,12 +32,10 @@
 	    let left = 0;
 	    let top = 0;
 	
-	    // 새로운 창을 엽니다.
 	    let popup = window.open('popup_go', '팝업창', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
 	
-	    // 차단된 팝업 창을 대비하여 예외 처리합니다.
 	    if (popup == null || typeof(popup)=='undefined') {
-	        alert('팝업 차단이 감지되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
+	        alert('팝업 차단을 해제해주세요');
 	    } else {
 	        popup.focus();
 	    }

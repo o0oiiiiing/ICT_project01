@@ -21,7 +21,7 @@ import com.ict.forest.khj.service.PayService;
 @Controller
 public class PayController {
 	// 주형씨거 BuyVO에 담긴 배열 변수들
-	//private String[] p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, option;
+	//private String[] p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, p_option;
 	
 	
 	
@@ -77,7 +77,7 @@ public class PayController {
 		String[] p_volume = {"1","2","3","4","5"};
 		String[] p_price = {"1000","5000","4000","2000","3000"};
 		String[] p_count = {"7","3","11","4","1"};
-		String[] option = {"5","1","2","4","6"};
+		String[] p_option = {"5","1","2","4","6"};
 		String p_main_img2 = payService.getPMainImg(p_idx[0]);
 		System.out.println(p_main_img2);
 		
@@ -89,7 +89,7 @@ public class PayController {
 		buyvo.setP_volume(p_volume);
 		buyvo.setP_price(p_price);
 		buyvo.setP_count(p_count);
-		buyvo.setP_option(option);
+		buyvo.setP_option(p_option);
 		
 		String[] p_idx2 = buyvo.getP_idx();
 		String[] user_idx2 = buyvo.getUser_idx();
@@ -99,7 +99,7 @@ public class PayController {
 		String[] p_volume2 = buyvo.getP_volume();
 		String[] p_price2 = buyvo.getP_price();
 		String[] p_count2 = buyvo.getP_count();
-		String[] option2 = buyvo.getP_option();
+		String[] p_option2 = buyvo.getP_option();
 		
 		
 		List<PayVO> pay_list = new ArrayList();
@@ -119,7 +119,7 @@ public class PayController {
 			payVO1.setP_volume(p_volume2[i]);   
 			payVO1.setP_price(p_price2[i]);  
 			payVO1.setP_count(p_count2[i]);   
-			payVO1.setP_option(option2[i]);   
+			payVO1.setP_option(p_option2[i]);   
 			
 //			 payVO1.setDelivery_status("0"); payVO1.setDelivery_start("2024-04-05");
 //			  payVO1.setDelivery_end("0"); payVO1.setBuy_chk("0");

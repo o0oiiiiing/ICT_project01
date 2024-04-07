@@ -17,7 +17,6 @@ function closePop() {
 	window.close();
 }
 function point(f) {
-    // 서버로의 요청을 비동기적으로 보냅니다.
     $.ajax({
         type: "post",
         url: "point",
