@@ -25,8 +25,6 @@ public class UserDAO {
 	
 	public int userJoinAddr(UserAddrVO uavo) {
 		try {
-			System.out.println("dao2");
-			
 			return sqlSessionTemplate.insert("user_table.user_addr_insert", uavo);
 		} catch (Exception e) {
 			System.out.println(e);
@@ -98,5 +96,32 @@ public class UserDAO {
 			System.out.println(e);
 		}
 		return 0; 
+	}
+	
+	public int addrTypeChange(String user_idx) {
+		try {
+			return sqlSessionTemplate.update("user_table.addr_type_chage", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	public int userAddrAdd(UserAddrVO uavo) {
+		try {
+			return sqlSessionTemplate.insert("user_table.user_addr_add_insert", uavo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public int pointPlus(UserVO uvo) {
+		try {
+			return sqlSessionTemplate.update("user_table.point_plus", uvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
 	}
 }

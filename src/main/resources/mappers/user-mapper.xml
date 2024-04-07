@@ -7,8 +7,8 @@
 	
 	<!-- jjh: 회원가입 -->
 	<insert id="user_insert" parameterType="uvo">
-	    INSERT INTO user_table (user_name, user_id, user_pwd, user_email, user_phone, user_type, regdate) 
-	    VALUES (#{user_name}, #{user_id}, #{user_pwd}, #{user_email}, #{user_phone}, #{user_type}, sysdate())
+	    INSERT INTO user_table (user_name, user_id, user_pwd, user_email, user_phone, user_type, regdate, zip_code, main_addr, detail_addr, ex_addr) 
+	    VALUES (#{user_name}, #{user_id}, #{user_pwd}, #{user_email}, #{user_phone}, #{user_type}, sysdate(), #{zip_code}, #{main_addr}, #{detail_addr}, #{ex_addr})
 	</insert>
 	
 	<!-- jjh: 회원가입시 주소 입력 -->
@@ -51,6 +51,18 @@
 		delete from wish_table where user_idx = #{user_idx} and p_idx=#{p_idx}
 	</delete>
 	
+	<update id="addr_type_chage" parameterType="String">
+		update user_addr_table set addr_type = 1 where user_idx = #{user_idx} and addr_type = 0 
+	</update>
+	
+	<insert id="user_addr_add_insert" parameterType="uavo">
+	    INSERT INTO user_addr_table (user_idx, zip_code, main_addr, detail_addr, ex_addr, addr_type) 
+	    VALUES (#{user_idx}, #{zip_code},#{main_addr},#{detail_addr},#{ex_addr}, #{addr_type})
+	</insert>
+	
+	<update id="point_plus" parameterType="uvo">
+		update user_table set user_point = #{user_point} where user_idx = #{user_idx} 
+	</update>
 </mapper>
 
 

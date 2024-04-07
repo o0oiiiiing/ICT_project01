@@ -1,8 +1,8 @@
 package com.ict.forest.jjh.dao;
 
 public class BuyVO {
-	private String[] p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, option;
-	
+	private String[] p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, p_option, p_main_img;
+
 	public String[] getP_idx() {
 		return p_idx;
 	}
@@ -67,12 +67,20 @@ public class BuyVO {
 		this.p_count = p_count;
 	}
 
-	public String[] getOption() {
-		return option;
+	public String[] getP_option() {
+		return p_option;
 	}
 
-	public void setOption(String[] option) {
-		this.option = option;
+	public void setP_option(String[] p_option) {
+		this.p_option = p_option;
+	}
+
+	public String[] getP_main_img() {
+		return p_main_img;
+	}
+
+	public void setP_main_img(String[] p_main_img) {
+		this.p_main_img = p_main_img;
 	}
 	
 	

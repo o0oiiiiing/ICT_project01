@@ -11,9 +11,24 @@
 <title>Insert title here</title>
 <!-- 서버용 함수 -->
 <script type="text/javascript">
-	function pay() {
-		location.href = "pay";
-	}
+	$(document).ready(function() {
+		$("#pay").click(function() {
+			if (${ssuvo.login != "true"}) {
+				alert("로그인 후 이용해주세요.")
+				return
+			}else {
+				var form = $('<form>');
+				form.attr('action', 'test'); // 폼의 action을 설정합니다.
+				form.attr('method', 'post'); 
+				$(".f_imgs").find("input:checked").each(function () {
+					let test = $(this).parent().parent().find("select, input");
+					form.append(test);
+				})
+				$('body').append(form);
+				form.submit();
+			}
+		})
+	})
 </script>
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -33,18 +48,33 @@
 		</div>
 		<article id="f_list">
 			<c:forEach var="k" items="${cart}">
-			<div class="c_product">
+			<form class="c_product">
 				<div class="f_imgs">
-					<input type="checkbox">
+					<input type="checkbox" name="p_idx" value="${k.p_idx}">
 					<div class="f_img">
 						<img src="resources/upload/${k.p_main_img}">
+						<input type="hidden" name="p_main_img" value="${k.p_main_img}">
 					</div>
 				</div>
 				<div class="f_option">
-					<p>${k.p_name}</p>
+					<div>
+						<p>Type : ${k.p_type}</p>
+						<input type="hidden" name="p_type" value="${k.p_type}">
+						<input type="hidden" name="p_brand" value="${k.p_brand}">
+						<p>${k.p_name}</p>
+						<input type="hidden" name="p_name" value="${k.p_name}">
+						<c:choose>
+							<c:when test="${k.p_volume == 'free'}">
+							</c:when>
+							<c:otherwise>
+								<p>${k.p_volume}ml</p>
+							</c:otherwise>
+						</c:choose>
+						<input type="hidden" name="p_volume" value="${k.p_volume}">
+					</div>
 					<div>
 						<span>선물 옵션</span>
-						<select name="present" class="present_ck">
+						<select name="p_option" class="present_ck">
 							<option value="1">일반 포장</option>
 							<option value="2">선물용 포장</option>
 						</select>
@@ -52,7 +82,7 @@
 					<div>
 						<span>수량 옵션</span>
 						<input type="hidden" name="p_price" value="${k.p_price}">
-						<select name="su" class="su_ck" >
+						<select name="p_count" class="su_ck" >
 							<option value="1" selected>1개</option>
 							<option value="2">2개</option>
 							<option value="3">3개</option>
@@ -64,14 +94,14 @@
 				<div>
 					<p><span><fmt:formatNumber value="${k.p_price}"/></span> KRW</p>
 				</div>
-			</div>
+			</form>
 			</c:forEach>
 		</article>
 		<article id="f_sum">
 			<div>
 				<p><span>0</span> KRW + 3,000 KRW = <span>0</span> KRW</p>
 				<hr>
-				<input type="button" value="구매하기" onclick="pay()">
+				<input type="button" id="pay" value="구매하기">
 			</div>
 		</article>
 	</section>
@@ -80,13 +110,10 @@
 <script type="text/javascript">
 	/* 총계산 함수 */
 	function sum() {
-		console.log("ggg")
 		let res = 0;
 		$(".f_imgs").find("input:checked").each(function() {
-			console.log("aaa")
-			let k = $(this).parent().next().find("div:nth-of-type(2)").find(".su_ck")
+			let k = $(this).parent().next().find("div:nth-of-type(3)").find(".su_ck")
 			let su = k.find("option:selected").val();
-			console.log(k.prev().val())
 			res = parseInt(k.prev().val()*su) + res;
 		})
 		
@@ -115,7 +142,7 @@
 	})
 	
 	/* 글자 보이고 가리기 */
-	$(".f_option > p:nth-of-type(1)").hover(
+	$(".f_option > div:nth-of-type(1) > p:nth-of-type(2)").hover(
 			function() {
 				$(this).css("whiteSpace", "wrap")
 			},
@@ -127,7 +154,22 @@
 	/* 선택 삭제 이벤트 */
 	$("#rm_btn").click(function() {
 		$(".f_imgs").find("input:checked").each(function() {
-			$(this).parent().parent().remove();
+			let tag = this;
+			let p_idx = $(this).val();
+			$.ajax({
+				url : "cartDelAjax",
+				method : "post",
+				dataType : "text",
+				data : "p_idx="+p_idx,
+				async : false,
+				success : function(data) {
+					$(tag).parent().parent().remove();
+					$("#cart_ajax").text("("+data+")");
+				},
+				error: function() {
+					alert("읽기 실패");
+				}
+			})
 		})
 		sum();
 	})

@@ -40,6 +40,23 @@
 	function product_write(){
 		location.href="product_write"
 	}
+	function openPopup() {
+	    // 작은 창의 크기와 위치를 설정합니다.
+	    var width = 400;
+	    var height = 400;
+	    var left = (screen.width - width) / 2;
+	    var top = (screen.height - height) / 2;
+
+	    // 새로운 창을 엽니다.
+	    var popup = window.open('point_go', '포인트 충전', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
+
+	    // 차단된 팝업 창을 대비하여 예외 처리합니다.
+	    if (popup == null || typeof(popup)=='undefined') {
+	        alert('팝업 차단이 감지되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
+	    } else {
+	        popup.focus();
+	    }
+	}
 </script>
 </head>
 <body>
@@ -48,7 +65,6 @@
 		<article id="f_menu">
 			<button class="menu_btn" onclick="order()">주문리스트</button>
 			<button class="menu_btn" onclick="buy()">구매리스트</button>
-			<button class="menu_btn" onclick="point()">내 포인트 관리</button>
 			<c:choose>
 				<c:when test="${ssuvo.user_type==0}">
 					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
@@ -87,21 +103,62 @@
 					<p>
 						<span class="material-symbols-outlined">home</span>
 					</p>
-					<p>주소 : ${uaddrlist[0].main_addr}</p>
+					<p>주소 : ${uvo.main_addr}
+						<c:choose>
+							<c:when test="${!empty uvo.detail_addr}">, ${uvo.detail_addr}</c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${!empty uvo.ex_addr}">, ${uvo.ex_addr}</c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+					</p>
+				</div>
+				<div class="infos">
+					<p>
+						<span class="material-symbols-outlined">Paid</span>
+					</p>
+					<p>내 포인트 : <fmt:formatNumber value="${uvo.user_point}" />P <button id="point" type="button" onclick="openPopup()">충전하기</button> </p>
 				</div>
 				<button class="move_btn" onclick="update()">회원정보 수정</button>
 			</div>
 			<div id="info_addr">
 				<p>배송지 주소</p>
-				<div>
-					<p>배송지 주소1 : </p>
-					<p>저장된 주소가 없습니다.</p>
-				</div>
-				<div>
-					<p>배송지 주소2 :</p>
-					<p>저장된 주소가 없습니다.</p>
-				</div>
-				<button class="move_btn" onclick="addr()">배송지 추가</button>
+				<c:forEach var="k" items="${uaddrlist}" varStatus="vs">
+					<c:choose>
+						<c:when test="${vs.index==0}">
+							<div>
+								<p>메인 배송지 주소 : </p>
+								<p>${k.main_addr}
+									<c:choose>
+										<c:when test="${!empty k.detail_addr}">, ${k.detail_addr}</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${!empty k.ex_addr}">, ${k.ex_addr}</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+								</p>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div>
+								<p>기타 배송지 주소${vs.index} : </p>
+								<p>${k.main_addr}
+									<c:choose>
+										<c:when test="${!empty k.detail_addr}">, ${k.detail_addr}</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${!empty k.ex_addr}">, ${k.ex_addr}</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+								</p>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<button class="move_btn" onclick="addrplus()">배송지 추가</button>
 			</div>
 			<div id="info_qna">
 				<p>QnA 문의 결과</p>
