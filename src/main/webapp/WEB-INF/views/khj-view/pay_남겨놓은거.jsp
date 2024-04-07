@@ -39,23 +39,25 @@ function selectAll(selectAll)  {
 					<h3>결제상품이 없습니다......</h3>
 				</c:when>
 				<c:otherwise>
-					<c:set var = "total" value = "0" />
-					<c:forEach var="k" items="${pay_list }">
+					<c:set var = "pt_price_total" value = "0" />
+					<c:set var = "pay_ok_count" value = "0" />
+					<c:forEach var="k" items="${pay_list }" varStatus="vs">
 						<div class="s1a1_d1">
 				<div class="s1a1d1_img"><img src="resources/jjh-image/projtest.png"></div>
 				<div id="s1a1d1_pa">
 					<div id="p_name">${k.p_name}<a></a></div>
 					<div id="p_count"  >${k.p_count}<a>개</a></div>
-					<div id="pt_price">${k.p_price} * ${k.p_count} 개 + 3000 = ${k.p_price * k.p_count + 3000}<a> KRW(원)</a></div>
-					<c:set var= "total" value="${total + k.p_price * k.p_count + 3000}"/>
+					<div id="pt_price">${k.p_price} * ${k.p_count} 개  = ${k.p_price * k.p_count}<a> KRW(원)</a></div>
+					<c:set var= "pt_price_total" value="${pt_price_total + k.p_price * k.p_count}"/>
+					<c:set var= "pay_ok_count" value="${vs.count}"/>
 				</div>
 			</div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-			<div>총 결제금액 : <c:out value="${total}"/> KRW(원) </div>
+			<%-- <div>총 결제금액 : <c:out value="${pt_price_total}"/> KRW(원) </div> --%>
 			<div id="s1a1_d2">
-				<a>배송비 3000원 포함됐음</a>
+				<a>배송비는 상품마다 3000원씩 포함됩니다.</a>
 			</div>
 			</div>
 		</article>
@@ -63,24 +65,17 @@ function selectAll(selectAll)  {
 			<h3 style="text-align: center;">주문자 정보</h3>
 				<div id="s1a2d1">
 					<ul>
-						<li>배송은</li>
-						<li>며칠</li>
-						<li>걸릴 수</li>
-						<li>있습니다.</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
-						<li>이만!!</li>
+						<li>배송은 하루 걸립니다.</li>
+						<li>상품을 받으시면 구매확정 부탁드립니다.</li>
+						<li>배송이 완료되고 3일 지나면 자동으로 구매확정이 됩니다.</li>
+						<li>포장은 파손이 되지 않게 상품마다 별도 포장되기에 안심하셔도 됩니다.</li>
+						<li>개별 포장되어 발송되기에 배송비는 상품마다 포함됩니다.</li>
 					</ul>
 				</div>
 				<input id="orderer_name" type="text" placeholder="주문자 이름"  required>
 				<input id="orderer_addr" type="text" placeholder="주문자 주소"  required>
-				<!-- <input  id="orderer_phone" type="text" oninput="oninput_op(this)" maxlength="14" placeholder="주문자 연락처"  required>
-				<input id="orderer_email" placeholder="주문자 이메일"  required> -->
+				<%--  <input  id="orderer_phone" type="text" oninput="oninput_op(this)" maxlength="14" placeholder="주문자 연락처"  required>
+				<input id="orderer_email" placeholder="주문자 이메일"  required> --%>
 		</article>
 		<article id="p1_s1_a3">
 			<h3 style="text-align: center;">배송 정보</h3>
@@ -95,10 +90,10 @@ function selectAll(selectAll)  {
 	<section id="p1_s2">
 		<article id="p1_s2_a1">
 			<h3 style="text-align: center;">주문 요약</h3>
-			<div id="all_opp">주문상품들가격<a>KRW</a></div>
-			<div id="d_charge">배송비<a>무료?</a></div>
+			<div id="all_opp">주문상품들 가격: <a><c:out value="${pt_price_total}"/> KRW(원)</a></div>
+			<div id="d_charge">배송비: <a>${3000} * ${pay_ok_count} = ${3000 * pay_ok_count } KRW(원)</a></div>
 			<hr>
-			<div id="t_o_amount">총 주문금액<a>KRW</a></div>
+			<div id="t_o_amount">총 결제금액: <a>${pt_price_total + 3000 * pay_ok_count } KRW(원)</a></div>
 		</article>
 		<article id="p1_s2_a2">
 			<h3 style="text-align: center;">결제 수단</h3>
