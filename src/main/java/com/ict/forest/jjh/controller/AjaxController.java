@@ -83,12 +83,23 @@ public class AjaxController {
 		return null;
 	}
 	
+	// 포인트 추가
 	@RequestMapping(value = "point", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String point(HttpSession session, UserVO uvo) {
 		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		uvo.setUser_idx(ssuvo.getUser_idx());
 		int res = userService.pointPlus(uvo);
+		return "success";
+	}
+	
+	// 팝업창 세션 처리
+	@RequestMapping(value = "popup", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String popup(HttpSession session, String popup) {
+		if (popup != null) {
+			session.setAttribute("popup_chk", "1");
+		}
 		return "success";
 	}
 }

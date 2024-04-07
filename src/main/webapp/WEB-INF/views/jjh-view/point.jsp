@@ -19,22 +19,18 @@ function closePop() {
 function point(f) {
     // 서버로의 요청을 비동기적으로 보냅니다.
     $.ajax({
-        type: "POST",
+        type: "post",
         url: "point",
         dataType : "text",
         data: $(f).serialize(),
         success: function(data) {
-            // 서버로의 요청이 성공하면 원래 창을 새로고침합니다.
-            console.log("1")
+            // 기존 창 새로고침
             window.opener.location.reload();
-            console.log("2")
-            // 팝업 창을 닫습니다.
+            // 팝업 창 닫기
             closePop();
         },
-        error: function(xhr, status, error) {
-            // 서버로의 요청이 실패하면 오류를 처리합니다.
-            console.error(xhr.responseText);
-            alert("요청을 처리하는 중에 오류가 발생했습니다.");
+        error: function() {
+            alert("서버 오류");
         }
     });
 }

@@ -42,13 +42,13 @@
 	}
 	function openPopup() {
 	    // 작은 창의 크기와 위치를 설정합니다.
-	    var width = 400;
-	    var height = 400;
-	    var left = (screen.width - width) / 2;
-	    var top = (screen.height - height) / 2;
+	    let width = 400;
+	    let height = 400;
+	    let left = (screen.width - width) / 2;
+	    let top = (screen.height - height) / 2;
 
 	    // 새로운 창을 엽니다.
-	    var popup = window.open('point_go', '포인트 충전', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
+	    let popup = window.open('point_go', '포인트 충전', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
 
 	    // 차단된 팝업 창을 대비하여 예외 처리합니다.
 	    if (popup == null || typeof(popup)=='undefined') {

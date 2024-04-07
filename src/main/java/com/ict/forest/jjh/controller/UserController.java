@@ -30,8 +30,8 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping("join_ok")
-	public ModelAndView joinOK(UserVO uvo, UserAddrVO uavo) {
-		ModelAndView mv = new ModelAndView("pdh-view/home");
+	public ModelAndView joinOK(HttpServletRequest request, UserVO uvo, UserAddrVO uavo) {
+		ModelAndView mv = new ModelAndView("redirect:home");
 		uvo.setUser_pwd(passwordEncoder.encode(uvo.getUser_pwd()));
 		try {
 			int res1 = userService.userJoin(uvo);
@@ -48,7 +48,7 @@ public class UserController {
 	
 	@PostMapping("login")
 	public ModelAndView login(HttpServletRequest request, UserVO uvo) {
-		ModelAndView mv = new ModelAndView("pdh-view/home");
+		ModelAndView mv = new ModelAndView("redirect:home");
 		UserVO uvo2 = userService.userLogin(uvo.getUser_id());
 		if (uvo2 != null && passwordEncoder.matches(uvo.getUser_pwd(), uvo2.getUser_pwd())) {
 			HttpSession session = request.getSession();
@@ -60,8 +60,7 @@ public class UserController {
 			session.setAttribute("ssuvo", ssuvo);
 			return mv;
 		}else {
-			request.setAttribute("login_false", "false");
-			System.out.println(request.getAttribute("login_false"));
+			mv.addObject("login_false", "false");
 			return mv;
 		}
 	}
@@ -152,14 +151,13 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("jjh-view/point");
 		return mv;
 	}
+	@RequestMapping("popup_go")
+	public ModelAndView popup_go() {
+		ModelAndView mv = new ModelAndView("jjh-view/popup");
+		return mv;
+	}
 
-	/*
-	 * @PostMapping("point") public ModelAndView point(HttpSession session, UserVO
-	 * uvo, String backpage) { ModelAndView mv = new
-	 * ModelAndView("redirect:"+backpage); SessionUser ssuvo = (SessionUser)
-	 * session.getAttribute("ssuvo"); uvo.setUser_idx(ssuvo.getUser_idx()); int res
-	 * = userService.pointPlus(uvo); return mv; }
-	 */
+
 	@PostMapping("test")
 	public ModelAndView test(BuyVO bvo) {
 		ModelAndView mv = new ModelAndView("kch-view/join");

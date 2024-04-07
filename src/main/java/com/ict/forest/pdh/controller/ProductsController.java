@@ -38,9 +38,15 @@ public class ProductsController {
 
 	// 페이지 홈
 	@RequestMapping("home")
-	public ModelAndView getBestSeller() {
+	public ModelAndView getBestSeller(HttpServletRequest request, String login_false, String join_ok) {
 		try {
 			ModelAndView mv = new ModelAndView("pdh-view/home");
+			if (login_false != null) {
+				mv.addObject("login_false", login_false);
+			}
+			if (join_ok != null) {
+				mv.addObject("join_ok", join_ok);
+			}
 			List<ProductsVO> best_seller = productsService.getBestSeller();
 			if (best_seller != null) {
 				mv.addObject("best_seller", best_seller);

@@ -88,7 +88,7 @@ function sample6_execDaumPostcode() {
 			</div>
 			<div class="create">
 				<input class="but4" type="submit" value="주소 추가하기">
-				<input class="but5" type="button" value="취소" onclick="location.href='home'"> 
+				<input class="but5" type="button" value="취소" onclick="location.href='mypage'"> 
 
 			</div>
 		</div>
