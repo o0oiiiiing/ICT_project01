@@ -3,7 +3,9 @@ package com.ict.forest.jjh.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,12 +95,14 @@ public class AjaxController {
 		return "success";
 	}
 	
-	// ÆË¾÷Ã¢ ¼¼¼Ç Ã³¸®
+	// ÆË¾÷Ã¢ ÄíÅ° Ã³¸®
 	@RequestMapping(value = "popup", produces = "text/plain; charset=utf-8")
 	@ResponseBody
-	public String popup(HttpSession session, String popup) {
+	public String popup(HttpServletResponse response, String popup) {
 		if (popup != null) {
-			session.setAttribute("popup_chk", "1");
+			Cookie cookie = new Cookie("popup_chk", "1");
+			cookie.setMaxAge(60*3); 
+			response.addCookie(cookie);
 		}
 		return "success";
 	}

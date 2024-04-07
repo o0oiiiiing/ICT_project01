@@ -42,7 +42,7 @@
 	        popup.focus();
 	    }
 	}
-	if (${popup_chk != 1}) {
+	if (${cookie.popup_chk.value != 1}) {
 		openPopup()
 	}	
 	// 로그인 유무 검사 후 위시리스트
