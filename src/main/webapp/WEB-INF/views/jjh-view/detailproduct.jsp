@@ -24,28 +24,48 @@
 
 <!-- 서버용 함수 -->
 <script type="text/javascript">
+	// 결제페이지로 가기
 	function pay(f) {
-		f.action = "pay"
-		f.submit();
+		if (${ssuvo.login != "true"}) {
+			alert("로그인 후 이용해주세요");
+			return
+		}else {
+			f.action = "test"
+			f.submit();
+				
+		}
 	}
-	if (${wish_status == 1}) {
-		$(".wish_ajax").css('font-variation-settings', '"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 400');
-		$(".wish_ajax").attr("onclick", "wish_del()");
-	}else {
-		$(".wish_ajax").css('font-variation-settings', '"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 400');
-		$(".wish_ajax").attr("onclick", "wish_add()");
-	}
+	$(document).ready(function() {
+		// 장바구니 여부 확인 후 버튼 설정
+		if (${cart_status == 1}) {
+			$(".cart").text("장바구니 제거");
+			$(".cart").attr("onclick", "cart_del()");
+		}else {
+			$(".cart").text("장바구니 담기");
+			$(".cart").attr("onclick", "cart_add()");
+		}
+		// 위시리스트 여부 확인 후 버튼 설정
+		if (${wish_status == 1}) {
+			$(".wish").css('font-variation-settings', '"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 400');
+			$(".wish").attr("onclick", "wish_del()");
+		}else {
+			$(".wish").css('font-variation-settings', '"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 400');
+			$(".wish").attr("onclick", "wish_add()");
+		}
+		
+	})
 	// cart 추가 ajax
-		function pick_add() {
+		function cart_add() {
 			$.ajax({
-				url : "cartAjax.do",
+				url : "cartAjax",
 				method : "post",
 				dataType : "text",
 				data : "p_idx="+${pvo.p_idx},
 				success : function(data) {
-					$(".pick").attr("onclick", "pick_del()");
-					$(".pick").text("장바구니 제거");
+					$(".cart").attr("onclick", "cart_del()");
+					$(".cart").text("장바구니 제거");
 					$("#cart_ajax").text("("+data+")");
+					alert("장바구니에 추가했습니다.");
 				},
 				error: function() {
 					alert("읽기 실패")
@@ -53,19 +73,20 @@
 			})
 		}
 	// cart 제거 ajax
-		function pick_del() {
+		function cart_del() {
 			$.ajax({
-				url : "cartDelAjax.do",
+				url : "cartDelAjax",
 				method : "post",
 				dataType : "text",
 				data : "p_idx="+${pvo.p_idx},
 				success : function(data) {
 					$("#cart_ajax").text("("+data+")");
-					$(".pick").text("장바구니 추가");
-					$(".pick").attr("onclick", "pick_add()");
+					$(".cart").text("장바구니 담기");
+					$(".cart").attr("onclick", "cart_add()");
+					alert("장바구니에서 제거했습니다.");
 				},
 				error: function() {
-					alert("읽기 실패")
+					alert("읽기 실패");
 				}
 			})
 		}
@@ -75,13 +96,14 @@
 				alert("로그인 후 이용 가능합니다.");
 			}else {
 				$.ajax({
-					url : "wishAjax.do",
+					url : "wishAddAjax",
 					method : "post",
 					dataType : "text",
 					data : "p_idx="+${pvo.p_idx},
 					success : function(data) {
-						$(".wish_ajax").css('font-variation-settings', '"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 400');
-						$(".wish_ajax").attr("onclick", "wish_del()");
+						$(".wish").css('font-variation-settings', '"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 400');
+						$(".wish").attr("onclick", "wish_del()");
+						alert("위시리스트에 추가했습니다.");
 					},
 					error: function() {
 						alert("읽기 실패")
@@ -95,13 +117,14 @@
 				alert("로그인 후 이용 가능합니다.");
 			}else {
 				$.ajax({
-					url : "wishDelAjax.do",
+					url : "wishDelAjax",
 					method : "post",
 					dataType : "text",
 					data : "p_idx="+${pvo.p_idx},
 					success : function(data) {
-						$(".wish_ajax").css('font-variation-settings', '"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 400');
-						$(".wish_ajax").attr("onclick", "wish_add()");
+						$(".wish").css('font-variation-settings', '"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 400');
+						$(".wish").attr("onclick", "wish_add()");
+						alert("위시리스트에서 제거했습니다.");
 					},
 					error: function() {
 						alert("읽기 실패")
@@ -131,9 +154,15 @@
 			</div>
 	</article>
 	<article class="first_items" id="main_info">
+	<form method="post">
 		<div id="info">
 			<p id="info_name">${pvo.p_name}</p>
+			<input type="hidden" name="p_idx" value="${pvo.p_idx}">
+			<input type="hidden" name="p_type" value="${pvo.p_type}">
+			<input type="hidden" name="p_name" value="${pvo.p_name}">
+			<input type="hidden" name="p_main_img" value="${pvo.p_main_img}">
 			<p id="info_hname">${pvo.p_brand}</p>
+			<input type="hidden" name="p_brand" value="${pvo.p_brand}">
 			<c:choose>
 				<c:when test="${pvo.p_volume == 'free'}">
 				</c:when>
@@ -141,17 +170,18 @@
 					<p>${pvo.p_volume}ml</p>
 				</c:otherwise>
 			</c:choose>
-			<p id="info_hname">${pvo.p_brand}</p>
+			<input type="hidden" name="p_volume" value="${pvo.p_volume}">
 			<p id="info_price"><span><fmt:formatNumber value="${pvo.p_price}"/></span> KRW</p>
+			<input type="hidden" name="p_price" value="${pvo.p_price}">
 		</div>
 			<div id="p_btns">
 				<div id="num_btn">
-					<button>⟨</button>
+					<button type="button">⟨</button>
 					<p>수량 선택</p>
-					<button>⟩</button>
+					<button type="button">⟩</button>
 				</div>
 				<div id="p_btn">
-					<input type="checkbox" name="present">
+					<input type="checkbox" name="p_option" value="1">
 					<p>선물 포장</p>
 				</div>
 			</div>
@@ -161,36 +191,19 @@
 				<p id="sum_num">0</p>
 				<p id="sum">총 상품 금액 : <span>0</span> KRW</p>
 			</div>
-		<form method="get">
+		<div>
 			<div id="pick_box">
-			
-				<c:choose>
-					<c:when test="${wish_status == 1}">
-						<button id="wish" type="button">
-							<span class="material-symbols-outlined" class="wish_ajax" name="${pvo.p_idx}" onclick="wish_del()">
-							    favorite
-							</span>
-						</button>
-					</c:when>
-					<c:otherwise>
-						<button id="wish" type="button">
-							<span class="material-symbols-outlined" class="wish_ajax" name="${pvo.p_idx}" onclick="wish_add()">
-							    favorite
-							</span>
-						</button>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when test="${cart_status == 1}">
-						<button type="button" class="pick" class="${pvo.p_idx}" onclick="pick_del()">장바구니 제거</button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" class="pick" class="${pvo.p_idx}" onclick="pick_add()">장바구니 담기</button>	
-					</c:otherwise>
-				</c:choose>
-				<button type="button" id="sell_btn" onclick="pay(this.form)">구매하기</button>
+				<button type="button">
+					<span class="material-symbols-outlined wish" onclick="">
+						favorite
+					</span>
+				</button>
+				<input type="hidden" name="p_count" id="main_p_count" value="수량 선택">
+				<button type="button" class="cart" onclick="">장바구니 제거</button>
+				<button type="button" class="sell_btn" onclick="pay(this.form)">구매하기</button>
 			</div>
-		</form>
+		</div>
+	</form>
 	</article>	
 </section>
 <%-- 상품 설명 이벤트 --%>
@@ -282,6 +295,8 @@
 		</c:choose>
 	</article>
 </section>
+<!--
+상품 요약 정보(구현 안할 예정)
 <section id="seven">
 	<div id="sev_img_box">
 		<img src="resources/jjh-image/sevenimg1.png">
@@ -319,7 +334,9 @@
 		</table>
 	</article>
 </section>
-<!-- 상품 상세 정보 -->
+-->
+<!--
+상품 상세 정보(구현 안할 예정)
 <section id ="six">
 	<article id="simg_box">
 		<div id="simg_1"><img src="resources/jjh-image/siximg1.png"></div>
@@ -336,6 +353,8 @@
 		</div>
 	</article>
 </section>
+-->
+
 <section id="fifth">
 	<p>상품 정보</p>
 	<table>
@@ -416,8 +435,8 @@
 </div>
 <!-- 빠른 구매 창 -->
 <section id="mini">
-	<article>
-		<button id="cancel">x</button>
+	<form method="post">
+		<button type="button" id="cancel">x</button>
 		<div id="mini_img">
 			<img src="resources/upload/${pvo.p_main_img}">
 		</div>
@@ -427,13 +446,13 @@
 				<p><span><fmt:formatNumber value="${pvo.p_price}"/></span> KRW</p>
 			</div>
 			<div id="p_btn">
-				<input type="checkbox" name="present">
+				<input type="checkbox" name="p_option" value="1">
 				<p>선물 포장</p>
 			</div>
 			<div id="num_btn">
-				<button>⟨</button>
+				<button type="button">⟨</button>
 				<p>수량 선택</p>
-				<button>⟩</button>
+				<button type="button">⟩</button>
 			</div>
 		</div>
 		<div id="sum_box">
@@ -442,18 +461,26 @@
 			<p>수량 선택</p>
 			<p>총 상품 금액 : <span>0</span> KRW</p>
 		</div>
-		<form method="get" id="mini_form">
+		<div id="mini_form">
 			<div id="pick_box">
-				<button>
-					<span class="material-symbols-outlined">
+				<button type="button">
+					<span class="material-symbols-outlined wish" onclick="">
 						favorite
 					</span>
 				</button>
-				<button type="button" id="m_pick" name="${pvo.p_idx}">장바구니 담기</button>
-				<button onclick="pay(this.form)">구매하기</button>
+				<input type="hidden" name="p_count" id="mini_p_count" value="수량 선택">
+				<input type="hidden" name="p_idx" value="${pvo.p_idx}">
+				<input type="hidden" name="p_type" value="${pvo.p_type}">
+				<input type="hidden" name="p_name" value="${pvo.p_name}">
+				<input type="hidden" name="p_main_img" value="${pvo.p_main_img}">
+				<input type="hidden" name="p_brand" value="${pvo.p_brand}">
+				<input type="hidden" name="p_volume" value="${pvo.p_volume}">
+				<input type="hidden" name="p_price" value="${pvo.p_price}">
+				<button type="button" class="cart" name="${pvo.p_idx}" onclick="">장바구니 제거</button>
+				<button type="button" onclick="pay(this.form)">구매하기</button>
 			</div>
-		</form>
-	</article>
+		</div>
+	</form>
 </section>
 <script type="text/javascript">
 		/* 버튼 위치일때 나오기 */
@@ -490,12 +517,14 @@
 		$("#first #num_btn > button:nth-of-type(1)").click(function() {
 			if ($("#first #num_btn > p").text()=="수량 선택") {
 				$("#first #num_btn > p").text("수량 선택");
+				$("#main_p_count").val("수량 선택");
 			}else {
 				let k = parseInt($("#first #num_btn > p").text())-1;
 				if (k==0) {
 					k = "수량 선택";
 				}
 				$("#first #num_btn > p").text(k);
+				$("#main_p_count").val(k);
 			}
 			$("#first #sum_box p:nth-of-type(3)").text($("#first #num_btn > p").text());
 			let k = ($("#first #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR")
@@ -507,8 +536,11 @@
 		$("#first #num_btn >button:nth-of-type(2)").click(function() {
 			if ($("#first #num_btn > p").text()=="수량 선택") {
 				$("#first #num_btn > p").text("1");
+				$("#main_p_count").val("1");
 			}else {
-				$("#first #num_btn > p").text(parseInt($("#first #num_btn > p").text())+1)
+				let k = parseInt($("#first #num_btn > p").text())+1;
+				$("#first #num_btn > p").text(k);
+				$("#main_p_count").val(k);
 			};
 			$("#first #sum_box p:nth-of-type(3)").text($("#first #num_btn > p").text());
 			$("#first #sum_box p:nth-of-type(4) span").text(($("#first #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR"))
@@ -518,12 +550,14 @@
 		$("#mini #num_btn > button:nth-of-type(1)").click(function() {
 			if ($("#mini #num_btn > p").text()=="수량 선택") {
 				$("#mini #num_btn > p").text("수량 선택");
+				$("#mini_p_count").val("수량 선택");
 			}else {
 				let k = parseInt($("#mini #num_btn > p").text())-1;
 				if (k==0) {
 					k = "수량 선택";
 				}
 				$("#mini #num_btn > p").text(k);
+				$("#mini_p_count").val(k);
 			}
 			$("#mini #sum_box p:nth-of-type(3)").text($("#mini #num_btn > p").text());
 			let k = ($("#mini #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR")
@@ -535,8 +569,11 @@
 		$("#mini #num_btn >button:nth-of-type(2)").click(function() {
 			if ($("#mini #num_btn > p").text()=="수량 선택") {
 				$("#mini #num_btn > p").text("1");
+				$("#mini_p_count").val("1");
 			}else {
-				$("#mini #num_btn > p").text(parseInt($("#mini #num_btn > p").text())+1)
+				let k = parseInt($("#mini #num_btn > p").text())+1;
+				$("#mini #num_btn > p").text(k);
+				$("#mini_p_count").val(k);
 			};
 			$("#mini #sum_box p:nth-of-type(3)").text($("#mini #num_btn > p").text());
 			$("#mini #sum_box p:nth-of-type(4) span").text(($("#mini #num_btn > p").text()*${pvo.p_price}).toLocaleString("ko-KR"))

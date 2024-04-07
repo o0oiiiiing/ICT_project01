@@ -10,36 +10,16 @@
 <body>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#pick").click(function() {
-			$.ajax({
-				url : "cartAjax.do",
-				method : "post",
-				dataType : "text",
-				data : "p_idx="+$(this).attr("name"),
-				success : function(data) {
-					$("#cart_ajax").text("("+data+")")
-				},
-				error: function() {
-					alert("읽기 실패")
-				}
-			})
-		})
-		$("#wish_ajax").click(function() {
-			$.ajax({
-				url : "wishAjax.do",
-				method : "post",
-				dataType : "text",
-				data : "p_idx="+$(this).attr("name"),
-				success : function(data) {
-					$("#cart_ajax").text("("+data+")")
-				},
-				error: function() {
-					alert("읽기 실패")
-				}
-			})
-		})
-	})
+<input type="hidden" name="p_idx" value="${pvo.p_idx}">
+<input type="hidden" name="p_type" value="${pvo.p_type}">
+<input type="hidden" name="p_name" value="${pvo.p_name}">
+<input type="hidden" name="p_main_img" value="${pvo.p_main_img}">
+<input type="hidden" name="p_brand" value="${pvo.p_brand}">
+<input type="hidden" name="p_volume" value="${pvo.p_volume}">
+<input type="hidden" name="p_price" value="${pvo.p_price}">
+
+
+
 </script>
 </body>
 </html>

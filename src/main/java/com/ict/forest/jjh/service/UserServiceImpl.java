@@ -57,4 +57,16 @@ public class UserServiceImpl implements UserService{
 	public int wishDelete(String user_idx, String p_idx) {
 		return userDAO.wishDelete(user_idx, p_idx);
 	}
+	@Override
+	public int addrTypeChange(String user_idx) {
+		return userDAO.addrTypeChange(user_idx);
+	}
+	@Override
+	public int userAddrAdd(UserAddrVO uavo) {
+		return userDAO.userAddrAdd(uavo);
+	}
+	@Override
+	public int pointPlus(UserVO uvo) {
+		return userDAO.pointPlus(uvo);
+	}
 }

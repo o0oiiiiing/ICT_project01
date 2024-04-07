@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.ProductVO;
+import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.ProductService;
 import com.ict.forest.jjh.service.UserService;
@@ -24,7 +27,7 @@ public class AjaxController {
 	@Autowired UserService userService;
 	
 	// 장바구니 추가
-	@RequestMapping(value = "cartAjax.do", produces = "text/plain; charset=utf-8")
+	@RequestMapping(value = "cartAjax", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String cartAdd(HttpSession session, String p_idx) {
 		ProductVO pvo = productService.productdetail(p_idx);
@@ -37,7 +40,7 @@ public class AjaxController {
 		return count;
 	}
 	// 장바구니 제거
-	@RequestMapping(value = "cartDelAjax.do", produces = "text/plain; charset=utf-8")
+	@RequestMapping(value = "cartDelAjax", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String cartDelAjax(HttpServletRequest request, HttpSession session, String p_idx) {
 		List<ProductVO> cart = (List<ProductVO>) session.getAttribute("cart");
@@ -48,7 +51,7 @@ public class AjaxController {
 	}
 	
 	// 위시리스트 추가
-	@RequestMapping(value = "wishAjax.do", produces = "text/plain; charset=utf-8")
+	@RequestMapping(value = "wishAddAjax", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String wishAdd(HttpSession session, String p_idx) {
 		ProductVO pvo = productService.productdetail(p_idx);
@@ -63,23 +66,40 @@ public class AjaxController {
 		wvo.setP_main_img(pvo.getP_main_img());
 		int res = userService.wishInsert(wvo);
 		if (res > 0) {
-			int count = userService.wishCount(ssuvo.getUser_idx());
-			return String.valueOf(count);
+			return "success";
 		}
 
 		return null;
 	}
 	// 위시리스트 제거
-	@RequestMapping(value = "wishDelAjax.do", produces = "text/plain; charset=utf-8")
+	@RequestMapping(value = "wishDelAjax", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String wishDelAjax(HttpServletRequest request, HttpSession session, String p_idx) {
 		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		int res = userService.wishDelete(ssuvo.getUser_idx(), p_idx);
 		if (res > 0) {
-			int count = userService.wishCount(ssuvo.getUser_idx());
-			request.setAttribute("wish_status", "0");
-			return String.valueOf(count);
+			return "success";
 		}
 		return null;
+	}
+	
+	// 포인트 추가
+	@RequestMapping(value = "point", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String point(HttpSession session, UserVO uvo) {
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+		uvo.setUser_idx(ssuvo.getUser_idx());
+		int res = userService.pointPlus(uvo);
+		return "success";
+	}
+	
+	// 팝업창 세션 처리
+	@RequestMapping(value = "popup", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String popup(HttpSession session, String popup) {
+		if (popup != null) {
+			session.setAttribute("popup_chk", "1");
+		}
+		return "success";
 	}
 }

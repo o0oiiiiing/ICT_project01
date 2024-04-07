@@ -2,6 +2,15 @@ package com.ict.forest.jjh.dao;
 
 public class WishVO {
 	private String wish_idx, p_idx, user_idx, p_name, p_brand, p_volume, p_price, p_main_img;
+	private String cart_status;
+
+	public String getCart_status() {
+		return cart_status;
+	}
+
+	public void setCart_status(String cart_status) {
+		this.cart_status = cart_status;
+	}
 
 	public String getWish_idx() {
 		return wish_idx;

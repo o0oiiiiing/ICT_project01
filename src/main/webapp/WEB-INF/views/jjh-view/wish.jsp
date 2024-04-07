@@ -13,6 +13,68 @@
 <link href="resources/jjh-css/05_01_wish.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+// cart 추가 ajax
+$(document).ready(function() {
+	$(".cart").click(function name() {
+		let p_idx = $(this).attr("name");
+		let tag = this;
+		console.log(p_idx);
+		if ($(this).val()=="0") {
+			$.ajax({
+				url : "cartAjax",
+				method : "post",
+				dataType : "text",
+				data : "p_idx="+p_idx,
+				success : function(data) {
+					$(tag).val("1");
+					$(tag).text("장바구니 제거");
+					$("#cart_ajax").text("("+data+")");
+					alert("장바구니에 추가했습니다.");
+				},
+				error: function() {
+					alert("읽기 실패")
+				}
+			})
+		}else if ($(this).val()=="1") {
+			$.ajax({
+				url : "cartDelAjax",
+				method : "post",
+				dataType : "text",
+				data : "p_idx="+p_idx,
+				success : function(data) {
+					$(tag).val("0");
+					$(tag).text("장바구니 추가");
+					$("#cart_ajax").text("("+data+")");
+					alert("장바구니에서 제거했습니다.");
+				},
+				error: function() {
+					alert("읽기 실패");
+				}
+			})
+		}
+	})
+	
+	$(".wish").click(function() {
+		let p_idx = $(this).attr("name");
+		$.ajax({
+			url : "wishDelAjax",
+			method : "post",
+			dataType : "text",
+			data : "p_idx="+p_idx,
+			success : function(data) {
+				alert("위시리스트에서 제거했습니다.");
+			},
+			error: function() {
+				alert("읽기 실패")
+			}
+		});
+		$(this).parent().parent().parent().remove();
+	})
+})
+
+</script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -31,8 +93,17 @@
 				<p>${k.p_volume}ml</p>
 				<p>${k.p_price} KRW</p>
 				<div class="wish_move_btn">
-					<button class="material-symbols-outlined">favorite</button>
-					<button>장바구니에 추가</button>
+					<button class="material-symbols-outlined wish" name="${k.p_idx}"
+					style="font-variation-settings: '"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 400'">
+					favorite</button>
+					<c:choose>
+						<c:when test="${k.cart_status == 1}">
+							<button class="cart" name="${k.p_idx}" value="1">장바구니에서 제거</button>
+						</c:when>
+						<c:otherwise>
+							<button class="cart" name="${k.p_idx}" value="0">장바구니에 추가</button>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
@@ -63,10 +134,6 @@
 			}
 	);
 	
-	/* 위시리스트 삭제 */
-	$(".wish_move_btn button:nth-of-type(1)").click(function() {
-		$(this).parent().parent().parent().remove();
-	});
 	$(".wish_move_btn button:nth-of-type(2)").hover(
 		function() {
 			$(this).css("backgroundColor", "gray");

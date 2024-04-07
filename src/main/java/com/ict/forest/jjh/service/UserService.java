@@ -16,5 +16,8 @@ public interface UserService {
 	public List<WishVO> wishList(String user_idx);
 	public int wishCount(String user_idx);
 	public int wishDelete(String user_idx, String p_idx);
+	public int addrTypeChange(String user_idx);
+	public int userAddrAdd(UserAddrVO uavo);
+	public int pointPlus(UserVO uvo);
 	
 }

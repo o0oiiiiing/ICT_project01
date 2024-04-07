@@ -89,7 +89,7 @@ public class PayController {
 		buyvo.setP_volume(p_volume);
 		buyvo.setP_price(p_price);
 		buyvo.setP_count(p_count);
-		buyvo.setOption(option);
+		buyvo.setP_option(option);
 		
 		String[] p_idx2 = buyvo.getP_idx();
 		String[] user_idx2 = buyvo.getUser_idx();
@@ -99,7 +99,7 @@ public class PayController {
 		String[] p_volume2 = buyvo.getP_volume();
 		String[] p_price2 = buyvo.getP_price();
 		String[] p_count2 = buyvo.getP_count();
-		String[] option2 = buyvo.getOption();
+		String[] option2 = buyvo.getP_option();
 		
 		
 		List<PayVO> pay_list = new ArrayList();
