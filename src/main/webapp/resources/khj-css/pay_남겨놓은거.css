@@ -150,53 +150,15 @@ ul li{
 	width: 40%; 
 	height: 20px; 
 	border: 1px solid black;
-	margin: 10px 60px 10px 60px;
+	margin: 10px 20px 10px 20px;
+	}
+#orderer_addr{
+	width: 40%; 
+	height: 20px; 
+	border: 1px solid black;
+	margin: 10px 20px 10px 20px;
 	}
 
-.userin {
-	text-align: left;
-	padding: 5px;
-}
-#addr{
-	height: 200px;
-}
-.addr-box{
-	margin-bottom: 10px;
-}
-.but{
-	margin-bottom: 10px;
-}
-#sample_postcode{
-	margin-right: 20px;
-}
-#sample_address{
-	width: 300px;
-	margin-right: 50px;
-}
-#sample_detailAddress{
-	width: 250px;
-	margin-right: 20px;
-}
-#addr2{
-	height: 200px;
-}
-.addr-box2{
-	margin-bottom: 10px;
-}
-.but2{
-	margin-bottom: 10px;
-}
-#sample2_postcode{
-	margin-right: 20px;
-}
-#sample2_address{
-	width: 300px;
-	margin-right: 50px;
-}
-#sample2_detailAddress{
-	width: 250px;
-	margin-right: 20px;
-}
 
 #op_same_b1{
 	margin-left: 20px;
@@ -210,15 +172,15 @@ ul li{
 	width: 40%; 
 	height: 20px; 
 	border: 1px solid black;
-	margin: 10px 80px 10px 40px;
+	margin: 10px 20px 10px 15px;
 	}
-/* #recipient_addr{
+#recipient_addr{
 	width: 40%; 
 	height: 20px; 
 	border: 1px solid black;
 	margin: 10px 20px 10px 15px;
 	}
- */
+
 #s2a3_d1{
 	font-size: 12px;
 	}
