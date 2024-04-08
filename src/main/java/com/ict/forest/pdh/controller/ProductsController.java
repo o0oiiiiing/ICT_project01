@@ -167,8 +167,9 @@ public class ProductsController {
 			}
 			pagingVO.setLimit(paging.getNumPerPage());
 			pagingVO.setOffset(paging.getOffset());
-
-			List<ProductsVO> products_list = productsService.getProductsListBrand(pagingVO);
+			
+			List<ProductsVO> products_list2 = productsService.getProductsListBrand(pagingVO);
+			List<ProductsVO> products_list = products_list2.subList(pagingVO.getOffset(), pagingVO.getOffset()+pagingVO.getLimit());
 			if (products_list != null) {
 				mv.addObject("products_list", products_list);
 				mv.addObject("p_type", p_type);

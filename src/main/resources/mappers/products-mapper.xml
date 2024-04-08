@@ -2,44 +2,113 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="product_table">
 	<select id="total_count" resultType="int">
-		select count(*) 
-		from product_table
+		select count(*)
+		from
+		product_table
 		where p_type = #{p_type}
 	</select>
-	
+
 	<select id="total_count_brand" resultType="int">
-		select count(*) 
+		select count(*)
+		from
+		product_table
+		where p_type = #{p_type} and p_brand = #{p_brand}
+	</select>
+
+	<select id="products_list" resultType="ProductsVO"
+		parameterType="PagingVO">
+		select *
 		from product_table
-		where p_type = #{p_type} and p_brand = #{p_brand}
+		where p_type = #{p_type}
+		order
+		by p_name
+		limit #{limit}
+		offset #{offset}
 	</select>
-	
-	<select id="products_list" resultType="ProductsVO" parameterType="PagingVO">
-		select * 
-		from product_table 
-		where p_type = #{p_type} 
+
+	<select id="products_list_brand" resultType="ProductsVO"
+		parameterType="PagingVO">
+		select *
+		from product_table
+		where p_type = #{p_type} and
+		p_brand = #{p_brand}
 		order by p_name
 		limit #{limit}
 		offset #{offset}
 	</select>
-	
-	<select id="products_list_brand" resultType="ProductsVO" parameterType="PagingVO">
-		select * 
-		from product_table 
-		where p_type = #{p_type} and p_brand = #{p_brand}
-		order by p_name
-		limit #{limit}
-		offset #{offset}
-	</select>
-	
+
 	<select id="best_seller" resultType="ProductsVO">
-		select * 
-		from product_table 
+		select *
+		from product_table
 		order by buy_rate desc
 		limit 10
 	</select>
+
+	<select id="search_list" resultType="ProductsVO" parameterType="Map">
+		select *
+		from product_table
+	    <where>
+  		<foreach collection="p_name" item="keyword" index="key">
+            <if test="p_name != null">
+            	p_name like CONCAT('%', Lower(#{keyword}), '%')
+            </if>
+        </foreach>
+        <if test="p_volume != null">
+	  		and p_volume IN
+	        <foreach collection="p_volume" item="capacity" open="(" separator="," close=")">
+	        	#{capacity}
+        	</foreach>
+        </if>
+        <if test="p_brand != null">
+  			and p_brand IN
+        	<foreach collection="p_brand" item="brand" open="(" separator="," close=")">
+        		#{brand}
+        	</foreach>
+        </if>
+        <if test="p_type != null">
+  			and p_type IN
+         	<foreach collection="p_type" item="product" open="(" separator="," close=")">
+        		 #{product}
+        	</foreach>
+        </if>
+	    </where>
+   		order by p_name
+	</select>
+	
+	<select id="search_count" resultType="int" parameterType="Map">
+		select count(*)
+		from product_table
+	    <where>
+  		<foreach collection="p_name" item="keyword" index="key">
+            <if test="p_name != null">
+            	p_name like CONCAT('%', Lower(#{keyword}), '%')
+            </if>
+        </foreach>
+        <if test="p_volume != null">
+	  		and p_volume IN
+	        <foreach collection="p_volume" item="capacity" open="(" separator="," close=")">
+	        	#{capacity}
+        	</foreach>
+        </if>
+        <if test="p_brand != null">
+  			and p_brand IN
+        	<foreach collection="p_brand" item="brand" open="(" separator="," close=")">
+        		#{brand}
+        	</foreach>
+        </if>
+        <if test="p_type != null">
+  			and p_type IN
+         	<foreach collection="p_type" item="product" open="(" separator="," close=")">
+        		 #{product}
+        	</foreach>
+        </if>
+	    </where>
+	</select>
+	
+	
 </mapper>
 
 

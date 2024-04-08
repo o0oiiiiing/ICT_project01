@@ -7,4 +7,6 @@ import com.ict.forest.pdh.dao.ProductsVO;
 
 public interface SearchService {
 	public List<ProductsVO> getSearchList(Map<String, String[]> map);
+	
+	public int getSearchCount(Map<String, String[]> map);
 }

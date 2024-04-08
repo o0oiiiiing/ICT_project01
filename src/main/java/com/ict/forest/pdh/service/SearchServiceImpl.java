@@ -19,4 +19,9 @@ public class SearchServiceImpl implements SearchService{
 		return searchDAO.getSearchList(map);
 	}
 
+	@Override
+	public int getSearchCount(Map<String, String[]> map) {
+		return searchDAO.getSearchCount(map);
+	}
+
 }

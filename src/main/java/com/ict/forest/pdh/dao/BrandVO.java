@@ -1,7 +1,7 @@
 package com.ict.forest.pdh.dao;
 
 public class BrandVO {
-	private String type = "3";
+	private String type = "p_brand";
 	private String[] brand;
 	public String getType() {
 		return type;
