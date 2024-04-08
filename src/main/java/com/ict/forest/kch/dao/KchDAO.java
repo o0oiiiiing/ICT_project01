@@ -1,8 +1,13 @@
 package com.ict.forest.kch.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ict.forest.jjh.dao.UserAddrVO;
 
 @Repository
 public class KchDAO {
@@ -40,7 +45,7 @@ public class KchDAO {
 	
 	public KchVO kchfindname(String user_name) {
 		try {
-			return sqlSessionTemplate.selectOne("user_table.findname", user_name);
+			return sqlSessionTemplate.selectOne("user2_table.findname", user_name);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -77,5 +82,40 @@ public class KchDAO {
 		return null;
 	}
 	
+	public List<UserAddrVO> userAddr(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectList("user_table.user_addr", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public int infoUpdateOK(KchVO kvo) {
+		try {
+			return sqlSessionTemplate.update("user2_table.user_info_up", kvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public int npwdUpdate(KchVO kvo) {
+		try {
+			return sqlSessionTemplate.update("user2_table.user_npwd", kvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public KchVO kchfindpw(String user_id) {
+		try {
+			return sqlSessionTemplate.selectOne("user2_table.kchfindpw", user_id);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
 	
 }

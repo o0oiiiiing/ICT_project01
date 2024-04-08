@@ -9,6 +9,13 @@
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	let chk = "${chk}";
+	if(chk == 'fail'){
+		alert("아이디나 이메일이 없습니다.");
+		return ;
+	}
+});
 
 </script>
 
@@ -34,7 +41,7 @@
 						 <input type="text" class="in_text" id="name_id" name="user_name"><br>
 				</div>
 				<div class="f_ne">
-					<label for="name_email" >이메일</label>
+					<label for="email_id" >이메일</label>
 						 <input type="text" class="in_text" id="email_id" name="email_id">
 				</div>
 				<div class="f_ir">
@@ -55,12 +62,13 @@
 					<input type="radio" name="f_id">휴대폰
 				</div>
 				<div class="f_ne">
-					<label for="name_id2" >아이디</label>
+					<label for="id_pwd" >아이디</label>
 					 <input type="text" class="in_text" id="id_pwd" name="user_id"><br>
 				</div>
 				<div class="f_ne">
-					<label for="name_email2" >이메일</label>
-					 <input type="text" class="in_text" id="email_pwd" name="email_pwd">
+					<label for="email_pwd" >이메일</label>
+					 <input type="email" class="in_text" id="email_pwd" name="email_pwd"
+					 pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" title="이메일 양식">
 				</div>
 				<div class="f_ir">
 					<input type="submit" value="임시비밀번호 발급">&nbsp;

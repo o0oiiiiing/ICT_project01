@@ -1,8 +1,12 @@
 package com.ict.forest.kch.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.kch.dao.KchDAO;
 import com.ict.forest.kch.dao.KchVO;
 
@@ -43,8 +47,22 @@ public class KchServiceImpl implements KchService{
 	
 	@Override
 	public KchVO kchfindpw(String user_id) {
-		return kchDAO.pfind(user_id);
+		return kchDAO.kchfindpw(user_id);
 	}
 	
+	@Override
+	public List<UserAddrVO> userAddr(String user_idx) {
+		return kchDAO.userAddr(user_idx);
+	}
+	
+	@Override
+	public int infoUpdateOK(KchVO kvo) {
+		return kchDAO.infoUpdateOK(kvo);
+	}
+	
+	@Override
+	public int npwdUpdate(KchVO kvo) {
+		return kchDAO.npwdUpdate(kvo);
+	}
 	
 }

@@ -11,15 +11,37 @@
 	</select>
 	
 	<!-- -->
-	<select id="user_detail" parameterType="String" resultType="uvo">
+	<select id="kchdetail" parameterType="String" resultType="kvo">
 		select * from user_table where user_idx = #{user_idx}
+	</select>
+
+	<select id="kchfindpw" parameterType="String" resultType="kvo">
+		select * from user_table where user_id = #{user_id}
 	</select>
 	
 	
 
+	<select id="findname" parameterType="String" resultType="kvo">
+		select * from user_table where user_name = #{user_name}
+	</select>
+	
 	<select id="findemail" parameterType="String" resultType="uvo">
 		select * from user_table where user_f_email = #{user_f_email}
 	</select>
+	
+	<update id="user_info_up" parameterType="kvo">
+		update user_table
+ 		set user_phone=#{user_phone}, user_f_email=#{user_f_email}, user_b_email=#{user_b_email},
+ 		zip_code=#{zip_code}, main_addr=#{main_addr}, detail_addr=#{detail_addr}, ex_addr=#{ex_addr}
+ 		where user_idx = #{user_idx}
+	</update>
+	
+	<update id="user_npwd" parameterType="kvo">
+		update user_table
+ 		set user_pwd=#{user_pwd}
+ 		where user_idx = #{user_idx}
+	</update>
+	
 	
 </mapper>
 

@@ -28,6 +28,8 @@
 		<!-- khj 결제하기 VO -->
 		<typeAlias type="com.ict.forest.khj.dao.PayVO" alias="payvo" />
 		<!-- khj 결제를 위해 넘어올 테스트용 정보를 담은 VO -->
+		
+		<!-- kch -->
 		<typeAlias type="com.ict.forest.kch.dao.KchVO" alias="kvo" />
 	</typeAliases>
 	<mappers>
@@ -39,5 +41,7 @@
 		<mapper resource="mappers/products-mapper.xml" />
 		<!-- khj  pay_table  db로 가는 매퍼 -->
 		<mapper resource="mappers/pay-mapper.xml" />
+		<!-- kch -->
+		<mapper resource="mappers/user2-mapper.xml" />
 	</mappers>
 </configuration>
