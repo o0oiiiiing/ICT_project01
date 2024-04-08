@@ -157,15 +157,5 @@ public class UserController {
 		return mv;
 	}
 
-
-	@PostMapping("test")
-	public ModelAndView test(BuyVO bvo) {
-		ModelAndView mv = new ModelAndView("kch-view/join");
-		for (String k : bvo.getP_idx()) {
-			System.out.println(k);
-		}
-		
-		return mv;
-	}
 	
 }

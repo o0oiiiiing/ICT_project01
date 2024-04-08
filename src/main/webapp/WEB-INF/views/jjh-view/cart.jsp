@@ -18,7 +18,7 @@
 				return
 			}else {
 				var form = $('<form>');
-				form.attr('action', 'test'); // 폼의 action을 설정합니다.
+				form.attr('action', 'pay'); // 폼의 action을 설정합니다.
 				form.attr('method', 'post'); 
 				$(".f_imgs").find("input:checked").each(function () {
 					let test = $(this).parent().parent().find("select, input");
