@@ -3,6 +3,7 @@ package com.ict.forest.kch.dao;
 public class KchVO {
 	private String user_idx, user_name, user_id, user_pwd, user_f_email, user_b_email, user_phone, user_type, user_point, regdate;
 	private String match;
+	private String zip_code, main_addr, detail_addr, ex_addr;
 	public String getMatch() {
 		return match;
 	}
@@ -17,6 +18,38 @@ public class KchVO {
 
 	public void setUser_idx(String user_idx) {
 		this.user_idx = user_idx;
+	}
+
+	public String getZip_code() {
+		return zip_code;
+	}
+
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
+	}
+
+	public String getMain_addr() {
+		return main_addr;
+	}
+
+	public void setMain_addr(String main_addr) {
+		this.main_addr = main_addr;
+	}
+
+	public String getDetail_addr() {
+		return detail_addr;
+	}
+
+	public void setDetail_addr(String detail_addr) {
+		this.detail_addr = detail_addr;
+	}
+
+	public String getEx_addr() {
+		return ex_addr;
+	}
+
+	public void setEx_addr(String ex_addr) {
+		this.ex_addr = ex_addr;
 	}
 
 	public String getUser_name() {

@@ -15,6 +15,16 @@
 
 <!-- ??? -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		let pwdchk = "${pwdchk}";
+		if(pwdchk == 'fail'){
+			alert("비밀번호틀림");
+			return ;
+		}
+	});
+</script>
 <script type="text/javascript">
 function sample6_execDaumPostcode() {
     new daum.Postcode({
@@ -105,30 +115,24 @@ function sample6_execDaumPostcode() {
 					</caption>
 					<tr>
 						<td class="menu">이름</td>
-						<td class="userin">${uvo.user_name}</td>
+						<td class="userin"><input type="text" name="user_name" value="${kvo.user_name}" readonly></td>
 					</tr>
 					<tr>
 						<td class="menu">아이디</td>
-						<td class="userin">${uvo.user_id}</td>
+						<td class="userin"><input type="text" name="user_id" value="${kvo.user_id}" readonly></td>
 					</tr>
 					<tr>
 						<td class="menu">휴대폰 번호</td>
-						<td class="userin"><input type="text" name="user_phone" value="${uvo.user_phone}"></td>
+						<td class="userin"><input type="text" name="user_phone" value="${kvo.user_phone}"></td>
 					</tr>
 					<tr>
 						<td class="menu">비밀번호</td>
-						<td class="userin"><input type="password" id="pw"
-							onchange="check_pw()"></td>
-					</tr>
-					<tr>
-						<td class="menu">비밀번호 확인</td>
-						<td class="userin"><input type="password" id="pwd"
-							onchange="check_pw()">&nbsp;<span id="check"></span></td>
+						<td class="userin"><input type="password" name="user_pwd"></td>
 					</tr>
 					<tr>
 						<td class="menu">이메일</td>
-						<td class="userin"><input type="text" name="mail" value="${uvo.user_f_email}"> 
-						<span class="a">@</span> <input type="text" id="domain-txt" name="email" value="${uvo.user_b_email}"> 
+						<td class="userin"><input type="text" name="user_f_email" value="${kvo.user_f_email}"> 
+						<span class="a">@</span> <input type="text" id="domain-txt" name="user_b_email" value="${kvo.user_b_email}"> 
 							<select	name="mailsel" id="domain-list" onchange="email_change()">
 								<option value="type" selected >직접입력</option>
 								<option value="naver.com">naver.com</option>
@@ -140,11 +144,11 @@ function sample6_execDaumPostcode() {
 					<tr id="addr">
 						<td class="menu">주소</td>
 						<td class="userin" id="addr-in">
-							<input class="addr-box" type="text" id="sample6_postcode" value="${uaddrlist[0].zip_code}"> 
+							<input class="addr-box" type="text" id="sample6_postcode" name="zip_code" value="${kvo.zip_code}"> 
 							<input class="addr-box" class="but3" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input class="addr-box" type="text" id="sample6_address" value="${uaddrlist[0].main_addr}"><br>
-							<input class="addr-box" type="text" id="sample6_detailAddress" value="${uaddrlist[0].detail_addr}">
-							<input class="addr-box" type="text" id="sample6_extraAddress" value="${uaddrlist[0].ex_addr}">
+							<input class="addr-box" type="text" id="sample6_address" name="main_addr" value="${kvo.main_addr}"><br>
+							<input class="addr-box" type="text" id="sample6_detailAddress" name="detail_addr" value="${kvo.detail_addr}">
+							<input class="addr-box" type="text" id="sample6_extraAddress" name="ex_addr" value="${kvo.ex_addr}">
 						</td>
 					</tr>
 				</table>
@@ -152,6 +156,7 @@ function sample6_execDaumPostcode() {
 			</div>
 
 			<div class="create">
+				<input type="hidden" name="user_idx" value="${kvo.user_idx}">
 				<input class="but4" type="button" value="수정하기" onclick="info_update_ok(this.form)">
 				<input class="but5" type="button" value="취소하기" onclick="location.href='mypage'"> 
 
