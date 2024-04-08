@@ -33,9 +33,6 @@
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
-	<c:set var="test1" value="100000"/>
-	<c:set var="test2" value="200000"/>
-	<c:set var="test3" value="300000"/>
 	<section id="first">
 		<div id="buymenu">
 			<div>
