@@ -100,7 +100,7 @@ function sample2_execDaumPostcode() {
 <body>
 <div id="page01">
 <h2>결제하기</h2>
-<form action="">
+<form action="pay_ok" id="form_action" method="post">
 <div id="p_main">	
 	<section id="p1_s1">
 		<article id="p1_s1_a1">
@@ -117,6 +117,16 @@ function sample2_execDaumPostcode() {
 						<div class="s1a1_d1">
 				<div class="s1a1d1_img"><img src="resources/jjh-image/projtest.png"></div>
 				<div id="s1a1d1_pa">
+				<input type="hidden" name="p_idx" value="${k.p_idx}">
+				<input type="hidden" name="user_idx" value="${k.user_idx}">
+				<input type="hidden" name="p_name" value="${k.p_name}">
+				<input type="hidden" name="p_type" value="${k.p_type}">
+				<input type="hidden" name="p_brand" value="${k.p_brand}">
+				<input type="hidden" name="p_volume" value="${k.p_volume}">
+				<input type="hidden" name="p_price" value="${k.p_price}">
+				<input type="hidden" name="p_count" value="${k.p_count}">
+				<input type="hidden" name="p_option" value="${k.p_option}">
+				<input type="hidden" name="p_main_img" value="${k.p_main_img}">
 					<div id="p_name">${k.p_name}<a></a></div>
 					<div id="p_count"  >${k.p_count}<a>개</a></div>
 					<div id="pt_price">${k.p_price} * ${k.p_count} 개  = ${k.p_price * k.p_count}<a> KRW(원)</a></div>
@@ -145,14 +155,13 @@ function sample2_execDaumPostcode() {
 					</ul>
 				</div>
 				<fieldset id="orderer">
-				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름"  required>
+				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름" value="" required>
 				<tr id="addr">
 						<td class="userin" id="addr-in">
-							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" placeholder="우편번호"> 
-							<input class="but" type="button" onclick="sample_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input class="addr-box" type="text" id="sample_address" name="main_addr" placeholder="주소"><br>
-							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" placeholder="상세주소">
-							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" placeholder="참고항목">
+							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="" placeholder="우편번호"> 
+							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="" placeholder="주소">
+							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="" placeholder="상세주소">
+							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="" placeholder="참고항목">
 						</td>
 					</tr>
 					</fieldset>
@@ -201,10 +210,14 @@ function sample2_execDaumPostcode() {
 			<a id="s2a3_a1"><input type="checkbox" name="p1_agree" value="info_a">개인정보 수집 및 이용동의</a>
 			<a id="terms">약관보기<br></a>
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
+			
 			<button id="pay_b1" onclick="pay_ok()" >결제하기</button>
+			<input  type="hidden" name="delivery_status" value="1" >
+			<input  type="hidden" name="buy_chk" value="1" >
 		</article>
 	</section>
 </div>	
+
 </form>
 </div>
 <script type="text/javascript">

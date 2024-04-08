@@ -26,7 +26,8 @@ public class PayVO {
 //			 FOREIGN KEY (user_idx) REFERENCES user_table(user_idx) ON DELETE cascade
 //		  ) ENGINE=INNODB DEFAULT CHARSET UTF8;
 	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count,
-	p_option, delivery_status, delivery_start, delivery_end, buy_chk, p_main_img, pay_date;
+	p_option, delivery_status, delivery_start, delivery_end, buy_chk, p_main_img, pay_date, 
+	zip_code, main_addr, detail_addr, ex_addr;
 
 	public String getOrder_idx() {
 		return order_idx;
@@ -156,6 +157,38 @@ public class PayVO {
 
 	public void setPay_date(String pay_date) {
 		this.pay_date = pay_date;
+	}
+
+	public String getZip_code() {
+		return zip_code;
+	}
+
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
+	}
+
+	public String getMain_addr() {
+		return main_addr;
+	}
+
+	public void setMain_addr(String main_addr) {
+		this.main_addr = main_addr;
+	}
+
+	public String getDetail_addr() {
+		return detail_addr;
+	}
+
+	public void setDetail_addr(String detail_addr) {
+		this.detail_addr = detail_addr;
+	}
+
+	public String getEx_addr() {
+		return ex_addr;
+	}
+
+	public void setEx_addr(String ex_addr) {
+		this.ex_addr = ex_addr;
 	}
 
 	
