@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ict.forest.pdh.dao.MapVO;
 import com.ict.forest.pdh.dao.ProductsVO;
 import com.ict.forest.pdh.dao.SearchDAO;
 
@@ -15,13 +16,13 @@ public class SearchServiceImpl implements SearchService{
 	private SearchDAO searchDAO;
 	
 	@Override
-	public List<ProductsVO> getSearchList(Map<String, String[]> map) {
-		return searchDAO.getSearchList(map);
+	public List<ProductsVO> getSearchList(MapVO MapVO) {
+		return searchDAO.getSearchList(MapVO);
 	}
 
 	@Override
-	public int getSearchCount(Map<String, String[]> map) {
-		return searchDAO.getSearchCount(map);
+	public int getSearchCount(MapVO MapVO) {
+		return searchDAO.getSearchCount(MapVO);
 	}
 
 }

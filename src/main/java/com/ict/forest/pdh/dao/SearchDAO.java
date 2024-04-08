@@ -12,18 +12,18 @@ public class SearchDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public List<ProductsVO> getSearchList(Map<String, String[]> map) {
+	public List<ProductsVO> getSearchList(MapVO MapVO) {
 		try {
-			return sqlSessionTemplate.selectList("product_table.search_list", map);
+			return sqlSessionTemplate.selectList("product_table.search_list", MapVO);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return null;
 	}
 	
-	public int getSearchCount(Map<String, String[]> map) {
+	public int getSearchCount(MapVO MapVO) {
 		try {
-			return sqlSessionTemplate.selectOne("product_table.search_count", map);
+			return sqlSessionTemplate.selectOne("product_table.search_count", MapVO);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

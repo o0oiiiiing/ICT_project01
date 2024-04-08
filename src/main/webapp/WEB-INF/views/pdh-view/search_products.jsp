@@ -38,8 +38,12 @@
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
 <link rel="stylesheet" href="resources/pdh-css/paging.css">
 <script type="text/javascript">
-
-	function before() {
+console.log("확인")
+let k = ${map};
+console.log(k)
+console.log(${paging.beginBlock - paging.pagePerBlock})
+/* $(document).ready(function() {
+	$("#before").click(function() {
 		let form = $('<form>');
 		let map = ${map};
 		let cpage = ${paging.beginBlock - paging.pagePerBlock};
@@ -48,7 +52,7 @@
 		ctag.attr('name', "cPage");
 		ctag.attr('value', cpage);
 		form.append(ctag)
-		form.attr('action', 'pay');
+		form.attr('action', 'search');
 		form.attr('method', 'post'); 
 		$.each(map, function (k,v) {
 			$.each(v, function(index, value) {
@@ -61,17 +65,18 @@
 		})
 		$('body').append(form);
 		form.submit();
-	}
-	function after() {
+	})
+	
+	$("#after").click(function() {
 		let form = $('<form>');
-		let map = ${map};
+		let map = ${map}
 		let cpage = ${paging.beginBlock + paging.pagePerBlock};
 		let ctag = $('<input>');
 		ctag.attr('type', 'hidden');
 		ctag.attr('name', "cPage");
 		ctag.attr('value', cpage);
 		form.append(ctag)
-		form.attr('action', 'pay');
+		form.attr('action', 'search');
 		form.attr('method', 'post'); 
 		$.each(map, function (k,v) {
 			$.each(v, function(index, value) {
@@ -84,17 +89,19 @@
 		})
 		$('body').append(form);
 		form.submit();
-	}
-	function page() {
+	})
+	
+	$(".page").click(function() {
+		console.log("tset")
 		let form = $('<form>');
-		let map = ${map};
+		let map = ${map}
 		let cpage = $(this).attr("name");
 		let ctag = $('<input>');
 		ctag.attr('type', 'hidden');
 		ctag.attr('name', "cPage");
 		ctag.attr('value', cpage);
 		form.append(ctag)
-		form.attr('action', 'pay');
+		form.attr('action', 'search');
 		form.attr('method', 'post'); 
 		$.each(map, function (k,v) {
 			$.each(v, function(index, value) {
@@ -107,7 +114,8 @@
 		})
 		$('body').append(form);
 		form.submit();
-	}
+	})
+}) */
 </script>
 </head>
 <body>
@@ -183,7 +191,7 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<span class="able" onclick="before()">이전</a>
+					<span class="able" id="before">이전</span>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -196,7 +204,7 @@
 				</c:when>
 				<c:otherwise>
 					<li>
-						<span class="other_page" name="${k}" onclick="page()">${k}</span>
+						<span class="other_page page" name="${k}">${k}</span>
 					</li>
 				</c:otherwise>
 			</c:choose>
@@ -209,7 +217,7 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<span class="able" onclick="after()">다음</span>
+					<span class="able" id="after">다음</span>
 				</li>
 			</c:otherwise>
 		</c:choose>

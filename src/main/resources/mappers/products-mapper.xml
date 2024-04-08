@@ -46,7 +46,7 @@
 		order by buy_rate desc
 		limit 10
 	</select>
-
+<!-- 
 	<select id="search_list" resultType="ProductsVO" parameterType="Map">
 		select *
 		from product_table
@@ -77,7 +77,90 @@
 	    </where>
    		order by p_name
 	</select>
-	
+	 -->
+	 <select id="search_list" resultType="ProductsVO" parameterType="MapVO">
+		select *
+		from product_table
+	    <where>
+		<foreach collection="search_map.entrySet()" item="value" index="k">
+			<if test="k == 'p_name'">
+	            <if test="value != null">
+					<foreach collection="value" item="j">
+		            	p_name like CONCAT('%', Lower(#{j}), '%')
+   	    			</foreach>
+	            </if>
+			</if>
+			<if test="k == 'p_type'">
+	            <if test="value != null">
+	            	and p_type IN
+					<foreach collection="value" item="j" open="(" separator="," close=")">
+        				#{j}
+       				</foreach>
+	            </if>
+			</if>
+			<if test="k == 'p_brand'">
+	            <if test="value != null">
+	            	and p_brand IN
+					<foreach collection="value" item="j" open="(" separator="," close=")">
+        				#{j}
+       				</foreach>
+	            </if>
+			</if>
+			<if test="k == 'p_volume'">
+	            <if test="value != null">
+	            	and p_volume IN
+					<foreach collection="value" item="j" open="(" separator="," close=")">
+        				#{j}
+       				</foreach>
+	            </if>
+			</if>
+		</foreach>
+	    </where>
+   		order by p_name
+   		limit #{limit}
+   		offset #{offset}
+	</select>
+	 
+	<select id="search_count" resultType="int" parameterType="MapVO">
+		select count(*)
+		from product_table
+	    <where>
+			<foreach collection="search_map.entrySet()" item="value" index="k">
+			<if test="k == 'p_name'">
+	            <if test="value != null">
+					<foreach collection="value" item="j">
+		            	p_name like CONCAT('%', Lower(#{j}), '%')
+   	    			</foreach>
+	            </if>
+			</if>
+			<if test="k == 'p_type'">
+	            <if test="value != null">
+	            	and p_type IN
+					<foreach collection="value" item="j" open="(" separator="," close=")">
+        				#{j}
+       				</foreach>
+	            </if>
+			</if>
+			<if test="k == 'p_brand'">
+	            <if test="value != null">
+	            	and p_brand IN
+					<foreach collection="value" item="j" open="(" separator="," close=")">
+        				#{j}
+       				</foreach>
+	            </if>
+			</if>
+			<if test="k == 'p_volume'">
+	            <if test="value != null">
+	            	and p_volume IN
+					<foreach collection="value" item="j" open="(" separator="," close=")">
+        				#{j}
+       				</foreach>
+	            </if>
+			</if>
+		</foreach>
+	    </where>
+	</select>
+	<!--  
 	<select id="search_count" resultType="int" parameterType="Map">
 		select count(*)
 		from product_table
@@ -107,6 +190,7 @@
         </if>
 	    </where>
 	</select>
+	-->
 	
 	
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ict.forest.common.Paging_pdh;
 import com.ict.forest.pdh.dao.BrandVO;
 import com.ict.forest.pdh.dao.KeywordVO;
+import com.ict.forest.pdh.dao.MapVO;
 import com.ict.forest.pdh.dao.PagingVO;
 import com.ict.forest.pdh.dao.ProductsVO;
 import com.ict.forest.pdh.dao.TypeVO;
@@ -38,11 +39,12 @@ public class SearchController {
 			map.put("p_type", tvo.getProduct());
 			map.put("p_volume", vvo.getCapacity());
 			map.put("p_brand", bvo.getBrand());
-			mv.addObject("map", map);
+			MapVO MapVO = new MapVO();
+			MapVO.setSearch_map(map);
 			
 			
 			// 페이징
-			int count = searchService.getSearchCount(map);
+			int count = searchService.getSearchCount(MapVO);
 			paging.setTotalRecord(count);
 			System.out.println(count);
 
@@ -78,16 +80,14 @@ public class SearchController {
 				// 끝 블록을 전체 페이수로 맞춘다.
 				paging.setEndBlock(paging.getTotalPage());
 			}
-			PagingVO pagingVO = new PagingVO();
-			pagingVO.setLimit(paging.getNumPerPage());
-			pagingVO.setOffset(paging.getOffset());
+			MapVO.setLimit(paging.getNumPerPage());
+			MapVO.setOffset(paging.getOffset());
 			
-			List<ProductsVO> products_list2 = searchService.getSearchList(map);
-			List<ProductsVO> products_list = products_list2.subList(pagingVO.getOffset(), pagingVO.getOffset()+pagingVO.getLimit());
-			System.out.println("db 이후 : "+products_list);
+			List<ProductsVO> products_list = searchService.getSearchList(MapVO);
 			if (products_list != null) {
 				mv.addObject("products_list", products_list);
 				mv.addObject("paging", paging);
+				request.setAttribute("map", map);
 				return mv;
 			}
 		} catch (Exception e) {
