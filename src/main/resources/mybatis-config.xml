@@ -27,8 +27,10 @@
 		<typeAlias type="com.ict.forest.pdh.dao.PagingVO" alias="PagingVO"/>
 		<!-- khj 결제하기 VO -->
 		<typeAlias type="com.ict.forest.khj.dao.PayVO" alias="payvo" />
-		<!-- khj 결제를 위해 넘어올 테스트용 정보를 담은 VO -->
+		
 		<typeAlias type="com.ict.forest.kch.dao.KchVO" alias="kvo" />
+		<!-- khj qna 게시판 정보가 담기는 VO -->
+		<typeAlias type="com.ict.forest.khj.dao.QnaVO" alias="qnavo" />
 	</typeAliases>
 	<mappers>
 		<!-- jjh : 유저 관련 mapper -->

@@ -19,13 +19,17 @@ public class PayDAO {
 		return null;
 	}
 	
-	public int getPayInsert(PayVO payVO1) {
+	public int getPayInsert(PayVO payvo) {
 		try {
 			
-			return sqlSessionTemplate.insert("pay_table", payVO1);
+			return sqlSessionTemplate.insert("pay_table.pay_insert", payvo);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return -1;
+	}
+	
+	public int getPayOKUpdate(PayVO payvo) {
+		return 1;
 	}
 }

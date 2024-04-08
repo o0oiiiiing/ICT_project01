@@ -2,7 +2,7 @@ package com.ict.forest.jjh.dao;
 
 public class BuyVO {
 	private String[] p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, p_option, p_main_img;
-
+	private String zip_code, main_addr, detail_addr, ex_addr;
 	public String[] getP_idx() {
 		return p_idx;
 	}
@@ -82,6 +82,40 @@ public class BuyVO {
 	public void setP_main_img(String[] p_main_img) {
 		this.p_main_img = p_main_img;
 	}
+
+	public String getZip_code() {
+		return zip_code;
+	}
+
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
+	}
+
+	public String getMain_addr() {
+		return main_addr;
+	}
+
+	public void setMain_addr(String main_addr) {
+		this.main_addr = main_addr;
+	}
+
+	public String getDetail_addr() {
+		return detail_addr;
+	}
+
+	public void setDetail_addr(String detail_addr) {
+		this.detail_addr = detail_addr;
+	}
+
+	public String getEx_addr() {
+		return ex_addr;
+	}
+
+	public void setEx_addr(String ex_addr) {
+		this.ex_addr = ex_addr;
+	}
+	
+	
 	
 	
 }

@@ -12,6 +12,11 @@
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/customer_center.css">
+<script type="text/javascript">
+	function qna_go() {
+		
+	}
+</script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -19,7 +24,7 @@
 <section id="ccenter">
 	<article id="sel">
 		<div id="s_menu">
-			<a href="">QnA</a>
+			<a onclick="qna_go()">QnA</a>
 			<a href="">FaQ</a>
 			<a href="">Claim</a>
 		</div>

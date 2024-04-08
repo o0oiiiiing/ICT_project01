@@ -18,8 +18,13 @@ private PayDAO payDAO;
 	}
 
 	@Override
-	public int getPayInsert(PayVO payVO1) {
-		return payDAO.getPayInsert(payVO1);
+	public int getPayInsert(PayVO payvo) {
+		return payDAO.getPayInsert(payvo);
 	}
+	
+	@Override
+		public int getPayOKUpdate(PayVO payvo) {
+			return payDAO.getPayOKUpdate(payvo);
+		}
 
 }
