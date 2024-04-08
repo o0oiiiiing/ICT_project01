@@ -1,7 +1,7 @@
 package com.ict.forest.pdh.dao;
 
 public class TypeVO {
-	private String type = "2";
+	private String type = "p_type";
 	private String[] product;
 	
 	public String getType() {

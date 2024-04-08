@@ -51,7 +51,7 @@
 					</ul>
 				</li>
 				<li class="categories">
-					<label><input type="checkbox" class="top-category" id="brand-all">BRAND</label>
+					<label><input type="checkbox" class="top-category" id="brand-all"> BRAND</label>
 					<ul class="subcategory">
 						<li><label><input type="checkbox" class="brand" name="brand" value="GRANHAND."> GRANHAND.</label></li>
 						<li><label><input type="checkbox" class="brand" name="brand" value="LE LABO"> LE LABO</label></li>

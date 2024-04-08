@@ -53,6 +53,7 @@
 		}
 	}
 	
+
 	// 배경 이미지 변경 스크립트
 	window.onload = function() {
 		var images = [ 'background_01.jpg', 'background_02.jpg', 'background_03.jpg' ]; // 변경할 배경 이미지들의 파일명

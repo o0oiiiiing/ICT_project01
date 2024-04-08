@@ -37,6 +37,78 @@
 <link rel="stylesheet" href="resources/pdh-css/products.css">
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
 <link rel="stylesheet" href="resources/pdh-css/paging.css">
+<script type="text/javascript">
+
+	function before() {
+		let form = $('<form>');
+		let map = ${map};
+		let cpage = ${paging.beginBlock - paging.pagePerBlock};
+		let ctag = $('<input>');
+		ctag.attr('type', 'hidden');
+		ctag.attr('name', "cPage");
+		ctag.attr('value', cpage);
+		form.append(ctag)
+		form.attr('action', 'pay');
+		form.attr('method', 'post'); 
+		$.each(map, function (k,v) {
+			$.each(v, function(index, value) {
+	       	let input = $('<input>');
+	       	input.attr('type', 'hidden');
+	        input.attr('name', k);
+	        input.attr('value', value);
+	        form.append(input)
+			})
+		})
+		$('body').append(form);
+		form.submit();
+	}
+	function after() {
+		let form = $('<form>');
+		let map = ${map};
+		let cpage = ${paging.beginBlock + paging.pagePerBlock};
+		let ctag = $('<input>');
+		ctag.attr('type', 'hidden');
+		ctag.attr('name', "cPage");
+		ctag.attr('value', cpage);
+		form.append(ctag)
+		form.attr('action', 'pay');
+		form.attr('method', 'post'); 
+		$.each(map, function (k,v) {
+			$.each(v, function(index, value) {
+	       	let input = $('<input>');
+	       	input.attr('type', 'hidden');
+	        input.attr('name', k);
+	        input.attr('value', value);
+	        form.append(input)
+			})
+		})
+		$('body').append(form);
+		form.submit();
+	}
+	function page() {
+		let form = $('<form>');
+		let map = ${map};
+		let cpage = $(this).attr("name");
+		let ctag = $('<input>');
+		ctag.attr('type', 'hidden');
+		ctag.attr('name', "cPage");
+		ctag.attr('value', cpage);
+		form.append(ctag)
+		form.attr('action', 'pay');
+		form.attr('method', 'post'); 
+		$.each(map, function (k,v) {
+			$.each(v, function(index, value) {
+	       	let input = $('<input>');
+	       	input.attr('type', 'hidden');
+	        input.attr('name', k);
+	        input.attr('value', value);
+	        form.append(input)
+			})
+		})
+		$('body').append(form);
+		form.submit();
+	}
+</script>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -111,14 +183,7 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<c:choose>
-						<c:when test="${p_brand != null}">
-							<a class="able" href="products_list_brand?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">이전</a>
-						</c:when>
-						<c:otherwise>
-							<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}">이전</a>
-						</c:otherwise>
-					</c:choose>
+					<span class="able" onclick="before()">이전</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -131,14 +196,7 @@
 				</c:when>
 				<c:otherwise>
 					<li>
-						<c:choose>
-							<c:when test="${p_brand != null}">
-								<a class="other_page" href="products_list_brand?cPage=${k}&p_type=${p_type}&p_brand=${p_brand}">${k}</a>
-							</c:when>
-							<c:otherwise>
-								<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}">${k}</a>
-							</c:otherwise>
-						</c:choose>
+						<span class="other_page" name="${k}" onclick="page()">${k}</span>
 					</li>
 				</c:otherwise>
 			</c:choose>
@@ -151,14 +209,7 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<c:choose>
-						<c:when test="${p_brand != null}">
-							<a class="able" href="products_list_brand?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">다음</a>
-						</c:when>
-						<c:otherwise>
-							<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}">다음</a>
-						</c:otherwise>
-					</c:choose>
+					<span class="able" onclick="after()">다음</span>
 				</li>
 			</c:otherwise>
 		</c:choose>

@@ -1,7 +1,7 @@
 package com.ict.forest.pdh.dao;
 
 public class VolumeVO {
-	private String type = "4";
+	private String type = "p_volume";
 	private String[] capacity;
 	
 	public String getType() {

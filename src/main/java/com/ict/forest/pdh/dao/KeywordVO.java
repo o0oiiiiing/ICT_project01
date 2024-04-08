@@ -1,7 +1,7 @@
 package com.ict.forest.pdh.dao;
 
 public class KeywordVO {
-	private String type = "1";
+	private String type = "p_name";
 	private String[] keyword;
 	
 	public String getType() {
