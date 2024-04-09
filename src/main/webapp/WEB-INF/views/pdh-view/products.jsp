@@ -37,6 +37,24 @@
 <link rel="stylesheet" href="resources/pdh-css/products.css">
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
 <link rel="stylesheet" href="resources/pdh-css/paging.css">
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#sort-option").change(function() {
+		let cPage = "${paging.nowPage}"
+		let p_type = "${p_type}"
+		let option = $(this).find("option:selected").val()
+		let p_brand = "${p_brand}"
+		if (p_brand != "") {
+		location.href = "products_list?cPage="+cPage+"&p_type="+p_type+"&option="+option+"&p_brand="+p_brand;
+		}else {
+		location.href = "products_list?cPage="+cPage+"&p_type="+p_type+"&option="+option;	
+		}
+	})
+})
+
+</script>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -57,10 +75,10 @@
 		</c:choose>
 		
 		<div class="select-box">
-			<select class="select" id="sort-option">
-				<option value="alphabetical-order">이름순</option>
-				<option value="price-order">가격순</option>
-				<option value="popularity-order">인기순</option>
+			<select class="select" id="sort-option" name="option">
+				<option id="p_name" value="p_name">이름순</option>
+				<option id="p_price" value="p_price">가격순</option>
+				<option id="buy_rate" value="buy_rate">인기순</option>
 			</select>
 		</div>
 		
@@ -112,11 +130,25 @@
 			<c:otherwise>
 				<li>
 					<c:choose>
-						<c:when test="${p_brand != null}">
-							<a class="able" href="products_list_brand?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">이전</a>
+						<c:when test="${option != null}">
+							<c:choose>
+								<c:when test="${p_brand != null}">
+									<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}&option=${option}">이전</a>
+								</c:when>
+								<c:otherwise>
+									<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}&option=${option}">이전</a>
+								</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}">이전</a>
+							<c:choose>
+								<c:when test="${p_brand != null}">
+									<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">이전</a>
+								</c:when>
+								<c:otherwise>
+									<a class="able" href="products_list?cPage=${paging.beginBlock - paging.pagePerBlock}&p_type=${p_type}">이전</a>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 				</li>
@@ -132,11 +164,25 @@
 				<c:otherwise>
 					<li>
 						<c:choose>
-							<c:when test="${p_brand != null}">
-								<a class="other_page" href="products_list_brand?cPage=${k}&p_type=${p_type}&p_brand=${p_brand}">${k}</a>
+							<c:when test="${option != null}">
+								<c:choose>
+									<c:when test="${p_brand != null}">
+										<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}&p_brand=${p_brand}&option=${option}">${k}</a>
+									</c:when>
+									<c:otherwise>
+										<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}&option=${option}">${k}</a>
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
-								<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}">${k}</a>
+								<c:choose>
+									<c:when test="${p_brand != null}">
+										<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}&p_brand=${p_brand}">${k}</a>
+									</c:when>
+									<c:otherwise>
+										<a class="other_page" href="products_list?cPage=${k}&p_type=${p_type}">${k}</a>
+									</c:otherwise>
+								</c:choose>
 							</c:otherwise>
 						</c:choose>
 					</li>
@@ -152,11 +198,25 @@
 			<c:otherwise>
 				<li>
 					<c:choose>
-						<c:when test="${p_brand != null}">
-							<a class="able" href="products_list_brand?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">다음</a>
+						<c:when test="${option != null}">
+							<c:choose>
+								<c:when test="${p_brand != null}">
+									<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}&option=${option}">다음</a>
+								</c:when>
+								<c:otherwise>
+									<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}&option=${option}">다음</a>
+								</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}">다음</a>
+							<c:choose>
+								<c:when test="${p_brand != null}">
+									<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}&p_brand=${p_brand}">다음</a>
+								</c:when>
+								<c:otherwise>
+									<a class="able" href="products_list?cPage=${paging.beginBlock + paging.pagePerBlock}&p_type=${p_type}">다음</a>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 				</li>
@@ -189,6 +249,19 @@
 				behavior: 'smooth'
 			});
 		})
+		
+		let option2 = "${option}"
+		if (option2 != "") {
+			if (option2 == 'p_name') {
+				$("#p_name").prop("selected", true)
+			} else if (option2 == 'p_price') {
+				$("#p_price").prop("selected", true)
+			} else if (option2 == 'buy_rate') {
+				$("#buy_rate").prop("selected", true)
+			} else {
+				$("#p_name").prop("selected", true)
+			}
+		}
 	</script>
 </body>
 </html>

@@ -15,23 +15,13 @@ public class ProductsServiceImpl implements ProductsService {
 	private ProductsDAO productsDAO;
 
 	@Override
-	public int getTotalCount(String p_type) {
-		return productsDAO.getTotalCount(p_type);
-	}
-	
-	@Override
-	public int getTotalCountBrand(PagingVO pagingVO) {
-		return productsDAO.getTotalCountBrand(pagingVO);
+	public int getTotalCount(PagingVO pagingVO) {
+		return productsDAO.getTotalCount(pagingVO);
 	}
 	
 	@Override
 	public List<ProductsVO> getProductsList(PagingVO pagingVO) {
 		return productsDAO.getProductsList(pagingVO);
-	}
-
-	@Override
-	public List<ProductsVO> getProductsListBrand(PagingVO pagingVO) {
-		return productsDAO.getProductsListBrand(pagingVO);
 	}
 
 	@Override

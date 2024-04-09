@@ -1,7 +1,15 @@
 package com.ict.forest.pdh.dao;
 
 public class PagingVO {
-	private String p_type, p_brand;
+	private String p_type, p_brand, option;
+	public String getOption() {
+		return option;
+	}
+
+	public void setOption(String option) {
+		this.option = option;
+	}
+
 	private int limit, offset;
 
 	public String getP_brand() {
