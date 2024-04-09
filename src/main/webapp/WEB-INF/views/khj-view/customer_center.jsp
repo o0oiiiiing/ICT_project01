@@ -24,9 +24,9 @@
 <section id="ccenter">
 	<article id="sel">
 		<div id="s_menu">
-			<a onclick="qna_go()">QnA</a>
-			<a href="">FaQ</a>
-			<a href="">Claim</a>
+			<a href="qna">QnA</a>
+			<a href="faq">FaQ</a>
+			<a href="claim">Claim</a>
 		</div>
 		<div id="s_display"><p>FAQ(s_menu 누르면 창 바뀌고 누른거 표시)</p></div>
 	</article>

@@ -127,7 +127,7 @@ function sample6_execDaumPostcode() {
 					</tr>
 					<tr>
 						<td class="menu">비밀번호</td>
-						<td class="userin"><input type="password" name="user_pwd"></td>
+						<td class="userin"><input type="password" name="user_pwd" placeholder="비밀번호를 입력해주세요"></td>
 					</tr>
 					<tr>
 						<td class="menu">이메일</td>

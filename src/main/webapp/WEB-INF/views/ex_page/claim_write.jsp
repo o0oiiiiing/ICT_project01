@@ -19,21 +19,20 @@
 					</caption>
 					<tr>
 						<td class="menu">아이디</td>
-						<td class="userin">${uvo.user_id}</td>
-					</tr>
-					<tr>
-						<td class="menu">이메일</td>
-						<td class="userin">
-						<span class="a">${uvo.user_email}</span> 
-						</td>
+						<td class="userin">${ssuvo.user_id}</td>
 					</tr>
 					<tr>
 						<td class="menu">비밀번호</td>
-						<td class="userin"><input type="password" id="pw" name="user_pwd" />
+						<td class="userin"><input type="password" id="qna_pw" name="qna_pw" />
+					</tr>
+					<tr>
+						<td class="menu">제목</td>
+						<td class="userin"><input type="text" id="qna_subject" name="qna_subject">
+						</td>
 					</tr>
 					<tr>
 						<td class="menu">내용</td>
-						<td><textarea rows="10" cols="60" name="content"></textarea>
+						<td><textarea rows="10" cols="60" id="qna_content" name="qna_content"></textarea>
 						</td>
 					</tr>
 				</table>
@@ -49,3 +48,16 @@
 	</form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,14 +27,20 @@ public class MailHandler {
 	}
 	
 	public void setText(String text) throws Exception{
-		messageHelper.setText(text);
+		messageHelper.setText(text, true);
 	}
 	
 	public void setFrom(String email_pwd, String name) throws Exception{
 		messageHelper.setFrom(email_pwd, name);
 	}
+	public void setFrom1(String email_id, String name) throws Exception{
+		messageHelper.setFrom(email_id, name);
+	}
 	public void setTo(String email_pwd) throws Exception{
 		messageHelper.setTo(email_pwd);
+	}
+	public void setTo1(String email_id) throws Exception{
+		messageHelper.setTo(email_id);
 	}
 	
 	public void send() {

@@ -16,8 +16,8 @@
 <body>
 	<section id="wrap">
 		<div id="findt">
-			<P>메일로 보내드린 인증번호를 <br>
-			사용해 로그인해 주세요.</P><br><br>
+			<P>메일로 아이디를 전송했습니다.
+			</P><br><br>
 		</div>
 		<div id="btnn">
 			<input type="button" value="로그인하기" onclick="location.href='home'">

@@ -70,6 +70,28 @@ public class EmailController {
 		}
 		return new ModelAndView("pdh-view/error");
 	}
+	
+	
+	@PostMapping("find_user_id")
+	public ModelAndView findUserId(String user_name, String email_id,  HttpServletRequest request, KchVO kvo) {
+		try {
+			ModelAndView mv = new ModelAndView();
+			KchVO kvo2 = kchService.kchfindname(user_name);
+			if (kvo2 != null && (email_id.equals(kvo2.getUser_f_email() + "@" + kvo2.getUser_b_email()) )) {
+				String userId = kvo2.getUser_id();
+				String userName = kvo2.getUser_name();
+				mailService.sendIDEmail(userId, email_id);
+				
+				return new ModelAndView("kch-view/idconfirm");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return new ModelAndView("pdh-view/error");
+	}
+	
+	
 }
 
 
