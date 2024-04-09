@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ict.forest.khj.dao.PayVO;
+
 @Repository
 public class UserDAO {
 	@Autowired
@@ -119,6 +121,27 @@ public class UserDAO {
 	public int pointPlus(UserVO uvo) {
 		try {
 			return sqlSessionTemplate.update("user_table.point_plus", uvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	public List<PayVO> order_list(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectList("user_table.order_list", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public int complitedil(String user_idx, String order_idx) {
+		try {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("user_idx", user_idx);
+			map.put("order_idx", order_idx);
+			return sqlSessionTemplate.update("user_table.complite_dil", map);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

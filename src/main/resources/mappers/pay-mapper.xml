@@ -9,15 +9,12 @@
 	</select>
 	<insert id="pay_insert" parameterType="payvo">
 		INSERT INTO pay_table (p_idx, user_idx, p_name, p_type, p_brand, p_volume, 
-		p_price, p_count, p_option, delivery_start, 
+		p_price, p_count, p_option, delivery_start,
 		p_main_img, pay_date, zip_code, main_addr, detail_addr, ex_addr) 
 	    VALUES (#{p_idx},#{user_idx},#{p_name},#{p_type},#{p_brand},#{p_volume},
 	    #{p_price},#{p_count},#{p_option},sysdate(),
 	    #{p_main_img},sysdate(),#{zip_code},#{main_addr},#{detail_addr},#{ex_addr})
 	</insert>
-	
-		 
-			
 </mapper>
 
 

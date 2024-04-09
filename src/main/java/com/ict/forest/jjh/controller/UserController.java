@@ -1,5 +1,11 @@
 package com.ict.forest.jjh.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +26,7 @@ import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.UserService;
+import com.ict.forest.khj.dao.PayVO;
 import com.jcraft.jsch.Session;
 
 @Controller
@@ -51,6 +58,27 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("redirect:home");
 		UserVO uvo2 = userService.userLogin(uvo.getUser_id());
 		if (uvo2 != null && passwordEncoder.matches(uvo.getUser_pwd(), uvo2.getUser_pwd())) {
+			// 배송 완료 날짜 처리
+			List<PayVO> list_pvo = userService.order_list(uvo2.getUser_idx());
+			if (list_pvo != null) {
+				for (PayVO k : list_pvo) {
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+					
+					LocalDateTime dbtime = LocalDateTime.parse(k.getDelivery_start(), formatter);
+					LocalDateTime dbtime2 = dbtime.plusHours(9);
+					LocalDateTime systime = LocalDateTime.now();
+					long diffmin = ChronoUnit.MINUTES.between(dbtime2, systime);
+					System.out.println("db시간"+dbtime2);
+					System.out.println("현재시간"+systime);
+					System.out.println(diffmin);
+					if (diffmin > 3) {
+						int res = userService.complitedil(uvo2.getUser_idx(), k.getOrder_idx());
+					}
+					
+				}
+			}
+			
+			// user정보 session저장
 			HttpSession session = request.getSession();
 			SessionUser ssuvo = new SessionUser();
 			ssuvo.setLogin("true");
