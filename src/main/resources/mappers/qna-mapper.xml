@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="qna_table">
+	<select id="count" resultType="int">
+		select count(*) from qna_table
+	</select>
+	<select id="qna_list" parameterType="Map" resultType="qnavo">
+		select * from qna_table order by qna_idx desc limit #{limit} offset #{offset}
+	</select>	 
+			
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

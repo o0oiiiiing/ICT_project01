@@ -22,6 +22,42 @@
 	</div>
 	<div id="s_display"><p>QnA(s_menu 누르면 창 바뀌고 누른거 표시)</p></div>
 	<div id="qna_block">
+	<c:choose>
+		<c:when test="${empty qna_list }">
+			<h1>게시물이 존재하지 않습니다.</h1>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="k" items="${qna_list}" varStatus="vs">
+			<div>
+			<article class="qna_head">
+				<div class="qna_num">
+					<p>num</p>
+					<div class="user_id">
+					<p>아이디</p>
+				</div>
+				<div class="qna_created_date">
+					<p>작성일</p>
+				</div>
+				<div class="qna_subject">
+					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
+				</div>
+				<div class="qna_reply_status">
+					<p>답변상태</p>
+				</div>
+			</article>
+			<article class="qna_body">
+				<div class="qna_content">
+					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
+					<div class="qna_reply">
+						<hr>
+					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
+					</div>
+				</div>
+			</article>
+		</div>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
 		<div>
 			<article class="qna_head">
 				<div class="qna_num">
@@ -50,202 +86,7 @@
 				</div>
 			</article>
 		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
+		
 		
 		
 		<article class="qna_page_body">

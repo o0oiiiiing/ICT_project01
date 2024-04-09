@@ -42,6 +42,8 @@
 		<mapper resource="mappers/products-mapper.xml" />
 		<!-- khj  pay_table  db로 가는 매퍼 -->
 		<mapper resource="mappers/pay-mapper.xml" />
+		<!-- khj  qna_table db로 가는 매퍼 -->
+		<mapper resource="mappers/qna-mapper.xml" />
 		<!-- kch -->
 		<mapper resource="mappers/user2-mapper.xml" />
 	</mappers>

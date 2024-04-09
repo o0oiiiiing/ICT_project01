@@ -1,8 +1,12 @@
 package com.ict.forest.khj.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.khj.dao.PayDAO;
 import com.ict.forest.khj.dao.PayVO;
 
@@ -22,9 +26,15 @@ private PayDAO payDAO;
 		return payDAO.getPayInsert(payvo);
 	}
 	
+
+
 	@Override
-		public int getPayOKUpdate(PayVO payvo) {
-			return payDAO.getPayOKUpdate(payvo);
+		public UserVO getPayAddr(String user_idx) {
+			return payDAO.getPayAddr(user_idx);
 		}
 
+	@Override
+	public int getPayPoint(String user_idx, String minus_pay_point) {
+		return payDAO.getPayPoint(user_idx, minus_pay_point);
+	}
 }
