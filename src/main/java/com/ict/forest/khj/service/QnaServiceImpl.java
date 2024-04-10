@@ -22,4 +22,9 @@ public class QnaServiceImpl implements QnaService{
 	public List<QnaVO> getQnaList(int offset, int limit) {
 		return qnaDAO.getQnaList(offset, limit);
 	}
+	
+	@Override
+	public int getQnaInsert(QnaVO qnavo) {
+		return qnaDAO.getQnaInsert(qnavo);
+	}
 }

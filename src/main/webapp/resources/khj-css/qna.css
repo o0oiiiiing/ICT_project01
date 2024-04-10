@@ -19,9 +19,14 @@ body{
 	background-color: transparent; 
 	text-decoration: none;
 }
+#dis_but{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 #s_display{
 	margin: 0 auto;
-	width: 1000px; 
+	width: 400px; 
 	height: 45px; 
 	font-size: 25px; 
 	text-align: center; 

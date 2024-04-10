@@ -9,7 +9,11 @@
 	</select>
 	<select id="qna_list" parameterType="Map" resultType="qnavo">
 		select * from qna_table order by qna_idx desc limit #{limit} offset #{offset}
-	</select>	 
+	</select>
+	<insert id="qna_insert" parameterType="qnavo">
+		insert into qna_table(user_idx, user_type, user_id, qna_subject, qna_content, qna_created_date, qna_pw)
+		values(#{user_idx}, #{user_type}, #{user_id}, #{qna_subject}, #{qna_content}, sysdate(), #{qna_pw})
+	</insert>	 
 			
 </mapper>
 

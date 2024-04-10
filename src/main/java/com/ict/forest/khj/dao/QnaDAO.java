@@ -34,6 +34,16 @@ public class QnaDAO {
 		}
 		return null;
 	}
+	
+	public int getQnaInsert(QnaVO qnavo) {
+		try {
+			return sqlSessionTemplate.insert("qna_table.", qnavo);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
 }
 
 

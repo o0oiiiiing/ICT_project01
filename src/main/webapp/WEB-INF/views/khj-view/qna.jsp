@@ -25,8 +25,10 @@
 			<a href="faq_list">FaQ</a>
 			<a href="claim_list">Claim</a>
 	</div>
+	<div id="dis_but">
 	<div id="s_display"><p>QnA</p></div>
 	<button type="button" onclick="qna_write()">문의 글쓰기</button>
+	</div>
 	<div id="qna_block">
 	<c:choose>
 		<c:when test="${empty qna_list }">

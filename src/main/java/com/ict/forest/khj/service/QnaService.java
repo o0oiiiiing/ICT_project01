@@ -8,4 +8,5 @@ public interface QnaService {
 	
 	public int getTotalCount();
 	public List<QnaVO> getQnaList(int offset , int limit);
+	public int getQnaInsert(QnaVO qnavo);
 }
