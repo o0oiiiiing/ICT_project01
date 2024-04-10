@@ -96,11 +96,12 @@ function sample2_execDaumPostcode() {
 
 
 </script>
+
 </head>
 <body>
 <div id="page01">
 <h2>결제하기</h2>
-<form action="pay_ok" id="form_action" method="post">
+<form action="" id="form_action" method="post">
 <div id="p_main">	
 	<section id="p1_s1">
 		<article id="p1_s1_a1">
@@ -155,13 +156,13 @@ function sample2_execDaumPostcode() {
 					</ul>
 				</div>
 				<fieldset id="orderer">
-				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름" value="" required>
+				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름" value="${uvo.user_name}" required readonly>
 				<tr id="addr">
 						<td class="userin" id="addr-in">
-							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="" placeholder="우편번호"> 
-							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="" placeholder="주소">
-							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="" placeholder="상세주소">
-							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="" placeholder="참고항목">
+							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="${uvo.zip_code}" placeholder="우편번호" required readonly> 
+							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="${uvo.main_addr}" placeholder="주소" required readonly>
+							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="${uvo.detail_addr}" placeholder="상세주소" required readonly>
+							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="${uvo.ex_addr}" placeholder="참고항목" required readonly>
 						</td>
 					</tr>
 					</fieldset>
@@ -180,11 +181,11 @@ function sample2_execDaumPostcode() {
 			
 			<tr id="addr2">
 						<td class="delivery_in" id="addr-in2">
-							<input class="addr-box2" type="text" id="sample2_postcode" name="zip_code" placeholder="우편번호"> 
+							<input class="addr-box2" type="text" id="sample2_postcode" name="zip_code" placeholder="우편번호" required> 
 							<input class="but2" type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input class="addr-box2" type="text" id="sample2_address" name="main_addr" placeholder="수령인 주소"><br>
-							<input class="addr-box2" type="text" id="sample2_detailAddress" name="detail_addr" placeholder="상세주소">
-							<input class="addr-box2" type="text" id="sample2_extraAddress" name="ex_addr" placeholder="참고항목">
+							<input class="addr-box2" type="text" id="sample2_address" name="main_addr" placeholder="수령인 주소" required><br>
+							<input class="addr-box2" type="text" id="sample2_detailAddress" name="detail_addr" placeholder="상세주소" required>
+							<input class="addr-box2" type="text" id="sample2_extraAddress" name="ex_addr" placeholder="참고항목" required>
 						</td>
 					</tr>
 			</fieldset>
@@ -211,9 +212,10 @@ function sample2_execDaumPostcode() {
 			<a id="terms">약관보기<br></a>
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
 			
-			<button id="pay_b1" onclick="pay_ok()" >결제하기</button>
-			<input  type="hidden" name="delivery_status" value="1" >
+			<button id="pay_b1" onclick="pay_ok(this.form)"  >결제하기</button>
+			<input  type="hidden" name="delivery_status" value="1"  >
 			<input  type="hidden" name="buy_chk" value="1" >
+			<input  type="hidden" name="minus_pay_point" value="${uvo.user_point - pt_price_total + 3000 * pay_ok_count }" >
 		</article>
 	</section>
 </div>	
@@ -282,13 +284,15 @@ $recipientField.change(function () {
 
 });
 
-function pay_ok() {
+function pay_ok(f) {
 	let check = document.querySelector('#s2a3_a1 input');
 	let check2 = document.querySelector('#s2a3_a3 input');
 	if(check.checked && check2.checked){
+		document.querySelector('#form_action').setAttribute('action', 'pay_ok');
 		document.querySelector('#pay_b1').setAttribute('type', 'submit');
 	}else{
 		alert("체크 덜 됐음. . ");
+		return;
 	}
 }
 </script>

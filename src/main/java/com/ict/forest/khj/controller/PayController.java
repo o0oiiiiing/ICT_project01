@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.BuyVO;
+import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.khj.dao.PayVO;
 import com.ict.forest.khj.service.PayService;
 @Controller
@@ -68,13 +69,13 @@ public class PayController {
 		ModelAndView mv = new ModelAndView("khj-view/pay");
 		HttpSession session = request.getSession();
 		SessionUser ssuvo2 = (SessionUser) session.getAttribute("ssuvo");
-		String user_idx_a = ssuvo2.getUser_idx();
+		String user_idx = ssuvo2.getUser_idx();
 	
 		List<PayVO> pay_list = new ArrayList<PayVO>();
 		for (int i = 0; i < bvo.getP_idx().length; i++) {
 			PayVO payvo = new PayVO();
 			payvo.setP_idx(bvo.getP_idx()[i]);
-			payvo.setUser_idx(user_idx_a);
+			payvo.setUser_idx(user_idx);
 			payvo.setP_name(bvo.getP_name()[i]);
 			payvo.setP_type(bvo.getP_type()[i]);
 			payvo.setP_brand(bvo.getP_brand()[i]);
@@ -87,16 +88,18 @@ public class PayController {
 			payvo.setDelivery_end("0000-00-00");
 			payvo.setBuy_chk("0");
 			payvo.setPay_date("0000-00-00");
-			
 			pay_list.add(payvo);
+			}
+		UserVO uvo = payService.getPayAddr(user_idx);
 		
-		}
+	 
+		mv.addObject("uvo", uvo);
 		mv.addObject("pay_list", pay_list);
 		return mv;
 	}
 	
 	@PostMapping("pay_ok")
-	public ModelAndView getPayOK(BuyVO bvo) {
+	public ModelAndView getPayOK(BuyVO bvo, String minus_pay_point) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
 		
 		
@@ -120,8 +123,15 @@ public class PayController {
 			int result = payService.getPayInsert(payvo);
 			
 		}
-		return mv;
+		System.out.println(minus_pay_point); 
 		
+		String user_idx = bvo.getUser_idx()[0];
+		int result = payService.getPayPoint(user_idx, minus_pay_point);
+		if(result > 0) {
+			
+			return mv;
+		}
+		return new ModelAndView("khj-view/error");
 		
 	}
 }

@@ -13,9 +13,7 @@
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/customer_center.css">
 <script type="text/javascript">
-	function qna_go() {
-		
-	}
+
 </script>
 </head>
 <body>
@@ -24,7 +22,7 @@
 <section id="ccenter">
 	<article id="sel">
 		<div id="s_menu">
-			<a onclick="qna_go()">QnA</a>
+			<a href="qna_list">QnA</a>
 			<a href="">FaQ</a>
 			<a href="">Claim</a>
 		</div>
@@ -50,97 +48,7 @@
 			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
 		</div>
 	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
-	<div>
-		<div class="m_div">
-			<div class="m_num">num</div>
-			<div class="m_type">type</div>
-			<div class="m_content">faq질문~~~~~</div>
-		</div>
-		<div class="m_reply">
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-			<p>faq답글~~~~faq답글~~~~faq답글~~~~faq답글~~~~</p>
-		</div>
-	</div>
+	
 		
 		<div id="sel_faq_page"> 
 			<button class="entity">&lt;</button>

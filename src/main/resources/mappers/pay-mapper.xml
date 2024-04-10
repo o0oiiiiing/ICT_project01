@@ -15,6 +15,16 @@
 	    #{p_price},#{p_count},#{p_option},sysdate(),
 	    #{p_main_img},sysdate(),#{zip_code},#{main_addr},#{detail_addr},#{ex_addr})
 	</insert>
+	<select id="pay_user" parameterType="String" resultType="uvo" >
+		select * from user_table where user_idx=#{user_idx}
+	</select>
+	<update id="minus_pay_point" parameterType="Map">
+		update user_table
+		set user_point=#{minus_pay_point}
+		where user_idx=#{user_idx}
+	</update>
+		 
+			
 </mapper>
 
 

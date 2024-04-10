@@ -1,7 +1,9 @@
 package com.ict.forest.khj.dao;
 
 public class QnaVO {
-	private String qna_idx,user_idx,user_id,qna_subject,qna_content,qna_reply,qna_reply_date,qna_reply_status,qna_created_date,qna_pw_status,qna_pw;
+	private String qna_idx,user_idx,user_id,user_type,
+	qna_subject,qna_content,qna_reply,qna_reply_date,
+	qna_reply_status,qna_created_date,qna_pw_status,qna_pw;
 
 	public String getQna_idx() {
 		return qna_idx;
@@ -90,6 +92,15 @@ public class QnaVO {
 	public void setQna_pw(String qna_pw) {
 		this.qna_pw = qna_pw;
 	}
+
+	public String getUser_type() {
+		return user_type;
+	}
+
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
+	}
+	
 	
 	
 }
