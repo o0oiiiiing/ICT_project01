@@ -31,11 +31,11 @@
 </script>
 </head>
 <body>
-	<form method="post" action="search">
+	<form method="post" action="search" id="search_form">
 		<section id="search_section">
 		 	<div class="search">
 				<input type="submit" class="material-symbols-outlined search-icon icon" value="Search">
-				<input type="text" class="search-field" name="keyword">
+				<input type="text" class="search-field" name="p_name">
 			</div> 
 	
 			<!-- 카테고리 -->
@@ -45,31 +45,32 @@
 				<li class="categories">
 					<label><input type="checkbox" class="top-category" id="product-all"> PRODUCT</label>
 					<ul class="subcategory">
-						<li><label><input type="checkbox" class="product" name="product" value="perfume"> perfume</label></li>
-						<li><label><input type="checkbox" class="product" name="product" value="hand_body"> hand&body</label></li>
-						<li><label><input type="checkbox" class="product" name="product" value="home_fragrance"> home fragrance</label></li>
+						<li><label><input type="checkbox" class="product" name="p_type" value="perfume"> perfume</label></li>
+						<li><label><input type="checkbox" class="product" name="p_type" value="hand_body"> hand&body</label></li>
+						<li><label><input type="checkbox" class="product" name="p_type" value="home_fragrance"> home fragrance</label></li>
 					</ul>
 				</li>
 				<li class="categories">
 					<label><input type="checkbox" class="top-category" id="brand-all"> BRAND</label>
 					<ul class="subcategory">
-						<li><label><input type="checkbox" class="brand" name="brand" value="GRANHAND."> GRANHAND.</label></li>
-						<li><label><input type="checkbox" class="brand" name="brand" value="LE LABO"> LE LABO</label></li>
-						<li><label><input type="checkbox" class="brand" name="brand" value="Maison Margiela"> Maison Margiela</label></li>
-						<li><label><input type="checkbox" class="brand" name="brand" value="SHIRO"> SHIRO</label></li>
-						<li><label><input type="checkbox" class="brand" name="brand" value="Aesop"> Aesop</label></li>
+						<li><label><input type="checkbox" class="brand" name="p_brand" value="GRANHAND."> GRANHAND.</label></li>
+						<li><label><input type="checkbox" class="brand" name="p_brand" value="LE LABO"> LE LABO</label></li>
+						<li><label><input type="checkbox" class="brand" name="p_brand" value="Maison Margiela"> Maison Margiela</label></li>
+						<li><label><input type="checkbox" class="brand" name="p_brand" value="SHIRO"> SHIRO</label></li>
+						<li><label><input type="checkbox" class="brand" name="p_brand" value="Aesop"> Aesop</label></li>
 					</ul>
 				</li>
+				
 				<li class="categories">
 				<label><input type="checkbox" class="top-category" id="capacity-all"> CAPACITY ( perfume only )</label>
 					<ul class="subcategory">
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="10"> 10ml</label></li>
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="15"> 15ml</label></li>
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="30"> 30ml</label></li>
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="40"> 40ml</label></li>
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="50"> 50ml</label></li>
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="100"> 100ml</label></li>
-						<li><label><input type="checkbox" class="capacity" name="capacity" value="500"> 500ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="10"> 10ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="15"> 15ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="30"> 30ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="40"> 40ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="50"> 50ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="100"> 100ml</label></li>
+						<li><label><input type="checkbox" class="capacity" name="p_volume" value="500"> 500ml</label></li>
 					</ul>
 				</li>
 			</ul>

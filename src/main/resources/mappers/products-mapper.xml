@@ -4,42 +4,45 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="product_table">
-	<select id="total_count" resultType="int">
+	<select id="total_count" resultType="int" parameterType="PagingVO">
 		select count(*)
-		from
-		product_table
-		where p_type = #{p_type}
+		from product_table
+		<where>
+			p_type = #{p_type}
+			<if test="p_brand != null">
+				and p_brand = #{p_brand}
+			</if>
+		</where> 
 	</select>
 
-	<select id="total_count_brand" resultType="int">
-		select count(*)
-		from
-		product_table
-		where p_type = #{p_type} and p_brand = #{p_brand}
-	</select>
-
-	<select id="products_list" resultType="ProductsVO"
-		parameterType="PagingVO">
+	<select id="products_list" resultType="ProductsVO" parameterType="PagingVO">
 		select *
 		from product_table
-		where p_type = #{p_type}
-		order
-		by p_name
+		<where>
+			p_type = #{p_type}
+			<if test="p_brand != null">
+				and p_brand = #{p_brand}
+			</if>
+		</where> 
+		<choose>
+			<when test="option != null">
+				<choose>
+					<when test="option == 'buy_rate'">
+						order by ${option} desc
+					</when>
+					<otherwise>
+						order by ${option}
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by p_name
+			</otherwise>
+		</choose>
 		limit #{limit}
 		offset #{offset}
 	</select>
-
-	<select id="products_list_brand" resultType="ProductsVO"
-		parameterType="PagingVO">
-		select *
-		from product_table
-		where p_type = #{p_type} and
-		p_brand = #{p_brand}
-		order by p_name
-		limit #{limit}
-		offset #{offset}
-	</select>
-
+	
 	<select id="best_seller" resultType="ProductsVO">
 		select *
 		from product_table
