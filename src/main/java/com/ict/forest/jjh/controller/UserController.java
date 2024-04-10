@@ -182,6 +182,14 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("jjh-view/popup");
 		return mv;
 	}
+	@GetMapping("order")
+	public ModelAndView order(HttpSession session) {
+		ModelAndView mv = new ModelAndView("jjh-view/order_page");
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+		List<PayVO> order_list = userService.order_list(ssuvo.getUser_idx());
+		mv.addObject("order_list", order_list);
+		return mv;
+	}
 
 	
 }

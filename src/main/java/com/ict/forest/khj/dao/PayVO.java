@@ -1,34 +1,14 @@
 package com.ict.forest.khj.dao;
 
-//  khj     PayVO는 결제하기 VO이다.
 public class PayVO {
-	// user_idx 는 com.ict.forest.common안에 SessionUser거나 SessionCart거
-	// payment 는 결제금액.(상품가격은 db에서 변동이 될 수 있지만 결제를 
-	//	했을 당시의 단품 가격과 총 금액을 저장해야 한다.)
-//	create table pay_table(
-//		    order_idx int not null primary KEY AUTO_INCREMENT,		주문번호
-//		    p_idx int not null,
-//		    user_idx INT NOT NULL,
-//		    p_name varchar(50) not null,
-//		    p_type varchar(50) not null,
-//		    p_brand varchar(50) not null,		
-//		    p_volume varchar(50) not null,		
-//		    p_price int not null,				상품금액
-//		    p_count INT NOT NULL,   			상품수량
-//		    p_option INT NOT NULL,				
-//		    delivery_status INT NOT NULL,		
-//		    delivery_start INT NOT NULL,		
-//		    delivery_end INT NOT NULL,
-//		    buy_chk INT NOT NULL DEFAULT 0,			구매확정??
-//			p_main_img varchar(500) not null,	  
-//		    pay_date DATETIME NOT NULL,			주문한(결제한) 날짜
-//			 FOREIGN KEY (p_idx) REFERENCES product_table(p_idx) ON DELETE CASCADE,
-//			 FOREIGN KEY (user_idx) REFERENCES user_table(user_idx) ON DELETE cascade
-//		  ) ENGINE=INNODB DEFAULT CHARSET UTF8;
+
 	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count,
 	p_option, delivery_status, delivery_start, delivery_end, buy_chk, p_main_img, pay_date, 
 	zip_code, main_addr, detail_addr, ex_addr;
-
+	
+	public int total_price() {
+		return Integer.parseInt(p_price) * Integer.parseInt(p_count);
+	}
 	public String getOrder_idx() {
 		return order_idx;
 	}

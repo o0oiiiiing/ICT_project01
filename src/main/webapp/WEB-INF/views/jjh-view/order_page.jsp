@@ -6,7 +6,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link href="resources/common-css/reset.css" rel="stylesheet">
-<link href="resources/jjh-css/04_01_cart.css" rel="stylesheet">
+<link href="resources/jjh-css/order_page.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 서버용 함수 -->
@@ -16,45 +16,92 @@
 <body>
 	<section id="first">
 		<article id="f_list">
-			<c:forEach var="k" items="${cart}">
-			<form class="c_product">
-				<div class="f_imgs">
-					<input type="checkbox" name="p_idx" value="${k.p_idx}">
-					<div class="f_img">
-						<img src="resources/upload/${k.p_main_img}">
-						<input type="hidden" name="p_main_img" value="${k.p_main_img}">
-					</div>
-				</div>
-				<div class="f_option">
-					<div>
-						<p>Type : ${k.p_type}</p>
-						<input type="hidden" name="p_type" value="${k.p_type}">
-						<input type="hidden" name="p_brand" value="${k.p_brand}">
-						<p>${k.p_name}</p>
-						<input type="hidden" name="p_name" value="${k.p_name}">
-						<c:choose>
-							<c:when test="${k.p_volume == 'free'}">
-							</c:when>
-							<c:otherwise>
-								<p>${k.p_volume}ml</p>
-							</c:otherwise>
-						</c:choose>
-						<input type="hidden" name="p_volume" value="${k.p_volume}">
-					</div>
-					<div>
-						<span>선물 옵션</span>
-
-					</div>
-					<div>
-						<span>수량 옵션</span>
-		
-					</div>
-				</div>
-				<div>
-					<p><span><fmt:formatNumber value="${k.p_price}"/></span> KRW</p>
-				</div>
-			</form>
+			<c:choose>
+				<c:when test="${empty order_list}">
+					<h3>
+						주문하신 상품이 없습니다.					
+					</h3>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="k" items="${order_list}">
+				<c:if test="${k.buy_chk == '0'}">
+					<form class="c_product">
+						<div class="f_imgs">
+							<div class="f_img">
+								<img src="resources/upload/${k.p_main_img}">
+							</div>
+						</div>
+						<div class="f_option">
+							<div>
+								<p>Type : ${k.p_type}</p>
+								<p>${k.p_name}</p>
+								<c:choose>
+									<c:when test="${k.p_volume == 'free'}">
+									</c:when>
+									<c:otherwise>
+										<p>${k.p_volume}ml</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div>
+								<p>가격 : ${k.p_price}, 수량 : ${k.p_count}</p>
+								<p>총 금액 : <fmt:formatNumber value="${k.total_price()}" /></p>
+							</div>
+							<div>
+								<c:choose>
+									<c:when test="${k.p_option == '0'}">
+										<p>
+											일반 포장
+										</p>
+									</c:when>
+									<c:otherwise>
+										<p>
+											선물 포장
+										</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div>
+								<p>배송지 : ${uvo.main_addr}
+									<c:choose>
+										<c:when test="${!empty k.detail_addr}">, ${k.detail_addr}</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${!empty k.ex_addr}">, ${k.ex_addr}</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
+								</p>
+							</div>
+						</div>
+						<div>
+							<div>
+								<p>주문 일자 : ${k.pay_date.substring(0,10)}</p>
+								<p>
+								배송 상태 : 
+								<c:choose>
+									<c:when test="${k.delivery_status == '0'}">
+										<span>
+											배송중								
+										</span>
+									</c:when>
+									<c:otherwise>
+										<span>
+											배송중								
+										</span>
+										<button type="button">
+											구매확정
+										</button>
+									</c:otherwise>
+								</c:choose>
+								</p>
+							</div>
+						</div>
+					</form>
+				</c:if>
 			</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</article>
 	</section>
 	

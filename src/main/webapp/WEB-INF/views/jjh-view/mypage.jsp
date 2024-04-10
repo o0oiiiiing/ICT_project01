@@ -40,6 +40,9 @@
 	function product_write(){
 		location.href="product_write"
 	}
+	function order(){
+		location.href="order"
+	}
 	function openPopup() {
 	    let width = 400;
 	    let height = 400;
