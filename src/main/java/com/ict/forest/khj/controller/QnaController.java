@@ -67,6 +67,13 @@ public class QnaController {
 		
 		return mv;
 	}
+	
+	@GetMapping("qna_write")
+	public ModelAndView getQnaWrite(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("khj-view/qna_write");
+		System.out.println(request.getSession().getAttribute("user_idx"));
+		
+	}
 }
 
 

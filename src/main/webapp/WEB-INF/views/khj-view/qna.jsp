@@ -8,19 +8,25 @@
 <title>Insert title here</title>
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+<script type="text/javascript">
+	function qna_write() {
+		location.href = "qna_write";
+	}
+</script>
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/qna.css">
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div id="s_menu">
-			<a href="">QnA</a>
-			<a href="">FaQ</a>
-			<a href="">Claim</a>
+			<a>QnA</a>
+			<a href="faq_list">FaQ</a>
+			<a href="claim_list">Claim</a>
 	</div>
-	<div id="s_display"><p>QnA(s_menu 누르면 창 바뀌고 누른거 표시)</p></div>
+	<div id="s_display"><p>QnA</p></div>
+	<button type="button" onclick="qna_write()">문의 글쓰기</button>
 	<div id="qna_block">
 	<c:choose>
 		<c:when test="${empty qna_list }">
@@ -31,26 +37,26 @@
 			<div>
 			<article class="qna_head">
 				<div class="qna_num">
-					<p>num</p>
+					<p>${k.qna_idx }</p>
 					<div class="user_id">
-					<p>아이디</p>
+					<p>${k.user_id }</p>
 				</div>
 				<div class="qna_created_date">
-					<p>작성일</p>
+					<p>${k.qna_created_date }</p>
 				</div>
 				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
+					<p>${k.qna_subject }</p>
 				</div>
 				<div class="qna_reply_status">
-					<p>답변상태</p>
+					<p>${k.qna_reply_status }</p>
 				</div>
 			</article>
 			<article class="qna_body">
 				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
+					<p><span>질문글 : </span>${k.qna_content }</p>
 					<div class="qna_reply">
 						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
+					<p><span>답글 : </span>${k.qna_reply }</p>
 					</div>
 				</div>
 			</article>
