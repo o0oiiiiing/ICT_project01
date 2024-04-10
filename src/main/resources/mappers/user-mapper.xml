@@ -113,13 +113,20 @@
 			select="review_list" />
 	</resultMap>
 	
-    <select id="buy_list" resultMap="blMap">
+    <select id="buy_list" parameterType="String" resultMap="blMap">
         select * from pay_table where user_idx = #{user_idx} and buy_chk = '1'
     </select>
     
-    <select id="review_list" parameterType="String" resultType="rivo">
+    <!-- 상품별 리뷰 보기 -->
+    <select id="review_list" parameterType="String" resultType="revo">
 		select * from review_table where p_idx = #{p_idx}
 	</select>
+	
+    <!-- 리뷰 추가하기 -->
+	<insert id="review_insert" parameterType="revo">
+	    INSERT INTO review_table (p_idx, user_idx, user_id, score, review_img, review_title, review_content, regdate) 
+	    VALUES (#{p_idx},#{user_idx},#{user_id},#{score}, #{review_img},#{review_title},#{review_content},sysdate())
+	</insert>
 </mapper>
 
 

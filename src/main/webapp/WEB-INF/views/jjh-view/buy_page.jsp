@@ -89,7 +89,7 @@
 					</div>
 					<c:choose>
 						<c:when test="${empty k.review_list}">
-							<form action="review_insert" method="post">
+							<form action="review_insert" method="get">
 								<label for="user_id">유저명 : </label>
 								<input type="text" name="user_id" id="user_id" value="${ssuvo.user_id}" disabled>
 								<br>
@@ -109,6 +109,7 @@
 								<label>리뷰 내용 : </label>
 								<textarea rows="5" cols="30" name="review_content"></textarea>
 								<br>
+								<input type="hidden" name="p_idx" value="${k.p_idx}">
 								<input type="submit" value="리뷰 작성하기">
 							</form>
 						</c:when>
@@ -117,7 +118,7 @@
 								<p>${k.review_list[0].score}</p>
 								<p>${k.review_list[0].review_title}</p>
 								<p>${k.review_list[0].regdate}</p>
-								<div><img src="resources/upload/${k.review_list[0].review_img}"></div>
+								<div><img src="resources/review/${k.review_list[0].review_img}"></div>
 								<p>${k.review_list[0].review_title}</p>
 							</div>
 						</c:otherwise>

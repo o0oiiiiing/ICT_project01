@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ict.forest.jjh.dao.BuyListVO;
+import com.ict.forest.jjh.dao.ReviewVO;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserDAO;
 import com.ict.forest.jjh.dao.UserVO;
@@ -81,7 +83,17 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public int buy_chk(String order_idx) {
-		return userDAO.buy_chk(order_idx);
+	public int update_buy_chk(String order_idx) {
+		return userDAO.update_buy_chk(order_idx);
+	}
+	
+	@Override
+	public List<BuyListVO> buy_list(String user_idx) {
+		return userDAO.buy_list(user_idx);
+	}
+	
+	@Override
+	public int review_insert(ReviewVO revo) {
+		return userDAO.review_insert(revo);
 	}
 }

@@ -149,9 +149,27 @@ public class UserDAO {
 		return 0;
 	}
 	
-	public int buy_chk(String order_idx) {
+	public int update_buy_chk(String order_idx) {
 		try {
-			return sqlSessionTemplate.update("user_table.update_buy_chk");
+			return sqlSessionTemplate.update("user_table.update_buy_chk", order_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	public List<BuyListVO> buy_list(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectList("user_table.buy_list", user_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public int review_insert(ReviewVO revo) {
+		try {
+			return sqlSessionTemplate.insert("user_table.review_insert", revo);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

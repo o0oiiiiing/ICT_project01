@@ -12,7 +12,7 @@
 <!-- 서버용 함수 -->
 <script type="text/javascript">
 	function buy_chk(order_idx) {
-		location.href="buy_chk?oder_idx="+order_idx
+		location.href="buy_chk?order_idx="+order_idx
 	}
 </script>
 </head>

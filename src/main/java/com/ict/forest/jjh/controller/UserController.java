@@ -1,5 +1,6 @@
 package com.ict.forest.jjh.controller;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,14 +16,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
+import com.ict.forest.jjh.dao.BuyListVO;
 import com.ict.forest.jjh.dao.BuyVO;
 import com.ict.forest.jjh.dao.ProductVO;
+import com.ict.forest.jjh.dao.ReviewVO;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
@@ -194,7 +200,9 @@ public class UserController {
 	@GetMapping("buy_chk")
 	public ModelAndView buy_chk(String order_idx) {
 		ModelAndView mv = new ModelAndView("redirect:order");
-		int res = userService.buy_chk(order_idx);
+		System.out.println("idx : "+ order_idx);
+		int res = userService.update_buy_chk(order_idx);
+		System.out.println("res : "+ res);
 		if (res > 0) {
 			return mv;
 		}
@@ -203,7 +211,42 @@ public class UserController {
 	@GetMapping("buy_list")
 	public ModelAndView buy_list(HttpSession session) {
 		ModelAndView mv = new ModelAndView("jjh-view/buy_page");
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+		List<BuyListVO> buy_list =userService.buy_list(ssuvo.getUser_idx());
+		mv.addObject("buy_list", buy_list);
+		return mv;
 		
+	}
+	@RequestMapping("review_insert")
+	public ModelAndView review_insert(HttpSession session, HttpServletRequest request, ReviewVO revo) {
+		System.out.println("1");
+		try {
+			ModelAndView mv = new ModelAndView("redirect:buy_list");
+			String path = request.getSession().getServletContext().getRealPath("resources/review");
+			MultipartFile file = revo.getReview_p_img();
+			SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+			if (file.isEmpty()) {
+				revo.setReview_img("");
+			}else {
+				System.out.println("1");
+				// 파일 이름 지정
+				UUID uuid = UUID.randomUUID();
+				String f_name = uuid.toString()+"_"+file.getOriginalFilename();
+				revo.setReview_img(f_name);
+				// 파일 업로드(복사)
+				byte[] in = file.getBytes();
+				File out = new File(path, f_name);
+				FileCopyUtils.copy(in, out);
+				revo.setUser_idx(ssuvo.getUser_idx());
+				int res_p = userService.review_insert(revo);
+				System.out.println("1");
+			}
+			return mv;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return new ModelAndView("common/error");
 	}
 	
 }

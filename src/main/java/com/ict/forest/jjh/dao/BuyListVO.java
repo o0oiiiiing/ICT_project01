@@ -9,6 +9,9 @@ public class BuyListVO {
 	
 	List<ReviewVO> review_list;
 	
+	public int total_price() {
+		return Integer.parseInt(p_price) * Integer.parseInt(p_count);
+	}
 	public String getOrder_idx() {
 		return order_idx;
 	}

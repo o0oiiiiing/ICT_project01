@@ -2,6 +2,8 @@ package com.ict.forest.jjh.service;
 
 import java.util.List;
 
+import com.ict.forest.jjh.dao.BuyListVO;
+import com.ict.forest.jjh.dao.ReviewVO;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
@@ -22,6 +24,7 @@ public interface UserService {
 	public int pointPlus(UserVO uvo);
 	public List<PayVO> order_list(String user_idx);
 	public int complitedil(String user_idx, String order_idx, String delivery_end);
-	public int buy_chk(String order_idx);
-	
+	public int update_buy_chk(String order_idx);
+	public List<BuyListVO> buy_list(String user_idx);
+	public int review_insert(ReviewVO revo);
 }
