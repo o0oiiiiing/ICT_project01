@@ -34,6 +34,8 @@
 		<typeAlias type="com.ict.forest.khj.dao.QnaVO" alias="qnavo" />
 		<!-- khj claim 게시판 정보가 담기는 VO -->
 		<typeAlias type="com.ict.forest.kch.dao.ClaimVO" alias="claimvo" />
+		<!-- 클레임 답글 -->
+		<typeAlias type="com.ict.forest.kch.dao.CCommentVO" alias="ccvo" />
 	</typeAliases>
 	<mappers>
 		<!-- jjh : 유저 관련 mapper -->

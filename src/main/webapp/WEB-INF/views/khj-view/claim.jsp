@@ -16,6 +16,69 @@
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/claim.css">
+<style type="text/css">
+#claim_form table {
+	width:580px;
+	margin:0 auto;
+	margin-top:20px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+
+#claim_form table th, #claim table th, #claim table td {
+	text-align: center;
+	border: 1px solid black;
+	padding: 4px 10px;
+}
+
+/* paging */
+table tfoot ol.paging {
+	list-style: none;
+}
+
+table tfoot ol.paging li {
+	float: left;
+	margin-right: 8px;
+}
+
+table tfoot ol.paging li a {
+	display: block;
+	padding: 3px 7px;
+	border: 1px solid #00B3DC;
+	color: #2f313e;
+	font-weight: bold;
+}
+
+table tfoot ol.paging li a:hover {
+	background: #00B3DC;
+	color: white;
+	font-weight: bold;
+}
+
+.disable {
+	padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;
+}
+
+.now {
+	padding: 3px 7px;
+	border: 1px solid #ff4aa5;
+	background: #ff4aa5;
+	color: white;
+	font-weight: bold;
+}
+
+.claim_title{
+	font-size: 15px;
+}
+	.no {width:15%}
+	.writer {width:25%}
+	.subject {width:30%}
+	.reg {width:30%}
+</style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -24,40 +87,30 @@
 			<a href="faq">FaQ</a>
 			<a href="claim">Claim</a>
 	</div>
-	<div id="bbs" align="center">
+	<div id="claim_form" align="center">
 		<table summary="게시판 목록">
-			<caption>게시판 목록</caption>
 			<thead>
-				<tr class="title">
+				<tr class="claim_title">
 					<th class="no">번호</th>
-					<th class="subject">제목</th>
 					<th class="writer">글쓴이</th>
+					<th class="subject">제목</th>
 					<th class="reg">날짜</th>
-					<th class="hit">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${empty claim_list }">
-						<tr><td colspan="5"><h3>게시물이 존재하지 않습니다</h3> </td></tr>
+					<c:when test="${empty claimlist }">
+						<tr><td colspan="4"><h3>게시물이 존재하지 않습니다</h3> </td></tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach var="k" items="${bbs_list}" varStatus="vs">
+						<c:forEach var="k" items="${claimlist}" varStatus="vs">
 							<tr>
 								<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</td>
+								<td>${k.user_id}</td>
 								<td>
-								    <c:choose>
-								    	<c:when test="${k.active == 1 }">
-								    		<span style="color: lightgray">삭제된 게시물</span>
-								    	</c:when>
-								    	<c:otherwise>
-								    	    <a href="bbs_detail.do?b_idx=${k.b_idx}&cPage=${paging.nowPage}">${k.subject}</a>
-								    	 </c:otherwise>
-								    </c:choose> 
+								   <a href="claim_detail?claim_idx=${k.user_idx}&cPage=${paging.nowPage}">${k.claim_subject}</a>
 								</td>
-								<td>${k.writer}</td>
-								<td>${k.write_date.substring(0,10)}</td>
-								<td>${k.hit}</td>
+								<td>${k.claim_created_date.substring(0,10)}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -66,7 +119,7 @@
 			<!-- 페이지기법 -->
 			<tfoot>
 				<tr>
-					<td colspan="4">
+					<td colspan="3">
 						<ol class="paging">
 						    <!-- 이전 -->
 						    <c:choose>
@@ -74,7 +127,7 @@
 						    		<li class="disable">이전으로</li>
 						    	</c:when>
 						    	<c:otherwise>
-						    		<li><a href="bbs_list.do?cPage=${paging.beginBlock - paging.pagePerBlock }">이전으로</a></li>
+						    		<li><a href="claim?cPage=${paging.beginBlock - paging.pagePerBlock }">이전으로</a></li>
 						    	</c:otherwise>
 						    </c:choose>
 						    <!-- 블록안에 들어간 페이지번호들 -->
@@ -84,7 +137,7 @@
 						    		<li class="now">${k }</li>
 						    	</c:if>
 						    	<c:if test="${k != paging.nowPage }">
-						    		<li><a href="bbs_list.do?cPage=${k}">${k}</a></li>
+						    		<li><a href="claim?cPage=${k}">${k}</a></li>
 						    	</c:if>
 						    </c:forEach>
 							<!-- 다음 -->
@@ -93,7 +146,7 @@
 						    		<li class="disable">다음으로</li>
 						    	</c:when>
 						    	<c:otherwise>
-						    		<li><a href="bbs_list.do?cPage=${paging.beginBlock + paging.pagePerBlock }">다음으로</a></li>
+						    		<li><a href="claim?cPage=${paging.beginBlock + paging.pagePerBlock }">다음으로</a></li>
 						    	</c:otherwise>
 						    </c:choose>
 						</ol>
@@ -105,5 +158,28 @@
 			</tfoot>
 		</table>
 	</div>
+	<div>
+	<span id="claim_con" style="cursor: pointer;" onclick="if(plain.style.display=='none')
+	{plain.style.display=''; claim_con.innerText = '${k.claim_subject}';} 
+	else {plain.style.display = 'none'; claim_con.innerText = '${k.claim_subject}';}">
+	뭐야양 + ${k.claim_subject}</span>
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

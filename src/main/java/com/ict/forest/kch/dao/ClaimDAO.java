@@ -1,6 +1,8 @@
 package com.ict.forest.kch.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,11 @@ public class ClaimDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public List<ClaimVO> claimList() {
+		try {
+			return sqlSessionTemplate.selectList("claim_table.claimlist");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return null;
 	}
 
@@ -27,6 +34,11 @@ public class ClaimDAO {
 	}
 
 	public ClaimVO claimDetail(String claim_idx) {
+		try {
+			return sqlSessionTemplate.selectOne("claim_table.claimDetail", claim_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return null;
 	}
 
@@ -43,12 +55,62 @@ public class ClaimDAO {
 	}
 
 	public int getTotalCount() {
-		return 0;
+		try {
+			return sqlSessionTemplate.selectOne("claim_table.claimCount");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
 	}
 
 	public List<ClaimVO> claimList(int offset, int limit) {
+		try {
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("offset", offset);
+			map.put("limit", limit);
+			return sqlSessionTemplate.selectList("claim_table.claimList", map);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return null;
 	}
 	
+	public int CommentInsert(CCommentVO ccvo) {
+		try {
+			return sqlSessionTemplate.insert("claim_table.commentinsert", ccvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return -1;
+	}
+	
+	public List<CCommentVO> CommentList(String claim_idx) {
+		try {
+			return sqlSessionTemplate.selectList("claim_table.commentlist", claim_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

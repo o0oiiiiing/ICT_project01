@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
+import com.ict.forest.kch.dao.CCommentVO;
 import com.ict.forest.kch.dao.ClaimVO;
 import com.ict.forest.kch.service.ClaimService;
 import com.ict.forest.kch.service.KchService;
@@ -33,11 +35,12 @@ public class ClaimController {
 	@Autowired
 	private ClaimPaging claimPaging;
 	
-	@RequestMapping("claim_wr")
+	@RequestMapping("claim")
 	public ModelAndView claimList(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("ex_page/claim_wr");
-		
+		ModelAndView mv = new ModelAndView("khj-view/claim");
+		System.out.println("1111111111111111111111111111111111");
 		int count = claimService.getTotalCount();
+		System.out.println("카운트 : "+count);
 		claimPaging.setTotalRecord(count);
 		// 전체페이지의 수를 구하자. 
 		if(claimPaging.getTotalRecord() <= claimPaging.getNumPerPage()) {
@@ -78,10 +81,8 @@ public class ClaimController {
 		}
 		
 		List<ClaimVO> claimlist = claimService.claimList(claimPaging.getOffset(), claimPaging.getNumPerPage());
-		System.out.println(claimlist.size());
-		mv.addObject("bbs_list", claimlist);
+		mv.addObject("claimlist", claimlist);
 		mv.addObject("paging", claimPaging);
-		
 		return mv;		
 	}
 	
@@ -96,16 +97,21 @@ public class ClaimController {
 	}
 	
 	
-	@PostMapping("bbs_write_ok.do")
+	@PostMapping("claim_ok")
 	public ModelAndView getBbsWriteOK(ClaimVO claimvo, HttpServletRequest request) {
 		try {
-			ModelAndView mv = new ModelAndView("redirect:bbs_list.do");
+			ModelAndView mv = new ModelAndView("redirect:claim");
 			
 			String pwd = passwordEncoder.encode(claimvo.getClaim_pw());
 			claimvo.setClaim_pw(pwd);
-			
+			HttpSession session = request.getSession();
+			SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+			String user_idx = ssuvo.getUser_idx();
+			claimvo.setUser_idx(user_idx);
+			claimvo.setUser_id(ssuvo.getUser_id());
 			int result = claimService.claimInsert(claimvo);
 			if(result > 0) {
+				mv.addObject(user_idx);
 				return mv;
 			}
 			return new ModelAndView("pdh-view/error");
@@ -117,8 +123,37 @@ public class ClaimController {
 	}
 	
 	
+	@GetMapping("claim_detail")
+	public ModelAndView getBbsDetail(String claim_idx, String cPage) {
+		try {
+			ModelAndView mv = new ModelAndView("ex_page/claim_detail");
+			
+			ClaimVO claimvo = claimService.claimDetail(claim_idx);
+				// 댓글 가져오기
+				List<CCommentVO> comm_list = claimService.CommentList(claim_idx);
+				mv.addObject("comm_list", comm_list);
+				mv.addObject("claimvo", claimvo);
+				mv.addObject("cPage", cPage);
+				return mv;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return new ModelAndView("ex_page/claim_detail");
+	}
 	
 	
+	@PostMapping("commentInsert")
+	public ModelAndView CommentInsert(CCommentVO ccvo, ClaimVO claimvo,
+			@ModelAttribute("claim_idx")String claim_idx) {
+		ModelAndView mv = new ModelAndView("redirect:claim_detail");
+		String idx = claimvo.getUser_idx();
+		System.out.println(claim_idx);
+		System.out.println("awhfaohwfea" + idx);
+		int result = claimService.CommentInsert(ccvo);
+		
+		return mv;
+	}
 	
 }
 

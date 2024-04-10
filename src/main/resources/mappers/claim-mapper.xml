@@ -4,10 +4,35 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="claim_table">
+	<select id="claimlist" resultType="claimvo">
+		select * from claim_table order by claim_idx
+	</select>
+	
 	
 	<insert id="claimInsert" parameterType="claimvo">
-		insert into claim_table(user_idx, user_id, claim_subject, claim_content, claim_reply, claim_pw_status, claim_pw, claim_reply_date, claim_created_date)
-		values(#{user_idx},#{user_id},#{claim_subject},#{claim_content},#{claim_reply},#{claim_pw_status},#{claim_pw}, sysdate(), sysdate())
+		insert into claim_table(user_idx, user_id, claim_subject, claim_content,claim_pw,claim_created_date)
+		values(#{user_idx},#{user_id},#{claim_subject},#{claim_content},#{claim_pw},sysdate())
+	</insert>
+	
+	<select id="claimCount" resultType="int">
+		select count(*) from claim_table
+	</select>
+	
+	<select id="claimList" parameterType="Map" resultType="claimvo">
+		select * from claim_table order by claim_idx desc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="claimDetail" parameterType="String" resultType="claimvo">
+		select * from claim_table where claim_idx = #{claim_idx}
+	</select>
+	
+	<select id="commentlist" parameterType="String" resultType="ccvo">
+		select * from claim_comment_table where claim_idx = #{claim_idx}
+	</select>
+	
+	<insert id="commentinsert" parameterType="ccvo">
+		insert into claim_comment_table (cc_writer, cc_content, cc_date, claim_idx)
+		values (#{cc_writer}, #{cc_content}, sysdate(), #{claim_idx})
 	</insert>
 	
 	

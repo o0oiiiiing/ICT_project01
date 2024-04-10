@@ -51,12 +51,7 @@ public class PayController {
 		ModelAndView mv = new ModelAndView("khj-view/qna");
 		return mv;
 	}
-	// 고객센터qna 이동 이동
-	@GetMapping("claim")
-	public ModelAndView claim() {
-		ModelAndView mv = new ModelAndView("khj-view/claim");
-		return mv;
-	}
+
 	
 	
 	// 상품 결제페이지 이동

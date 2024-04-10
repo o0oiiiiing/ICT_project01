@@ -2,6 +2,7 @@ package com.ict.forest.kch.service;
 
 import java.util.List;
 
+import com.ict.forest.kch.dao.CCommentVO;
 import com.ict.forest.kch.dao.ClaimVO;
 
 public interface ClaimService {
@@ -29,13 +30,14 @@ public interface ClaimService {
 		public int getTotalCount();
 		// 페이징 처리를 위한 리스트
 		public List<ClaimVO> claimList(int offset, int limit);
-		/*
+		
 		// 댓글 가져오기
-		public List<ClaimCommentVO> getCommentList(String claim_idx);
+		public List<CCommentVO> CommentList(String claim_idx);
+		
 		// 댓글 삽입
-		public int getCommentInsert(CommentVO cvo);
+		public int CommentInsert(CCommentVO cvo);
 		
 		// 댓글 삭제
-		public int getCommentDelete(String c_idx);
-		*/
+		public int CommentDelete(String c_idx);
+		
 }

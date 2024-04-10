@@ -23,16 +23,16 @@
 					</tr>
 					<tr>
 						<td class="menu">비밀번호</td>
-						<td class="userin"><input type="password" id="qna_pw" name="qna_pw" />
+						<td class="userin"><input type="password" id="claim_pw" name="claim_pw" />
 					</tr>
 					<tr>
 						<td class="menu">제목</td>
-						<td class="userin"><input type="text" id="qna_subject" name="qna_subject">
+						<td class="userin"><input type="text" id="claim_subject" name="claim_subject">
 						</td>
 					</tr>
 					<tr>
 						<td class="menu">내용</td>
-						<td><textarea rows="10" cols="60" id="qna_content" name="qna_content"></textarea>
+						<td><textarea rows="10" cols="60" id="claim_content" name="claim_content"></textarea>
 						</td>
 					</tr>
 				</table>
@@ -44,7 +44,7 @@
 				<input class="but5" type="button" value="취소하기" onclick="location.href='claim'"> 
 
 			</div>
-		</div>
+		
 	</form>
 </body>
 </html>
