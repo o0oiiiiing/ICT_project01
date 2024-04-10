@@ -27,7 +27,7 @@
 		<tbody>
 			<tr>
 				<th>작성자</th>
-				<td align="left"><input type="text" name="user_id" value="#{qnavo.user_id}" readonly></td>
+				<td align="left"><input type="text" name="user_id" value="${suvo.user_id}" readonly></td>
 			</tr>
 			<tr>
 				<th>제목</th>

@@ -33,6 +33,7 @@ public class QnaController {
 		// 페이징 
 		// 전체 게시물의 수
 		int count = qnaService.getTotalCount();
+		System.out.println("총 게시물 수 : " + count);
 		pagingKhj.setTotalRecord(count);
 		
 		// 전체 페이지의 수
@@ -67,6 +68,7 @@ public class QnaController {
 					pagingKhj.setEndBlock(pagingKhj.getTotalPage());
 				}
 		List<QnaVO> qna_list = qnaService.getQnaList(pagingKhj.getOffset(), pagingKhj.getNumPerPage());
+		mv.addObject("qna_list", qna_list);
 		
 		return mv;
 	}
@@ -78,14 +80,8 @@ public class QnaController {
 		 SessionUser suvo = (SessionUser) session.getAttribute("ssuvo"); 
 		 
 		 
-		 QnaVO qnavo = new QnaVO();
-		 qnavo.setQna_idx(suvo.getUser_idx());
-		 qnavo.setUser_id(suvo.getUser_id());
-		 qnavo.setUser_type(suvo.getUser_type());
-		 
 		 mv.addObject("suvo", suvo);
 		 if(suvo.getUser_type().equalsIgnoreCase("0")) {
-			 mv.addObject("qnavo", qnavo);
 			 return mv;
 		 }else {
 			 System.out.println("일반 유저가 아닙니다. qna 문의 글쓰기는 일반 유저만 이용할 수 있습니다.");

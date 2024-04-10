@@ -12,6 +12,9 @@
 	function qna_write() {
 		location.href = "qna_write";
 	}
+	function reply_write_go() {
+		location.href = "qna_reply_write";
+	}
 </script>
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
@@ -26,8 +29,10 @@
 			<a href="claim_list">Claim</a>
 	</div>
 	<div id="dis_but">
-	<div id="s_display"><p>QnA</p></div>
-	<button type="button" onclick="qna_write()">문의 글쓰기</button>
+		<div id="s_display">
+			<p>QnA</p>
+			<button type="button" onclick="qna_write()">문의 글쓰기</button>
+		</div>
 	</div>
 	<div id="qna_block">
 	<c:choose>
@@ -40,6 +45,7 @@
 			<article class="qna_head">
 				<div class="qna_num">
 					<p>${k.qna_idx }</p>
+				</div>	
 					<div class="user_id">
 					<p>${k.user_id }</p>
 				</div>
@@ -55,7 +61,11 @@
 			</article>
 			<article class="qna_body">
 				<div class="qna_content">
-					<p><span>질문글 : </span>${k.qna_content }</p>
+					<p>
+						<span>질문글 : </span>${k.qna_content } 
+						<input type="button" onclick="reply_write_go" value="답글작성"> 
+						<button id="close" type="button" name="close" value="닫기"> 
+					</p>
 					<div class="qna_reply">
 						<hr>
 					<p><span>답글 : </span>${k.qna_reply }</p>
@@ -66,34 +76,7 @@
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-		<div>
-			<article class="qna_head">
-				<div class="qna_num">
-					<p>num</p>
-				</div>
-				<div class="user_id">
-					<p>아이디</p>
-				</div>
-				<div class="qna_created_date">
-					<p>작성일</p>
-				</div>
-				<div class="qna_subject">
-					<p>다른 사람 명의의 계좌로 환불받을 수 있나요?</p>
-				</div>
-				<div class="qna_reply_status">
-					<p>답변상태</p>
-				</div>
-			</article>
-			<article class="qna_body">
-				<div class="qna_content">
-					<p><span>질문글 : </span>가족 명의 계좌로 환불을 받고 싶은데 가능한지 알고 싶습니다.</p>
-					<div class="qna_reply">
-						<hr>
-					<p><span>답글 : </span>다른 사람 명의로는 환불할 수 없습니다. 고객님 본인 명의 계좌로만 환불이 가능합니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
+		
 		
 		
 		
@@ -111,12 +94,15 @@
 		$(".qna_head").click(
 				function() {
 					$(this).parent().find("article:nth-of-type(2)").fadeToggle(
-							500, function() {$(this).css("display", "block")
+							200, function() {$(this).css("display", "block")
 						})
+						$(this).fadeOut(200, function() {
+				$(this).$(".qna_body").css("display", "block")
+			})
 					})
-		$(".qna_body").click(function() {
-			$(this).fadeOut(500, function() {
-				$(this).css("display", "none")
+		$("#close").click(function() {
+			$(this).fadeOut(200, function() {
+				$(this).$(".qna_body").css("display", "none")
 			})
 		})
 	</script>
