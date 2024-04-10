@@ -68,7 +68,7 @@
 		select * from pay_table where user_idx = #{user_idx}
 	</select>
 	<update id="complite_dil" parameterType="Map">
-		update pay_table set delivery_end = sysdate(), delivery_status = 1 where user_idx = #{user_idx}  and order_idx = #{order_idx}
+		update pay_table set delivery_end = #{delivery_end}, delivery_status = 1 where user_idx = #{user_idx}  and order_idx = #{order_idx}
 	</update>
 </mapper>
 

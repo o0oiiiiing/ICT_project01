@@ -136,11 +136,12 @@ public class UserDAO {
 		return null;
 	}
 	
-	public int complitedil(String user_idx, String order_idx) {
+	public int complitedil(String user_idx, String order_idx, String delivery_end) {
 		try {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("user_idx", user_idx);
 			map.put("order_idx", order_idx);
+			map.put("delivery_end", delivery_end);
 			return sqlSessionTemplate.update("user_table.complite_dil", map);
 		} catch (Exception e) {
 			System.out.println(e);

@@ -10,22 +10,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 서버용 함수 -->
-<script type="text/javascript">
 
-</script>
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
 	<section id="first">
-		<div id="buymenu">
-			<div>
-				<input type="checkbox" id="all_chack">
-				<p>상품 전체선택</p>
-				<button id="rm_btn">선택 삭제</button>
-			</div>
-			<p>상품명 및 옵션</p>
-			<p>가격</p>
-		</div>
 		<article id="f_list">
 			<c:forEach var="k" items="${cart}">
 			<form class="c_product">
@@ -54,21 +43,11 @@
 					</div>
 					<div>
 						<span>선물 옵션</span>
-						<select name="p_option" class="present_ck">
-							<option value="1">일반 포장</option>
-							<option value="2">선물용 포장</option>
-						</select>
+
 					</div>
 					<div>
 						<span>수량 옵션</span>
-						<input type="hidden" name="p_price" value="${k.p_price}">
-						<select name="p_count" class="su_ck" >
-							<option value="1" selected>1개</option>
-							<option value="2">2개</option>
-							<option value="3">3개</option>
-							<option value="4">4개</option>
-							<option value="5">5개</option>
-						</select>
+		
 					</div>
 				</div>
 				<div>

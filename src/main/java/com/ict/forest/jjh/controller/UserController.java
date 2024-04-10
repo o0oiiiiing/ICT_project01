@@ -68,11 +68,9 @@ public class UserController {
 					LocalDateTime dbtime2 = dbtime.plusHours(9);
 					LocalDateTime systime = LocalDateTime.now();
 					long diffmin = ChronoUnit.MINUTES.between(dbtime2, systime);
-					System.out.println("db시간"+dbtime2);
-					System.out.println("현재시간"+systime);
-					System.out.println(diffmin);
 					if (diffmin > 3) {
-						int res = userService.complitedil(uvo2.getUser_idx(), k.getOrder_idx());
+						String delivery_end = dbtime.plusHours(3).toString();
+						int res = userService.complitedil(uvo2.getUser_idx(), k.getOrder_idx(), delivery_end);
 					}
 					
 				}
