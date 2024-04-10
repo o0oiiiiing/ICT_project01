@@ -82,12 +82,15 @@ public class PayController {
 			payvo.setP_volume(bvo.getP_volume()[i]);
 			payvo.setP_price(bvo.getP_price()[i]);
 			payvo.setP_count(bvo.getP_count()[i]);
-			payvo.setP_option(bvo.getP_option()[i]);
+			if (bvo.getP_option() != null) {
+				payvo.setP_option(bvo.getP_option()[i]);
+			}else {
+				payvo.setP_option("1");
+			}
 			payvo.setP_main_img(bvo.getP_main_img()[i]);
 			payvo.setDelivery_status("0");
 			payvo.setDelivery_end("0000-00-00");
 			payvo.setBuy_chk("0");
-			payvo.setPay_date("0000-00-00");
 			pay_list.add(payvo);
 			}
 		UserVO uvo = payService.getPayAddr(user_idx);

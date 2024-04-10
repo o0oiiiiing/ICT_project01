@@ -148,4 +148,13 @@ public class UserDAO {
 		}
 		return 0;
 	}
+	
+	public int buy_chk(String order_idx) {
+		try {
+			return sqlSessionTemplate.update("user_table.update_buy_chk");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
 }

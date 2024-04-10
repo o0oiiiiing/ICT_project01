@@ -35,41 +35,91 @@
 		select * from user_addr_table where user_idx = #{user_idx} order by addr_type desc
 	</select>
 	
+	<!-- 위시리스트 추가 -->
 	<insert id="wish_insert" parameterType="wvo">
 		insert into wish_table(p_idx, user_idx, p_name, p_brand, p_volume, p_price, p_main_img)
 		values(#{p_idx},#{user_idx},#{p_name},#{p_brand},#{p_volume},#{p_price},#{p_main_img})
 	</insert>
 	
+	<!-- 위시리스트 검색 -->
 	<select id="wish_list" parameterType="String" resultType="wvo">
 		select * from wish_table where user_idx=#{user_idx}
 	</select>
 	
+	<!-- 위시리스트 갯수 -->
 	<select id="wish_count" parameterType="String" resultType="int">
 		select count(*) from wish_table where user_idx=#{user_idx}
 	</select>
+	
+	<!-- 위시리스트 삭제 -->
 	<delete id="wish_delete" parameterType="Map">
 		delete from wish_table where user_idx = #{user_idx} and p_idx=#{p_idx}
 	</delete>
 	
+	<!-- 유저 기본 배송지 변경 -->
 	<update id="addr_type_chage" parameterType="String">
 		update user_addr_table set addr_type = 1 where user_idx = #{user_idx} and addr_type = 0 
 	</update>
 	
+	<!-- 유저 배송지 추가 -->
 	<insert id="user_addr_add_insert" parameterType="uavo">
 	    INSERT INTO user_addr_table (user_idx, zip_code, main_addr, detail_addr, ex_addr, addr_type) 
 	    VALUES (#{user_idx}, #{zip_code},#{main_addr},#{detail_addr},#{ex_addr}, #{addr_type})
 	</insert>
 	
+	<!-- 포인트 업데이트 -->
 	<update id="point_plus" parameterType="uvo">
 		update user_table set user_point = #{user_point} where user_idx = #{user_idx} 
 	</update>
 	
+	<!-- 주문 테이블 검색 -->
 	<select id="order_list" parameterType="String" resultType="payvo">
-		select * from pay_table where user_idx = #{user_idx}
+		select * from pay_table where user_idx = #{user_idx} and buy_chk = '0'
 	</select>
+	
+	<!-- 자동 배송 완료 시간 및 배송 상태 업데이트 -->
 	<update id="complite_dil" parameterType="Map">
 		update pay_table set delivery_end = #{delivery_end}, delivery_status = 1 where user_idx = #{user_idx}  and order_idx = #{order_idx}
 	</update>
+	
+	<update id="update_buy_chk" parameterType="String">
+		update pay_table set buy_chk = '1' where order_idx = #{order_idx}
+	</update>
+	
+	
+	<!-- 리뷰 result Map -->
+	<resultMap type="blvo" id="blMap">
+		<result column="order_idx" property="order_idx"/>
+		<result column="p_idx" property="p_idx"/>
+		<result column="user_idx" property="user_idx"/>
+		<result column="p_name" property="p_name"/>
+		<result column="p_type" property="p_type"/>
+		<result column="p_brand" property="p_brand"/>
+		<result column="p_volume" property="p_volume"/>
+		<result column="p_price" property="p_price"/>
+		<result column="p_count" property="p_count"/>
+		<result column="p_option" property="p_option"/>
+		<result column="delivery_end" property="delivery_end"/>
+		<result column="p_main_img" property="p_main_img"/>
+		<result column="pay_date" property="pay_date"/>
+		<result column="zip_code" property="zip_code"/>
+		<result column="main_addr" property="main_addr"/>
+		<result column="detail_addr" property="detail_addr"/>
+		<result column="ex_addr" property="ex_addr"/>
+		<collection column="p_idx" 
+			property="review_list" 
+			javaType="java.util.List" 
+			ofType="revo" 
+			select="review_list" />
+	</resultMap>
+	
+    <select id="buy_list" resultMap="blMap">
+        select * from pay_table where user_idx = #{user_idx} and buy_chk = '1'
+    </select>
+    
+    <select id="review_list" parameterType="String" resultType="rivo">
+		select * from review_table where p_idx = #{p_idx}
+	</select>
 </mapper>
 
 

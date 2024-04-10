@@ -37,6 +37,9 @@
 	function sell_list(){
 		location.href="sell_list"
 	}
+	function buy_list(){
+		location.href="buy_list"
+	}
 	function product_write(){
 		location.href="product_write"
 	}
@@ -64,7 +67,7 @@
 	<section id="first">
 		<article id="f_menu">
 			<button class="menu_btn" onclick="order()">주문리스트</button>
-			<button class="menu_btn" onclick="buy()">구매리스트</button>
+			<button class="menu_btn" onclick="buy_list()">구매리스트</button>
 			<c:choose>
 				<c:when test="${ssuvo.user_type==0}">
 					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>

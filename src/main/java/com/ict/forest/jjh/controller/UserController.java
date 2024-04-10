@@ -190,6 +190,20 @@ public class UserController {
 		mv.addObject("order_list", order_list);
 		return mv;
 	}
-
+	
+	@GetMapping("buy_chk")
+	public ModelAndView buy_chk(String order_idx) {
+		ModelAndView mv = new ModelAndView("redirect:order");
+		int res = userService.buy_chk(order_idx);
+		if (res > 0) {
+			return mv;
+		}
+		return new ModelAndView("common/error");
+	}
+	@GetMapping("buy_list")
+	public ModelAndView buy_list(HttpSession session) {
+		ModelAndView mv = new ModelAndView("jjh-view/buy_page");
+		
+	}
 	
 }

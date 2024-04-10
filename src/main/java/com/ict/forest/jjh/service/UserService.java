@@ -22,5 +22,6 @@ public interface UserService {
 	public int pointPlus(UserVO uvo);
 	public List<PayVO> order_list(String user_idx);
 	public int complitedil(String user_idx, String order_idx, String delivery_end);
+	public int buy_chk(String order_idx);
 	
 }

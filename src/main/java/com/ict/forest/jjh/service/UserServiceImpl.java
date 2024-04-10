@@ -79,4 +79,9 @@ public class UserServiceImpl implements UserService{
 	public int complitedil(String user_idx, String order_idx, String delivery_end) {
 		return userDAO.complitedil(user_idx, order_idx, delivery_end);
 	}
+	
+	@Override
+	public int buy_chk(String order_idx) {
+		return userDAO.buy_chk(order_idx);
+	}
 }
