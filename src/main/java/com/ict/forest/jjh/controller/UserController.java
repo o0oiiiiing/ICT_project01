@@ -47,6 +47,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("redirect:home");
 		uvo.setUser_pwd(passwordEncoder.encode(uvo.getUser_pwd()));
 		try {
+			
 			int res1 = userService.userJoin(uvo);
 			int res2 = userService.userJoinAddr(uavo);
 			if (res1 > 0 || res2 > 0) {
@@ -99,7 +100,7 @@ public class UserController {
 	}
 	
 	// 마이페이지 이동
-	@GetMapping("mypage")
+	@RequestMapping("mypage")
 	public ModelAndView mypage(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("jjh-view/mypage");
 		HttpSession session = request.getSession();

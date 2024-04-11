@@ -29,6 +29,9 @@
 		if (${ssuvo.login != "true"}) {
 			alert("로그인 후 이용해주세요");
 			return
+		}else if ($("input[name=p_count]").val()=='수량 선택') {
+			alert("수량을 선택해주세요");
+			return
 		}else {
 			f.action = "pay"
 			f.submit();
