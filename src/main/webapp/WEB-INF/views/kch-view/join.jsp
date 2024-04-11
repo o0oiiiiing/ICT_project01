@@ -113,8 +113,8 @@ function sample6_execDaumPostcode() {
 					</tr>
 					<tr>
 						<td class="menu">이메일</td>
-						<td class="userin"><input type="text" name="front_email"> 
-						<span class="a">@</span> <input type="text" id="domain-txt" name="back_email"> 
+						<td class="userin"><input type="text" name="user_f_email"> 
+						<span class="a">@</span> <input type="text" id="domain-txt" name="user_b_email"> 
 							<select	name="mailsel" id="domain-list">
 								<option value="type" selected >직접입력</option>
 								<option value="naver.com">naver.com</option>

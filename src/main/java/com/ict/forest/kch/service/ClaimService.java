@@ -35,9 +35,17 @@ public interface ClaimService {
 		public List<CCommentVO> CommentList(String claim_idx);
 		
 		// 댓글 삽입
-		public int CommentInsert(CCommentVO cvo);
+		public int CommentInsert(CCommentVO ccvo);
 		
 		// 댓글 삭제
 		public int CommentDelete(String c_idx);
+		
+		// 신고 답변 유무
+		public int claimRes(String claim_res);
+		
+		
+		
+		
+		
 		
 }

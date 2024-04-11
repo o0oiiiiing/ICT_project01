@@ -4,6 +4,16 @@ public class ClaimVO {
 
 	private String claim_idx,user_idx,user_id,claim_subject,claim_content,claim_reply,claim_reply_date,claim_reply_status,claim_created_date,claim_pw_status,claim_pw;
 
+	private String claim_res;
+	
+	public String getClaim_res() {
+		return claim_res;
+	}
+
+	public void setClaim_res(String claim_res) {
+		this.claim_res = claim_res;
+	}
+
 	public String getClaim_idx() {
 		return claim_idx;
 	}

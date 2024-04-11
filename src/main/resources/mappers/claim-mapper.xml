@@ -10,8 +10,8 @@
 	
 	
 	<insert id="claimInsert" parameterType="claimvo">
-		insert into claim_table(user_idx, user_id, claim_subject, claim_content,claim_pw,claim_created_date)
-		values(#{user_idx},#{user_id},#{claim_subject},#{claim_content},#{claim_pw},sysdate())
+		insert into claim_table(user_idx, user_id, claim_subject, claim_content,claim_pw,claim_created_date, claim_res)
+		values(#{user_idx},#{user_id},#{claim_subject},#{claim_content},#{claim_pw},sysdate(), #{claim_res})
 	</insert>
 	
 	<select id="claimCount" resultType="int">
@@ -35,6 +35,17 @@
 		values (#{cc_writer}, #{cc_content}, sysdate(), #{claim_idx})
 	</insert>
 	
+	<delete id="claimDelete" parameterType="String">
+		delete from claim_table where claim_idx = #{claim_idx}
+	</delete>
+	
+	<delete id="commentdelete" parameterType="String">
+		delete from claim_comment_table where cc_idx = #{cc_idx}
+	</delete>
+	
+	<update id="claimRes" parameterType="String">
+		update claim_table set claim_res = 1 where claim_idx = #{claim_idx}
+	</update>
 	
 </mapper>
 

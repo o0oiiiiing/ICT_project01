@@ -43,7 +43,12 @@ public class ClaimDAO {
 	}
 
 	public int claimDelete(String claim_idx) {
-		return 0;
+		try {
+			return sqlSessionTemplate.delete("claim_table.claimDelete", claim_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
 	}
 
 	public int claimUpdate(ClaimVO claimvo) {
@@ -92,6 +97,24 @@ public class ClaimDAO {
 			System.out.println(e);
 		}
 		return null;
+	}
+	
+	public int CommentDelete(String cc_idx) {
+		try {
+			return sqlSessionTemplate.delete("claim_table.commentdelete", cc_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public int claimRes(String claim_res) {
+		try {
+			return sqlSessionTemplate.update("claim_table.claimRes", claim_res);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
 	}
 	
 }

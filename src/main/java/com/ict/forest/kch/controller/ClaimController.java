@@ -37,7 +37,7 @@ public class ClaimController {
 	
 	@RequestMapping("claim")
 	public ModelAndView claimList(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("khj-view/claim");
+		ModelAndView mv = new ModelAndView("ex_page/claim");
 		System.out.println("1111111111111111111111111111111111");
 		int count = claimService.getTotalCount();
 		System.out.println("카운트 : "+count);
@@ -109,6 +109,7 @@ public class ClaimController {
 			String user_idx = ssuvo.getUser_idx();
 			claimvo.setUser_idx(user_idx);
 			claimvo.setUser_id(ssuvo.getUser_id());
+			System.out.println("보여줭"+claimvo.getClaim_idx());
 			int result = claimService.claimInsert(claimvo);
 			if(result > 0) {
 				mv.addObject(user_idx);
@@ -121,12 +122,45 @@ public class ClaimController {
 		}
 		return new ModelAndView("pdh-view/error");
 	}
+	/*
+	@PostMapping("claim_delete")
+	public ModelAndView getBbsDelete(@ModelAttribute("cPage")String cPage,
+			@ModelAttribute("claim_idx")String claim_idx) {
+		return new ModelAndView("ex_page/claimdelete");
+	}
 	
+	@PostMapping("claim_delete_ok")
+	public ModelAndView getBbsDeleteOK(String claim_pwd,
+			@ModelAttribute("cPage")String cPage,
+			@ModelAttribute("claim_idx")String claim_idx) {
+		ModelAndView mv = new ModelAndView();
+		// 비밀번호 체크
+		ClaimVO claimvo = claimService.claimDetail(claim_idx);
+		String dpwd = claimvo.getClaim_pw();
+		
+		if(! passwordEncoder.matches(claim_pwd, dpwd)) {
+			mv.setViewName("ex_page/claimdelete");
+			mv.addObject("pwdchk", "fail");
+			return mv;
+		}else {
+			// 원글 삭제 (댓글이 있을 경우 그냥 삭제하면 외래키 때문에 오류 발생)
+			// active 컬럼의 값을 1로 변경한다. 
+			int result = claimService.claimDelete(claim_idx);
+			if(result > 0) {
+				mv.setViewName("redirect:claim");
+				return mv;
+			}
+		}
+		return new ModelAndView("pdh-view/error");
+		
+	}
+	*/
 	
 	@GetMapping("claim_detail")
 	public ModelAndView getBbsDetail(String claim_idx, String cPage) {
 		try {
 			ModelAndView mv = new ModelAndView("ex_page/claim_detail");
+			
 			
 			ClaimVO claimvo = claimService.claimDetail(claim_idx);
 				// 댓글 가져오기
@@ -147,11 +181,21 @@ public class ClaimController {
 	public ModelAndView CommentInsert(CCommentVO ccvo, ClaimVO claimvo,
 			@ModelAttribute("claim_idx")String claim_idx) {
 		ModelAndView mv = new ModelAndView("redirect:claim_detail");
-		String idx = claimvo.getUser_idx();
+		claimvo.setClaim_idx(claim_idx);
 		int result = claimService.CommentInsert(ccvo);
 		
 		return mv;
 	}
+	
+	@PostMapping("commentDelete")
+	public ModelAndView getCommentDelete(String cc_idx, @ModelAttribute("claim_idx")String claim_idx) {
+		ModelAndView mv = new ModelAndView("redirect:claim_detail");
+		int result = claimService.CommentDelete(cc_idx);
+		return mv;
+	}
+	
+	
+	
 	
 }
 

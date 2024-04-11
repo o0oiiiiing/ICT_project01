@@ -32,7 +32,7 @@ public class ClaimServiceImpl implements ClaimService{
 
 	@Override
 	public int claimDelete(String claim_idx) {
-		return 0;
+		return claimDAO.claimDelete(claim_idx);
 	}
 
 	@Override
@@ -67,10 +67,13 @@ public class ClaimServiceImpl implements ClaimService{
 
 	@Override
 	public int CommentDelete(String cc_idx) {
-		return 0;
+		return claimDAO.CommentDelete(cc_idx);
 	}
 
-	
+	@Override
+	public int claimRes(String claim_res) {
+		return claimDAO.claimRes(claim_res);
+	}
 
 	
 
