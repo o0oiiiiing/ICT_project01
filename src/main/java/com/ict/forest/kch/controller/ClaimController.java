@@ -183,7 +183,7 @@ public class ClaimController {
 		ModelAndView mv = new ModelAndView("redirect:claim_detail");
 		claimvo.setClaim_idx(claim_idx);
 		int result = claimService.CommentInsert(ccvo);
-		
+		int res = claimService.claimRes(claim_idx);
 		return mv;
 	}
 	
