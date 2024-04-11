@@ -38,19 +38,134 @@
 <link rel="stylesheet" href="resources/pdh-css/products.css">
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
 <link rel="stylesheet" href="resources/pdh-css/paging.css">
+<script type="text/javascript">
+function before(cPage) {
+	if (${!empty option}) {
+		let input_tag = $("<input>")
+		let input_tag2 = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag2.attr("name", "option");
+		input_tag.val(cPage);
+		input_tag2.val('${option}');
+		$("#search").append(input_tag);
+		$("#search").append(input_tag2);
+		$("#search").submit();
+	}else {
+		let input_tag = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag.val(cPage);
+		$("#search").append(input_tag);
+		$("#search").submit();
+	}
+}
+function page(cPage) {
+	if (${!empty option}) {
+		let input_tag = $("<input>")
+		let input_tag2 = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag2.attr("name", "option");
+		input_tag.val(cPage);
+		input_tag2.val('${option}');
+		$("#search").append(input_tag);
+		$("#search").append(input_tag2);
+		$("#search").submit();
+	}else {
+		let input_tag = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag.val(cPage);
+		$("#search").append(input_tag);
+		$("#search").submit();
+	}
+}
+function after(cPage) {
+	if (${!empty option}) {
+		let input_tag = $("<input>")
+		let input_tag2 = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag2.attr("name", "option");
+		input_tag.val(cPage);
+		input_tag2.val('${option}');
+		$("#search").append(input_tag);
+		$("#search").append(input_tag2);
+		$("#search").submit();
+	}else {
+		let input_tag = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag.val(cPage);
+		$("#search").append(input_tag);
+		$("#search").submit();
+	}
+}
+
+/* 선택바 정렬 */
+let option2 = "${option}"
+	if (option2 != "") {
+		if (option2 == 'p_name') {
+			$("#p_name").prop("selected", true)
+		} else if (option2 == 'p_price') {
+			$("#p_price").prop("selected", true)
+		} else if (option2 == 'buy_rate') {
+			$("#buy_rate").prop("selected", true)
+		} else {
+			$("#p_name").prop("selected", true)
+		}
+	}
+
+/* 선택바 선택시 적용 함수 */
+$(document).ready(function() {
+	$("#sort-option").change(function() {
+		let cPage = "${paging.nowPage}"
+		let option = $(this).find("option:selected").val()
+		let input_tag = $("<input>")
+		let input_tag2 = $("<input>")
+		input_tag.attr("name", "cPage");
+		input_tag2.attr("name", "option");
+		input_tag.val(cPage);
+		input_tag2.val(option);
+		$("#search").append(input_tag);
+		$("#search").append(input_tag2);
+		$("#search").submit();
+	})
+})
+</script>
 </head>
 <body>
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<!-- 검색 조건 리스트 -->
+	<form method="get" id="search" style="display: none;">
+		<c:choose>
+			<c:when test="${!empty kvo.p_name}">
+				<c:forEach var="k" items="${kvo.p_name}">
+					<input type="hidden" name="${kvo.type}" value="${k}">
+				</c:forEach>
+			</c:when>
+			<c:when test="${!empty tvo.p_type}">
+				<c:forEach var="k" items="${tvo.p_type}">
+					<input type="hidden" name="${tvo.type}" value="${k}">
+				</c:forEach>
+			</c:when>
+			<c:when test="${!empty vvo.p_volume}">
+				<c:forEach var="k" items="${vvo.p_volume}">
+					<input type="hidden" name="${vvo.type}" value="${k}">
+				</c:forEach>
+			</c:when>
+			<c:when test="${!empty bvo.p_brand}">
+				<c:forEach var="k" items="${bvo.p_brand}">
+					<input type="hidden" name="${bvo.type}" value="${k}">
+				</c:forEach>
+			</c:when>
+		</c:choose>
+	</form>
 	<!-- 상품 리스트 -->
 	<main>
 		<div class="product-category judson-bold">search results</div>
 		
 		<div class="select-box">
-			<select class="select" id="sort-option">
-				<option value="alphabetical-order">이름순</option>
-				<option value="price-order">가격순</option>
-				<option value="popularity-order">인기순</option>
+			<select class="select" id="sort-option" name="option">
+				<option value="p_name">이름순</option>
+				<option value="p_price">가격순</option>
+				<option value="buy_rate">인기순</option>
 			</select>
 		</div>
 		
@@ -101,7 +216,7 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<a class="able" href="search?cPage=${paging.beginBlock - paging.pagePerBlock}">이전</a>
+					<span class="able" onclick="before(${paging.beginBlock - paging.pagePerBlock})">이전</span>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -114,7 +229,7 @@
 				</c:when>
 				<c:otherwise>
 					<li>
-						<a class="other_page" href="search?cPage=${k}">${k}</a>
+						<span class="other_page" onclick="page(${k})" >${k}</span>
 					</li>
 				</c:otherwise>
 			</c:choose>
@@ -127,7 +242,7 @@
 			</c:when>
 			<c:otherwise>
 				<li>
-					<a class="able" href="search?cPage=${paging.beginBlock + paging.pagePerBlock}">다음</a>
+					<span class="able" onclick="after(${paging.beginBlock + paging.pagePerBlock})">다음</span>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -158,19 +273,6 @@
 				behavior: 'smooth'
 			});
 		})
-		
-		let option2 = "${option}"
-		if (option2 != "") {
-			if (option2 == 'p_name') {
-				$("#p_name").prop("selected", true)
-			} else if (option2 == 'p_price') {
-				$("#p_price").prop("selected", true)
-			} else if (option2 == 'buy_rate') {
-				$("#buy_rate").prop("selected", true)
-			} else {
-				$("#p_name").prop("selected", true)
-			}
-		}
 	</script>
 </body>
 </html>

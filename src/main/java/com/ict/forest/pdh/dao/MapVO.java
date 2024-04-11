@@ -4,6 +4,13 @@ import java.util.Map;
 
 public class MapVO {
 	private Map<String, String[]> search_map;
+	public String getOption() {
+		return option;
+	}
+	public void setOption(String option) {
+		this.option = option;
+	}
+	private String option;
 	private int limit, offset;
 	public Map<String, String[]> getSearch_map() {
 		return search_map;

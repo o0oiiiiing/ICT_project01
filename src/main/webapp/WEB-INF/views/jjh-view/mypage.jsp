@@ -27,15 +27,14 @@
 	function help() {
 		location.href="help"
 	}
-	/* 미구현 */
 	function addrplus() {
 		location.href="addrplus"
 	}
 	function point() {
 		location.href="point"
 	}
-	function sell_list(){
-		location.href="sell_list"
+	function mypage() {
+		location.href="mypage"
 	}
 	function buy_list(){
 		location.href="buy_list"
@@ -45,6 +44,10 @@
 	}
 	function order(){
 		location.href="order"
+	}
+	// 미구현
+	function sell_list(){
+		location.href="sell_list"
 	}
 	function openPopup() {
 	    let width = 400;
@@ -66,6 +69,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<section id="first">
 		<article id="f_menu">
+			<button class="menu_btn" onclick="mypage()">마이페이지</button>
 			<button class="menu_btn" onclick="order()">주문리스트</button>
 			<button class="menu_btn" onclick="buy_list()">구매리스트</button>
 			<c:choose>

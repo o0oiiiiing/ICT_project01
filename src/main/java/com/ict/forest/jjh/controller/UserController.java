@@ -89,6 +89,7 @@ public class UserController {
 			ssuvo.setUser_type(uvo2.getUser_type());
 			ssuvo.setUser_idx(uvo2.getUser_idx());
 			ssuvo.setUser_id(uvo2.getUser_id());
+			ssuvo.setUser_name(uvo2.getUser_name());
 			session.setAttribute("ssuvo", ssuvo);
 			return mv;
 		}else {
@@ -238,10 +239,10 @@ public class UserController {
 				byte[] in = file.getBytes();
 				File out = new File(path, f_name);
 				FileCopyUtils.copy(in, out);
-				revo.setUser_idx(ssuvo.getUser_idx());
-				int res = userService.review_insert(revo);
-				System.out.println("1");
 			}
+			revo.setUser_idx(ssuvo.getUser_idx());
+			int res = userService.review_insert(revo);
+			System.out.println("res : "+res);
 			return mv;
 			
 		} catch (Exception e) {

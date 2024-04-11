@@ -32,24 +32,21 @@ public class SearchController {
 	private Paging_pdh paging;
 	
 	@RequestMapping("search")
-	public ModelAndView getSearchList(HttpSession session, KeywordVO kvo, TypeVO tvo, BrandVO bvo, VolumeVO vvo, HttpServletRequest request) {
+	public ModelAndView getSearchList(HttpSession session, @ModelAttribute("kvo")KeywordVO  kvo, @ModelAttribute("tvo") TypeVO tvo, 
+			@ModelAttribute("bvo") BrandVO bvo, @ModelAttribute("vvo") VolumeVO vvo, String option, HttpServletRequest request) {
 		try {
 			ModelAndView mv = new ModelAndView("pdh-view/search_products");
 			MapVO MapVO = new MapVO();
-			if (session.getAttribute("search_condition") == null) {
-				Map<String, String[]> map = new HashMap<String, String[]>();
-				map.put("p_name", kvo.getP_name());
-				map.put("p_type", tvo.getP_type());
-				map.put("p_volume", vvo.getP_volume());
-				map.put("p_brand", bvo.getP_brand());
-				MapVO.setSearch_map(map);
-				session.setAttribute("search_condition", map);
-				System.out.println(session.getAttribute("search_condition"));
-			}else {
-				Map<String,String[]> search_condition = (HashMap<String, String[]>) session.getAttribute("search_condition");
-				MapVO.setSearch_map(search_condition);
+			Map<String, String[]> map = new HashMap<String, String[]>();
+			map.put("p_name", kvo.getP_name());
+			map.put("p_type", tvo.getP_type());
+			map.put("p_volume", vvo.getP_volume());
+			map.put("p_brand", bvo.getP_brand());
+			if (option != null) {
+				MapVO.setOption(option);
 			}
-			
+			MapVO.setSearch_map(map);
+
 			
 			// ∆‰¿Ã¬°
 			int count = searchService.getSearchCount(MapVO);
@@ -95,6 +92,9 @@ public class SearchController {
 			if (search_list != null) {
 				mv.addObject("search_list", search_list);
 				mv.addObject("paging", paging);
+				if (option != null) {
+					mv.addObject("option", option);
+				}
 				return mv;
 			}
 		} catch (Exception e) {

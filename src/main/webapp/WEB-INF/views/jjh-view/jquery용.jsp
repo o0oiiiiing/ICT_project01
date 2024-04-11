@@ -10,16 +10,20 @@
 <body>
 
 <script type="text/javascript">
-<input type="hidden" name="p_idx" value="${pvo.p_idx}">
-<input type="hidden" name="p_type" value="${pvo.p_type}">
-<input type="hidden" name="p_name" value="${pvo.p_name}">
-<input type="hidden" name="p_main_img" value="${pvo.p_main_img}">
-<input type="hidden" name="p_brand" value="${pvo.p_brand}">
-<input type="hidden" name="p_volume" value="${pvo.p_volume}">
-<input type="hidden" name="p_price" value="${pvo.p_price}">
-
-
-
+$(document).ready(function() {
+	$("#re_insert_btn").toggle(function() {
+		$("#re_insert").css("display", "block");
+	}, function() {
+		$("#re_insert").css("display", "none");
+	});
+});
+$(document).ready(function() {
+	$("#re_chk_btn").toggle(function() {
+		$("#re_chk").css("display", "block");
+	}, function() {
+		$("#re_chk").css("display", "none");
+	});
+});
 </script>
 </body>
 </html>
