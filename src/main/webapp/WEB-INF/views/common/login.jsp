@@ -27,6 +27,7 @@
 <body>
 	<section class="login">
 		<form method="post" action="login">
+			<p class="login_text">로그인 | 회원가입</p>
 			<br>
 			<div id="login_form">
 				<div class="inputBox">
@@ -39,14 +40,14 @@
 					<input type="submit" value="Log in">
 				</div>
 			</div>
+			<br>
 		</form>
 		<div class="join">
 			<div class="inputBox">
 				<input type="button" value="회원가입" onclick="join()">
 			</div>
-			<br>
 			<div class="inputBox">
-				<input type="button" value="아이디/비밀번호 찾기" onclick="find()">
+				<input type="button" value="아이디 | 비밀번호 찾기" onclick="find()">
 			</div>
 		</div>
 	</section>

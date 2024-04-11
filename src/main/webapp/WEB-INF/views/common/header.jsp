@@ -27,12 +27,15 @@
 		// 로그인 페이지 버튼
  		$("#login_btn").on("click", function() {
 			if ($(this).data("clicked")) {
-
 				$("#login_page").css("display", "none"); 
+				$(".login-overlay").css("display", "none"); 
+				$(".header-wrapper").css("background-color", ""); 
 				$(this).data("clicked", false); 
 			} else {
 				$(this).data("clicked", true);
 				$("#login_page").css("display", "block");
+				$(".login-overlay").css("display", "block");
+				$(".header-wrapper").css("background-color", "#939393"); 
 			}
 		});
 
@@ -46,6 +49,16 @@
 			$("#search-page").css("display", "none");
 		})
 		
+		// css
+		$("#cart_ajax").css("font-family", "NanumSquare");
+		$("#cart_ajax").css("font-size", "15px");
+		$("#cart_ajax").css("position", "relative");
+		$("#cart_ajax").css("top", "-7px");
+		
+		$("#login-state").css("font-family", "NanumSquare");
+		$("#login-state").css("font-size", "13px");
+		$("#login-state").css("position", "relative");
+		$("#login-state").css("top", "-7px");
 	});
 	
 	// 로그인 유무 검사 후 위시리스트
@@ -77,8 +90,9 @@
 		<%@ include file="/WEB-INF/views/common/search.jsp"%>
 	</div>
 	<div class="overlay"></div>
+	<div class="login-overlay"></div>
 	<header>
-		<section class="header-wrapper">
+		<section class="header-wrapper header-color">
 			<div class="title judson-bold">
 				<a href="home" class="a_tag">forest</a>
 			</div>
@@ -95,7 +109,7 @@
 				<span><a href="faq" class="icon a_tag">headset_mic</a></span>
 				<span>
 					<a href="cart" class="icon a_tag">Shopping_Cart
-						<span id="cart_ajax">(${cart.size()})</span>
+						<span id="cart_ajax" class="">(${cart.size()})</span>
 					</a>
 				</span>
 				<span>
@@ -105,12 +119,12 @@
 					<c:choose>
 						<c:when test="${ssuvo.login == 'true'}">
 							<a class="icon a_tag">Person
-							<span style="font-size: 12px;">${ssuvo.user_id}님 환영합니다.</span>
+							<span id="login-state">${ssuvo.user_id}님 환영합니다.</span>
 							</a>
 						</c:when>
 						<c:otherwise>
 							<a class="icon a_tag">Person
-							<span style="font-size: 12px;">로그인/회원가입</span>
+							<span id="login-state">로그인 | 회원가입</span>
 							</a>
 						</c:otherwise>
 					</c:choose>

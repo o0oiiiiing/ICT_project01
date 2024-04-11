@@ -57,7 +57,7 @@
 		<ul class="product-wrapper">
 			<c:choose>
 				<c:when test="${empty search_list}">
-					<p>상품이 존재하지 않습니다.</p>
+					<p class="products-empty">검색하신 상품이 존재하지 않습니다.</p>
 				</c:when>
 				<c:when test="${p_type == 'perfume'}">
 					<c:forEach var="k" items="${search_list}">

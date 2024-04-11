@@ -45,6 +45,15 @@ main {
 	place-items: center;
 }
 
+.products-empty{
+	font-family: 'NanumSquare';
+	font-size: 15px;
+	text-align: center;
+	height: 300px;
+	line-height: 300px;
+	grid-column: 1 / 4;
+}
+
 .product {
 	margin-bottom: 50px;
 }
