@@ -161,7 +161,7 @@ function sample2_execDaumPostcode() {
 					<c:set var = "pay_ok_count" value = "0" />
 					<c:forEach var="k" items="${pay_list }" varStatus="vs">
 						<div class="s1a1_d1">
-				<div class="s1a1d1_img"><img src="resources/jjh-image/projtest.png"></div>
+				<div class="s1a1d1_img"><img src="resources/upload/${k.p_main_img}"></div>
 				<div id="s1a1d1_pa">
 				<input type="hidden" name="p_idx" value="${k.p_idx}">
 				<input type="hidden" name="user_idx" value="${k.user_idx}">
@@ -211,8 +211,7 @@ function sample2_execDaumPostcode() {
 						</td>
 					</tr>
 					</fieldset>
-				<%--  <input  id="orderer_phone" type="text" oninput="oninput_op(this)" maxlength="14" placeholder="주문자 연락처"  required>
-				<input id="orderer_email" placeholder="주문자 이메일"  required> --%>
+
 		</article>
 		<article id="p1_s1_a3">
 			<h3 style="text-align: center;">배송 정보</h3>
@@ -231,7 +230,7 @@ function sample2_execDaumPostcode() {
 							<input class="but2" type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
 							<input class="addr-box2" type="text" id="sample2_address" name="main_addr" placeholder="수령인 주소" required><br>
 							<input class="addr-box2" type="text" id="sample2_detailAddress" name="detail_addr" placeholder="상세주소" required>
-							<input class="addr-box2" type="text" id="sample2_extraAddress" name="ex_addr" placeholder="참고항목" required>
+							<input class="addr-box2" type="text" id="sample2_extraAddress" name="ex_addr" placeholder="참고항목">
 						</td>
 					</tr>
 			</fieldset>
@@ -259,6 +258,7 @@ function sample2_execDaumPostcode() {
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
 			
 			<button id="pay_b1" onclick="pay_ok(this.form)"  >결제하기</button>
+			<button id="pay_b1" onclick="cancel()"  >취소</button>
 			<input  type="hidden" name="delivery_status" value="1"  >
 			<input  type="hidden" name="buy_chk" value="1" >
 			<input  type="hidden" name="minus_pay_point" value="${uvo.user_point - pt_price_total + 3000 * pay_ok_count }" >
@@ -333,13 +333,20 @@ $recipientField.change(function () {
 function pay_ok(f) {
 	let check = document.querySelector('#s2a3_a1 input');
 	let check2 = document.querySelector('#s2a3_a3 input');
-	if(check.checked && check2.checked){
-		document.querySelector('#form_action').setAttribute('action', 'pay_ok');
-		document.querySelector('#pay_b1').setAttribute('type', 'submit');
-	}else{
+	if(!check.checked && check2.checked){
 		alert("체크 덜 됐음. . ");
 		return;
+	}else if (${uvo.user_point < pt_price_total}) {
+		alert("포인트가 부족합니다.");
+		document.querySelector('#form_action').setAttribute('action', 'mypage');
+		document.querySelector('#pay_b1').setAttribute('type', 'submit');
+	}else{
+		document.querySelector('#form_action').setAttribute('action', 'pay_ok');
+		document.querySelector('#pay_b1').setAttribute('type', 'submit');
 	}
+}
+function cancel() {
+	location.href = "home";
 }
 
 </script>

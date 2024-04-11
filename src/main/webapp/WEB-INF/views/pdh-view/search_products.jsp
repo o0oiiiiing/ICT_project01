@@ -97,20 +97,6 @@ function after(cPage) {
 	}
 }
 
-/* 선택바 정렬 */
-let option2 = "${option}"
-	if (option2 != "") {
-		if (option2 == 'p_name') {
-			$("#p_name").prop("selected", true)
-		} else if (option2 == 'p_price') {
-			$("#p_price").prop("selected", true)
-		} else if (option2 == 'buy_rate') {
-			$("#buy_rate").prop("selected", true)
-		} else {
-			$("#p_name").prop("selected", true)
-		}
-	}
-
 /* 선택바 선택시 적용 함수 */
 $(document).ready(function() {
 	$("#sort-option").change(function() {
@@ -163,9 +149,9 @@ $(document).ready(function() {
 		
 		<div class="select-box">
 			<select class="select" id="sort-option" name="option">
-				<option value="p_name">이름순</option>
-				<option value="p_price">가격순</option>
-				<option value="buy_rate">인기순</option>
+				<option id="p_name" value="p_name">이름순</option>
+				<option id="p_price" value="p_price">가격순</option>
+				<option id="buy_rate" value="buy_rate">인기순</option>
 			</select>
 		</div>
 		
@@ -254,25 +240,39 @@ $(document).ready(function() {
 		</button>
 	</div>
 	
-	<script type="text/javascript">
-		// 누르면 한 번에 위로 올라가는 버튼
-		window.onscroll = function() { scrollFunction() };
-	
-		function scrollFunction() {
-			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-				document.getElementById("scrollToTopButton").style.display = "block";
-			} else {
-				document.getElementById("scrollToTopButton").style.display = "none";
-			}
+<script type="text/javascript">
+	// 누르면 한 번에 위로 올라가는 버튼
+	window.onscroll = function() { scrollFunction() };
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("scrollToTopButton").style.display = "block";
+		} else {
+			document.getElementById("scrollToTopButton").style.display = "none";
 		}
+	}
+
+	document.getElementById("scrollToTopButton").addEventListener("click", () => {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		});
+	})
 	
-		document.getElementById("scrollToTopButton").addEventListener("click", () => {
-			window.scrollTo({
-				top: 0,
-				left: 0,
-				behavior: 'smooth'
-			});
-		})
-	</script>
+	/* 선택바 정렬 */
+	let option2 = "${option}"
+	if (option2 != "") {
+		if (option2 == 'p_name') {
+			$("#p_name").prop("selected", true)
+		} else if (option2 == 'p_price') {
+			$("#p_price").prop("selected", true)
+		} else if (option2 == 'buy_rate') {
+			$("#buy_rate").prop("selected", true)
+		} else {
+			$("#p_name").prop("selected", true)
+		}
+	}
+</script>
 </body>
 </html>

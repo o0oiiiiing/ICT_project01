@@ -12,6 +12,7 @@ package com.ict.forest.khj.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.BuyVO;
+import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.khj.dao.PayVO;
 import com.ict.forest.khj.service.PayService;
@@ -88,7 +90,7 @@ public class PayController {
 	}
 	
 	@PostMapping("pay_ok")
-	public ModelAndView getPayOK(BuyVO bvo, String minus_pay_point) {
+	public ModelAndView getPayOK(HttpSession session, BuyVO bvo, String minus_pay_point) {
 		ModelAndView mv = new ModelAndView("pdh-view/home");
 		
 		
@@ -108,7 +110,10 @@ public class PayController {
 			payvo.setMain_addr(bvo.getMain_addr());
 			payvo.setDetail_addr(bvo.getDetail_addr());
 			payvo.setEx_addr(bvo.getEx_addr());
-			
+			String p_idx = bvo.getP_idx()[i];
+			List<ProductVO> cart = (List<ProductVO>) session.getAttribute("cart");
+			List<ProductVO> cart2 = cart.stream().filter(x->!x.getP_idx().equals(p_idx)).collect(Collectors.toList());
+			session.setAttribute("cart", cart2);
 			int result = payService.getPayInsert(payvo);
 			
 		}

@@ -128,6 +128,7 @@
 					<p>내 포인트 : <fmt:formatNumber value="${uvo.user_point}" />P <button id="point" type="button" onclick="openPopup()">충전하기</button> </p>
 				</div>
 				<button class="move_btn" onclick="update()">회원정보 수정</button>
+				<button class="move_btn" onclick="update_pwd()">비밀번호 수정</button>
 			</div>
 			<div id="info_addr">
 				<p>배송지 주소</p>
