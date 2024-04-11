@@ -42,7 +42,8 @@ $(document).ready(function() {
 				</div>
 				<div class="f_ne">
 					<label for="email_id" >이메일</label>
-						 <input type="text" class="in_text" id="email_id" name="email_id">
+						 <input type="text" class="in_text" id="email_id" name="email_id"
+						 pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" title="이메일 양식">
 				</div>
 				<div class="f_ir">
 					<input type="submit" value="아이디 찾기" >&nbsp;

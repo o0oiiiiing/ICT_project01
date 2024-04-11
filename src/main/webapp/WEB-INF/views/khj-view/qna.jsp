@@ -24,15 +24,9 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div id="s_menu">
-			<a>QnA</a>
-			<a href="faq_list">FaQ</a>
-			<a href="claim_list">Claim</a>
-	</div>
-	<div id="dis_but">
-		<div id="s_display">
-			<p>QnA</p>
-			<button type="button" onclick="qna_write()">문의 글쓰기</button>
-		</div>
+			<a href="qna">QnA</a>
+			<a href="faq">FaQ</a>
+			<a href="claim">Claim</a>
 	</div>
 	<div id="qna_block">
 	<c:choose>

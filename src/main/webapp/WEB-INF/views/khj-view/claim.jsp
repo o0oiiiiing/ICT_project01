@@ -8,302 +8,178 @@
 <title>Insert title here</title>
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+<script type="text/javascript">
+	function claim_wr() {
+		location.href="claim_wr";
+	}
+</script>
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/claim.css">
+<style type="text/css">
+#claim_form table {
+	width:580px;
+	margin:0 auto;
+	margin-top:20px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+
+#claim_form table th, #claim table th, #claim table td {
+	text-align: center;
+	border: 1px solid black;
+	padding: 4px 10px;
+}
+
+/* paging */
+table tfoot ol.paging {
+	list-style: none;
+}
+
+table tfoot ol.paging li {
+	float: left;
+	margin-right: 8px;
+}
+
+table tfoot ol.paging li a {
+	display: block;
+	padding: 3px 7px;
+	border: 1px solid #00B3DC;
+	color: #2f313e;
+	font-weight: bold;
+}
+
+table tfoot ol.paging li a:hover {
+	background: #00B3DC;
+	color: white;
+	font-weight: bold;
+}
+
+.disable {
+	padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;
+}
+
+.now {
+	padding: 3px 7px;
+	border: 1px solid #ff4aa5;
+	background: #ff4aa5;
+	color: white;
+	font-weight: bold;
+}
+
+.claim_title{
+	font-size: 15px;
+}
+	.no {width:15%}
+	.writer {width:25%}
+	.subject {width:30%}
+	.reg {width:30%}
+</style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div id="s_menu">
-			<a href="">QnA</a>
-			<a href="">FaQ</a>
-			<a href="">Claim</a>
+			<a href="qna">QnA</a>
+			<a href="faq">FaQ</a>
+			<a href="claim">Claim</a>
 	</div>
-	<div id="s_display"><p>Claim(s_menu 누르면 창 바뀌고 누른거 표시)</p></div>
-	<div id="claim_block">
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
-		
-	
-		<div>
-			<article class="claim_head">
-				<div class="claim_num">
-					<a>num</a>
-				</div>
-				<div class="user_id">
-					<a>아이디</a>
-				</div>
-				<div class="claim_created_date">
-					<a>작성일</a>
-				</div>
-				<div class="claim_subject">
-					<p>향수가 부서져서 왔어요.</p>
-				</div>
-				<div class="claim_reply_status">
-					<a>답변상태</a>
-				</div>
-			</article>
-			<article class="claim_body">
-				<div class="claim_content">
-					<p><span>신고글 : </span>포장을 뜯어보니 향수 병이 깨졌는데 포장 상태가 충격 
-					방지 폼이 없이 에어캡으로만 돼있어요. 새 제품 보내주세요. 꼭 안 깨지게 포장 부탁드려요. </p>
-					<div class="claim_reply">
-						<hr>
-					<p><span>답글 : </span>죄송합니다. 바로 포장해서 새 제품으로 보내드리겠습니다. 
-					저희도 포장의 문제점을 인지하고 현재 충격방지 폼을 제작하고 있는 중입니다. 불편 드린점
-					다시 한번 사과드립니다.  다시 문제가 생기지 않도록 최대한 빠른 시일내에 개선 하겠습니다.</p>
-					</div>
-				</div>
-			</article>
-		</div>
+	<div id="claim_form" align="center">
+		<table summary="게시판 목록">
+			<thead>
+				<tr class="claim_title">
+					<th class="no">번호</th>
+					<th class="writer">글쓴이</th>
+					<th class="subject">제목</th>
+					<th class="reg">날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:choose>
+					<c:when test="${empty claimlist }">
+						<tr><td colspan="4"><h3>게시물이 존재하지 않습니다</h3> </td></tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="k" items="${claimlist}" varStatus="vs">
+							<tr>
+								<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</td>
+								<td>${k.user_id}</td>
+								<td>
+								   <a href="claim_detail?claim_idx=${k.user_idx}&cPage=${paging.nowPage}">${k.claim_subject}</a>
+								</td>
+								<td>${k.claim_created_date.substring(0,10)}</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+			<!-- 페이지기법 -->
+			<tfoot>
+				<tr>
+					<td colspan="3">
+						<ol class="paging">
+						    <!-- 이전 -->
+						    <c:choose>
+						    	<c:when test="${paging.beginBlock <= paging.pagePerBlock }">
+						    		<li class="disable">이전으로</li>
+						    	</c:when>
+						    	<c:otherwise>
+						    		<li><a href="claim?cPage=${paging.beginBlock - paging.pagePerBlock }">이전으로</a></li>
+						    	</c:otherwise>
+						    </c:choose>
+						    <!-- 블록안에 들어간 페이지번호들 -->
+						    <c:forEach begin="${paging.beginBlock }" end="${paging.endBlock }" step="1" var="k">
+						    	<%-- 현재 페이지이면 링크 X , 나머지 페이지는 링크 O --%>
+						    	<c:if test="${k == paging.nowPage }">
+						    		<li class="now">${k }</li>
+						    	</c:if>
+						    	<c:if test="${k != paging.nowPage }">
+						    		<li><a href="claim?cPage=${k}">${k}</a></li>
+						    	</c:if>
+						    </c:forEach>
+							<!-- 다음 -->
+							<c:choose>
+						    	<c:when test="${paging.endBlock >= paging.totalPage }">
+						    		<li class="disable">다음으로</li>
+						    	</c:when>
+						    	<c:otherwise>
+						    		<li><a href="claim?cPage=${paging.beginBlock + paging.pagePerBlock }">다음으로</a></li>
+						    	</c:otherwise>
+						    </c:choose>
+						</ol>
+					</td>
+					<td>
+						<input type="button" value="글쓰기" onclick="claim_wr()" />
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</div>
-	<div id="sel_claim_page"> 
-			<button class="entity">&lt;</button>
-			<button class="page_num">1</button>
-			<button class="page_num">2</button>
-			<button class="page_num">3</button>
-			<button class="entity">&gt;</button>
-		</div>
-	<script type="text/javascript">
-		$(".claim_head").click(
-				function() {
-					$(this).parent().find("article:nth-of-type(2)").fadeToggle(
-							500, function() {$(this).css("display", "block")
-						})
-					})
-		$(".claim_body").click(function() {
-			$(this).fadeOut(500, function() {
-				$(this).css("display", "none")
-			})
-		})
-	</script>
+	<div>
+	<span id="claim_con" style="cursor: pointer;" onclick="if(plain.style.display=='none')
+	{plain.style.display=''; claim_con.innerText = '${k.claim_subject}';} 
+	else {plain.style.display = 'none'; claim_con.innerText = '${k.claim_subject}';}">
+	뭐야양 + ${k.claim_subject}</span>
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
