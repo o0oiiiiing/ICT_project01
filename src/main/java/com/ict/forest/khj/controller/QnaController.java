@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.khj.dao.PagingKhj;
+import com.ict.forest.khj.dao.QnaReplyVO;
 import com.ict.forest.khj.dao.QnaVO;
 import com.ict.forest.khj.service.QnaService;
 
@@ -26,7 +27,7 @@ public class QnaController {
 	@Autowired
 	private PagingKhj pagingKhj;
 	
-	@GetMapping("qna_list")
+	@GetMapping("qna")
 	public ModelAndView getQnaList(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("khj-view/qna");
 		
@@ -67,8 +68,11 @@ public class QnaController {
 				if (pagingKhj.getEndBlock() > pagingKhj.getTotalPage()) {
 					pagingKhj.setEndBlock(pagingKhj.getTotalPage());
 				}
+			  SessionUser suvo =	(SessionUser) request.getSession().getAttribute("ssuvo");
 		List<QnaVO> qna_list = qnaService.getQnaList(pagingKhj.getOffset(), pagingKhj.getNumPerPage());
+		mv.addObject("suvo", suvo);
 		mv.addObject("qna_list", qna_list);
+		mv.addObject("paging", pagingKhj);
 		
 		return mv;
 	}
@@ -93,7 +97,7 @@ public class QnaController {
 	@PostMapping("qna_write_ok")
 	public ModelAndView getQnaWriteOK(QnaVO qnavo,HttpServletRequest request) {
 		try {
-			ModelAndView mv = new ModelAndView("redirect:qna_list");
+			ModelAndView mv = new ModelAndView("redirect:qna");
 			HttpSession session = request.getSession();
 			SessionUser suvo = (SessionUser) session.getAttribute("ssuvo");
 			qnavo.setUser_idx(suvo.getUser_idx());
@@ -115,6 +119,23 @@ public class QnaController {
 			System.out.println(e);
 		}
 		return new ModelAndView("khj-view/error");
+	}
+	
+	@GetMapping("qna_reply_write")
+	public ModelAndView getQnaReplyWrite(QnaReplyVO qnarvo, HttpServletRequest request) {
+		try {
+			ModelAndView mv = new ModelAndView("khj-view/qna_reply_write");
+			HttpSession session = request.getSession();
+			SessionUser suvo = (SessionUser) session.getAttribute("ssuvo");
+			mv.addObject("suvo", suvo);
+			return mv;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return new ModelAndView("khj-view/error");
+		
 	}
 }
 

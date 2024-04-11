@@ -46,15 +46,6 @@ public class PayController {
 		return mv;
 	}
 	
-	// 고객센터qna 이동 이동
-	@GetMapping("qna")
-	public ModelAndView qna() {
-		ModelAndView mv = new ModelAndView("khj-view/qna");
-		return mv;
-	}
-
-	
-	
 	// 상품 결제페이지 이동
 	@RequestMapping("pay")
 	public ModelAndView getPay(BuyVO bvo, HttpServletRequest request) {

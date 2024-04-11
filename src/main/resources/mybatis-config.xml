@@ -34,6 +34,8 @@
 		<typeAlias type="com.ict.forest.kch.dao.KchVO" alias="kvo" />
 		<!-- khj qna 게시판 정보가 담기는 VO -->
 		<typeAlias type="com.ict.forest.khj.dao.QnaVO" alias="qnavo" />
+		<!-- khj qna 게시판 답글에 대한 정보가 담기는 VO -->
+		<typeAlias type="com.ict.forest.khj.dao.QnaReplyVO" alias="qnarvo" />
 		<!-- khj claim 게시판 정보가 담기는 VO -->
 		<typeAlias type="com.ict.forest.kch.dao.ClaimVO" alias="claimvo" />
 		<!-- 클레임 답글 -->
