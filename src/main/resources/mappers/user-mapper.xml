@@ -7,8 +7,8 @@
 	
 	<!-- jjh: 회원가입 -->
 	<insert id="user_insert" parameterType="uvo">
-	    INSERT INTO user_table (user_name, user_id, user_pwd, user_email, user_phone, user_type, regdate, zip_code, main_addr, detail_addr, ex_addr) 
-	    VALUES (#{user_name}, #{user_id}, #{user_pwd}, #{user_email}, #{user_phone}, #{user_type}, sysdate(), #{zip_code}, #{main_addr}, #{detail_addr}, #{ex_addr})
+	    INSERT INTO user_table (user_name, user_id, user_pwd, user_f_email, user_b_email, user_phone, user_type, regdate, zip_code, main_addr, detail_addr, ex_addr) 
+	    VALUES (#{user_name}, #{user_id}, #{user_pwd}, #{user_f_email}, #{user_b_email}, #{user_phone}, #{user_type}, sysdate(), #{zip_code}, #{main_addr}, #{detail_addr}, #{ex_addr})
 	</insert>
 	
 	<!-- jjh: 회원가입시 주소 입력 -->

@@ -110,10 +110,17 @@ table tfoot ol.paging li a:hover {
 								<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</td>
 								<td>${k.user_id}</td>
 								<td>
-								   <a href="claim_detail?claim_idx=${k.user_idx}&cPage=${paging.nowPage}">${k.claim_subject}</a>
+								   <a href="claim_detail?claim_idx=${k.claim_idx}&cPage=${paging.nowPage}">${k.claim_subject}</a>
 								</td>
 								<td>${k.claim_created_date.substring(0,10)}</td>
-								<td>${k.claim_created_date.substring(0,10)}</td>
+								<c:choose>
+								<c:when test="${k.claim_res == 0}">
+								<td>답변대기</td>
+								</c:when>
+								<c:otherwise>
+									<td>답변완료</td>
+								</c:otherwise>
+								</c:choose>							
 							</tr>
 						</c:forEach>
 					</c:otherwise>
