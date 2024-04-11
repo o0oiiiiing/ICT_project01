@@ -13,8 +13,17 @@
 	<insert id="qna_insert" parameterType="qnavo">
 		insert into qna_table(user_idx, user_type, user_id, qna_subject, qna_content, qna_created_date, qna_pw)
 		values(#{user_idx}, #{user_type}, #{user_id}, #{qna_subject}, #{qna_content}, sysdate(), #{qna_pw})
-	</insert>	 
-			
+	</insert>
+	<select id="qna_detail" parameterType="String" resultType="qnavo">
+		select * from qna_table where qna_idx = #{qna_idx}
+	</select>
+	<insert id="qna_reply_insert" parameterType="qnarvo">
+		insert into qna_reply_table(qna_reply_writer, qna_reply_content, qna_reply_date, qna_idx)
+		values(#{qna_reply_writer}, #{qna_reply_content}, sysdate(), #{qna_idx})
+	</insert>
+	<update id="qna_rs_update" parameterType="String">
+		update qna_table set qna_reply_status = 1 where qna_idx = #{qna_idx}
+	</update>		
 </mapper>
 
 

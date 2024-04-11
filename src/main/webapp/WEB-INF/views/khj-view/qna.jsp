@@ -10,21 +10,7 @@
 <!-- JQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script type="text/javascript">
-	function qna_write() {
-		location.href = "qna_write";
-	}
-	function reply_write_go() {
-		if(${suvo.user_type } == 2){
-			
-		location.href = "qna_reply_write";
-		}else{
-			alert("관리자만 답글을 작성 가능합니다.");
-			return;
-		}
-		
-	}
-</script>
+
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/qna.css">
@@ -47,6 +33,7 @@
 				<h1>게시물이 존재하지 않습니다.</h1>
 			</c:when>
 			<c:otherwise>
+
 				<c:forEach var="k" items="${qna_list}" varStatus="vs">
 					<div>
 						<article class="qna_head">
@@ -62,6 +49,7 @@
 							<div class="qna_subject">
 								<p>${k.qna_subject }</p>
 							</div>
+							<c:set var="qna_reply_status2" value="${k.qna_reply_status}"></c:set>
 							<div class="qna_reply_status">
 								<p>${k.qna_reply_status }</p>
 							</div>
@@ -69,10 +57,10 @@
 						<article class="qna_body">
 							<div class="qna_content">
 								<p>
-									<span>질문글 : </span>${k.qna_content } <br><input type="button"
-										onclick="reply_write_go()" value="답글작성">
-									<button class="close" type="button" name="close" >닫기
-									</button>
+								<c:set var="qna_idx2" value="${k.qna_idx}"></c:set>
+									<span>질문글 : </span>${k.qna_content } <br> <input
+										type="button" onclick="reply_write_go()" value="답글작성">
+									<button class="close" type="button" name="close">닫기</button>
 								</p>
 								<div class="qna_reply">
 									<hr>
@@ -93,16 +81,19 @@
 						<button type="button" class="disable">&lt;</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="entity" onclick="location.href='qna?cPage=${paging.beginBlock - paging.pagePerBlock }'" >&lt;</button>
+						<button type="button" class="entity"
+							onclick="location.href='qna?cPage=${paging.beginBlock - paging.pagePerBlock }'">&lt;</button>
 					</c:otherwise>
 				</c:choose>
-				<c:forEach begin="${paging.beginBlock}" end="${paging.endBlock}" step="1" var="k">
+				<c:forEach begin="${paging.beginBlock}" end="${paging.endBlock}"
+					step="1" var="k">
 					<c:choose>
 						<c:when test="${k == paging.nowPage }">
 							<button type="button" class="page_num">${k}</button>
 						</c:when>
 						<c:otherwise>
-							<button type="button" class="page_num" onclick="location.href='qna?cPage=${k}'" >${k}</button>
+							<button type="button" class="page_num"
+								onclick="location.href='qna?cPage=${k}'">${k}</button>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -111,7 +102,8 @@
 						<button class="disable">&gt;</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="page_num" onclick="location.href='qna?cPage=${paging.beginBlock + paging.pagePerBlock }'"></button>
+						<button type="button" class="page_num"
+							onclick="location.href='qna?cPage=${paging.beginBlock + paging.pagePerBlock }'"></button>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -145,5 +137,24 @@
 		});
 	});
 	</script>
+	<script type="text/javascript">
+	function qna_write() {
+		location.href = "qna_write";
+	}
+	function reply_write_go() {
+		if(${suvo.user_type } == 2){
+			
+		if(${qna_reply_status2} == 1){
+			alert("답글은 하나만 가능합니다!!!!!!!!!");
+			return;
+		}
+		location.href = "qna_reply_write?qna_idx2=${qna_idx2}";
+		}else{
+			alert("관리자만 답글을 작성 가능합니다.");
+			return;
+		}
+		
+	}
+</script>
 </body>
 </html>

@@ -9,4 +9,5 @@ public interface PayService {
 	public int getPayInsert(PayVO payvo);
 	public UserVO getPayAddr(String user_idx);
 	public int getPayPoint(String user_idx, String minus_pay_point);
+	
 }

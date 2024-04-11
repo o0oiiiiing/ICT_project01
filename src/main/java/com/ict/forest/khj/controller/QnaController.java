@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.SessionUser;
@@ -70,6 +71,7 @@ public class QnaController {
 				}
 			  SessionUser suvo =	(SessionUser) request.getSession().getAttribute("ssuvo");
 		List<QnaVO> qna_list = qnaService.getQnaList(pagingKhj.getOffset(), pagingKhj.getNumPerPage());
+		
 		mv.addObject("suvo", suvo);
 		mv.addObject("qna_list", qna_list);
 		mv.addObject("paging", pagingKhj);
@@ -122,12 +124,18 @@ public class QnaController {
 	}
 	
 	@GetMapping("qna_reply_write")
-	public ModelAndView getQnaReplyWrite(QnaReplyVO qnarvo, HttpServletRequest request) {
+	public ModelAndView getQnaReplyWrite(QnaReplyVO qnarvo, String qna_idx2, HttpServletRequest request) {
 		try {
 			ModelAndView mv = new ModelAndView("khj-view/qna_reply_write");
 			HttpSession session = request.getSession();
 			SessionUser suvo = (SessionUser) session.getAttribute("ssuvo");
+			QnaVO qnavo = qnaService.getQnaDetail(qna_idx2);
+			System.out.println(qna_idx2);
+			qnarvo.setQna_idx(qna_idx2);
+			mv.addObject("qnavo", qnavo);
+			mv.addObject("qnarvo", qnarvo);
 			mv.addObject("suvo", suvo);
+			
 			return mv;
 			
 			
@@ -136,6 +144,20 @@ public class QnaController {
 		}
 		return new ModelAndView("khj-view/error");
 		
+	}
+	
+	@PostMapping("qna_reply_write_ok")
+	public ModelAndView getQnaReplyInsert(QnaReplyVO qnarvo,QnaVO qnavo) {
+		try {
+			ModelAndView mv = new ModelAndView("redirect:qna");
+			int result = qnaService.getQnaReplyInsert(qnarvo);
+			int result2 = qnaService.getQnaRSUpdate(qnavo.getQna_idx()); 
+			
+			return mv;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return new ModelAndView("khj-view/error");
 	}
 }
 

@@ -44,6 +44,35 @@ public class QnaDAO {
 		}
 		return -1;
 	}
+	
+	public QnaVO getQnaDetail(String qna_idx) {
+		try {
+			
+			return sqlSessionTemplate.selectOne("qna_table.qna_detail", qna_idx);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public int getQnaReplyInsert(QnaReplyVO qnarvo) {
+		try {
+			return sqlSessionTemplate.insert("qna_table.qna_reply_insert", qnarvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
+	
+	public int getQnaRSUpdate(String qna_idx) {
+		try {
+			return sqlSessionTemplate.update("qna_table.qna_rs_update", qna_idx);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
 }
 
 

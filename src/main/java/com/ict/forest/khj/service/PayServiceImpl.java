@@ -37,4 +37,5 @@ private PayDAO payDAO;
 	public int getPayPoint(String user_idx, String minus_pay_point) {
 		return payDAO.getPayPoint(user_idx, minus_pay_point);
 	}
+	
 }
