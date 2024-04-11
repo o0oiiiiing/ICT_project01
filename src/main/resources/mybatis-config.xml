@@ -17,11 +17,13 @@
 		<!-- jjh : 상품 서브 이미지 VO -->
 		<typeAlias type="com.ict.forest.jjh.dao.ProductSubImgVO" alias="pivo"/>
 		<!-- jjh : review VO -->
-		<typeAlias type="com.ict.forest.jjh.dao.ReviewVO" alias="rivo"/>
+		<typeAlias type="com.ict.forest.jjh.dao.ReviewVO" alias="revo"/>
 		<!-- jjh : wish VO -->
 		<typeAlias type="com.ict.forest.jjh.dao.WishVO" alias="wvo"/>
 		<!-- jjh 거 khj가 적음..   상품 구매 VO 결제하려는 정보들 담는 VO -->
 		<typeAlias type="com.ict.forest.jjh.dao.BuyVO" alias="buyvo" />
+		<!-- jjh : buy_list -->
+		<typeAlias type="com.ict.forest.jjh.dao.BuyListVO" alias="blvo"/>
 		<!-- pdh : 상품 정보 VO -->
 		<typeAlias type="com.ict.forest.pdh.dao.ProductsVO" alias="ProductsVO"/>
 		<typeAlias type="com.ict.forest.pdh.dao.PagingVO" alias="PagingVO"/>

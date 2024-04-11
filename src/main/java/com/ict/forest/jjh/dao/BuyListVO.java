@@ -1,10 +1,13 @@
-package com.ict.forest.khj.dao;
+package com.ict.forest.jjh.dao;
 
-public class PayVO {
+import java.util.List;
 
+public class BuyListVO {
 	private String order_idx, p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count,
 	p_option, delivery_status, delivery_start, delivery_end, buy_chk, p_main_img, pay_date, 
 	zip_code, main_addr, detail_addr, ex_addr;
+	
+	List<ReviewVO> review_list;
 	
 	public int total_price() {
 		return Integer.parseInt(p_price) * Integer.parseInt(p_count);
@@ -73,7 +76,6 @@ public class PayVO {
 		this.p_price = p_price;
 	}
 
-
 	public String getP_count() {
 		return p_count;
 	}
@@ -130,7 +132,6 @@ public class PayVO {
 		this.p_main_img = p_main_img;
 	}
 
-	
 	public String getPay_date() {
 		return pay_date;
 	}
@@ -171,7 +172,12 @@ public class PayVO {
 		this.ex_addr = ex_addr;
 	}
 
-	
-	
-	
+	public List<ReviewVO> getReview_list() {
+		return review_list;
+	}
+
+	public void setReview_list(List<ReviewVO> review_list) {
+		this.review_list = review_list;
+	}
+
 }

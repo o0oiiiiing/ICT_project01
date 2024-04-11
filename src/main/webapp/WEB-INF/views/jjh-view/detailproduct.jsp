@@ -279,10 +279,10 @@
 				최근 리뷰가 없습니다.
 			</c:when>
 			<c:otherwise>
-				<c:forEach begin="1" end="4" var="k" items="review_list">
+				<c:forEach begin="0" end="3" var="k" items="${review_list}">
 				<div class="review_box">
 					<div>
-						<img src="resources/upload/k.review_img">
+						<img src="resources/review/${k.review_img}">
 					</div>
 					<div>
 						<p>★★★★☆${k.score}</p>
@@ -411,14 +411,14 @@
 				리뷰가 없습니다.
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="k" items="review_list">
+				<c:forEach var="k" items="${review_list}">
 					<div class="rev1">
 						<p>${k.score}★★★★☆</p>
 						<p>${k.review_title}</p>
-						<p>${k.regdate}</p>
-						<div><img src="resources/upload/${k.review_img}"></div>
+						<p>${k.regdate.substring(0,10)}</p>
+						<div><img src="resources/review/${k.review_img}"></div>
 						<p>
-							${k.review_title}
+							${k.review_content}
 						</p>
 					</div>
 				</c:forEach>

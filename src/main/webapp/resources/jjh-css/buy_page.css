@@ -1,0 +1,220 @@
+@charset "UTF-8";
+body{
+	background-color: #f5f5f5
+}
+#first{
+	width: 1300px;
+	height: 1000px;
+	background-color: #f5f5f5;
+	margin: 0 auto;
+	padding-top: 250px;
+}
+
+#first img{
+	width: 100%;
+	height: 100%;
+	object-fit : contain;	
+}
+
+#f_list{
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;	
+}
+
+#buymenu{
+	display: flex;
+	width: 1040px;
+	border: none;
+	border-bottom: 1px solid black;
+	align-items: center;
+	justify-content: space-around;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+#buymenu div{
+	width: 22%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+#buymenu div > p{
+	font-size: 16px;
+}
+#rm_btn{
+	background-color: transparent;
+	border: none;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#buymenu input{
+	width: 20px;
+	height: 20px;
+}
+#buymenu div > p{
+	width: 110px;
+	height: 20px;
+}
+#buymenu > p:nth-of-type(1){
+	width: 56%;
+	text-align: center;
+}
+#buymenu > p:nth-of-type(2){
+	width: 22%;
+	text-align: center;
+}
+
+.c_product{
+	width: 100%;
+	height: 170px;
+	border: none;
+	border-bottom: 1px solid black;
+	margin: 20px auto 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.f_imgs{
+	width: 22%;
+	display: flex;
+	align-items: center;
+}
+.f_imgs > input{
+	width: 20px;
+	height: 20px;
+}
+
+.f_img{
+	margin-left: 10px;
+	width: 75%;
+	height: 135px;
+}
+.f_option{
+	width: 56%;
+	height: 135px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+}
+.f_option > div:nth-of-type(1){
+	width: 38%;
+}
+.f_option > div:nth-of-type(1) > p{
+	width: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	margin: 5px 10px 5px;
+}
+.f_option > div:nth-of-type(1) > p:nth-of-type(2){
+	text-overflow : ellipsis;
+	overflow: hidden;
+	white-space: wrap;
+}
+.f_option > div:nth-of-type(2){
+	width: 29%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.f_option > div:nth-of-type(2) select{
+	background-color: transparent;
+	border-bottom: none;
+	border-top: none;
+	margin-right: 5px;
+}
+.f_option > div:nth-of-type(2) span{
+	font-size: 14px;
+	font-weight: bold;
+	text-align : center;
+	
+}
+.f_option > div:nth-of-type(3){
+	width: 29%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.f_option > div:nth-of-type(3) span{
+	font-size: 14px;
+	font-weight: bold;
+	text-align : center;
+}
+.f_option > div:nth-of-type(3) select{
+	background-color: transparent;
+	border-bottom: none;
+	border-top: none;
+}
+
+.c_product > div:nth-of-type(3){
+	width: 22%;
+	height: 135px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+.c_product > div:nth-of-type(3) p{
+	width: 100%;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+.c_product > button{
+	width: 5%;
+	height: 135px;
+	background-color: transparent;
+	border: none;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+/* 계산 박스 css */
+#f_sum{
+	width: 80%;
+	height: 150px;
+	margin: 50px auto 0;
+	
+}
+#f_sum > div {
+	width: 55%;
+	height: 100px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	margin: 0 auto;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	
+}
+#f_sum > div p {
+	width: 100%;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 7px;
+	border: none;
+}
+#f_sum > div hr {
+	width: 90%;
+
+}
+
+#f_sum input {
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	font-size: 25px;
+	font-weight: bold;
+}
