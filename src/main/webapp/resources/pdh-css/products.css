@@ -51,6 +51,7 @@ main {
 	text-align: center;
 	height: 300px;
 	line-height: 300px;
+	color: #1E1E1E;
 	grid-column: 1 / 4;
 }
 

@@ -196,16 +196,14 @@
 	</section>
 	<script type="text/javascript">
 		$(".menu_btn").hover(
-			    function() {
-			        $(this).css("fontWeight", "bold");
-			        $(this).css("borderBottom", "2px solid black");
-			        
-			    },
-			    function() {
-			        $(this).css("fontWeight", "normal");
-			        $(this).css("border", "none");
-			    }
-			);
+		    function() {
+		    	$(this).css("color", "#878787");
+		        
+		    },
+		    function() {
+		    	$(this).css("color", "#1E1E1E");
+		    }
+		);
 		$(".move_btn").hover(
 			    function() {
 			        $(this).css("fontWeight", "bold");

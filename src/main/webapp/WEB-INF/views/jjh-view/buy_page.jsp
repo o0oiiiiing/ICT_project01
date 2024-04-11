@@ -39,13 +39,11 @@ function sell_list(){
 $(document).ready(function() {
 	$(".menu_btn").hover(
 	    function() {
-	        $(this).css("fontWeight", "bold");
-	        $(this).css("borderBottom", "2px solid black");
+	    	$(this).css("color", "#878787");
 	        
 	    },
 	    function() {
-	        $(this).css("fontWeight", "normal");
-	        $(this).css("border", "none");
+	    	$(this).css("color", "#1E1E1E");
 	    }
 	);
 })
@@ -69,9 +67,9 @@ $(document).ready(function() {
 		<article id="f_list">
 			<c:choose>
 				<c:when test="${empty buy_list}">
-					<h3>
-						구매완료 한 상품이 없습니다.					
-					</h3>
+					<p class="buy-empty">
+						구매 완료된 상품이 없습니다.					
+					</p>
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="k" items="${buy_list}">
@@ -82,20 +80,21 @@ $(document).ready(function() {
 							</div>
 						</div>
 						<div class="f_option">
-							<div>
-								<p>Type : ${k.p_type}</p>
+							<div class="line-height">
+								<p>${k.p_type}</p>
 								<p>${k.p_name}</p>
 								<c:choose>
 									<c:when test="${k.p_volume == 'free'}">
 									</c:when>
 									<c:otherwise>
-										<p>${k.p_volume}ml</p>
+										<p class="product-volume">${k.p_volume}ml</p>
 									</c:otherwise>
 								</c:choose>
 							</div>
 							<div>
-								<p>가격 : ${k.p_price}, 수량 : ${k.p_count}</p>
-								<p>총 금액 : <fmt:formatNumber value="${k.total_price()}" /></p>
+								<p>가격 : <fmt:formatNumber value="${k.p_price}" pattern="#,##0" />₩</p>
+								<p>수량 : ${k.p_count}</p>
+								<p>총 금액 : <fmt:formatNumber value="${k.total_price()}" pattern="#,##0" />₩</p>
 							</div>
 							<div>
 								<c:choose>
@@ -111,6 +110,9 @@ $(document).ready(function() {
 									</c:otherwise>
 								</c:choose>
 							</div>
+						</div>
+						<div>
+							<p>배송 완료일 : ${k.delivery_end.substring(0, 10)}</p>
 							<div>
 								<p>배송지 : ${k.main_addr}
 									<c:choose>
@@ -123,15 +125,12 @@ $(document).ready(function() {
 									</c:choose>
 								</p>
 							</div>
-						</div>
-						<div>
-							<p>배송 완료 일자 : ${k.delivery_end.substring(0, 10)}</p>
 							<c:choose>
 								<c:when test="${empty k.review_list}">
 									<p><button type="button" class="re_insert_btn">리뷰 작성하기</button></p>
 								</c:when>
 								<c:otherwise>
-									<p><button type="button" class="re_chk_btn">내가 작성한 리뷰 보기</button></p>
+									<p><button type="button" class="re_chk_btn">작성한 리뷰 보기</button></p>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -166,11 +165,13 @@ $(document).ready(function() {
 						</c:when>
 						<c:otherwise>
 							<div class="re_chk">
-								<p>${k.review_list[0].score}</p>
-								<p>${k.review_list[0].review_title}</p>
-								<p>${k.review_list[0].regdate}</p>
 								<div><img src="resources/review/${k.review_list[0].review_img}"></div>
-								<p>${k.review_list[0].review_title}</p>
+								<div>
+									<p>평점 : ${k.review_list[0].score}점</p>
+									<p>작성일 : ${k.review_list[0].regdate.substring(0, 10)}</p>
+									<p>제목 : ${k.review_list[0].review_title}</p>
+									<p>내용 : ${k.review_list[0].review_content}</p>
+								</div>
 							</div>
 						</c:otherwise>
 					</c:choose>

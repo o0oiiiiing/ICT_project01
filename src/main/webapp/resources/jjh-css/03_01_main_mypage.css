@@ -16,15 +16,21 @@ body{
 	margin: 160px auto 0;
 	padding-bottom: 10px;
 	justify-content: space-around;
-	border-bottom: 1px solid black;
 }
 
 #f_menu button{
 	width: 15%;
 	height: 50px;
-	border : none;
+	line-height: 40px;
 	background-color: transparent;
 	font-size: 17px;
+	border: none;
+}
+
+.menu_btn {
+	font-family: 'NanumSquare';
+	font-size: 10px;
+	color: #1E1E1E;
 }
 
 /* 이동 버튼 */
@@ -43,7 +49,7 @@ body{
 /* info 프로필단 */
 #f_info{
 	width: 80%;
-	margin: 100px auto 0;
+	margin: 50px auto 0;
 }
 #info_pro{
 	width: 100%;
