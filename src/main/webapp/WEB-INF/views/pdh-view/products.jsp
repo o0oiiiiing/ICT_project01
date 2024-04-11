@@ -39,7 +39,21 @@
 <link rel="stylesheet" href="resources/pdh-css/paging.css">
 
 <script type="text/javascript">
+/* 선택바 정렬 */
+let option2 = "${option}"
+	if (option2 != "") {
+		if (option2 == 'p_name') {
+			$("#p_name").prop("selected", true)
+		} else if (option2 == 'p_price') {
+			$("#p_price").prop("selected", true)
+		} else if (option2 == 'buy_rate') {
+			$("#buy_rate").prop("selected", true)
+		} else {
+			$("#p_name").prop("selected", true)
+		}
+	}
 
+/* 선택바 선택시 적용 함수 */
 $(document).ready(function() {
 	$("#sort-option").change(function() {
 		let cPage = "${paging.nowPage}"
@@ -76,9 +90,9 @@ $(document).ready(function() {
 		
 		<div class="select-box">
 			<select class="select" id="sort-option" name="option">
-				<option id="p_name" value="p_name">이름순</option>
-				<option id="p_price" value="p_price">가격순</option>
-				<option id="buy_rate" value="buy_rate">인기순</option>
+				<option value="p_name">이름순</option>
+				<option value="p_price">가격순</option>
+				<option value="buy_rate">인기순</option>
 			</select>
 		</div>
 		
@@ -249,19 +263,6 @@ $(document).ready(function() {
 				behavior: 'smooth'
 			});
 		})
-		
-		let option2 = "${option}"
-		if (option2 != "") {
-			if (option2 == 'p_name') {
-				$("#p_name").prop("selected", true)
-			} else if (option2 == 'p_price') {
-				$("#p_price").prop("selected", true)
-			} else if (option2 == 'buy_rate') {
-				$("#buy_rate").prop("selected", true)
-			} else {
-				$("#p_name").prop("selected", true)
-			}
-		}
 	</script>
 </body>
 </html>

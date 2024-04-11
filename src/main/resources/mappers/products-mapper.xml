@@ -119,7 +119,21 @@
 			</if>
 		</foreach>
 	    </where>
-   		order by p_name
+	    <choose>
+			<when test="option != null">
+				<choose>
+					<when test="option == 'buy_rate'">
+						order by ${option} desc
+					</when>
+					<otherwise>
+						order by ${option}
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by p_name
+			</otherwise>
+		</choose>
    		limit #{limit}
    		offset #{offset}
 	</select>

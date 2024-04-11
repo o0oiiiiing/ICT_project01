@@ -3,7 +3,13 @@ package com.ict.forest.jjh.dao;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewVO {
-	private String review_idx, p_idx, user_idx, user_id, score, review_img, review_title, review_content, regdate;
+	private String review_idx, p_idx, user_idx, user_id, score, review_img, review_title, review_content, order_idx, regdate;
+	public String getOrder_idx() {
+		return order_idx;
+	}
+	public void setOrder_idx(String order_idx) {
+		this.order_idx = order_idx;
+	}
 	private MultipartFile review_p_img;
 	public String getReview_idx() {
 		return review_idx;

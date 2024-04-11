@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.ProductVO;
+import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.ProductService;
@@ -105,5 +107,20 @@ public class AjaxController {
 			response.addCookie(cookie);
 		}
 		return "success";
+	}
+	
+	@RequestMapping(value = "sub_addr", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String subAddr(String user_idx) {
+		// DB 처리
+		List<UserAddrVO> list = userService.userAddr(user_idx);
+		
+		if (list != null) {
+			// pom.xml에서 외부라이브러리 추가
+			Gson gson = new Gson();
+			String jsonString =gson.toJson(list);
+			return jsonString;
+		}	
+		return "fail";	
 	}
 }

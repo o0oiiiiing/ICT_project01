@@ -15,6 +15,51 @@
 <link rel="stylesheet" href="resources/khj-css/pay.css">
 
 <script type="text/javascript">
+// 자신의 주소 가져오기
+function sub_addr(user_idx) {
+    $.ajax({
+        type: "post",
+        url: "sub_addr",
+        dataType : "json",
+        data: "user_idx="+user_idx,
+        success: function(data) {
+        	$("#addr_res").empty()
+			$.each(data, function(idx, k) {
+				let p = "<p>";
+				p += "<input type='radio' name='radio_btn' class='addrs'>";
+				p += "<span>주소지"+(idx+1)+" : "+"</span>";
+				p += "<span id='zip'>" + k.zip_code +"</span> ";
+				p += "<span id='main'>" + k.main_addr +"</span>";
+				if (k.detail_addr != undefined || k.detail_addr != '') {
+					p += ", " + "<span id='detail'>"+ k.detail_addr + "</span>"
+				}else {
+					p += "<span id='detail'></span>"
+				}
+				if (k.ex_addr != undefined || k.ex_addr != '') {
+					p += ", " + "<span id='ex'>"+ k.ex_addr + "</span>"
+				}else if (condition) {
+					p += "<span id='ex'></span>"
+				}
+				p += "</span></p>"
+				$("#addr_res").append(p)
+			})
+        },
+        error: function() {
+            alert("서버 오류");
+        }
+    });
+}
+
+//가져온 주소 선택시 addr창에 적용
+$(document).ready(function() {
+	$(document).on("change", "input[type=radio]", function() {
+		$("#recipient_name").val("${ssuvo.user_name}")
+		$("#sample2_postcode").val($(this).parent().find("#zip").text())
+		$("#sample2_address").val($(this).parent().find("#main").text())
+		$("#sample2_detailAddress").val($(this).parent().find("#detail").text())
+		$("#sample2_extraAddress").val($(this).parent().find("#ex").text())
+	})
+})
 
 function selectAll(selectAll)  {
 	  const checkboxes 
@@ -156,13 +201,13 @@ function sample2_execDaumPostcode() {
 					</ul>
 				</div>
 				<fieldset id="orderer">
-				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름" value="${uvo.user_name}" required readonly>
+				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름" value="${uvo.user_name}" required readonly disabled>
 				<tr id="addr">
 						<td class="userin" id="addr-in">
-							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="${uvo.zip_code}" placeholder="우편번호" required readonly> 
-							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="${uvo.main_addr}" placeholder="주소" required readonly>
-							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="${uvo.detail_addr}" placeholder="상세주소" required readonly>
-							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="${uvo.ex_addr}" placeholder="참고항목" required readonly>
+							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="${uvo.zip_code}" placeholder="우편번호" required readonly disabled> 
+							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="${uvo.main_addr}" placeholder="주소" required readonly disabled>
+							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="${uvo.detail_addr}" placeholder="상세주소" required readonly disabled>
+							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="${uvo.ex_addr}" placeholder="참고항목" required readonly disabled>
 						</td>
 					</tr>
 					</fieldset>
@@ -176,7 +221,8 @@ function sample2_execDaumPostcode() {
 			<label for="copy-field">주문자와 동일</label>
 			<input type="checkbox" id="copy-field">
 			</a>
-			<button id="import_addr">배송지 가져오기</button>
+			<button type="button" onclick="sub_addr(${ssuvo.user_idx})" id="import_addr">배송지 가져오기</button>
+			<div id="addr_res"></div>
 			<input class="addr-box2" id="recipient_name" type="text" placeholder="수령인 이름"  required>
 			
 			<tr id="addr2">
@@ -295,6 +341,7 @@ function pay_ok(f) {
 		return;
 	}
 }
+
 </script>
 </body>
 </html>

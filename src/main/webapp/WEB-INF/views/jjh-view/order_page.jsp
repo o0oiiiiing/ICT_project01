@@ -14,11 +14,52 @@
 	function buy_chk(order_idx) {
 		location.href="buy_chk?order_idx="+order_idx
 	}
+	
+	function mypage() {
+		location.href="mypage"
+	}
+	function buy_list(){
+		location.href="buy_list"
+	}
+	function product_write(){
+		location.href="product_write"
+	}
+	function order(){
+		location.href="order"
+	}
+	// 미구현
+	function sell_list(){
+		location.href="sell_list"
+	}
+	$(document).ready(function() {
+		$(".menu_btn").hover(
+		    function() {
+		        $(this).css("fontWeight", "bold");
+		        $(this).css("borderBottom", "2px solid black");
+		        
+		    },
+		    function() {
+		        $(this).css("fontWeight", "normal");
+		        $(this).css("border", "none");
+		    }
+		);
+	})
 </script>
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
 	<section id="first">
+		<article id="f_menu">
+			<button class="menu_btn" onclick="mypage()">마이페이지</button>
+			<button class="menu_btn" onclick="order()">주문리스트</button>
+			<button class="menu_btn" onclick="buy_list()">구매리스트</button>
+			<c:choose>
+				<c:when test="${ssuvo.user_type==0}">
+					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
+					<button class="menu_btn" onclick="product_write()">상품 등록</button>
+				</c:when>
+			</c:choose>
+		</article>
 		<article id="f_list">
 			<c:choose>
 				<c:when test="${empty order_list}">
@@ -28,56 +69,55 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="k" items="${order_list}">
-					<form class="c_product">
-						<div class="f_imgs">
-							<div class="f_img">
-								<img src="resources/upload/${k.p_main_img}">
+						<div class="c_product">
+							<div class="f_imgs">
+								<div class="f_img">
+									<img src="resources/upload/${k.p_main_img}">
+								</div>
 							</div>
-						</div>
-						<div class="f_option">
-							<div>
-								<p>Type : ${k.p_type}</p>
-								<p>${k.p_name}</p>
-								<c:choose>
-									<c:when test="${k.p_volume == 'free'}">
-									</c:when>
-									<c:otherwise>
-										<p>${k.p_volume}ml</p>
-									</c:otherwise>
-								</c:choose>
-							</div>
-							<div>
-								<p>가격 : ${k.p_price}, 수량 : ${k.p_count}</p>
-								<p>총 금액 : <fmt:formatNumber value="${k.total_price()}" /></p>
-							</div>
-							<div>
-								<c:choose>
-									<c:when test="${k.p_option == '1'}">
-										<p>
-											일반 포장
-										</p>
-									</c:when>
-									<c:otherwise>
-										<p>
-											선물 포장
-										</p>
-									</c:otherwise>
-								</c:choose>
-							</div>
-							<div>
-								<p>배송지 : ${uvo.main_addr}
+							<div class="f_option">
+								<div>
+									<p>Type : ${k.p_type}</p>
+									<p>${k.p_name}</p>
 									<c:choose>
-										<c:when test="${!empty k.detail_addr}">, ${k.detail_addr}</c:when>
-										<c:otherwise></c:otherwise>
+										<c:when test="${k.p_volume == 'free'}">
+										</c:when>
+										<c:otherwise>
+											<p>${k.p_volume}ml</p>
+										</c:otherwise>
 									</c:choose>
+								</div>
+								<div>
+									<p>가격 : ${k.p_price}, 수량 : ${k.p_count}</p>
+									<p>총 금액 : <fmt:formatNumber value="${k.total_price()}" /></p>
+								</div>
+								<div>
 									<c:choose>
-										<c:when test="${!empty k.ex_addr}">, ${k.ex_addr}</c:when>
-										<c:otherwise></c:otherwise>
+										<c:when test="${k.p_option == '1'}">
+											<p>
+												일반 포장
+											</p>
+										</c:when>
+										<c:otherwise>
+											<p>
+												선물 포장
+											</p>
+										</c:otherwise>
 									</c:choose>
-								</p>
+								</div>
+								<div>
+									<p>배송지 : ${k.main_addr}
+										<c:choose>
+											<c:when test="${!empty k.detail_addr}">, ${k.detail_addr}</c:when>
+											<c:otherwise></c:otherwise>
+										</c:choose>
+										<c:choose>
+											<c:when test="${!empty k.ex_addr}">, ${k.ex_addr}</c:when>
+											<c:otherwise></c:otherwise>
+										</c:choose>
+									</p>
+								</div>
 							</div>
-						</div>
-						<div>
 							<div>
 								<p>주문 일자 : ${k.pay_date.substring(0,10)}</p>
 								<c:choose>
@@ -105,8 +145,7 @@
 								</p>
 							</div>
 						</div>
-					</form>
-			</c:forEach>
+					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</article>

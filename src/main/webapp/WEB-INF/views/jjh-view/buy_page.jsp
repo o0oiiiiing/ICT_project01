@@ -6,15 +6,66 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link href="resources/common-css/reset.css" rel="stylesheet">
-<link href="resources/jjh-css/order_page.css" rel="stylesheet">
+<link href="resources/jjh-css/buy_page.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 서버용 함수 -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".re_insert_btn").click(function() {
+		$(this).parent().parent().parent().next().toggle()
+	});
+	$(".re_chk_btn").click(function() {
+		$(this).parent().parent().parent().next().toggle()
+	});
+
+});
+function mypage() {
+	location.href="mypage"
+}
+function buy_list(){
+	location.href="buy_list"
+}
+function product_write(){
+	location.href="product_write"
+}
+function order(){
+	location.href="order"
+}
+// 미구현
+function sell_list(){
+	location.href="sell_list"
+}
+
+$(document).ready(function() {
+	$(".menu_btn").hover(
+	    function() {
+	        $(this).css("fontWeight", "bold");
+	        $(this).css("borderBottom", "2px solid black");
+	        
+	    },
+	    function() {
+	        $(this).css("fontWeight", "normal");
+	        $(this).css("border", "none");
+	    }
+	);
+})
+</script>
 
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
 	<section id="first">
+		<article id="f_menu">
+			<button class="menu_btn" onclick="mypage()">마이페이지</button>
+			<button class="menu_btn" onclick="order()">주문리스트</button>
+			<button class="menu_btn" onclick="buy_list()">구매리스트</button>
+			<c:choose>
+				<c:when test="${ssuvo.user_type==0}">
+					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
+					<button class="menu_btn" onclick="product_write()">상품 등록</button>
+				</c:when>
+			</c:choose>
+		</article>
 		<article id="f_list">
 			<c:choose>
 				<c:when test="${empty buy_list}">
@@ -61,7 +112,7 @@
 								</c:choose>
 							</div>
 							<div>
-								<p>배송지 : ${uvo.main_addr}
+								<p>배송지 : ${k.main_addr}
 									<c:choose>
 										<c:when test="${!empty k.detail_addr}">, ${k.detail_addr}</c:when>
 										<c:otherwise></c:otherwise>
@@ -74,22 +125,20 @@
 							</div>
 						</div>
 						<div>
-							<div>
-								<p>배송 완료 일자 : ${k.delivery_end.substring(0, 10)}</p>
-								<c:choose>
-									<c:when test="${empty k.review_list}">
-										<p><button type="button">리뷰 작성하기</button></p>
-									</c:when>
-									<c:otherwise>
-										<p><button type="button">내가 작성한 리뷰 보기</button></p>
-									</c:otherwise>
-								</c:choose>
-							</div>
+							<p>배송 완료 일자 : ${k.delivery_end.substring(0, 10)}</p>
+							<c:choose>
+								<c:when test="${empty k.review_list}">
+									<p><button type="button" class="re_insert_btn">리뷰 작성하기</button></p>
+								</c:when>
+								<c:otherwise>
+									<p><button type="button" class="re_chk_btn">내가 작성한 리뷰 보기</button></p>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					<c:choose>
 						<c:when test="${empty k.review_list}">
-							<form action="review_insert" method="post" enctype="multipart/form-data">
+							<form action="review_insert" method="post" enctype="multipart/form-data" class="re_insert">
 								<label for="user_id">유저명 : </label>
 								<input type="text" name="user_id" id="user_id" value="${ssuvo.user_id}" disabled>
 								<input type="hidden" name="user_id" value="${ssuvo.user_id}">
@@ -111,11 +160,12 @@
 								<textarea rows="5" cols="30" name="review_content"></textarea>
 								<br>
 								<input type="hidden" name="p_idx" value="${k.p_idx}">
+								<input type="hidden" name="order_idx" value="${k.order_idx}">
 								<input type="submit" value="리뷰 작성하기">
 							</form>
 						</c:when>
 						<c:otherwise>
-							<div class="rev1">
+							<div class="re_chk">
 								<p>${k.review_list[0].score}</p>
 								<p>${k.review_list[0].review_title}</p>
 								<p>${k.review_list[0].regdate}</p>

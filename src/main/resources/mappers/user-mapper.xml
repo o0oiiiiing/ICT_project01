@@ -106,7 +106,7 @@
 		<result column="main_addr" property="main_addr"/>
 		<result column="detail_addr" property="detail_addr"/>
 		<result column="ex_addr" property="ex_addr"/>
-		<collection column="p_idx" 
+		<collection column="order_idx" 
 			property="review_list" 
 			javaType="java.util.List" 
 			ofType="revo" 
@@ -119,13 +119,13 @@
     
     <!-- 상품별 리뷰 보기 -->
     <select id="review_list" parameterType="String" resultType="revo">
-		select * from review_table where p_idx = #{p_idx}
+		select * from review_table where order_idx = #{order_idx}
 	</select>
 	
     <!-- 리뷰 추가하기 -->
 	<insert id="review_insert" parameterType="revo">
-	    INSERT INTO review_table (p_idx, user_idx, user_id, score, review_img, review_title, review_content, regdate) 
-	    VALUES (#{p_idx},#{user_idx},#{user_id},#{score}, #{review_img},#{review_title},#{review_content},sysdate())
+	    INSERT INTO review_table (p_idx, user_idx, order_idx, user_id, score, review_img, review_title, review_content, regdate) 
+	    VALUES (#{p_idx},#{user_idx},#{order_idx},#{user_id},#{score}, #{review_img},#{review_title},#{review_content},sysdate())
 	</insert>
 </mapper>
 

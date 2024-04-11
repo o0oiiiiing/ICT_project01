@@ -1,7 +1,15 @@
 package com.ict.forest.common;
 
 public class SessionUser {
-	private String user_idx, user_id, user_type, login;
+	private String user_idx, user_id, user_type, login, user_name;
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
 	public String getUser_idx() {
 		return user_idx;
