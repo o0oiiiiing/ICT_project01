@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.forest.common.Paging_pdh;
@@ -29,18 +31,24 @@ public class SearchController {
 	@Autowired
 	private Paging_pdh paging;
 	
-	@PostMapping("search")
-	public ModelAndView getSearchList(KeywordVO kvo, TypeVO tvo, BrandVO bvo, VolumeVO vvo, HttpServletRequest request) {
+	@RequestMapping("search")
+	public ModelAndView getSearchList(HttpSession session, KeywordVO kvo, TypeVO tvo, BrandVO bvo, VolumeVO vvo, HttpServletRequest request) {
 		try {
 			ModelAndView mv = new ModelAndView("pdh-view/search_products");
-			
-			Map<String, String[]> map = new HashMap<String, String[]>();
-			map.put("p_name", kvo.getKeyword());
-			map.put("p_type", tvo.getProduct());
-			map.put("p_volume", vvo.getCapacity());
-			map.put("p_brand", bvo.getBrand());
 			MapVO MapVO = new MapVO();
-			MapVO.setSearch_map(map);
+			if (session.getAttribute("search_condition") == null) {
+				Map<String, String[]> map = new HashMap<String, String[]>();
+				map.put("p_name", kvo.getP_name());
+				map.put("p_type", tvo.getP_type());
+				map.put("p_volume", vvo.getP_volume());
+				map.put("p_brand", bvo.getP_brand());
+				MapVO.setSearch_map(map);
+				session.setAttribute("search_condition", map);
+				System.out.println(session.getAttribute("search_condition"));
+			}else {
+				Map<String,String[]> search_condition = (HashMap<String, String[]>) session.getAttribute("search_condition");
+				MapVO.setSearch_map(search_condition);
+			}
 			
 			
 			// ∆‰¿Ã¬°
@@ -83,11 +91,10 @@ public class SearchController {
 			MapVO.setLimit(paging.getNumPerPage());
 			MapVO.setOffset(paging.getOffset());
 			
-			List<ProductsVO> products_list = searchService.getSearchList(MapVO);
-			if (products_list != null) {
-				mv.addObject("products_list", products_list);
+			List<ProductsVO> search_list = searchService.getSearchList(MapVO);
+			if (search_list != null) {
+				mv.addObject("search_list", search_list);
 				mv.addObject("paging", paging);
-				request.setAttribute("map", map);
 				return mv;
 			}
 		} catch (Exception e) {

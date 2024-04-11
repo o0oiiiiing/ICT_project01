@@ -2,7 +2,7 @@ package com.ict.forest.pdh.dao;
 
 public class KeywordVO {
 	private String type = "p_name";
-	private String[] keyword;
+	private String[] p_name;
 	
 	public String getType() {
 		return type;
@@ -10,11 +10,12 @@ public class KeywordVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String[] getKeyword() {
-		return keyword;
+	public String[] getP_name() {
+		return p_name;
 	}
-	public void setKeyword(String[] keyword) {
-		this.keyword = keyword;
+	public void setP_name(String[] p_name) {
+		this.p_name = p_name;
 	}
+
 
 }

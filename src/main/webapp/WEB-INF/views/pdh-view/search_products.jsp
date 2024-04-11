@@ -1,3 +1,4 @@
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -37,104 +38,13 @@
 <link rel="stylesheet" href="resources/pdh-css/products.css">
 <link rel="stylesheet" href="resources/pdh-css/scroll-to-top-button.css">
 <link rel="stylesheet" href="resources/pdh-css/paging.css">
-<script type="text/javascript">
-console.log("확인")
-let k = ${map};
-console.log(k)
-console.log(${paging.beginBlock - paging.pagePerBlock})
-/* $(document).ready(function() {
-	$("#before").click(function() {
-		let form = $('<form>');
-		let map = ${map};
-		let cpage = ${paging.beginBlock - paging.pagePerBlock};
-		let ctag = $('<input>');
-		ctag.attr('type', 'hidden');
-		ctag.attr('name', "cPage");
-		ctag.attr('value', cpage);
-		form.append(ctag)
-		form.attr('action', 'search');
-		form.attr('method', 'post'); 
-		$.each(map, function (k,v) {
-			$.each(v, function(index, value) {
-	       	let input = $('<input>');
-	       	input.attr('type', 'hidden');
-	        input.attr('name', k);
-	        input.attr('value', value);
-	        form.append(input)
-			})
-		})
-		$('body').append(form);
-		form.submit();
-	})
-	
-	$("#after").click(function() {
-		let form = $('<form>');
-		let map = ${map}
-		let cpage = ${paging.beginBlock + paging.pagePerBlock};
-		let ctag = $('<input>');
-		ctag.attr('type', 'hidden');
-		ctag.attr('name', "cPage");
-		ctag.attr('value', cpage);
-		form.append(ctag)
-		form.attr('action', 'search');
-		form.attr('method', 'post'); 
-		$.each(map, function (k,v) {
-			$.each(v, function(index, value) {
-	       	let input = $('<input>');
-	       	input.attr('type', 'hidden');
-	        input.attr('name', k);
-	        input.attr('value', value);
-	        form.append(input)
-			})
-		})
-		$('body').append(form);
-		form.submit();
-	})
-	
-	$(".page").click(function() {
-		console.log("tset")
-		let form = $('<form>');
-		let map = ${map}
-		let cpage = $(this).attr("name");
-		let ctag = $('<input>');
-		ctag.attr('type', 'hidden');
-		ctag.attr('name', "cPage");
-		ctag.attr('value', cpage);
-		form.append(ctag)
-		form.attr('action', 'search');
-		form.attr('method', 'post'); 
-		$.each(map, function (k,v) {
-			$.each(v, function(index, value) {
-	       	let input = $('<input>');
-	       	input.attr('type', 'hidden');
-	        input.attr('name', k);
-	        input.attr('value', value);
-	        form.append(input)
-			})
-		})
-		$('body').append(form);
-		form.submit();
-	})
-}) */
-</script>
 </head>
 <body>
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-
 	<!-- 상품 리스트 -->
 	<main>
-		<c:choose>
-			<c:when test="${p_type == 'perfume'}">
-				<div class="product-category judson-bold">perfume</div>
-			</c:when>
-			<c:when test="${p_type == 'hand_body'}">
-				<div class="product-category judson-bold">hand&body</div>
-			</c:when>
-			<c:otherwise>
-					<div class="product-category judson-bold">home fragrance</div>
-			</c:otherwise>
-		</c:choose>
+		<div class="product-category judson-bold">search results</div>
 		
 		<div class="select-box">
 			<select class="select" id="sort-option">
@@ -146,11 +56,11 @@ console.log(${paging.beginBlock - paging.pagePerBlock})
 		
 		<ul class="product-wrapper">
 			<c:choose>
-				<c:when test="${empty products_list}">
+				<c:when test="${empty search_list}">
 					<p>상품이 존재하지 않습니다.</p>
 				</c:when>
 				<c:when test="${p_type == 'perfume'}">
-					<c:forEach var="k" items="${products_list}">
+					<c:forEach var="k" items="${search_list}">
 							<li class="product">
 								<a class="product-link" href="detailproduct?p_idx=${k.p_idx}">
 								<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
@@ -165,7 +75,7 @@ console.log(${paging.beginBlock - paging.pagePerBlock})
 						</c:forEach>
 				</c:when>
 				<c:otherwise>
-						<c:forEach var="k" items="${products_list}">
+						<c:forEach var="k" items="${search_list}">
 								<li class="product">
 									<a class="product-link" href="detailproduct?p_idx=${k.p_idx}">
 									<img class="product-thumbnail" src="resources/upload/${k.p_main_img}" alt="${k.p_name}" />
@@ -191,7 +101,7 @@ console.log(${paging.beginBlock - paging.pagePerBlock})
 			</c:when>
 			<c:otherwise>
 				<li>
-					<span class="able" id="before">이전</span>
+					<a class="able" href="search?cPage=${paging.beginBlock - paging.pagePerBlock}">이전</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -204,7 +114,7 @@ console.log(${paging.beginBlock - paging.pagePerBlock})
 				</c:when>
 				<c:otherwise>
 					<li>
-						<span class="other_page page" name="${k}">${k}</span>
+						<a class="other_page" href="search?cPage=${k}">${k}</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
@@ -217,7 +127,7 @@ console.log(${paging.beginBlock - paging.pagePerBlock})
 			</c:when>
 			<c:otherwise>
 				<li>
-					<span class="able" id="after">다음</span>
+					<a class="able" href="search?cPage=${paging.beginBlock + paging.pagePerBlock}">다음</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -248,6 +158,19 @@ console.log(${paging.beginBlock - paging.pagePerBlock})
 				behavior: 'smooth'
 			});
 		})
+		
+		let option2 = "${option}"
+		if (option2 != "") {
+			if (option2 == 'p_name') {
+				$("#p_name").prop("selected", true)
+			} else if (option2 == 'p_price') {
+				$("#p_price").prop("selected", true)
+			} else if (option2 == 'buy_rate') {
+				$("#buy_rate").prop("selected", true)
+			} else {
+				$("#p_name").prop("selected", true)
+			}
+		}
 	</script>
 </body>
 </html>

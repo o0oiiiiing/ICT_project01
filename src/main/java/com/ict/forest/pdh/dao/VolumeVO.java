@@ -2,7 +2,7 @@ package com.ict.forest.pdh.dao;
 
 public class VolumeVO {
 	private String type = "p_volume";
-	private String[] capacity;
+	private String[] p_volume;
 	
 	public String getType() {
 		return type;
@@ -10,15 +10,11 @@ public class VolumeVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String[] getCapacity() {
-		return capacity;
+	public String[] getP_volume() {
+		return p_volume;
 	}
-	public void setCapacity(String[] capacity) {
-		this.capacity = capacity;
+	public void setP_volume(String[] p_volume) {
+		this.p_volume = p_volume;
 	}
-	
-	
-
-
 
 }

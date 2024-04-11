@@ -2,7 +2,7 @@ package com.ict.forest.pdh.dao;
 
 public class TypeVO {
 	private String type = "p_type";
-	private String[] product;
+	private String[] p_type;
 	
 	public String getType() {
 		return type;
@@ -10,11 +10,12 @@ public class TypeVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String[] getProduct() {
-		return product;
+	public String[] getP_type() {
+		return p_type;
 	}
-	public void setProduct(String[] product) {
-		this.product = product;
+	public void setP_type(String[] p_type) {
+		this.p_type = p_type;
 	}
+
 
 }
