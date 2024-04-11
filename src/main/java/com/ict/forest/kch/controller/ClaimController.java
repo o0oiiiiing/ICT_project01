@@ -37,8 +37,7 @@ public class ClaimController {
 	
 	@RequestMapping("claim")
 	public ModelAndView claimList(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("ex_page/claim");
-		System.out.println("1111111111111111111111111111111111");
+		ModelAndView mv = new ModelAndView("kch-view/claim");
 		int count = claimService.getTotalCount();
 		System.out.println("Ä«¿îÆ® : "+count);
 		claimPaging.setTotalRecord(count);
@@ -89,7 +88,7 @@ public class ClaimController {
 	
 	@GetMapping("claim_wr")
 	public ModelAndView claim_wr(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("ex_page/claim_write");
+		ModelAndView mv = new ModelAndView("kch-view/claim_write");
 		HttpSession session = request.getSession();
 		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		mv.addObject("ssuvo", ssuvo);
@@ -126,7 +125,7 @@ public class ClaimController {
 	@PostMapping("claim_delete")
 	public ModelAndView getBbsDelete(@ModelAttribute("cPage")String cPage,
 			@ModelAttribute("claim_idx")String claim_idx) {
-		return new ModelAndView("ex_page/claimdelete");
+		return new ModelAndView("kch-view/claimdelete");
 	}
 	
 	@PostMapping("claim_delete_ok")
@@ -159,7 +158,7 @@ public class ClaimController {
 	@GetMapping("claim_detail")
 	public ModelAndView getBbsDetail(String claim_idx, String cPage) {
 		try {
-			ModelAndView mv = new ModelAndView("ex_page/claim_detail");
+			ModelAndView mv = new ModelAndView("kch-view/claim_detail");
 			
 			
 			ClaimVO claimvo = claimService.claimDetail(claim_idx);
@@ -173,7 +172,7 @@ public class ClaimController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return new ModelAndView("ex_page/claim_detail");
+		return new ModelAndView("kch-view/claim_detail");
 	}
 	
 	

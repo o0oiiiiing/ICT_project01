@@ -16,6 +16,9 @@
 			if (${ssuvo.login != "true"}) {
 				alert("로그인 후 이용해주세요.")
 				return
+			}else if ($(".f_imgs").find("input:checked").length==0) {
+				alert("구매할 상품을 선택해주세요.")
+				return
 			}else {
 				let form = $('<form>');
 				form.attr('action', 'pay'); // 폼의 action을 설정합니다.

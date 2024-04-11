@@ -146,11 +146,12 @@
 			<div id="sub_imgs">
 				<c:choose>
 					<c:when test="${empty pivo_list}">
-						사진이 없습니다.
+						<div class="sub_img"><img src="resources/upload/${pvo.p_main_img}" class="sub_imgs"></div>
 					</c:when>
 					<c:otherwise>
+						<div class="sub_img"><img src="resources/upload/${pvo.p_main_img}" class="sub_imgs"></div>
 						<c:forEach var="k" items="${pivo_list}">
-							<div class="sub_img"><img src="resources/upload/${k.p_img}"></div>
+							<div class="sub_img"><img src="resources/upload/${k.p_img}" class="sub_imgs"></div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
@@ -243,7 +244,14 @@
 						<li>사용법 : 주변이 틔인 장소에 올려두세요</li>
 					</c:when>
 				</c:choose>
-				<li>총 평점 : 4.0</li>
+				<c:choose>
+					<c:when test="${empty review_list}">
+						<li>작성된 리뷰 통계가 없습니다.</li>	
+					</c:when>
+					<c:otherwise>
+						<li>총 평점 : ${score_avg}점</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</article>
 	</article>
@@ -284,11 +292,32 @@
 			<c:otherwise>
 				<c:forEach begin="0" end="3" var="k" items="${review_list}">
 				<div class="review_box">
+					<c:choose>
+						<c:when test="${k.review_img == ''}">
+							<div>등록한 리뷰 이미지가 없습니다.</div>														
+						</c:when>
+						<c:otherwise>
+							<div><img src="resources/review/${k.review_img}"></div>							
+						</c:otherwise>
+					</c:choose>
 					<div>
-						<img src="resources/review/${k.review_img}">
-					</div>
-					<div>
-						<p>★★★★☆${k.score}</p>
+						<c:choose>
+							<c:when test="${k.score == 5}">
+								<p>★★★★★</p>
+							</c:when>
+							<c:when test="${k.score == 4}">
+								<p>★★★★☆</p>
+							</c:when>
+							<c:when test="${k.score == 3}">
+								<p>★★★☆☆</p>
+							</c:when>
+							<c:when test="${k.score == 2}">
+								<p>★★☆☆☆</p>
+							</c:when>
+							<c:when test="${k.score == 1}">
+								<p>★☆☆☆☆</p>
+							</c:when>
+						</c:choose>
 						<p>${k.review_title}</p>
 						<p>${k.review_content}</p>
 					</div>
@@ -401,8 +430,31 @@
 </section>
 <section id="eighth">
 	<article id="re_info">
-		<p>총 리 뷰 : 4.0</p>
-		<p>★★★★☆</p>
+	<c:choose>
+		<c:when test="${empty review_list}">
+				<p>리뷰가 없습니다.</p>
+		</c:when>
+		<c:otherwise>
+			<p>총 리 뷰 : ${score_avg}점</p>
+				<c:choose>
+					<c:when test="${score_avg >= 4.5 && score_avg <= 5.0}">
+						<p>★★★★★</p>
+					</c:when>
+					<c:when test="${score_avg >= 3.5 && score_avg < 4.5}">
+						<p>★★★★☆</p>
+					</c:when>
+					<c:when test="${score_avg >= 2.5 && score_avg < 3.5}">
+						<p>★★★☆☆</p>
+					</c:when>
+					<c:when test="${score_avg >= 1.5 && score_avg < 2.5}">
+						<p>★★☆☆☆</p>
+					</c:when>
+					<c:when test="${score_avg >= 0 && score_avg < 1.5}">
+						<p>★☆☆☆☆</p>
+					</c:when>
+				</c:choose>
+		</c:otherwise>
+	</c:choose>
 	</article>
 	<article id="re_btn">
 		<button>최신순</button>
@@ -416,10 +468,33 @@
 			<c:otherwise>
 				<c:forEach var="k" items="${review_list}">
 					<div class="rev1">
-						<p>${k.score}★★★★☆</p>
+						<c:choose>
+							<c:when test="${k.score == 5}">
+								<p>★★★★★</p>
+							</c:when>
+							<c:when test="${k.score == 4}">
+								<p>★★★★☆</p>
+							</c:when>
+							<c:when test="${k.score == 3}">
+								<p>★★★☆☆</p>
+							</c:when>
+							<c:when test="${k.score == 2}">
+								<p>★★☆☆☆</p>
+							</c:when>
+							<c:when test="${k.score == 1}">
+								<p>★☆☆☆☆</p>
+							</c:when>
+						</c:choose>
 						<p>${k.review_title}</p>
 						<p>${k.regdate.substring(0,10)}</p>
-						<div><img src="resources/review/${k.review_img}"></div>
+						<c:choose>
+							<c:when test="${k.review_img == ''}">
+								<div>등록한 리뷰 이미지가 없습니다.</div>														
+							</c:when>
+							<c:otherwise>
+								<div><img src="resources/review/${k.review_img}"></div>							
+							</c:otherwise>
+						</c:choose>
 						<p>
 							${k.review_content}
 						</p>
@@ -583,14 +658,16 @@
 		});
 		
 		/* 이미지 변경 이벤트 */
-		$(".sub_img:nth-of-type(1)").click(function() {
-			let k = $(".sub_img:nth-of-type(1) img").attr("src");
-			$("#t1").fadeOut(0, function() {
+		$(".sub_imgs").click(function() {
+			let k = $(this).attr("src");
+			$("#t1").stop(true, true).fadeOut(0, function() {
 				$("#t1").attr("src", k)
 				$("#t1").fadeIn(1000)
 			})
 		});
-		$(".sub_img:nth-of-type(2)").click(function() {
+/* 		
+ 
+ 		$(".sub_img:nth-of-type(2)").click(function() {
 			let k = $(".sub_img:nth-of-type(2) img").attr("src");
 			$("#t1").fadeOut(0, function() {
 				$("#t1").attr("src", k)
@@ -603,7 +680,8 @@
 				$("#t1").attr("src", k)
 				$("#t1").fadeIn(1000)
 			})
-		});
+		}); 
+		*/
 </script>
 </body>
 </html>

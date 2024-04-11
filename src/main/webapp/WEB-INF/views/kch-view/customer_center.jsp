@@ -128,21 +128,8 @@
 </section>
 </div>	
 <script type="text/javascript">
-	$(".m_div").click(
-			
-			function() {
-				console.log($(this).next())
-				$(this).next().fadeToggle(
-						200, function() {$(this).css("display", "block")
-					})
-				
-				}
-			
-			)
-	$(".m_reply").click(function() {
-		$(this).fadeOut(200, function() {
-			$(this).css("display", "none")
-		})
+	$(".m_div").click(function() {
+				$(this).next().toggle();
 	})
 </script>
 </body>

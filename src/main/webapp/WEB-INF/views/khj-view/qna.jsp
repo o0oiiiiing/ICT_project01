@@ -19,7 +19,9 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<div id="s_menu">
-		<a>QnA</a> <a href="faq_list">FaQ</a> <a href="claim_list">Claim</a>
+		<a>QnA</a>
+		<a href="faq">FaQ</a>
+		<a href="claim">Claim</a>
 	</div>
 	<div id="dis_but">
 		<div id="s_display">
@@ -122,19 +124,9 @@
 	</div>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		
-		$(".qna_head").click(
-				function() {
-					$(this).parent().find("article:nth-of-type(2)").fadeOut(
-							200, function() {$(this).css("display", "block");
-						});
-			});
-					
-		$(".close").click(function() {
-			$(this).parent().parent().parent().fadeOut(200, function() {
-				$(this).css("display", "none");
-			});
-		});
+		$(".qna_head").click(function() {
+					$(this).parent().find("article:nth-of-type(2)").toggle();		
+			});		
 	});
 	</script>
 	<script type="text/javascript">

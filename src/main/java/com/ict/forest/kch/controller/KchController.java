@@ -34,6 +34,13 @@ public class KchController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	// 고객센터 faq 이동 이동
+	@GetMapping("faq")
+	public ModelAndView help() {
+		ModelAndView mv = new ModelAndView("kch-view/customer_center");
+		return mv;
+	}
+	
 	// 회원정보수정하기 창이동
 	@GetMapping("update")
 	public ModelAndView getInfoUpdateOK(HttpServletRequest request) {

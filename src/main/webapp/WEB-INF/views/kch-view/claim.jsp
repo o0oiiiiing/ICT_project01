@@ -18,16 +18,23 @@
 <link rel="stylesheet" href="resources/kch-css/claim.css">
 <style type="text/css">
 #claim_form table {
-	width:580px;
+	width:850px;
 	margin:0 auto;
 	margin-top:20px;
+	margin-bottom : 20px;
+	padding : 5px;
 	border: 1px solid black;
+	border-radius : 10px;
 	border-collapse: collapse;
-	font-size: 14px;
+	font-size: 18px;
+}
+.claim_title th{
+	font-size: 25px;
+	padding: 5px;
+	padding-bottom: 10px;
 }
 
-
-#claim_form table th, #claim table th, #claim table td {
+#claim_form table tr, #claim table th, #claim table td {
 	text-align: center;
 	border: 1px solid black;
 	padding: 4px 10px;
@@ -65,20 +72,29 @@ table tfoot ol.paging li a:hover {
 
 .now {
 	padding: 3px 7px;
-	border: 1px solid #ff4aa5;
+	border: 1px solid black;
 	background: #ff4aa5;
 	color: white;
 	font-weight: bold;
 }
 
-.claim_title{
-	font-size: 15px;
+	.no {width:15%; }
+	.writer {width:20%; }
+	.subject {width:25%;}
+	.reg {width:25%; }
+	.ree {width:15%; }
+	
+.content_css{
+	height: 15px;
+	font-size: 20px;
+	margin :10px;
+	padding-bottom: 10px;
+}	
+
+tbody{
+	height: 200px;
 }
-	.no {width:15%}
-	.writer {width:20%}
-	.subject {width:25%}
-	.reg {width:25%}
-	.ree {width:15%}
+
 </style>
 </head>
 <body>
@@ -99,7 +115,7 @@ table tfoot ol.paging li a:hover {
 					<th class="ree">답변상태</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="content_css">
 				<c:choose>
 					<c:when test="${empty claimlist }">
 						<tr><td colspan="4"><h3>게시물이 존재하지 않습니다</h3> </td></tr>
@@ -110,10 +126,17 @@ table tfoot ol.paging li a:hover {
 								<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</td>
 								<td>${k.user_id}</td>
 								<td>
-								   <a href="claim_detail?claim_idx=${k.user_idx}&cPage=${paging.nowPage}">${k.claim_subject}</a>
+								   <a href="claim_detail?claim_idx=${k.claim_idx}&cPage=${paging.nowPage}">${k.claim_subject}</a>
 								</td>
 								<td>${k.claim_created_date.substring(0,10)}</td>
-								<td>${k.claim_created_date.substring(0,10)}</td>
+								<c:choose>
+								<c:when test="${k.claim_res == 0}">
+								<td style="color: blue;">답변대기</td>
+								</c:when>
+								<c:otherwise>
+									<td style="color: red;">답변완료</td>
+								</c:otherwise>
+								</c:choose>							
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -154,18 +177,16 @@ table tfoot ol.paging li a:hover {
 						    </c:choose>
 						</ol>
 					</td>
-					<td>
-						<input type="button" value="글쓰기" onclick="claim_wr()" />
-					</td>
+				<c:choose>
+					<c:when test="${ssuvo.user_type != null}">	
+						<td>
+							<input type="button" value="글쓰기" onclick="claim_wr()" />
+						</td>
+					</c:when>
+				</c:choose>
 				</tr>
 			</tfoot>
 		</table>
-	</div>
-	<div>
-	<span id="claim_con" style="cursor: pointer;" onclick="if(plain.style.display=='none')
-	{plain.style.display=''; claim_con.innerText = '${k.claim_subject}';} 
-	else {plain.style.display = 'none'; claim_con.innerText = '${k.claim_subject}';}">
-	뭐야양 + ${k.claim_subject}</span>
 	</div>
 </body>
 </html>

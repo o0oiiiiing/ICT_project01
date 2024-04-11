@@ -1,6 +1,7 @@
 package com.ict.forest.jjh.controller;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collector;
@@ -95,6 +96,15 @@ public class ProductController {
 		ProductVO pvo = productService.productdetail(p_idx);
 		List<ProductSubImgVO> pivo_list = productService.productSubImgList(p_idx);
 		List<ReviewVO> review_list = productService.productReviewList(p_idx);
+		if (review_list.size() > 0) {
+			double score_avg = 0;
+			for (ReviewVO k : review_list) {
+				score_avg = score_avg + Double.parseDouble(k.getScore());
+			}
+			score_avg =  (int)((score_avg/review_list.size())*10)/10.0;
+			mv.addObject("score_avg", score_avg);
+					
+		}
 		System.out.println(review_list);
 		System.out.println(p_idx);
 		for (ReviewVO k : review_list) {

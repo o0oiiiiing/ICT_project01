@@ -138,22 +138,6 @@ body {
 	text-align: center;
 }
 
-/* 리뷰 화면 */
-.re_chk {
-	display: none;
-	display: flex;
-}
-.re_chk > div:nth-of-type(1){
-	width: 
-}
-.re_chk > div:nth-of-type(2){
-	
-}
-
-.re_insert {
-	display: none;
-}
-
 /* 위의 이동 버튼 */
 #f_menu {
 	width: 90%;
@@ -189,9 +173,4 @@ body {
 	font-family: 'NanumSquare';
 	font-size: 10px;
 	color: #1E1E1E;
-}
-
-.re_insert_btn, .re_chk_btn {
-	font-family: 'NanumSquare';
-	font-size: 15px;
 }

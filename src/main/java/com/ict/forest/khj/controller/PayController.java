@@ -1,52 +1,27 @@
 package com.ict.forest.khj.controller;
-
-
-
-
-
-
-
-
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-// khj 결제하기
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.ict.forest.common.SessionUser;
 import com.ict.forest.jjh.dao.BuyVO;
 import com.ict.forest.jjh.dao.ProductVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.khj.dao.PayVO;
 import com.ict.forest.khj.service.PayService;
+
 @Controller
 public class PayController {
-	// 주형씨거 BuyVO에 담긴 배열 변수들
-	//private String[] p_idx, user_idx, p_name, p_type, p_brand, p_volume, p_price, p_count, p_option;
-	
-	
-	
+
 	@Autowired
 	private PayService payService;
-	
-	// 고객센터 faq 이동 이동
-	@GetMapping("faq")
-	public ModelAndView help() {
-		ModelAndView mv = new ModelAndView("khj-view/customer_center");
-		return mv;
-	}
 	
 	// 상품 결제페이지 이동
 	@RequestMapping("pay")
@@ -91,7 +66,7 @@ public class PayController {
 	
 	@PostMapping("pay_ok")
 	public ModelAndView getPayOK(HttpSession session, BuyVO bvo, String minus_pay_point) {
-		ModelAndView mv = new ModelAndView("pdh-view/home");
+		ModelAndView mv = new ModelAndView("redirect:order");
 		
 		
 		for (int i = 0; i < bvo.getP_idx().length; i++) {

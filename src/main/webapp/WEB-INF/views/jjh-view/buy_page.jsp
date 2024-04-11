@@ -137,7 +137,7 @@ $(document).ready(function() {
 					</div>
 					<c:choose>
 						<c:when test="${empty k.review_list}">
-							<form action="review_insert" method="post" enctype="multipart/form-data" class="re_insert">
+							<form action="review_insert" method="post" enctype="multipart/form-data" class="re_insert" style="display: none;">
 								<label for="user_id">유저명 : </label>
 								<input type="text" name="user_id" id="user_id" value="${ssuvo.user_id}" disabled>
 								<input type="hidden" name="user_id" value="${ssuvo.user_id}">
@@ -164,8 +164,15 @@ $(document).ready(function() {
 							</form>
 						</c:when>
 						<c:otherwise>
-							<div class="re_chk">
-								<div><img src="resources/review/${k.review_list[0].review_img}"></div>
+							<div class="re_chk" style="display: none;">
+								<c:choose>
+									<c:when test="${k.review_list[0].review_img == ''}">
+										<div>리뷰에 존재하는 이미지가 없습니다.</div>
+									</c:when>
+									<c:otherwise>
+										<div><img src="resources/review/${k.review_list[0].review_img}"></div>										
+									</c:otherwise>
+								</c:choose>
 								<div>
 									<p>평점 : ${k.review_list[0].score}점</p>
 									<p>작성일 : ${k.review_list[0].regdate.substring(0, 10)}</p>
