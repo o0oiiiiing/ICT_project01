@@ -65,5 +65,6 @@ public class ReviewVO {
 	public void setReview_p_img(MultipartFile review_p_img) {
 		this.review_p_img = review_p_img;
 	}
+
 	
 }

@@ -217,13 +217,14 @@ public class UserController {
 		return mv;
 		
 	}
-	@RequestMapping("review_insert")
+	@PostMapping("review_insert")
 	public ModelAndView review_insert(HttpSession session, HttpServletRequest request, ReviewVO revo) {
 		System.out.println("1");
 		try {
 			ModelAndView mv = new ModelAndView("redirect:buy_list");
 			String path = request.getSession().getServletContext().getRealPath("resources/review");
 			MultipartFile file = revo.getReview_p_img();
+			System.out.println(revo.getUser_id());
 			SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 			if (file.isEmpty()) {
 				revo.setReview_img("");
@@ -238,7 +239,7 @@ public class UserController {
 				File out = new File(path, f_name);
 				FileCopyUtils.copy(in, out);
 				revo.setUser_idx(ssuvo.getUser_idx());
-				int res_p = userService.review_insert(revo);
+				int res = userService.review_insert(revo);
 				System.out.println("1");
 			}
 			return mv;

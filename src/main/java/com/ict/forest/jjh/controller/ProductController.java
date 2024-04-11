@@ -95,6 +95,11 @@ public class ProductController {
 		ProductVO pvo = productService.productdetail(p_idx);
 		List<ProductSubImgVO> pivo_list = productService.productSubImgList(p_idx);
 		List<ReviewVO> review_list = productService.productReviewList(p_idx);
+		System.out.println(review_list);
+		System.out.println(p_idx);
+		for (ReviewVO k : review_list) {
+			System.out.println("score: "+k.getScore());
+		}
 		List<ProductVO> recent = (List<ProductVO>) session.getAttribute("recent");
 		
 		// 최근 본 상품 처리

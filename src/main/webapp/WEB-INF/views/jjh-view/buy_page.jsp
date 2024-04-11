@@ -89,9 +89,10 @@
 					</div>
 					<c:choose>
 						<c:when test="${empty k.review_list}">
-							<form action="review_insert" method="get">
+							<form action="review_insert" method="post" enctype="multipart/form-data">
 								<label for="user_id">유저명 : </label>
 								<input type="text" name="user_id" id="user_id" value="${ssuvo.user_id}" disabled>
+								<input type="hidden" name="user_id" value="${ssuvo.user_id}">
 								<br>
 								<label>평점 : </label>
 								<input type="radio" name="score" value="1">1점
