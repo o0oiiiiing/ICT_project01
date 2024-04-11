@@ -96,12 +96,13 @@
 		// 로그인 페이지 버튼
  		$("#login_btn").on("click", function() {
 			if ($(this).data("clicked")) {
-
 				$("#login_page").css("display", "none"); 
+				$(".login-overlay").css("display", "none"); 
 				$(this).data("clicked", false); 
 			} else {
 				$(this).data("clicked", true);
 				$("#login_page").css("display", "block");
+				$(".login-overlay").css("display", "block");
 			}
 		});
 
@@ -128,6 +129,16 @@
 			alert("아이디 또는 비밀번호가 틀립니다.");
 		}
 		
+		// css
+		$("#cart_ajax").css("font-family", "NanumSquareLight");
+		$("#cart_ajax").css("font-size", "15px");
+		$("#cart_ajax").css("position", "relative");
+		$("#cart_ajax").css("top", "-7px");
+		
+		$("#login-state").css("font-family", "NanumSquareLight");
+		$("#login-state").css("font-size", "13px");
+		$("#login-state").css("position", "relative");
+		$("#login-state").css("top", "-7px");
 		
 	});
 </script>
@@ -150,6 +161,7 @@ function products_list_homeFragrance() {
 		<%@ include file="/WEB-INF/views/common/search.jsp"%>
 	</div>
 	<div class="overlay"></div>
+	<div class="login-overlay"></div>
 	<header>
 		<h1 class="title judson-bold">
 			<a href="home" class="a_tag">forest</a>
@@ -158,18 +170,22 @@ function products_list_homeFragrance() {
 		<div class="material-symbols-outlined icons">
 			<span><a class="icon a_tag" id="search_btn">Search</a></span>
 			<span><a href="faq" class="icon a_tag">headset_mic</a></span>
-			<span><a href="cart" class="icon a_tag">Shopping_Cart<span id="cart_ajax">(${cart.size()})</span></a></span>
+			<span>
+				<a href="cart" class="icon a_tag">Shopping_Cart
+					<span id="cart_ajax">(${cart.size()})</span>
+				</a>
+			</span>
 			<span><a href="wish" class="icon a_tag" onclick="return loginchk()">Favorite</a></span>
 			<span id="login_btn">
 				<c:choose>
 					<c:when test="${ssuvo.login == 'true'}">
 						<a class="icon a_tag">Person
-						<span class="login-state">${ssuvo.user_id}님 환영합니다.</span>
+						<span id="login-state">${ssuvo.user_id}님 환영합니다.</span>
 						</a>
 					</c:when>
 					<c:otherwise>
 						<a class="icon a_tag">Person
-						<span class="login-state">로그인 | 회원가입</span>
+						<span id="login-state">로그인 | 회원가입</span>
 						</a>
 					</c:otherwise>
 				</c:choose>

@@ -27,7 +27,7 @@
 <body>
 	<section class="login">
 		<input type="button" value="마이페이지" onclick="mypage()">
-		<div></div>
+		<p class="vertical">&nbsp;&nbsp;|</p>
 		<input type="button" value="로그아웃" onclick="log_out()">
 	</section>
 </body>
