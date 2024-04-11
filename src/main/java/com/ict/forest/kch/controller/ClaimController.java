@@ -148,8 +148,6 @@ public class ClaimController {
 			@ModelAttribute("claim_idx")String claim_idx) {
 		ModelAndView mv = new ModelAndView("redirect:claim_detail");
 		String idx = claimvo.getUser_idx();
-		System.out.println(claim_idx);
-		System.out.println("awhfaohwfea" + idx);
 		int result = claimService.CommentInsert(ccvo);
 		
 		return mv;
