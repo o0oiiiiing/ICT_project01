@@ -120,6 +120,8 @@ body{
 .m_reply {
 	display: none;
 	text-align: center;
+	font-size: 20px;
+	padding: 5px;
 }
 
 #sel_faq_page {

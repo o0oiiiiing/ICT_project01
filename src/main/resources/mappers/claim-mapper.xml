@@ -10,8 +10,8 @@
 	
 	
 	<insert id="claimInsert" parameterType="claimvo">
-		insert into claim_table(user_idx, user_id, claim_subject, claim_content,claim_pw,claim_created_date, claim_res)
-		values(#{user_idx},#{user_id},#{claim_subject},#{claim_content},#{claim_pw},sysdate(), #{claim_res})
+		insert into claim_table(user_idx, user_id, claim_subject, claim_content,claim_pw,claim_created_date)
+		values(#{user_idx},#{user_id},#{claim_subject},#{claim_content},#{claim_pw},sysdate())
 	</insert>
 	
 	<select id="claimCount" resultType="int">
