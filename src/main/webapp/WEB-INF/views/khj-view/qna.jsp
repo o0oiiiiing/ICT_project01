@@ -70,6 +70,7 @@ $(document).ready(function() {
 					<c:choose>
 						<c:when test="${k.secret == '1'}">
 							<div class="secret_div">
+								<span>${vs.index }</span>
 								<span>${k.user_id}</span>
 								<span>비밀글입니다.</span>
 								<input type="password" placeholder="비밀번호를 입력해주세요"
