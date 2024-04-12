@@ -243,7 +243,7 @@ function sample2_execDaumPostcode() {
 			<div id="all_opp">주문상품들 가격: <a><c:out value="${pt_price_total}"/> KRW(원)</a></div>
 			<div id="d_charge">배송비: <a>${3000} * ${pay_ok_count} = ${3000 * pay_ok_count } KRW(원)</a></div>
 			<hr>
-			<div id="t_o_amount">총 결제금액: <a>${pt_price_total + 3000 * pay_ok_count } KRW(원)</a></div>
+			<div id="t_o_amount">총 결제금액: <a>${pt_price_total + 3000} KRW(원)</a></div>
 		</article>
 		<article id="p1_s2_a2">
 			<h3 style="text-align: center;">결제 수단</h3>
@@ -261,7 +261,7 @@ function sample2_execDaumPostcode() {
 			<button id="pay_b1" onclick="cancel()"  >취소</button>
 			<input  type="hidden" name="delivery_status" value="1"  >
 			<input  type="hidden" name="buy_chk" value="1" >
-			<input  type="hidden" name="minus_pay_point" value="${uvo.user_point - pt_price_total + 3000 * pay_ok_count }" >
+			<input  type="hidden" name="minus_pay_point" value="${uvo.user_point - pt_price_total + 3000}" >
 		</article>
 	</section>
 </div>	
@@ -341,6 +341,7 @@ function pay_ok(f) {
 		document.querySelector('#form_action').setAttribute('action', 'mypage');
 		document.querySelector('#pay_b1').setAttribute('type', 'submit');
 	}else{
+		alert("결제가 완료되었습니다.");
 		document.querySelector('#form_action').setAttribute('action', 'pay_ok');
 		document.querySelector('#pay_b1').setAttribute('type', 'submit');
 	}

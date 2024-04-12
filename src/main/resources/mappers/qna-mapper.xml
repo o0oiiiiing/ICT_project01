@@ -7,23 +7,47 @@
 	<select id="count" resultType="int">
 		select count(*) from qna_table
 	</select>
-	<select id="qna_list" parameterType="Map" resultType="qnavo">
-		select * from qna_table order by qna_idx desc limit #{limit} offset #{offset}
-	</select>
 	<insert id="qna_insert" parameterType="qnavo">
-		insert into qna_table(user_idx, user_type, user_id, qna_subject, qna_content, qna_created_date, qna_pw)
-		values(#{user_idx}, #{user_type}, #{user_id}, #{qna_subject}, #{qna_content}, sysdate(), #{qna_pw})
+		insert into qna_table(user_idx, user_type, user_id, qna_subject, qna_content, qna_reply_status, secret, qna_created_date, user_pwd)
+		values(#{user_idx}, #{user_type}, #{user_id}, #{qna_subject}, #{qna_content}, 0, #{secret}, sysdate(), #{user_pwd})
 	</insert>
 	<select id="qna_detail" parameterType="String" resultType="qnavo">
 		select * from qna_table where qna_idx = #{qna_idx}
 	</select>
 	<insert id="qna_reply_insert" parameterType="qnarvo">
-		insert into qna_reply_table(qna_reply_writer, qna_reply_content, qna_reply_date, qna_idx)
-		values(#{qna_reply_writer}, #{qna_reply_content}, sysdate(), #{qna_idx})
+		insert into qna_reply_table(qna_idx, user_idx, user_id, qna_reply_content, qna_reply_date)
+		values(#{qna_idx}, #{user_idx}, #{user_id}, #{qna_reply_content}, sysdate())
 	</insert>
 	<update id="qna_rs_update" parameterType="String">
 		update qna_table set qna_reply_status = 1 where qna_idx = #{qna_idx}
-	</update>		
+	</update>
+	
+	<!-- QnA result Map -->
+	<resultMap type="qnavo" id="qnaMap">
+		<result column="qna_idx" property="qna_idx"/>
+		<result column="user_idx" property="user_idx"/>
+		<result column="user_type" property="user_type"/>
+		<result column="user_id" property="user_id"/>
+		<result column="qna_subject" property="qna_subject"/>
+		<result column="qna_content" property="qna_content"/>
+		<result column="qna_reply_status" property="qna_reply_status"/>
+		<result column="qna_created_date" property="qna_created_date"/>
+		<result column="secret" property="secret"/>
+		<collection column="qna_idx" 
+			property="reply_list" 
+			javaType="java.util.List" 
+			ofType="qnarvo" 
+			select="reply_list" />
+	</resultMap>
+	
+	<select id="qna_list" parameterType="Map" resultMap="qnaMap">
+		select * from qna_table order by qna_idx desc limit #{limit} offset #{offset}
+	</select>
+    
+    <!-- qna별 오더 보기 -->
+    <select id="reply_list" parameterType="String" resultType="qnarvo">
+		select * from qna_reply_table where qna_idx = #{qna_idx}
+	</select>
 </mapper>
 
 

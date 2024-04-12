@@ -38,11 +38,15 @@
 	
 	<update id="user_npwd" parameterType="kvo">
 		update user_table
- 		set user_pwd=#{user_pwd}
+ 		set user_pwd=#{user_pwd}, ex_pwd_status = 1
  		where user_idx = #{user_idx}
 	</update>
 	
-	
+	<update id="user_expwd" parameterType="kvo">
+		update user_table
+ 		set user_pwd=#{user_pwd}, ex_pwd_status = 0
+ 		where user_idx = #{user_idx}
+	</update>
 </mapper>
 
 

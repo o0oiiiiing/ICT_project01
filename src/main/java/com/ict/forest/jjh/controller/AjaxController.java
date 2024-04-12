@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,13 +24,19 @@ import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.ProductService;
 import com.ict.forest.jjh.service.UserService;
+import com.ict.forest.khj.dao.QnaVO;
+import com.ict.forest.khj.service.QnaService;
 
 @RestController
 public class AjaxController {
 	@Autowired
 	private ProductService productService;
-	@Autowired UserService userService;
-	
+	@Autowired 
+	private UserService userService;
+	@Autowired
+	private QnaService qnaService;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	// 장바구니 추가
 	@RequestMapping(value = "cartAjax", produces = "text/plain; charset=utf-8")
 	@ResponseBody
@@ -123,4 +130,26 @@ public class AjaxController {
 		}	
 		return "fail";	
 	}
+	
+	@RequestMapping(value = "id_chk", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String IdChk(String user_id) {
+		String result = userService.idChk(user_id);
+		return result;
+	}
+	@RequestMapping(value = "secret", produces = "text/plain; charset=utf-8")
+	@ResponseBody
+	public String secret(String qna_idx, String user_pwd) {
+		QnaVO qvo = qnaService.getQnaDetail(qna_idx);
+		System.out.println(qna_idx);
+		System.out.println(user_pwd);
+		System.out.println(passwordEncoder.matches(user_pwd, qvo.getUser_pwd()));
+		if (passwordEncoder.matches(user_pwd, qvo.getUser_pwd())) {
+			return "1";
+		}else {
+			return "0";
+		}
+	}
+	
+	
 }

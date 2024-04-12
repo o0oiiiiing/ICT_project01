@@ -7,7 +7,9 @@ import com.ict.forest.jjh.dao.ReviewVO;
 import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
+import com.ict.forest.kch.dao.ClaimVO;
 import com.ict.forest.khj.dao.PayVO;
+import com.ict.forest.khj.dao.QnaVO;
 
 public interface UserService {
 	public int userJoin(UserVO uvo);
@@ -27,4 +29,7 @@ public interface UserService {
 	public int update_buy_chk(String order_idx);
 	public List<BuyListVO> buy_list(String user_idx);
 	public int review_insert(ReviewVO revo);
+	public String idChk(String user_id);
+	public List<QnaVO> userQna(String user_idx);
+	public List<ClaimVO> userClaim(String user_idx);
 }

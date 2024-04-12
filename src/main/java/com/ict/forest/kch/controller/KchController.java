@@ -79,7 +79,23 @@ public class KchController {
 		return new ModelAndView("pdh-view/error");
 	}
 	
+	// 비밀번호 변경창으로 이동
+	@GetMapping("update_pwd")
+	public ModelAndView updataPwd() {
+		return new ModelAndView("kch-view/pwdupdate"); 
+	}
+	
+	// 비밀번호 변경 컨트롤러
+	@GetMapping("update_pwd_ok")
+	public ModelAndView updataPwdOk(HttpSession session, KchVO kvo) {
+		ModelAndView mv = new ModelAndView("redirect:home");
+		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
+		kvo.setUser_idx(ssuvo.getUser_idx());
+		int res = kchservice.expwdUpdate(kvo);
+		session.removeAttribute("ssuvo");
+		return mv;
 		
+	}
 	
 	
 	// 아이디 및 비번 찾기 이동

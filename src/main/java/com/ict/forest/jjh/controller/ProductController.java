@@ -38,7 +38,7 @@ public class ProductController {
 	
 	@GetMapping("product_write")
 	public ModelAndView productWrite() {
-		ModelAndView mv = new ModelAndView("seller/product_write");
+		ModelAndView mv = new ModelAndView("jjh-view/product_write");
 		return mv;
 	}
 	

@@ -19,8 +19,8 @@ public class MailService {
 			sendMail.setText("<table><tbody>"
 					+ "<tr><td><h2>ICT EDU 메일 인증</h2></td></tr>"
 					+ "<tr><td><h3>ICT EDU</h3></td></tr>"
-					+ "<tr><td><font size='5px'>인증번호 안내입니다</font></td></tr>"
-					+ "<tr><td><font size='8px'>확인번호 : "+randomNumber +"</font></td></tr>"
+					+ "<tr><td><font size='5px'>임시 비밀번호 안내입니다</font></td></tr>"
+					+ "<tr><td><font size='8px'>임시 비밀번호 : "+randomNumber +"</font></td></tr>"
 					+ "</tbody></table>");
 			
 			sendMail.setFrom("Forest", "forest");

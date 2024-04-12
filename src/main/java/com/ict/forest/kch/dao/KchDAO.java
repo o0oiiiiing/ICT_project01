@@ -108,6 +108,14 @@ public class KchDAO {
 		}
 		return -1;
 	}
+	public int expwdUpdate(KchVO kvo) {
+		try {
+			return sqlSessionTemplate.update("user2_table.user_expwd", kvo);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return -1;
+	}
 	
 	public KchVO kchfindpw(String user_id) {
 		try {

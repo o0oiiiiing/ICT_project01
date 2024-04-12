@@ -11,7 +11,9 @@ import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserDAO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
+import com.ict.forest.kch.dao.ClaimVO;
 import com.ict.forest.khj.dao.PayVO;
+import com.ict.forest.khj.dao.QnaVO;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -95,5 +97,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int review_insert(ReviewVO revo) {
 		return userDAO.review_insert(revo);
+	}
+	@Override
+	public String idChk(String user_id) {
+		return userDAO.idChk(user_id);
+	}
+	@Override
+	public List<ClaimVO> userClaim(String user_idx) {
+		return userDAO.userClaim(user_idx);
+	}
+	@Override
+	public List<QnaVO> userQna(String user_idx) {
+		return userDAO.userQna(user_idx);
 	}
 }

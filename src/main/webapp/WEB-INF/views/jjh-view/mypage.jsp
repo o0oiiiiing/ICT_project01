@@ -21,11 +21,14 @@
 	function update() {
 		location.href="update"
 	}
+	function update_pwd() {
+		location.href="update_pwd"
+	}
 	function qna() {
 		location.href="qna"
 	}
-	function help() {
-		location.href="help"
+	function claim() {
+		location.href="claim"
 	}
 	function addrplus() {
 		location.href="addrplus"
@@ -44,10 +47,6 @@
 	}
 	function order(){
 		location.href="order"
-	}
-	// 미구현
-	function sell_list(){
-		location.href="sell_list"
 	}
 	function openPopup() {
 	    let width = 400;
@@ -74,7 +73,6 @@
 			<button class="menu_btn" onclick="buy_list()">구매리스트</button>
 			<c:choose>
 				<c:when test="${ssuvo.user_type==0}">
-					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
 					<button class="menu_btn" onclick="product_write()">상품 등록</button>
 				</c:when>
 			</c:choose>
@@ -170,27 +168,55 @@
 			</div>
 			<div id="info_qna">
 				<p>QnA 문의 결과</p>
-				<div>
-					<p>환불 요청</p>
-					<p>답변 완료</p>
-				</div>
-				<div>
-					<p>반품 요청</p>
-					<p>답변 대기중</p>
-				</div>
-				<button class="move_btn" onclick="qna()">내 QnA로 이동</button>
+				<c:choose>
+					<c:when test="${empty qna_list}">
+						<div>
+							<p style="margin: 0 auto;">문의하신 내역이 없습니다.</p>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="k" items="${qna_list}">
+							<div>
+								<p>${k.qna_subject}</p>
+								<c:choose>
+									<c:when test="${k.qna_reply_status == '0'}">
+										<p style="color: red;">답변 대기</p>
+									</c:when>
+									<c:otherwise>
+										<p style="color: blue;">답변 완료</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+				<button class="move_btn" onclick="qna()">QnA 게시판 이동</button>
 			</div>
 			<div id="info_help">
 				<p>신고 결과</p>
-				<div>
-					<p>짝퉁 팔고 있어요</p>
-					<p>답변 완료</p>
-				</div>
-				<div>
-					<p>환불금액 미입금</p>
-					<p>답변 대기중</p>
-				</div>
-				<button class="move_btn" onclick="help()">내 신고로 이동</button>
+				<c:choose>
+					<c:when test="${empty claim_list}">
+						<div>
+							<p style="margin: 0 auto;">문의하신 내역이 없습니다.</p>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="k" items="${claim_list}">
+							<div>
+								<p>${k.claim_subject}</p>
+								<c:choose>
+									<c:when test="${k.claim_res == '0'}">
+										<p style="color: red;">답변 대기</p>
+									</c:when>
+									<c:otherwise>
+										<p style="color: blue;">답변 완료</p>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+				<button class="move_btn" onclick="claim()">신고게시판 이동</button>
 			</div>
 		</article>
 	</section>
@@ -198,7 +224,6 @@
 		$(".menu_btn").hover(
 		    function() {
 		    	$(this).css("color", "#878787");
-		        
 		    },
 		    function() {
 		    	$(this).css("color", "#1E1E1E");

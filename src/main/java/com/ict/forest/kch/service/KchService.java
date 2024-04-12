@@ -29,4 +29,7 @@ public interface KchService {
 	public int infoUpdateOK(KchVO kvo);
 	
 	public int npwdUpdate(KchVO kvo);
+	
+	public int expwdUpdate(KchVO kvo);
+	
 }

@@ -61,22 +61,6 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
-// 비밀번호 일치 확인
-	function check_pw(){
- 
-    var pw = document.getElementById('pw').value;
-   
-    	if(document.getElementById('pw').value !='' && document.getElementById('pwd').value!=''){
-    		if(document.getElementById('pw').value==document.getElementById('pwd').value){
-    			document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
-      	        document.getElementById('check').style.color='blue';
-        	}else {
-            	  document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
-            	  document.getElementById('check').style.color='red';
-            	  }
-        }
-    }
-
 	//이메일 자동완성
 	function email_change() {
 	// 도메인 직접 입력 or domain option 선택

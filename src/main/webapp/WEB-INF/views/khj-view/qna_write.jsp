@@ -23,25 +23,32 @@
 </head>
 <body>
 <form action="qna_write_ok" method="post">
-		<table width="700">
+		
+		<table width="700" style="margin: 200px auto; border: 1px solid black;">
+			<caption style="font-size: 20px; font-weight: bold;">
+				QnA 작성하기
+			</caption>
 		<tbody>
 			<tr>
+				<th>공개 여부</th>
+				<td align="left">
+					<input type="radio" name="secret" checked value="0">공개글 설정<br>
+					<input type="radio" name="secret" value="1">비밀글 설정
+				</td>
+			</tr>
+			<tr>
 				<th>작성자</th>
-				<td align="left"><input type="text" name="user_id" value="${suvo.user_id}" readonly></td>
+				<td align="left"><input type="text" name="user_id" value="${ssuvo.user_id}" readonly></td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td align="left"> <input type="text" name="qna_subject"></td>
+				<td align="left"><input type="text" name="qna_subject"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td align="left"><textarea rows="10" cols="60" name="qna_content"></textarea>
+				<td align="left">
+					<textarea rows="10" cols="60" name="qna_content"></textarea>
 				</td>
-			</tr>
-			
-			<tr>
-				<th>qna 문의글 비밀번호</th>
-				<td align="left"><input type="password" name="qna_pw" ></td>
 			</tr>
 			<tr>
 				<td colspan="2">
