@@ -65,4 +65,8 @@ public class KchServiceImpl implements KchService{
 		return kchDAO.npwdUpdate(kvo);
 	}
 	
+	@Override
+	public int expwdUpdate(KchVO kvo) {
+		return kchDAO.expwdUpdate(kvo);
+	}
 }

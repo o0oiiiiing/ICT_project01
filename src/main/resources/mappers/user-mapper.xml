@@ -127,6 +127,17 @@
 	    INSERT INTO review_table (p_idx, user_idx, order_idx, user_id, score, review_img, review_title, review_content, regdate) 
 	    VALUES (#{p_idx},#{user_idx},#{order_idx},#{user_id},#{score}, #{review_img},#{review_title},#{review_content},sysdate())
 	</insert>
+	
+	 <select id="idchk" parameterType="String" resultType="int">
+ 		select count(*) from user_table where user_id = #{user_id}
+ 	</select>
+ 	
+ 	<select id="userQna" parameterType="String" resultType="qnavo">
+ 		select * from qna_table where user_idx = #{user_idx}
+ 	</select>
+ 	<select id="userClaim" parameterType="String" resultType="claimvo">
+ 		select * from claim_table where user_idx = #{user_idx}
+ 	</select>
 </mapper>
 
 

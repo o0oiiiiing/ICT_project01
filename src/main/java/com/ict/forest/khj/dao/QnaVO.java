@@ -1,9 +1,29 @@
 package com.ict.forest.khj.dao;
 
+import java.util.List;
+
 public class QnaVO {
-	private String qna_idx,user_idx,user_id,user_type,
-	qna_subject,qna_content,qna_reply,qna_reply_date,
-	qna_reply_status,qna_created_date,qna_pw_status,qna_pw;
+	private String qna_idx,user_idx,user_id,user_type,user_pwd, secret,
+	qna_subject,qna_content,qna_created_date,
+	qna_reply_status;
+	
+	private List<QnaReplyVO> reply_list;
+
+	public String getUser_pwd() {
+		return user_pwd;
+	}
+
+	public void setUser_pwd(String user_pwd) {
+		this.user_pwd = user_pwd;
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
 
 	public String getQna_idx() {
 		return qna_idx;
@@ -29,6 +49,14 @@ public class QnaVO {
 		this.user_id = user_id;
 	}
 
+	public String getUser_type() {
+		return user_type;
+	}
+
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
+	}
+
 	public String getQna_subject() {
 		return qna_subject;
 	}
@@ -45,20 +73,12 @@ public class QnaVO {
 		this.qna_content = qna_content;
 	}
 
-	public String getQna_reply() {
-		return qna_reply;
+	public String getQna_created_date() {
+		return qna_created_date;
 	}
 
-	public void setQna_reply(String qna_reply) {
-		this.qna_reply = qna_reply;
-	}
-
-	public String getQna_reply_date() {
-		return qna_reply_date;
-	}
-
-	public void setQna_reply_date(String qna_reply_date) {
-		this.qna_reply_date = qna_reply_date;
+	public void setQna_created_date(String qna_created_date) {
+		this.qna_created_date = qna_created_date;
 	}
 
 	public String getQna_reply_status() {
@@ -69,38 +89,13 @@ public class QnaVO {
 		this.qna_reply_status = qna_reply_status;
 	}
 
-	public String getQna_created_date() {
-		return qna_created_date;
+	public List<QnaReplyVO> getReply_list() {
+		return reply_list;
 	}
 
-	public void setQna_created_date(String qna_created_date) {
-		this.qna_created_date = qna_created_date;
+	public void setReply_list(List<QnaReplyVO> reply_list) {
+		this.reply_list = reply_list;
 	}
-
-	public String getQna_pw_status() {
-		return qna_pw_status;
-	}
-
-	public void setQna_pw_status(String qna_pw_status) {
-		this.qna_pw_status = qna_pw_status;
-	}
-
-	public String getQna_pw() {
-		return qna_pw;
-	}
-
-	public void setQna_pw(String qna_pw) {
-		this.qna_pw = qna_pw;
-	}
-
-	public String getUser_type() {
-		return user_type;
-	}
-
-	public void setUser_type(String user_type) {
-		this.user_type = user_type;
-	}
-	
 	
 	
 }

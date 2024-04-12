@@ -1,7 +1,15 @@
 package com.ict.forest.jjh.dao;
 
 public class UserVO {
-	private String user_idx, user_name, user_id, user_pwd, user_f_email, user_b_email,  user_phone, user_type, user_point, zip_code, main_addr, detail_addr, ex_addr, user_regdate;
+	private String user_idx, user_name, user_id, user_pwd, user_f_email, user_b_email,  user_phone, user_type, user_point, zip_code, main_addr, detail_addr, ex_addr, ex_pwd_status, user_regdate;
+
+	public String getEx_pwd_status() {
+		return ex_pwd_status;
+	}
+
+	public void setEx_pwd_status(String ex_pwd_status) {
+		this.ex_pwd_status = ex_pwd_status;
+	}
 
 	public String getZip_code() {
 		return zip_code;

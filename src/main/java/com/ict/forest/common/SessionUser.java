@@ -1,7 +1,15 @@
 package com.ict.forest.common;
 
 public class SessionUser {
-	private String user_idx, user_id, user_type, login, user_name, user_point;
+	private String user_idx, user_id, user_type, login, user_name, user_point, ex_pwd_status;
+
+	public String getEx_pwd_status() {
+		return ex_pwd_status;
+	}
+
+	public void setEx_pwd_status(String ex_pwd_status) {
+		this.ex_pwd_status = ex_pwd_status;
+	}
 
 	public String getUser_point() {
 		return user_point;

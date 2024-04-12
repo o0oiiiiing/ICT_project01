@@ -50,7 +50,7 @@ th {
 			</tr>
 			<tr>
 				<th>답글 작성자</th>
-				<td align="left"><input type="text" name="qna_reply_writer"></td>
+				<td align="left"><input type="text" name="user_id" value="${ssuvo.user_id}" readonly></td>
 			</tr>
 			<tr>
 				<th>답글 내용</th>
@@ -58,14 +58,8 @@ th {
 				</td>
 			</tr>
 			<tr>
-				<th>답글 비밀번호</th>
-				<td align="left"><input type="password" name="qna_pw"></td>
-			</tr>
-			<tr>
 				<td colspan="2">
-			<%-- 	<input type="hidden" name="cPage" value="${cPage }"> --%>
-				<input type="hidden" name="qna_idx" value="${qnarvo.qna_idx }">
-				<input type="hidden" name="qna_reply_status" value="1">
+				<input type="hidden" name="qna_idx" value="${qna_idx}">
 				<input type="button" value="답글입력" onclick="qna_reply_write_ok(this.form)" /> 
 				<input type="button" value="목록" onclick="qna_list()" /> 
 				<input type="reset" value="취소" />

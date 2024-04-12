@@ -77,7 +77,34 @@ function sample6_execDaumPostcode() {
 				$("#domain-txt").val("");
 			}
 		})
+		
+		// 아이디 중복 체크
+		$("#user_id").keyup(function() {
+			$.ajax({
+				url: "id_chk",
+				data : "user_id="+$("#user_id").val(),
+				method: "post",
+				dataType : "text",
+				success : function(data) {
+					if (data=="1" && $("#user_id").val() != '') {
+						// 중복 없음(사용 가능)
+						$("#join_btn").removeAttr("disabled")
+						$("#chk").text("사용 가능").css("color","lightgray");
+					}else if (data=="0" || $("#user_id").val() == '') {
+						// 중복 있음(사용 불가능)
+						$("#join_btn").attr("disabled")
+						$("#chk").text("사용 불가능").css("color","#FF5341");
+					}
+				},
+				error: function() {
+					alert("읽기 실패");
+				}
+			})
+		});
+		
 	})
+	
+	
 </script>
 </head>
 <body>
@@ -95,7 +122,7 @@ function sample6_execDaumPostcode() {
 					</tr>
 					<tr>
 						<td class="menu">아이디</td>
-						<td class="userin"><input type="text" name="user_id" maxlength="10"></td>
+						<td class="userin"><input type="text" name="user_id" id="user_id" maxlength="10"><span id="chk"></span></td>
 					</tr>
 					<tr>
 						<td class="menu">휴대폰 번호</td>
@@ -145,7 +172,7 @@ function sample6_execDaumPostcode() {
 			</div>
 
 			<div class="create">
-				<input class="but4" type="submit" value="회원가입">
+				<input class="but4" type="submit" id="join_btn" value="회원가입">
 				<input class="but5" type="button" value="가입취소" onclick="location.href='home'"> 
 
 			</div>

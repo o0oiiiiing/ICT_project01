@@ -32,7 +32,9 @@ import com.ict.forest.jjh.dao.UserAddrVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.jjh.dao.WishVO;
 import com.ict.forest.jjh.service.UserService;
+import com.ict.forest.kch.dao.ClaimVO;
 import com.ict.forest.khj.dao.PayVO;
+import com.ict.forest.khj.dao.QnaVO;
 import com.jcraft.jsch.Session;
 
 @Controller
@@ -91,6 +93,7 @@ public class UserController {
 			ssuvo.setUser_idx(uvo2.getUser_idx());
 			ssuvo.setUser_id(uvo2.getUser_id());
 			ssuvo.setUser_name(uvo2.getUser_name());
+			ssuvo.setEx_pwd_status(uvo2.getEx_pwd_status());
 			session.setAttribute("ssuvo", ssuvo);
 			return mv;
 		}else {
@@ -107,8 +110,12 @@ public class UserController {
 		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		UserVO uvo = userService.userDetail(ssuvo.getUser_idx());
 		List<UserAddrVO> uaddrlist = userService.userAddr(ssuvo.getUser_idx());
+		List<QnaVO> qna_list = userService.userQna(ssuvo.getUser_idx());
+		List<ClaimVO> claim_list = userService.userClaim(ssuvo.getUser_idx());
 		mv.addObject("uvo", uvo);
 		mv.addObject("uaddrlist", uaddrlist);
+		mv.addObject("qna_list", qna_list);
+		mv.addObject("claim_list", claim_list);
 		return mv;
 	}
 	

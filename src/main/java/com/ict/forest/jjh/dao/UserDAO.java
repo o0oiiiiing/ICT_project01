@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ict.forest.kch.dao.ClaimVO;
 import com.ict.forest.khj.dao.PayVO;
+import com.ict.forest.khj.dao.QnaVO;
 
 @Repository
 public class UserDAO {
@@ -174,5 +176,36 @@ public class UserDAO {
 			System.out.println(e);
 		}
 		return 0;
+	}
+	
+	public String idChk(String user_id) {
+		try {
+			int result = sqlSessionTemplate.selectOne("user_table.idchk", user_id);
+			// m_id가 존재하면
+			if (result > 0) {
+				return "0";
+			}
+			// m_id가 존재하지 않으면
+			return "1";
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return null;
+	}
+	public List<ClaimVO> userClaim(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectList("user_table.userClaim", user_idx);
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return null;
+	}
+	public List<QnaVO> userQna(String user_idx) {
+		try {
+			return sqlSessionTemplate.selectList("user_table.userQna", user_idx);
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return null;
 	}
 }

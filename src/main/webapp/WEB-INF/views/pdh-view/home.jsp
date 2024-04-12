@@ -129,6 +129,12 @@
 			alert("아이디 또는 비밀번호가 틀립니다.");
 		}
 		
+		// 임시 비밀번호일 때 표시
+		let ex_pwd_status = "${ssuvo.ex_pwd_status}";
+		if (ex_pwd_status == "1") {
+			alert("임시 비밀번호를 마이페이지에서 변경해주세요.");
+		}
+		
 		// css
 		$("#cart_ajax").css("font-family", "NanumSquareLight");
 		$("#cart_ajax").css("font-size", "15px");

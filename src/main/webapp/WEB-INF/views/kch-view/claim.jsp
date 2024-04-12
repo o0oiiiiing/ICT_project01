@@ -99,6 +99,9 @@ tbody{
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<div id="t_menu">
+		<a>신고하기</a>
+	</div>
 	<div id="s_menu">
 			<a href="qna">QnA</a>
 			<a href="faq">FaQ</a>

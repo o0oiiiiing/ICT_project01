@@ -18,6 +18,9 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<div id="t_menu">
+		<a>자주하는 질문</a>
+	</div>
 <div id="frame">
 <section id="ccenter">
 	<article id="sel">
