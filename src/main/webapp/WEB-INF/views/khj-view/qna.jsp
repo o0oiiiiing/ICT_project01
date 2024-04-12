@@ -122,7 +122,6 @@ $(document).ready(function() {
 												<p>
 												<span>질문글 : </span>${k.qna_content } <br>
 													<input type="button" onclick="reply_write_go(${k.qna_idx})" value="답글작성">
-													<button class="close" type="button" name="close">닫기</button>
 												</p>
 											</div>
 										</article>
@@ -182,7 +181,6 @@ $(document).ready(function() {
 												<p>
 												<span>질문글 : </span>${k.qna_content} <br>
 													<input type="button" onclick="reply_write_go(${k.qna_idx})" value="답글작성">
-													<button class="close" type="button" name="close">닫기</button>
 												</p>
 											</div>
 										</article>
