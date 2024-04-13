@@ -70,7 +70,9 @@ $(document).ready(function() {
 					<c:choose>
 						<c:when test="${k.secret == '1'}">
 							<div class="secret_div">
+								<span>${vs.index + 1}</span>
 								<span>${k.user_id}</span>
+								<div>${k.qna_created_date }</div>
 								<span>비밀글입니다.</span>
 								<input type="password" placeholder="비밀번호를 입력해주세요"
 								style="width: 20%; padding: 3px;">
@@ -87,17 +89,17 @@ $(document).ready(function() {
 							</div>
 							<div class="secret_res" style="display: none;">
 								<article class="qna_head">
-									<div class="user_id">
-										<p>비밀글</p>
-									</div>
 									<div class="qna_num">
-										<p>${vs.index}</p>
+										<p>${vs.index + 1}</p>
 									</div>
 									<div class="user_id">
 										<p>${k.user_id}</p>
 									</div>
 									<div class="qna_created_date">
 										<p>${k.qna_created_date}</p>
+									</div>
+									<div class="user_id">
+										<p>비밀글</p>
 									</div>
 									<div class="qna_subject">
 										<p>${k.qna_subject}</p>
@@ -150,7 +152,7 @@ $(document).ready(function() {
 							<div class="reply_res">
 								<article class="qna_head">
 									<div class="qna_num">
-										<p>${vs.index}</p>
+										<p>${vs.index + 1}</p>
 									</div>
 									<div class="user_id">
 										<p>${k.user_id}</p>

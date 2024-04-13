@@ -2,6 +2,28 @@
 body{
 	background-color: #f5f5f5; 
 }
+.secret_div{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid gray;
+	margin-top: 10px;
+}
+.secret_div > span:nth-of-type(1){
+	margin-left: 30px;
+	
+}
+
+.secret_div > div:nth-of-type(1){
+	width: 100px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+.secret_div > span:nth-of-type(4) {
+	margin-right: 35px;
+}
+}
 #t_menu{
 	width: 1000px; 
 	height: 100px; 
