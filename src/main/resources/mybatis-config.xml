@@ -52,7 +52,7 @@
 		<mapper resource="mappers/pay-mapper.xml" />
 		<!-- khj  qna_table db로 가는 매퍼 -->
 		<mapper resource="mappers/qna-mapper.xml" />
-		<!-- khj  qna_reply_table db로 가는 매퍼 -->
+		<!-- khj  qna_reply_table db로 가는 매퍼  -->
 		<mapper resource="mappers/qnareply-mapper.xml" />
 		<!-- kch -->
 		<mapper resource="mappers/user2-mapper.xml" />

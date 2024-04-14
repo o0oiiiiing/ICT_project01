@@ -14,36 +14,7 @@
 <!-- css -->
 <link rel="stylesheet" href="resources/common-css/reset.css">
 <link rel="stylesheet" href="resources/khj-css/qna.css">
-<script type="text/javascript">
-$(document).ready(function() {
-	$(".secret_btn").on("click", function() {
-		let tag = this;
-		let qna_idx = $(this).next().val();
-		let pwd = $(this).prev().val();
-		console.log(qna_idx);
-		console.log(pwd);
-		$.ajax({
-			url : "secret",
-			method : "post",
-			dataType : "text",
-			data : "qna_idx="+qna_idx+"&user_pwd="+pwd,
-			success : function(data) {
-				if (data == "1") {
-					$(tag).parent().next().css("display", "block")
-					$(tag).parent().css("display", "none")
-				}else {
-					alert("비밀번호가 틀립니다.")
-				}
-			},
-			error: function() {
-				alert("읽기 실패");
-			}
-		})
-	})
-	
-	
-})
-</script>
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -70,7 +41,7 @@ $(document).ready(function() {
 					<c:choose>
 						<c:when test="${k.secret == '1'}">
 							<div class="secret_div">
-								<span>${vs.index + 1}</span>
+								<span>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</span>
 								<span>${k.user_id}</span>
 								<div>${k.qna_created_date.substring(0,10)}</div>
 								<span>비밀글입니다.</span>
@@ -90,7 +61,7 @@ $(document).ready(function() {
 							<div class="secret_res" style="display: none;">
 								<article class="qna_head">
 									<div class="qna_num">
-										<p>${vs.index + 1}</p>
+										<p>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</p>
 									</div>
 									<div class="user_id">
 										<p>${k.user_id}</p>
@@ -118,7 +89,7 @@ $(document).ready(function() {
 									</div>
 								</article>
 								<c:choose>
-									<c:when test="${empty reply_list}">
+									<c:when test="${empty k.reply_list}">
 										<article class="qna_body">
 											<div class="qna_content">
 												<p>
@@ -152,7 +123,7 @@ $(document).ready(function() {
 							<div class="reply_res">
 								<article class="qna_head">
 									<div class="qna_num">
-										<p>${vs.index + 1}</p>
+										<p>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</p>
 									</div>
 									<div class="user_id">
 										<p>${k.user_id}</p>
@@ -287,6 +258,38 @@ $(document).ready(function() {
 		}
 		
 	}
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".secret_btn").on("click", function() {
+		let tag = this;
+		let qna_idx = $(this).next().val();
+		let pwd = $(this).prev().val();
+		console.log(qna_idx);
+		console.log(pwd);
+		$.ajax({
+			url : "secret",
+			method : "post",
+			dataType : "text",
+			data : "qna_idx="+qna_idx+"&user_pwd="+pwd,
+			success : function(data) {
+				if (data == "1") {
+					$(tag).parent().next().css("display", "block")
+					
+					$(tag).parent().css("display", "none")
+					
+				}else {
+					alert("비밀번호가 틀립니다.")
+				}
+			},
+			error: function() {
+				alert("읽기 실패");
+			}
+		})
+	})
+	
+	
+})
 </script>
 </body>
 </html>
