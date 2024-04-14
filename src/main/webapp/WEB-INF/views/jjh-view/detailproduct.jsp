@@ -269,7 +269,9 @@
 					<c:choose>
 						<c:when test="${vs.index != 0}">
 							<div>
+								<a href="detailproduct?p_idx=${k.p_idx}">
 								<div><img src="resources/upload/${k.p_main_img}"></div>
+								</a>
 								<p style="border-bottom: 1px solid black;">${k.p_name}</p>
 								<p>${k.p_volume}ml</p>
 								<p>${k.p_price} KRW</p>
@@ -455,10 +457,6 @@
 				</c:choose>
 		</c:otherwise>
 	</c:choose>
-	</article>
-	<article id="re_btn">
-		<button>최신순</button>
-		<button>평점순</button>
 	</article>
 	<article id="t_view">
 		<c:choose>
@@ -665,23 +663,7 @@
 				$("#t1").fadeIn(1000)
 			})
 		});
-/* 		
- 
- 		$(".sub_img:nth-of-type(2)").click(function() {
-			let k = $(".sub_img:nth-of-type(2) img").attr("src");
-			$("#t1").fadeOut(0, function() {
-				$("#t1").attr("src", k)
-				$("#t1").fadeIn(1000)
-			})
-		});
-		$(".sub_img:nth-of-type(3)").click(function() {
-			let k = $(".sub_img:nth-of-type(3) img").attr("src");
-			$("#t1").fadeOut(0, function() {
-				$("#t1").attr("src", k)
-				$("#t1").fadeIn(1000)
-			})
-		}); 
-		*/
+
 </script>
 </body>
 </html>

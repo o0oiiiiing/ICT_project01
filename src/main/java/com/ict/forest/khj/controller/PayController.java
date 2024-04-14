@@ -90,6 +90,7 @@ public class PayController {
 			List<ProductVO> cart2 = cart.stream().filter(x->!x.getP_idx().equals(p_idx)).collect(Collectors.toList());
 			session.setAttribute("cart", cart2);
 			int result = payService.getPayInsert(payvo);
+			int update2 = payService.buyupdate(payvo);
 			
 		}
 		System.out.println(minus_pay_point); 

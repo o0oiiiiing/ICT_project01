@@ -29,12 +29,13 @@ public class EmailController {
 	
 	@PostMapping("find_user_pw")
 	public ModelAndView findUserPW(String user_id, String email_pwd, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("kch-view/find");
 		try {
-			ModelAndView mv = new ModelAndView();
 			System.out.println("1111"+user_id);
 			KchVO kvo = kchService.kchfindpw(user_id);
 			System.out.println(kvo);
 			if (kvo != null && (email_pwd.equals(kvo.getUser_f_email() + "@" + kvo.getUser_b_email()))) {
+				System.out.println("2222");
 				Random random = new Random();
 				String randomNumber = String.valueOf(random.nextInt(1000000) % 1000000);
             	if(randomNumber.length() < 6) {
@@ -68,14 +69,15 @@ public class EmailController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return new ModelAndView("pdh-view/error");
+		mv.addObject("chk", "fail");
+		return mv;
 	}
 	
 	
 	@PostMapping("find_user_id")
 	public ModelAndView findUserId(String user_name, String email_id,  HttpServletRequest request, KchVO kvo) {
+		ModelAndView mv = new ModelAndView("kch-view/find");
 		try {
-			ModelAndView mv = new ModelAndView();
 			KchVO kvo2 = kchService.kchfindname(user_name);
 			if (kvo2 != null && (email_id.equals(kvo2.getUser_f_email() + "@" + kvo2.getUser_b_email()) )) {
 				String userId = kvo2.getUser_id();
@@ -88,7 +90,8 @@ public class EmailController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return new ModelAndView("pdh-view/error");
+		mv.addObject("chk", "fail");
+		return mv;
 	}
 	
 	

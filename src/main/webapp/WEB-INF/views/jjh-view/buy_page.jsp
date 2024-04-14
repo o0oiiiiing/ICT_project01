@@ -31,10 +31,6 @@ function product_write(){
 function order(){
 	location.href="order"
 }
-// 미구현
-function sell_list(){
-	location.href="sell_list"
-}
 
 $(document).ready(function() {
 	$(".menu_btn").hover(
@@ -59,7 +55,6 @@ $(document).ready(function() {
 			<button class="menu_btn" onclick="buy_list()">구매리스트</button>
 			<c:choose>
 				<c:when test="${ssuvo.user_type==0}">
-					<button class="menu_btn" onclick="sell_list()">판매중인 상품</button>
 					<button class="menu_btn" onclick="product_write()">상품 등록</button>
 				</c:when>
 			</c:choose>

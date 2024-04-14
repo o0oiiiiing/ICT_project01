@@ -23,6 +23,11 @@
 		set user_point=#{minus_pay_point}
 		where user_idx=#{user_idx}
 	</update>
+	<update id="buy_update" parameterType="payvo">
+		update product_table
+		set buy_rate=  buy_rate+#{p_count}
+		where p_idx=#{p_idx}
+	</update>
 		 
 			
 </mapper>

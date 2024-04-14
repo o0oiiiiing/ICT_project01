@@ -99,7 +99,7 @@
 		</article>
 		<article id="f_sum">
 			<div>
-				<p><span>0</span> KRW + 3,000 KRW = <span>0</span> KRW</p>
+				<p><span>0</span> KRW + 3,000 KRW = <span>3,000</span> KRW</p>
 				<hr>
 				<input type="button" id="pay" value="구매하기">
 			</div>

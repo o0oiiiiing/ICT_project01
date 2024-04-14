@@ -86,11 +86,12 @@ public class KchController {
 	}
 	
 	// 비밀번호 변경 컨트롤러
-	@GetMapping("update_pwd_ok")
+	@PostMapping("update_pwd_ok")
 	public ModelAndView updataPwdOk(HttpSession session, KchVO kvo) {
 		ModelAndView mv = new ModelAndView("redirect:home");
 		SessionUser ssuvo = (SessionUser) session.getAttribute("ssuvo");
 		kvo.setUser_idx(ssuvo.getUser_idx());
+		kvo.setUser_pwd(passwordEncoder.encode(kvo.getUser_pwd()));
 		int res = kchservice.expwdUpdate(kvo);
 		session.removeAttribute("ssuvo");
 		return mv;

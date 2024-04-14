@@ -18,8 +18,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-	function info_update_ok(f){
-		f.action="info_update_ok";
+	function update_pwd_ok(f){
+		f.action="update_pwd_ok";
 		f.submit();
 	}
 	// 비밀번호 일치 확인
@@ -31,9 +31,11 @@
     		if(document.getElementById('pw').value==document.getElementById('pwd').value){
     			document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
       	        document.getElementById('check').style.color='blue';
+    			document.getElementsByClassName('but4')[0].disabled = false;
         	}else {
             	  document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
             	  document.getElementById('check').style.color='red';
+            	  document.getElementsByClassName('but4')[0].disabled = true;
             	  }
         }
     }
@@ -49,12 +51,12 @@
 						<h2>개인정보입력</h2>
 					</caption>
 					<tr>
-						<td class="menu">비밀번호</td>
+						<td class="menu">변경할 비밀번호</td>
 						<td class="userin"><input type="password" id="pw" name="user_pwd"
 							onchange="check_pw()"></td>
 					</tr>
 					<tr>
-						<td class="menu">비밀번호 확인</td>
+						<td class="menu">변경할 비밀번호 확인</td>
 						<td class="userin"><input type="password" id="pwd"
 							onchange="check_pw()">&nbsp;<span id="check"></span></td>
 					</tr>

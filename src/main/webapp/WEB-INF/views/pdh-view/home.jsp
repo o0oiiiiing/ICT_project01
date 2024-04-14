@@ -72,19 +72,15 @@
 	};
 	
 	$(document).ready(function() {
-		// 마우스 휠 이벤트 핸들러 등록
 		$(window).on('scroll', function windowScrollHandler() {
 		    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-		        // 윈도우 스크롤 이벤트 해제
 		        $(window).off('scroll', windowScrollHandler);
 
-		        // #best-seller__inner 영역에서 마우스휠 이벤트 핸들러 등록
 		        $("#best-seller__inner").on('mousewheel', function mousewheelHandler(e) {
 		            e.preventDefault();
 		            var wheelDelta = e.originalEvent.wheelDelta;
 		            $(this).scrollLeft($(this).scrollLeft() - (wheelDelta));
 		            
-		            // #best-seller__inner 영역의 scrollLeft() 값이 0이면 window 스크롤 이벤트 재등록
 		            if ($(this).scrollLeft() == 0) {
 		                $(window).on('scroll', windowScrollHandler);
 		                $(this).off('mousewheel', mousewheelHandler);

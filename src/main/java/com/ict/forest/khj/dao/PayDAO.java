@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ict.forest.jjh.dao.BuyVO;
 import com.ict.forest.jjh.dao.UserVO;
 // khj 결제하기
 @Repository
@@ -43,5 +44,9 @@ public class PayDAO {
 		map.put("user_idx", user_idx);
 		map.put("minus_pay_point", minus_pay_point);
 		return sqlSessionTemplate.update("pay_table.minus_pay_point", map);
+	}
+	
+	public int buyupdate(PayVO payvo) {
+		return sqlSessionTemplate.update("pay_table.buy_update",payvo);
 	}
 }

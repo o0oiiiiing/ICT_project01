@@ -185,7 +185,7 @@ function sample2_execDaumPostcode() {
 			</c:choose>
 			<%-- <div>총 결제금액 : <c:out value="${pt_price_total}"/> KRW(원) </div> --%>
 			<div id="s1a1_d2">
-				<a>배송비는 상품마다 3000원씩 포함됩니다.</a>
+				<a>배송비는 3000원 입니다.</a>
 			</div>
 			</div>
 		</article>
@@ -241,7 +241,7 @@ function sample2_execDaumPostcode() {
 		<article id="p1_s2_a1">
 			<h3 style="text-align: center;">주문 요약</h3>
 			<div id="all_opp">주문상품들 가격: <a><c:out value="${pt_price_total}"/> KRW(원)</a></div>
-			<div id="d_charge">배송비: <a>${3000} * ${pay_ok_count} = ${3000 * pay_ok_count } KRW(원)</a></div>
+			<div id="d_charge">배송비: <a>3,000 KRW(원)</a></div>
 			<hr>
 			<div id="t_o_amount">총 결제금액: <a>${pt_price_total + 3000} KRW(원)</a></div>
 		</article>
@@ -250,6 +250,8 @@ function sample2_execDaumPostcode() {
 			<a><input type="radio" id="p_pay" name="pay" value="point" checked>포인트</a>
 			<a><input type="radio" id="c_pay" name="pay" value="credit_card">신용카드</a>
 			<a><input type="radio" id="a_pay" name="pay" value="account_transfer">계좌이체</a>
+			<br>
+			<p>내 포인트 : <fmt:formatNumber value="${uvo.user_point}" /> KRW</p>
 		</article>
 		<article id="p1_s2_a3">
 			<div id="s2a3_d1"><input type="checkbox" onclick="selectAll(this)" name="p1_agree" value="all_a">모두 동의</div>

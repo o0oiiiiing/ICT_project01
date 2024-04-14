@@ -55,6 +55,7 @@
 		<textarea rows="6" cols="40" name="p_content"></textarea>
 		<br>
 		<input type="submit" value="상품 등록">
+		<input class="but5" type="button" value="취소" onclick="location.href='mypage'"> 
 	</form>
 </div>
 <div id="hand_body">
@@ -85,6 +86,7 @@
 		<textarea rows="6" cols="40" name="p_content"></textarea>
 		<br>
 		<input type="submit" value="상품 등록">
+		<input class="but5" type="button" value="취소" onclick="location.href='mypage'"> 
 	</form>
 </div>
 <div id="home_fragrance">
@@ -116,6 +118,7 @@
 		<textarea rows="6" cols="40" name="p_content"></textarea>
 		<br>
 		<input type="submit" value="상품 등록">
+		<input class="but5" type="button" value="취소" onclick="location.href='mypage'"> 
 	</form>
 </div>
 <script type="text/javascript">

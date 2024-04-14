@@ -5,7 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.ict.forest.jjh.dao.BuyVO;
 import com.ict.forest.jjh.dao.UserVO;
 import com.ict.forest.khj.dao.PayDAO;
 import com.ict.forest.khj.dao.PayVO;
@@ -38,4 +38,8 @@ private PayDAO payDAO;
 		return payDAO.getPayPoint(user_idx, minus_pay_point);
 	}
 	
+	@Override
+	public int buyupdate(PayVO payvo) {
+		return payDAO.buyupdate(payvo);
+	}
 }
