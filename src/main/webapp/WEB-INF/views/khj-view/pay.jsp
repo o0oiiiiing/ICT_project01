@@ -204,10 +204,10 @@ function sample2_execDaumPostcode() {
 				<input class="addr-box" id="orderer_name" type="text" placeholder="주문자 이름" value="${uvo.user_name}" required readonly disabled>
 				<tr id="addr">
 						<td class="userin" id="addr-in">
-							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="${uvo.zip_code}" placeholder="우편번호" required readonly disabled> 
-							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="${uvo.main_addr}" placeholder="주소" required readonly disabled>
-							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="${uvo.detail_addr}" placeholder="상세주소" required readonly disabled>
-							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="${uvo.ex_addr}" placeholder="참고항목" required readonly disabled>
+							<input class="addr-box" type="text" id="sample_postcode" name="zip_code" value="${uvo.zip_code}" placeholder="우편번호" required disabled> 
+							<input class="addr-box" type="text" id="sample_address" name="main_addr" value="${uvo.main_addr}" placeholder="주소" required disabled>
+							<input class="addr-box" type="text" id="sample_detailAddress" name="detail_addr" value="${uvo.detail_addr}" placeholder="상세주소" required disabled>
+							<input class="addr-box" type="text" id="sample_extraAddress" name="ex_addr" value="${uvo.ex_addr}" placeholder="참고항목" required disabled>
 						</td>
 					</tr>
 					</fieldset>
@@ -241,7 +241,7 @@ function sample2_execDaumPostcode() {
 		<article id="p1_s2_a1">
 			<h3 style="text-align: center;">주문 요약</h3>
 			<div id="all_opp">주문상품들 가격: <a><c:out value="${pt_price_total}"/> KRW(원)</a></div>
-			<div id="d_charge">배송비: <a>${3000} * ${pay_ok_count} = ${3000 * pay_ok_count } KRW(원)</a></div>
+			<div id="d_charge">배송비: <a>${3000} KRW(원)</a></div>
 			<hr>
 			<div id="t_o_amount">총 결제금액: <a>${pt_price_total + 3000} KRW(원)</a></div>
 		</article>
@@ -258,10 +258,10 @@ function sample2_execDaumPostcode() {
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
 			
 			<button type="button" id="pay_b1" onclick="pay_ok(this.form)"  >결제하기</button>
-			<button id="pay_b1" onclick="cancel()"  >취소</button>
+			<button type="button" id="cancel_b1" onclick="cancel()"  >취소</button>
 			<input  type="hidden" name="delivery_status" value="1"  >
 			<input  type="hidden" name="buy_chk" value="1" >
-			<input  type="hidden" name="minus_pay_point" value="${uvo.user_point - pt_price_total + 3000}" >
+			<input  type="hidden" name="minus_pay_point" value="${uvo.user_point - (pt_price_total + 3000)}" >
 		</article>
 	</section>
 </div>	
@@ -341,7 +341,15 @@ function pay_ok(f) {
 		alert("포인트가 부족합니다.");
 		document.querySelector('#form_action').setAttribute('action', 'mypage');
 		document.querySelector('#pay_b1').setAttribute('type', 'submit');
-	}else{
+	}else {
+		var count2 = $recipientField.length;
+		for(i = 0; i < count2; i++){
+			if($recipientField[i].value === ''){
+				alert("결제 정보가 작성이 덜 됐습니다. . ");
+				 f.preventDefault();
+				 return;
+			}
+		}
 		alert("결제가 완료되었습니다.");
 		document.querySelector('#form_action').setAttribute('action', 'pay_ok');
 		document.querySelector('#pay_b1').setAttribute('type', 'submit');
