@@ -257,7 +257,7 @@ function sample2_execDaumPostcode() {
 			<a id="terms">약관보기<br></a>
 			<a id="s2a3_a3"><input type="checkbox" name="p1_agree" value="pay_a">구매조건 확인 및 결제진행에 동의</a>
 			
-			<button id="pay_b1" onclick="pay_ok(this.form)"  >결제하기</button>
+			<button type="button" id="pay_b1" onclick="pay_ok(this.form)"  >결제하기</button>
 			<button id="pay_b1" onclick="cancel()"  >취소</button>
 			<input  type="hidden" name="delivery_status" value="1"  >
 			<input  type="hidden" name="buy_chk" value="1" >
@@ -333,8 +333,9 @@ $recipientField.change(function () {
 function pay_ok(f) {
 	let check = document.querySelector('#s2a3_a1 input');
 	let check2 = document.querySelector('#s2a3_a3 input');
-	if(!check.checked && check2.checked){
+	if(!check.checked || !check2.checked){
 		alert("체크 덜 됐음. . ");
+		 f.preventDefault();
 		return;
 	}else if (${uvo.user_point < pt_price_total}) {
 		alert("포인트가 부족합니다.");
