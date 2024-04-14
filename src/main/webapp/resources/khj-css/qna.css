@@ -40,10 +40,18 @@ body{
 	padding-bottom: 10px;
 	
 }
-.secret_div > span:nth-of-type(4) {
+.secret_div > span:nth-of-type(3) {
 	margin-right: 35px;
 }
+
+.secret_msg{
+	width: 15%;
 }
+
+.qna_reply_status > span{
+	margin-left: 30px;
+}
+
 #t_menu{
 	width: 1000px; 
 	height: 100px; 
@@ -127,7 +135,11 @@ body{
 	width: 15%;
 }
 .qna_subject{
-	width: 57%;
+	width: 47%;
+}
+.reply_write_btn{
+	width: 7%;
+	height: 20px;
 }
 
 .qna_reply_status{

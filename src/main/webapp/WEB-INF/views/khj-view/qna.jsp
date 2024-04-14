@@ -44,11 +44,19 @@
 								<span>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerPage + vs.index )}</span>
 								<span>${k.user_id}</span>
 								<div>${k.qna_created_date.substring(0,10)}</div>
-								<span>비밀글입니다.</span>
-								<input type="password" placeholder="비밀번호를 입력해주세요"
-								style="width: 20%; padding: 3px;">
-								<button type="button" class="secret_btn">확인</button>
-								<input type="hidden" value="${k.qna_idx}">
+								<div class="secret_msg">비밀글입니다.</div>
+								<!-- <span>비밀글입니다.</span> -->
+								<c:choose>
+									<c:when test="${ssuvo.user_type != '2' }">
+									<input type="password" placeholder="비밀번호를 입력해주세요"
+									style="width: 20%; padding: 3px;">
+									<button type="button" class="secret_btn">확인</button>
+									<input type="hidden" value="${k.qna_idx}">
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="admin_view_btn">관리자 보기</button>
+								</c:otherwise>
+								</c:choose>
 								<c:choose>
 									<c:when test="${k.qna_reply_status == '0'}">
 										<span style="color: red;">답변 대기</span>
@@ -75,8 +83,14 @@
 									<div class="qna_subject">
 										<p>${k.qna_subject}</p>
 									</div>
+									<c:choose>
+										<c:when test="${ssuvo.user_type == '2' && k.qna_reply_status == '0'}">
+											<div class="reply_write_btn">
+												<button type="button" onclick="reply_write_go(${k.qna_idx})" >답글작성</button>
+											</div>
+										</c:when>
+									</c:choose>
 									<div class="qna_reply_status">
-										<p>
 											<c:choose>
 												<c:when test="${k.qna_reply_status == '0'}">
 													<span style="color: red;">답변 대기</span>
@@ -85,7 +99,6 @@
 													<span style="color: blue;">답변 완료</span>
 												</c:otherwise>
 											</c:choose>
-										</p>
 									</div>
 								</article>
 								<c:choose>
@@ -94,7 +107,6 @@
 											<div class="qna_content">
 												<p>
 												<span>질문글 : </span>${k.qna_content } <br>
-													<input type="button" onclick="reply_write_go(${k.qna_idx})" value="답글작성">
 												</p>
 											</div>
 										</article>
@@ -134,8 +146,14 @@
 									<div class="qna_subject">
 										<p>${k.qna_subject}</p>
 									</div>
+									<c:choose>
+										<c:when test="${ssuvo.user_type == '2' && k.qna_reply_status == '0' }">
+											<div class="reply_write_btn">
+												<button type="button" onclick="reply_write_go(${k.qna_idx})" >답글작성</button>
+											</div>
+										</c:when>
+									</c:choose>
 									<div class="qna_reply_status">
-										<p>
 											<c:choose>
 												<c:when test="${k.qna_reply_status == '0'}">
 													<span style="color: red;">답변 대기</span>
@@ -143,8 +161,7 @@
 												<c:otherwise>
 													<span style="color: blue;">답변 완료</span>
 												</c:otherwise>
-											</c:choose>						
-										</p>
+											</c:choose>
 									</div>
 								</article>
 								<c:choose>
@@ -153,7 +170,6 @@
 											<div class="qna_content">
 												<p>
 												<span>질문글 : </span>${k.qna_content} <br>
-													<input type="button" onclick="reply_write_go(${k.qna_idx})" value="답글작성">
 												</p>
 											</div>
 										</article>
@@ -287,9 +303,14 @@ $(document).ready(function() {
 			}
 		})
 	})
-	
+	$(".admin_view_btn").on("click", function() {
+		$(this).parent().next().css("display", "block")
+		$(this).parent().css("display", "none")
+	})
+
 	
 })
 </script>
+
 </body>
 </html>
