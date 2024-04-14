@@ -19,6 +19,9 @@
 		}
 		f.submit();
 	}
+	function back() {
+		location.href = "qna";
+	}
 </script>
 </head>
 <body>
@@ -53,7 +56,7 @@
 			<tr>
 				<td colspan="2">
 				<input type="button" value="입력" onclick="qna_write_go(this.form)" /> 
-				<input type="reset" value="취소" />
+				<input type="button" value="취소" onclick="back()" />
 				</td>
 			</tr>
             </tbody>

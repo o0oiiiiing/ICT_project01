@@ -72,7 +72,7 @@ $(document).ready(function() {
 							<div class="secret_div">
 								<span>${vs.index + 1}</span>
 								<span>${k.user_id}</span>
-								<div>${k.qna_created_date }</div>
+								<div>${k.qna_created_date.substring(0,10)}</div>
 								<span>비밀글입니다.</span>
 								<input type="password" placeholder="비밀번호를 입력해주세요"
 								style="width: 20%; padding: 3px;">
@@ -96,7 +96,7 @@ $(document).ready(function() {
 										<p>${k.user_id}</p>
 									</div>
 									<div class="qna_created_date">
-										<p>${k.qna_created_date}</p>
+										<p>${k.qna_created_date.substring(0,10)}</p>
 									</div>
 									<div class="user_id">
 										<p>비밀글</p>
@@ -134,7 +134,7 @@ $(document).ready(function() {
 												<p>
 												<span>질문글 : </span>${k.qna_content } <br>
 												<span>답변 : ${k.reply_list[0].user_id}</span>
-												<span>답변일자 : ${k.reply_list[0].qna_reply_date}</span>
+												<span>답변일자 : ${k.reply_list[0].qna_reply_date.substring(0,10)}</span>
 												</p>
 												<div class="qna_reply">
 													<hr>
@@ -158,7 +158,7 @@ $(document).ready(function() {
 										<p>${k.user_id}</p>
 									</div>
 									<div class="qna_created_date">
-										<p>${k.qna_created_date}</p>
+										<p>${k.qna_created_date.substring(0,10)}</p>
 									</div>
 									<div class="qna_subject">
 										<p>${k.qna_subject}</p>
@@ -193,7 +193,7 @@ $(document).ready(function() {
 												<p>
 												<span>질문글 : </span>${k.qna_content } <br>
 												<span>답변 : ${k.reply_list[0].user_id}</span>
-												<span>답변일자 : ${k.reply_list[0].qna_reply_date}</span>
+												<span>답변일자 : ${k.reply_list[0].qna_reply_date.substring(0,10)}</span>
 												</p>
 												<div class="qna_reply">
 													<hr>

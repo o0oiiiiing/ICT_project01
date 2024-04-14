@@ -29,7 +29,6 @@
 			<a href="faq">FaQ</a>
 			<a href="claim">Claim</a>
 		</div>
-		
 	</article>
 	
 	<article id="main">
